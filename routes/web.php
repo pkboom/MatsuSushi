@@ -25,7 +25,6 @@ Route::get('/logout', 'SessionsController@destory');
 Route::get('/admin/uploadImage', 'UploadController@select');
 Route::post('/admin/uploadImage', 'UploadController@store');
 
-
 Route::post('/messages', 'MessageController@create');
 Route::get('/lastmessages/{chatroomID}', 'MessageController@lastmessages');
 Route::get('/admin/messages/{id}', 'MessageController@adminShow');
@@ -44,5 +43,5 @@ Route::prefix('api')->group(function () {
 	Route::post('channelon', 'ChatroomController@apiOpenChannels');
 	Route::post('sendmessage', 'MessageController@apiSendMessage');
 	Route::post('pushtoken', 'AuthController@getPushToken');
-	Route::post('pushsend','MessageController@pushsend');
+	Route::get('chatroomstatus/{adminId}', 'ChatroomController@apiGetChatroomStatus');
 });

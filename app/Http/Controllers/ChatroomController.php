@@ -21,7 +21,8 @@ class ChatroomController extends Controller
 			'getchatroom',
 			'channelon',
 			'isfull',
-			'apiOpenChannels'
+			'apiOpenChannels',
+			'apiGetChatroomStatus',
 		]);
 	}
 
@@ -70,7 +71,7 @@ class ChatroomController extends Controller
 			// 	])
 			->first();
 
-		// update 'occupied' to occupied
+		// update 'occupied' to 1
 		Chatroom::where('id', '=', $selectedChatroom->id)
 			->update(['occupied' => 1]);
 
@@ -80,7 +81,7 @@ class ChatroomController extends Controller
 	public function leavechatroom($chatroomID)
 	{
 		// update 'occupied' to empty
-		Chatroom::where('id', '=', $chatroomID)
+		Chatroom::find($chatroomID)
 			->update(['occupied' => 0]);
 			
 		return ['status' => 'OK'];
@@ -97,10 +98,21 @@ class ChatroomController extends Controller
 
 		// channel on -> update 'occupied' to 1
 		// channel off -> update 'occupied' to 0
-		Chatroom::where('id', '=', self::CHATMAINBUTTON)
+		Chatroom::find(self::CHATMAINBUTTON)
 		->update(['occupied' => $channelOn]);
 
 		return ['status' => 'OK'];
+	}
+
+	// get all chatrooms that belongs to admin
+	public function show($adminID)
+	{
+		return Chatroom::where('user_id', $adminID)->get();
+	}
+
+	public function isfull()
+	{
+		return Chatroom::where('occupied', '=', 0)->first();
 	}
 
 	public function apiOpenChannels()
@@ -117,14 +129,9 @@ class ChatroomController extends Controller
 		return ['status' => 'OK'];
 	}
 
-	public function show($adminID)
+	public function apiGetChatroomStatus($id)
 	{
-		return Chatroom::where('user_id', $adminID)->get();
-	}
-
-	public function isfull()
-	{
-		return Chatroom::where('occupied', '=', 0)->first();
+		return Chatroom::select("id", "occupied")->where('user_id', $id)->orWhere('user_id', self::CHATMAINBUTTON)->get()->toArray();
 	}
 
 }

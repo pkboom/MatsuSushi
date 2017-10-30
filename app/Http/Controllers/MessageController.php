@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
-use App\Events\MessagePosted; //added by author
+use App\Chatroom;
+use App\User;
+use App\Events\MessagePosted;
 use Carbon\Carbon;
 
 class MessageController extends Controller
@@ -18,15 +20,19 @@ class MessageController extends Controller
 
 	// broacast a message from customer
 	public function create() {
-		$message = new Message; 
+		$message = Message::create([
+			'message' => request('message'),
+			'user_id' => request('user_id'),
+			'username' => request('username'),
+			'chatroomID' => request('chatroomID'),
+			'status' => request('status'),
+		]); 
 
-		$message->message = request('message');
-		$message->username = request('username');
-		$message->user_id = request('user_id');
-		$message->chatroomID = request('chatroomID');
-		$message->status = request('status');
-
-		$message->save(); //save it to the database
+		// send notification to mobile admin
+		// user_id 1 is customer
+		if ( request("user_id") == "1" && request('message') != "User left" ) {
+			$this->pushsend();			
+		}
 
 		// Announce that a new message has been posted
 		// event(); // fire an event 
@@ -45,7 +51,61 @@ class MessageController extends Controller
 			return "invalid credentials";
 		}
 
+		if ( request('message') == "Disconnected" ) {
+			// update 'occupied' to empty
+			Chatroom::find(request('chatroomID'))
+				->update(['occupied' => 0]);
+		}
+
 		$this->create();
+
+		return ['status' => 'OK'];
+	}
+
+	public function pushsend()
+	{
+		$userID = Chatroom::select("user_id")
+			->where('id', request('chatroomID'))
+			->first();
+
+		$exponentToken = User::find($userID);
+
+		// Create map with request parameters
+		$params = [
+			// 'to' => 'ExponentPushToken[xx8OZ2BOSBHEKJtJuEo6F1]',
+			'to' => $exponentToken[0]["push_token"],
+			'title' => request('username'),
+			'sound' => "default",
+			'body' => request('message'),
+		];
+
+		// Build Http query using params
+		$query = http_build_query ($params);
+		$header = [
+			"accept: application/json",
+			"accept-encoding: gzip, deflate",
+			"Content-type: application/x-www-form-urlencoded",
+		];
+
+		// Create Http context details
+		$contextData = [
+			'method' => 'POST',
+			'header' => $header,
+			'content'=> $query
+		];
+
+		// Create context resource for our request
+		$context = stream_context_create ( [ 'http' => $contextData ]);
+
+		$url = "https://exp.host/--/api/v2/push/send";
+
+		// Read page rendered as result of your POST request
+		$result =  file_get_contents (
+                  $url,  // page url
+                  false,
+                  $context);
+
+		// Server response is now stored in $result variable so you can process it
 
 		return ['status' => 'OK'];
 	}

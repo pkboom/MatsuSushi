@@ -14,7 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'api/auth',
         'api/channelon',
-        'api/sendMessage',
+        'api/sendmessage',
         'api/pushtoken',
     ];
 }
