@@ -1,0 +1,241 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	color: #5a5a5a;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+	margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	z-index: 10;
+	bottom: 3rem;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+	height: 32rem;
+	background-color: #777;
+}
+.carousel-item > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 32rem;
+}
+
+
+/* Reading Box
+-------------------------------------------------- */
+.reading-box {
+	margin-bottom: 3rem;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+.marketing h2 {
+	font-weight: normal;
+}
+.marketing .col-lg-4 p {
+	margin-right: .75rem;
+	margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+	margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+	/* Bump up size of carousel content */
+	.carousel-caption p {
+		margin-bottom: 1.25rem;
+		font-size: 1.25rem;
+		line-height: 1.4;
+	}
+
+	.featurette-heading {
+		font-size: 50px;
+	}
+
+	.menu {
+		width: 80%;
+	}
+
+}
+
+@media (min-width: 62em) {
+	.featurette-heading {
+		margin-top: 7rem;
+	}
+	.menu {
+		width: 50%;
+	}
+}
+
+/* general CSS
+-------------------------------------------------- */
+
+.about-image-container, .about-paragraph-container {
+	margin-top: 4rem;
+}
+
+.about-image {
+	max-width: 100%;
+	height: 700px;
+}
+
+.about-paragraph-gap {
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+}
+
+.location {
+	margin-top: 4rem;
+}
+
+.contact {
+	margin-top: 3rem;
+}
+
+.operation {
+	margin-top: 1rem;
+}
+
+/* gallery CSS
+-------------------------------------------------- */
+
+#lightgallery {
+	margin-top: 3rem;
+}
+
+#lightgallery > a > img {
+	-webkit-transition: -webkit-transform 0.15s ease 0s;
+	-moz-transition: -moz-transform 0.15s ease 0s;
+	-o-transition: -o-transform 0.15s ease 0s;
+	transition: transform 0.15s ease 0s;
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
+	height: 100%;
+	width: 100%;
+}
+
+#lightgallery > a:hover > img {
+	-webkit-transform: scale3d(1.1, 1.1, 1.1);
+	transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.pagination-container {
+	margin-top: 2rem;
+}
+
+.pagination li {
+	display: inline-block;
+	border-radius: 2px;
+	text-align: center;
+	vertical-align: top;
+	height: 30px;
+}
+
+.pagination li.active {
+	background-color: #ee6e73;
+}
+
+.pagination li a {
+	color: #444;
+	display: inline-block;
+	font-size: 1.2rem;
+	padding: 0 10px;
+	line-height: 30px;
+	text-decoration: none;
+}
+
+.pagination li.active a {
+	color: #fff;
+}
+
+.disabledLink {
+	color: #444;
+	display: inline-block;
+	font-size: 1.2rem;
+	padding: 0 10px;
+	line-height: 30px;
+	color: #999;
+	cursor: default;
+}
+
+.menu {
+	margin-top: 3rem;
+	width: 90%;
+}
+
+@media (min-width: 40em) {
+	.menu {
+		width: 70%;
+	}
+}
+
+@media (min-width: 62em) {
+	.menu {
+		width: 50%;
+	}
+}
+
+/* admin CSS
+-------------------------------------------------- */
+
+.navbar {
+	margin-bottom: 20px;
+}
+
+.btn-outline-secondary {
+	border-color: transparent;
+}
+
+@media (max-width: 768px) {
+	.btn-outline-secondary {
+		padding: 0 0 .5rem;
+		border: none;
+	}
+
+	.btn-outline-secondary:hover, 
+	.btn-outline-secondary:focus, 
+	.btn-outline-secondary:active {
+		background-color: transparent;
+		border: 0;
+		box-shadow: none;
+	}
+
+
+}
