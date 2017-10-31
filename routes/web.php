@@ -56,4 +56,3 @@ Route::prefix('menu')->group(function () {
 	Route::get('category', 'MenuController@category');
 	Route::get('items/{id}', 'MenuController@items');
 });
-

@@ -46,7 +46,11 @@ if (document.getElementById('app-chat')) {
 				
 				let message;
 				if ( value ) {
+<<<<<<< 206b94ce10319827f6348f99a360e53479e9642f
 					message = "Order:" + "\n";
+=======
+					message = "order:" + "\n";
+>>>>>>> simplify
 					
 					let cookieValue = JSON.parse(getCookie("ordersInCart"));
 					cookieValue.forEach((item) => {
