@@ -32,11 +32,14 @@ Route::get('/admin/chat', 'MessageController@adminChat')->name('home');
 
 Route::get('/chatroom/count/{id}', 'ChatroomController@chatroomCount');
 Route::get('/chatroom/{id}', 'ChatroomController@show');
-Route::get('/getchatroom', 'ChatroomController@getchatroom');
-Route::post('/leavechatroom/{id}', 'ChatroomController@leavechatroom');
+Route::post('/getchatroom', 'ChatroomController@getChatroom');
+Route::post('/leavechatroom/{id}', 'ChatroomController@leaveChatroom');
 Route::get('/channelon', 'ChatroomController@channelon');
-Route::post('/channelon', 'ChatroomController@openChannels');
 Route::get('/isfull', 'ChatroomController@isfull');
+
+Route::prefix('chat')->group(function () {
+	Route::post('main', 'ChatroomController@toggleMainButon');
+});
 
 Route::prefix('api')->group(function () {
 	Route::post('auth', 'AuthController@authenticate');

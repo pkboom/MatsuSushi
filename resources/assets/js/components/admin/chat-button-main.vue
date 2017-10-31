@@ -1,6 +1,6 @@
 <template>
 	<div class="chat-button-container">
-		<a href="javascript:void(0)" :class="[{'chat-button-on-color': mainchatbutton}, 'chat-button']" @click="channelToggle" id="channelOpenID">{{ channelOpen }}</a>
+		<a href="javascript:void(0)" :class="[{'chat-button-on-color': mainchatbutton}, 'chat-button']" @click="toggleMainButton" id="channelOpenID">{{ showMainButton }}</a>
 	</div>
 </template>
 
@@ -9,17 +9,17 @@
 		props: [ "mainchatbutton"],
 
 		created() {
-			console.log("created mainchatbutton " + this.mainchatbutton);
+			// console.log("created mainchatbutton " + this.mainchatbutton);
 		},
 
 		methods: {
-			channelToggle() {
-				this.$emit('channelon');
+			toggleMainButton() {
+				this.$emit('togglemain');
 			},
 		},
 
 		computed: {
-			channelOpen() {
+			showMainButton() {
 				return (this.mainchatbutton ? "Chat On" : "Chat Off");
 			},
 		},

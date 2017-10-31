@@ -13,7 +13,7 @@
 	<div class="row">
 		<div class="col-4">
 			{{-- defualt: 10 chatrooms --}}
-			<admin-chat-button-master :mainchatbutton="mainChatButton" @channelon="channelOn"></admin-chat-button-master>
+			<admin-chat-button-main :mainchatbutton="mainChatButton" @togglemain="toggleMain"></admin-chat-button-main>
 			<admin-chat-button v-for="chatroom in chatrooms" :key="chatroom.id" :chatroomid="chatroom.id" @chatroomopen="openChatroom"></admin-chat-button>
 		</div>
 		<div class="col-8">

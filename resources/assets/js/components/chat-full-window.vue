@@ -40,7 +40,7 @@ export default {
 				message.chatroomID = this.chatroomID;
 				this.messages.push(message);
 
-				console.log(message);
+				// console.log(message);
 
 				axios.post('/messages', message).then(response => {
 				})
@@ -64,11 +64,8 @@ export default {
 	created() {
 		window.addEventListener('beforeunload', this.leaving);
 
-		axios.get('/getchatroom').then( response => {
-			// get a chatroom
-			return response.data;
-		}).then( response => {
-			this.chatroomID = response.id;
+		axios.post('/getchatroom').then( response => {
+			this.chatroomID = response.data.id;
 			console.log("new");
 
 			// this.customermessage = this.customermessage.replace(/(\r?\n|\r)/g,"<br />");

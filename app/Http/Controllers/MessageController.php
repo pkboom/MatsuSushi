@@ -31,7 +31,7 @@ class MessageController extends Controller
 		// send notification to mobile admin
 		// user_id 1 is customer
 		if ( request("user_id") == "1" && request('message') != "User left" ) {
-			$this->pushsend();			
+			$this->pushsend();
 		}
 
 		// Announce that a new message has been posted
@@ -57,7 +57,24 @@ class MessageController extends Controller
 				->update(['occupied' => 0]);
 		}
 
-		$this->create();
+		$message = Message::create([
+			'message' => request('message'),
+			'user_id' => request('user_id'),
+			'username' => request('username'),
+			'chatroomID' => request('chatroomID'),
+			'status' => request('status'),
+		]); 
+
+		// send notification to mobile admin
+		// user_id 1 is customer
+		if ( request("user_id") == "1" && request('message') != "User left" ) {
+			$this->pushsend();
+		}
+
+		// Announce that a new message has been posted
+		// event(); // fire an event 
+		// event(new MessagePosted($message, $user));
+		broadcast(new MessagePosted($message))->toOthers(); //broadcast to other users, not me
 
 		return ['status' => 'OK'];
 	}

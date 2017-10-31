@@ -18,7 +18,7 @@ class ChatroomController extends Controller
         //You must be signed in in order to create a post except min, chatrooms
 		$this->middleware('auth')->except([
 			'chatroomCount',
-			'getchatroom',
+			'getChatroom',
 			'channelon',
 			'isfull',
 			'apiOpenChannels',
@@ -35,50 +35,24 @@ class ChatroomController extends Controller
 		return $count["count"];
 	}
 
-	// get an admin(s) that has the most idle chatrooms
+	// get an chatroom that's updated the earliest
 	// to distribute the workload
-	public function getchatroom()
+	public function getChatroom()
 	{
-		// get a max number of idle chatrooms
-		$sub = Chatroom::selectRaw('count(*) count')
-			->where('occupied', '=', 0) // idle chatrooms
-			->groupBy('user_id')
-			->orderBy('count', 'desc')
-			->first();
-
-		$idle = $sub->count;
-
-		// get users having a max number of idle chatrooms
-		$usersHavingMax = Chatroom::selectRaw('user_id, count(*) count')
-			->where('occupied', '=', 0)
-			->groupBy('user_id')
-			->havingRaw("count(*) = {$idle}")
-			->get();
-
-		$usersHavingMaxCount = count($usersHavingMax);
-
-		$randomNumber = rand(1, $usersHavingMaxCount);
-
-		$selectedUser = $usersHavingMax[$randomNumber-1];
-
-		// get a chatroom
-		$selectedChatroom = Chatroom::select('id')
-			->where('user_id', '=', $selectedUser->user_id)
-			->where('occupied', '=', 0)
-			// ->where([
-			// 		['user_id', '=', $selectedUser->user_id],
-			// 		['occupied', '=', 0]
-			// 	])
-			->first();
+		$selectedChatroomID = Chatroom::select("id")
+			->where('user_id', '>', 0) // exclude main chatroom button
+			->orderBy('updated_at','asc')
+			->first()
+			->toArray();
 
 		// update 'occupied' to 1
-		Chatroom::where('id', '=', $selectedChatroom->id)
+		Chatroom::find($selectedChatroomID["id"])
 			->update(['occupied' => 1]);
 
-		return $selectedChatroom;
+		return $selectedChatroomID;
 	}
 
-	public function leavechatroom($chatroomID)
+	public function leaveChatroom($chatroomID)
 	{
 		// update 'occupied' to empty
 		Chatroom::find($chatroomID)
@@ -92,14 +66,14 @@ class ChatroomController extends Controller
 		return Chatroom::select('occupied')->where('id', '=', self::CHATMAINBUTTON)->get();
 	}
 
-	public function openChannels()
+	public function toggleMainButon()
 	{
-		$channelOn = request('channelOn');
+		$mainButton = request('mainButton');
 
 		// channel on -> update 'occupied' to 1
 		// channel off -> update 'occupied' to 0
 		Chatroom::find(self::CHATMAINBUTTON)
-		->update(['occupied' => $channelOn]);
+		->update(['occupied' => $mainButton]);
 
 		return ['status' => 'OK'];
 	}
@@ -124,7 +98,7 @@ class ChatroomController extends Controller
 			return "invalid credentials";
 		}
 
-		$this->openChannels();
+		$this->toggleMainButon();
 
 		return ['status' => 'OK'];
 	}
@@ -133,5 +107,4 @@ class ChatroomController extends Controller
 	{
 		return Chatroom::select("id", "occupied")->where('user_id', $id)->orWhere('user_id', self::CHATMAINBUTTON)->get()->toArray();
 	}
-
 }
