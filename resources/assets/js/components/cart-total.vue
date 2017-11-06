@@ -3,7 +3,9 @@
 		<li class="totalRow"><span class="label">Subtotal</span><span class="value">${{ subtotal }}</span></li>
 		<li class="totalRow"><span class="label">Tax</span><span class="value">${{ taxBeforeTotal }}</span></li>
 		<li class="totalRow final"><span class="label">Total</span><span class="value">${{ totalPrice }}</span></li>
-		<li class="totalRow"><a href="/cart/payment" class="checkout payment">Pay with Card</a></li>
+
+<!-- 		<li class="totalRow"><a href="/cart/payment" class="checkout payment">Pay with Card</a></li>
+ -->		
 		<li class="totalRow"><a href="javascript:void(0)" class="checkout" @click="orderViaChat">Order via chat</a></li>
 	</ul>
 </template>

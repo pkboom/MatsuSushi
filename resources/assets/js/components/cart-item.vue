@@ -2,7 +2,7 @@
 	<li class="cartItem"  :class="{ 'even': count % 2 }">
 		<div class="row"> 
 			<div class="cartSection col-8">
-				<h3>{{ title }}</h3>
+				<h3>{{ name }}</h3>
 				<p> <input type="text" class="inputQuantity" @change="onQuantityChanged" v-model.number="newQuantity"> x ${{ price }}</p>
 				<!-- <p> <input type="text" class="inputQuantity" :placeholder="quantity" @change="onQuantityChanged" v-model.number="newQuantity"/> x $ {{ price }}</p> -->
 			</div>  
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-	props: [ 'title', 'price', 'quantity', 'count' ],
+	props: [ 'name', 'price', 'quantity', 'count' ],
 
 	data() {
 		return {

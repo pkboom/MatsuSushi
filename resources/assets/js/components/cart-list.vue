@@ -1,6 +1,6 @@
 <template>
 	<ul class="cartWrap">
-		<cart-item v-for="(item, index) in orders" :key="index" :title="item.title" :price="item.price" :quantity="item.quantity" :count="index" @appliedremove="onRemoveOrder" @appliedquantity="onQuantityChanged"></cart-item>
+		<cart-item v-for="(item, index) in orders" :key="index" :name="item.name" :price="item.price" :quantity="item.quantity" :count="index" @appliedremove="onRemoveOrder" @appliedquantity="onQuantityChanged"></cart-item>
 	</ul>
 </template>
 

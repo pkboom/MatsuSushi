@@ -45,7 +45,7 @@ export default {
 			
             // place an order
             this.$emit('applied', {
-            	title: item.name,
+            	name: item.name,
             	price: item.price,
             	quantity: 1
             });

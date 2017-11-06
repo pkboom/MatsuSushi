@@ -10,10 +10,6 @@ Route::post('/register', 'RegistrationController@store');
 
 Route::get('/admin-id/{email}', 'UserController@adminID');
 
-// Route::get('/login', 'SessionsController@create');
-// named route
-// name: login
-// action: SessionsController@create
 Route::get('/login', [ 'as' => 'login', 'uses' => 'SessionsController@create']);
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destory');
@@ -40,7 +36,6 @@ Route::prefix('chat')->group(function () {
 Route::prefix('cart')->group(function () {
 	Route::get('/', 'CartController@index');
 	Route::get('payment', 'CartController@payment');
-	
 });
 
 Route::prefix('api')->group(function () {

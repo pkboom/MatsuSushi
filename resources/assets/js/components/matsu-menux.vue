@@ -22,12 +22,12 @@ export default {
 
 	methods: {
 		onOrderMenux() {                
-			// console.log('place an order');
+			console.log(this.name);
 			
             // place an order
             this.$emit('applied', {
-            	title: this.name,
-            	price: this.price
+            	name: this.name,
+            	price: this.price,
             });
         }
     },

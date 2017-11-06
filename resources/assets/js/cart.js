@@ -70,6 +70,7 @@ if (document.getElementById('app-cart')) {
 		created() {
 			// deleteCookie("ordersInCart")
 			this.ordersInCart = JSON.parse(getCookie("ordersInCart"));
+			// console.log(this.ordersInCart);
 
 			this.subTotal();
 		},
