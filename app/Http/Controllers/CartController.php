@@ -6,6 +6,10 @@ namespace App\Http\Controllers;
 class CartController extends Controller
 {
     public function index() {
-		return view('cart');
+		return view('cart.cart');
+	}
+
+    public function payment() {
+		return view('cart.payment');
 	}
 }

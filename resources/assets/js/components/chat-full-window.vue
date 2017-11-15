@@ -70,9 +70,9 @@ export default {
 
 			// this.customermessage = this.customermessage.replace(/(\r?\n|\r)/g,"<br />");
 			let firstMessage = { 
-					message: "name: " + this.customername
-						+ "\nphone: " + this.customerphonenumber
-						+ "\naddress: " + this.customeraddress
+					message: "Name: " + this.customername
+						+ "\nPhone: " + this.customerphonenumber
+						+ "\nAddress: " + this.customeraddress
 						+ "\n" + this.customermessage,
 					status: "new"
 				};

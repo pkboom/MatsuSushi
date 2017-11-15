@@ -1,13 +1,9 @@
 <?php
-
 Route::get('/', 'MainController@index');
-Route::get('/menu', 'MenuController@index');
 Route::get('/contact', 'ContactController@index');
 Route::get('/about', 'AboutController@index');
 Route::get('/gallery', 'GalleryController@index');
 Route::get('/gallery/pages/{page}', 'GalleryController@index');
-Route::get('/menu', 'MenuController@index');
-Route::get('/cart', 'CartController@index');
 
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
@@ -41,6 +37,12 @@ Route::prefix('chat')->group(function () {
 	Route::post('main', 'ChatroomController@toggleMainButon');
 });
 
+Route::prefix('cart')->group(function () {
+	Route::get('/', 'CartController@index');
+	Route::get('payment', 'CartController@payment');
+	
+});
+
 Route::prefix('api')->group(function () {
 	Route::post('auth', 'AuthController@authenticate');
 	Route::post('channelon', 'ChatroomController@apiOpenChannels');
@@ -48,3 +50,10 @@ Route::prefix('api')->group(function () {
 	Route::post('pushtoken', 'AuthController@getPushToken');
 	Route::get('chatroomstatus/{adminId}', 'ChatroomController@apiGetChatroomStatus');
 });
+	
+Route::prefix('menu')->group(function () {
+	Route::get('/', 'MenuController@index');	
+	Route::get('category', 'MenuController@category');
+	Route::get('items/{id}', 'MenuController@items');
+});
+

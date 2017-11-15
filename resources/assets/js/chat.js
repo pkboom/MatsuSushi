@@ -46,7 +46,7 @@ if (document.getElementById('app-chat')) {
 				
 				let message;
 				if ( value ) {
-					message = "order:" + "\n";
+					message = "Order:" + "\n";
 					
 					let cookieValue = JSON.parse(getCookie("ordersInCart"));
 					cookieValue.forEach((item) => {

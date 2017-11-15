@@ -7,7 +7,7 @@
 	<add-to-cart v-show="ordered"> @{{ orderItemTitle }} </add-to-cart>
 	<h2>Matsu Sushi Menu</h2>
 	<div id="menuAccordion" data-children=".item">
-		<matsu-menu-category v-for="(value, index) in category" :key="index" :count="index" :subcategoryitem="value" @applied="onOrderMenu"></matsu-menu-category>
+		<matsu-menu-category v-for="(value, index) in subCategoryInfo" :key="index" :count="index" :subcategoryitem="value" @applied="onOrderMenu"></matsu-menu-category>
 	</div>
 </div><!-- /.container -->
 

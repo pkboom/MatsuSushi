@@ -27,6 +27,16 @@ export default {
 				tax: this.taxBeforeTotal,
 				total: this.totalPrice,
 			});
+		},
+		
+		payWithCard() {
+			// console.log("orderViaChat");
+
+			this.$emit('paywithcard', {
+				subtotal: this.subtotal,
+				tax: this.taxBeforeTotal,
+				total: this.totalPrice,
+			});
 		}
 	},
 
@@ -70,38 +80,33 @@ export default {
 }
 
 .checkout:link, .checkout:visited {
-  text-decoration: none;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  padding: .5rem 2rem;
-  color: #fff;
-  background: #82ca9c;
-  font-weight: bold;
-  border-radius: 50px;
-  float: right;
-  text-align: right;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear;
-}
-.checkout:after {
-  content: "\276f";
-  padding: .5rem;
-  position: relative;
-  right: 0;
-  -webkit-transition: all 0.15s linear;
-  -moz-transition: all 0.15s linear;
-  -ms-transition: all 0.15s linear;
-  -o-transition: all 0.15s linear;
-  transition: all 0.15s linear;
-}
-.checkout:hover, .checkout:focus, .checkout:active {
-  background: #f69679;
-}
-.checkout:hover:after, .checkout:focus:after, .checkout:active:after {
-  right: -10px;
+	text-decoration: none;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1rem;
+	padding: .5rem 2rem;
+	margin-bottom: 1rem;
+	color: #fff;
+	background: dodgerblue;
+	font-weight: bold;
+	border-radius: 5px;
+	float: right;
+	text-align: right;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
 }
 
+.checkout:hover, .checkout:focus, .checkout:active {
+	background: #0066cc;
+}
+
+.payment:link, .payment:visited {
+	background: tomato;
+}
+
+.payment:hover, .payment:focus, .payment:active {
+	background: #e62200;
+}
 </style>

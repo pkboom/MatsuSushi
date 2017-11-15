@@ -6,7 +6,7 @@
 		<hr>
 		<div :id="'menuAccordion'+count" class="collapse" role="tabpanel" :ref="'menuSubClass'+count">
 			<p class="mb-3">
-				<matsu-menux v-for="(value, index) in subcategoryitem.data" :key="index" :title="value.title" :price="value.price" :descript="value.descript"  @applied="onOrderMenuCategory"></matsu-menux>
+				<matsu-menux v-for="(value, index) in this.matsuMenu" :key="index" :name="value.name" :price="value.price" :descript="value.descript"  @applied="onOrderMenuCategory"></matsu-menux>
 			</p>
 		</div>
 	</div>
@@ -15,6 +15,19 @@
 <script>
 export default {
 	props: [ 'count', 'subcategoryitem'],
+
+	data() {
+		return {
+			matsuMenu: ""
+		}
+	},
+
+	created() {
+		axios.get('/menu/items/' + (this.count + 1)).then( response => {
+			// console.log(typeof this.count);
+			this.matsuMenu = response.data;
+		});
+	},
 
 	mounted() {
 		// console.log(this.$refs);
@@ -32,7 +45,7 @@ export default {
 			
             // place an order
             this.$emit('applied', {
-            	title: item.title,
+            	title: item.name,
             	price: item.price,
             	quantity: 1
             });

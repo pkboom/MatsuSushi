@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+// use App\Libraries\AuthenticateUser;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // $this->app->bind(AuthenticateUser::class, AuthenticateUser::class);
         $this->app->bind('App\Libraries\AuthenticateUser', \App\Libraries\AuthenticateUser::class);
+
+
+        // App::bind('App\Billing\Stripe', function(){
+        //     return new \App\Billing\Stripe('asfdasdfasf');
+        // });
     }
 }

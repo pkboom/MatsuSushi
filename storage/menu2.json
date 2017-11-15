@@ -1,4 +1,73 @@
 [{
+		"name": "Noodle and Maki Special(11: 30 AM to 4 PM)",
+		"data": [{
+			"title": "Ramen or Udon + Maki",
+			"descript": "California 6pcs/ yam 6pcs/ avocado 6pcs/ dynamite 5pcs/ spicy salmon 4pcs/ spicy tuna 4pcs",
+			"price": "12.95"
+		}]
+	},
+	{
+		"name": "Appetizer Special",
+		"data": [{
+				"title": "Butterfly Shrimp",
+				"descript": "Breaded shrimp and crab meat",
+				"price": "7.95"
+			},
+			{
+				"title": "Shrimp Teriyaki",
+				"descript": "6 pcs tiger shrimp",
+				"price": "8.95"
+			},
+			{
+				"title": "Takoyaki",
+				"descript": "8pcs Tako with homemade sauce",
+				"price": "5.95"
+			}
+		]
+	},
+	{
+		"name": "Dinner Special",
+		"data": [{
+				"title": "Spicy Rice Cake (떡볶이)",
+				"descript": "homemade hot sauce with vegetable",
+				"price": "12.95"
+			},
+			{
+				"title": "Mild Rice Cake (궁중 떡볶이)",
+				"descript": "based soya sauce with beef and vegetable",
+				"price": "13.95"
+			},
+			{
+				"title": "Nabe Udon",
+				"descript": "mussels, shrimp, crabmeat, fishcake, vegetable and egg",
+				"price": "14.95"
+			},
+			{
+				"title": "Budae Jigae (부대찌개)",
+				"descript": "kimchi, ham, sausage, tofu, ramen, vegetable (for 2 people)",
+				"price": "24.95"
+			},
+			{
+				"title": "Stir-fried Spicy Pork (제육볶음)",
+				"descript": "",
+				"price": "16.95"
+			},
+			{
+				"title": "Spicy Chicken",
+				"descript": "stir-fried chicken and vegetable with homemade spicy sauce",
+				"price": "17.95"
+			}
+		]
+	},
+	{
+		"name": "Dessert Special",
+		"data": [{
+			"title": "Deep-fried Ice-cream",
+			"descript": "Green tea/Vanilla/Mango",
+			"price": "6.95"
+		}]
+	},
+	{
 		"name": "SOUP & SALAD",
 		"data": [{
 				"title": "MISO SOUP",
@@ -565,21 +634,20 @@
 	},
 	{
 		"name": "VEGETABLE MAKI (6PCS)",
-		"data": [
-			{
-				title: "AVOCADO",
-				price: "4.95",
-				descript: ""
+		"data": [{
+				"title": "AVOCADO",
+				"price": "4.95",
+				"descript": ""
 			},
 			{
-				title: "KAPPA (CUCUMBER)",
-				price: "4.95",
-				descript: ""
+				"title": "KAPPA (CUCUMBER)",
+				"price": "4.95",
+				"descript": ""
 			},
 			{
-				title: "AVO-Q (AVOCADO, CUCUMBER)",
-				price: "4.95",
-				descript: ""
+				"title": "AVO-Q (AVOCADO, CUCUMBER)",
+				"price": "4.95",
+				"descript": ""
 			},
 			{
 				"title": "AVO-CREAM",

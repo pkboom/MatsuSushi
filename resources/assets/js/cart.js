@@ -65,7 +65,6 @@ if (document.getElementById('app-cart')) {
 				console.log(value);
 				Event.$emit('applied-order', value);
 			},
-
 		},
 
 		created() {

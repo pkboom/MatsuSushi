@@ -2,7 +2,7 @@
 	<div style="margin-bottom: 1rem;">
 		<div class="row">
 			<div class="col menu-title" style="font-weight: bold">
-				{{ this.title }}
+				{{ this.name }}
 			</div>
 			<div class="col menu-price" align="right">
 				<a href="javascript:void(0)" class="order-button" @click="onOrderMenux">{{ this.price }}</a>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-	props: [ 'title', 'price', 'descript' ],
+	props: [ 'name', 'price', 'descript' ],
 
 	methods: {
 		onOrderMenux() {                
@@ -26,7 +26,7 @@ export default {
 			
             // place an order
             this.$emit('applied', {
-            	title: this.title,
+            	title: this.name,
             	price: this.price
             });
         }

@@ -24,6 +24,12 @@
  	<link href="/css/app.css" rel="stylesheet">
  	<link href="/css/cart.css" rel="stylesheet">
 
+ 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+ 	<link href="/css/stripe/main.css" rel="stylesheet">
+ 	<link href="/css/stripe/form.css" rel="stylesheet">
+
  </head>
  <body>
 
@@ -39,7 +45,10 @@
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
  	<script src="/js/holder.js"></script>
- 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+{{--  	<script src="https://js.stripe.com/v3/"></script>
+ 	<script src="/js/stripe/index.js"></script>
+ 	<script src="/js/stripe/example3.js"></script>
+ --}} 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
  	<script src="/js/ie10-viewport-bug-workaround.js"></script>
 
  	<script src="/js/app.js"></script> 
