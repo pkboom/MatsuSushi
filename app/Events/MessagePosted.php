@@ -30,6 +30,6 @@ class MessagePosted implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chatroom.' . $this->message->chatroomID);
+        return new Channel('chatroom.' . $this->message->chatroom_id);
     }
 }

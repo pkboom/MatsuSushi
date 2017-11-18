@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage as Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -19,12 +20,17 @@ class UploadController extends Controller
 
 	public function store() {
 	    //Validate the form
-		$data = request()->validate([
-			'image.*' => 'image|mimes:jpeg,bmp,png|max:8000',
-		]);
+		$photos = count(request()->file('image')) - 1;
+
+		foreach(range(0, $photos) as $index) {
+			$rules['image.' . $index] = 'image|mimes:jpeg,bmp,png|max:8000';
+		}
+
+	    //Validate the form
+		$this->validate(request(), $rules);
 
 		$counter = 0;
-		foreach( $data['image'] as $image ) {
+		foreach( request()->file('image') as $image ) {
 			// /storage/app/public linked to public/storage
 			$thumbPath = '/thumb/' ;
 			$imagePath = $image->store('public'); // store image

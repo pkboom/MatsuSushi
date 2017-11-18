@@ -1,19 +1,19 @@
 <template>
 	<div class="chat-button-container">
-		<a href="javascript:void(0)" class="chat-button" @click="onChatroomOpen" :id="'chatroom'+chatroomid">{{ chatroomid }}</a>
+		<a href="javascript:void(0)" class="chat-button" @click="onChatroomOpen" :id="'chatroom'+chatroom_id">{{ chatroom_id }}</a>
 	</div>
 </template>
 
 <script>
 	export default {
-		props: [ "chatroomid"],
+		props: [ "chatroom_id"],
 
 		methods: {
 			onChatroomOpen() {                
-				// console.log(this.chatroomid);
+				// console.log(this.chatroom_id);
 				// background color back to blue
 				this.$emit('chatroomopen', {
-					chatroomID: this.chatroomid
+					chatroom_id: this.chatroom_id
 				});
 			}
 		}

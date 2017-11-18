@@ -1,4 +1,5 @@
 <?php
+
 Route::get('/', 'MainController@index');
 Route::get('/contact', 'ContactController@index');
 Route::get('/about', 'AboutController@index');

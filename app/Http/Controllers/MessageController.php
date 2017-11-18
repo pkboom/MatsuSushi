@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Message;
 use App\Chatroom;
 use App\User;
@@ -20,24 +19,19 @@ class MessageController extends Controller
 
 	// broacast a message from customer
 	public function create() {
-		$message = Message::create([
-			'message' => request('message'),
-			'user_id' => request('user_id'),
-			'username' => request('username'),
-			'chatroomID' => request('chatroomID'),
-			'status' => request('status'),
-		]); 
+		// tap returns Message instance
+		$data = tap(new Message(request()->all()))->save();
 
 		// send notification to mobile admin
 		// user_id 1 is customer
-		if ( request("user_id") == "1" && request('message') != "User left" ) {
-			$this->pushsend();
+		if ( $data["user_id"] == "1" && $data['message'] != "User left" ) {
+			// $this->pushSend();
 		}
 
 		// Announce that a new message has been posted
 		// event(); // fire an event 
 		// event(new MessagePosted($message, $user));
-		broadcast(new MessagePosted($message))->toOthers(); //broadcast to other users, not me
+		broadcast(new MessagePosted($data))->toOthers(); //broadcast to other users, not me
 		
 		return ['status' => 'OK'];
 	}
@@ -57,29 +51,23 @@ class MessageController extends Controller
 				->update(['occupied' => 0]);
 		}
 
-		$message = Message::create([
-			'message' => request('message'),
-			'user_id' => request('user_id'),
-			'username' => request('username'),
-			'chatroomID' => request('chatroomID'),
-			'status' => request('status'),
-		]); 
+		$data = tap(new Message(request()->all()))->save();
 
 		// send notification to mobile admin
 		// user_id 1 is customer
-		if ( request("user_id") == "1" && request('message') != "User left" ) {
-			$this->pushsend();
+		if ( $data['user_id'] == '1' && $data['message'] != 'User left' ) {
+			$this->pushSend();
 		}
 
 		// Announce that a new message has been posted
 		// event(); // fire an event 
 		// event(new MessagePosted($message, $user));
-		broadcast(new MessagePosted($message))->toOthers(); //broadcast to other users, not me
+		broadcast(new MessagePosted($data))->toOthers(); //broadcast to other users, not me
 
 		return ['status' => 'OK'];
 	}
 
-	public function pushsend()
+	public function pushSend()
 	{
 		$userID = Chatroom::select("user_id")
 			->where('id', request('chatroomID'))
@@ -128,7 +116,7 @@ class MessageController extends Controller
 	}
 
 	public function lastmessages($chatroomID) {
-		$lastMessage =  Message::where('chatroomID', $chatroomID)->latest()->first();
+		$lastMessage =  Message::where('chatroom_id', $chatroomID)->latest()->first();
 
 		if ( empty($lastMessage) or ($lastMessage->message == "Disconnected") or ($lastMessage->message == "User left")) {
 		// if ( $lastMessage[0]["message"] == "Disconnected" or $lastMessage[0]["message"] == "User left") {
@@ -139,9 +127,15 @@ class MessageController extends Controller
 		return $lastMessage;
 	}
 	
+	/**
+	 * show last message on admin chatroom screen
+	 * @param  int $chatroomID
+	 * @return [type]             [description]
+	 */
 	public function adminShow($chatroomID) {
 		// select lastest messages
-		$lastMessageID =  Message::where('chatroomID', $chatroomID)
+		// $lastMessages = [];
+		$lastMessageID =  Message::where('chatroom_id', $chatroomID)
 							->where( function($query) {
 								$query->where('message', 'Disconnected')
 									->orWhere('message', 'User left');
@@ -151,7 +145,7 @@ class MessageController extends Controller
 							->id;
 
 		$lastMessages =  Message::with('user')
-						->where('chatroomID', $chatroomID)
+						->where('chatroom_id', $chatroomID)
 						->where('id', '>', $lastMessageID)
 						->oldest()
 						->get()

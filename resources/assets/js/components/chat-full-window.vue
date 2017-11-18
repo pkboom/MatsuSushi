@@ -20,7 +20,7 @@ export default {
 			// name: 'customer', // customers don't login
 			messages: [],
 			chatrooms: [],
-			chatroomID: 0,
+			chatroom_id: 0,
 		}
 	},			
 
@@ -32,12 +32,12 @@ export default {
 		},
 		
 		addMessage(message) {
-			if ( this.chatroomID == 0 ) {
+			if ( this.chatroom_id == 0 ) {
 				console.log("disconnected");				
 			} else {
 				message.username = this.customername;
 				message.user_id = this.user_id;
-				message.chatroomID = this.chatroomID;
+				message.chatroom_id = this.chatroom_id;
 				this.messages.push(message);
 
 				// console.log(message);
@@ -51,7 +51,7 @@ export default {
 			let message = {};
 			message.username = this.customername;
 			message.user_id = this.user_id;
-			message.chatroomID = this.chatroomID;
+			message.chatroom_id = this.chatroom_id;
 			message.message = 'User left';
 			message.status = 'left';
 
@@ -65,7 +65,7 @@ export default {
 		window.addEventListener('beforeunload', this.leaving);
 
 		axios.post('/getchatroom').then( response => {
-			this.chatroomID = response.data.id;
+			this.chatroom_id = response.data.id;
 			console.log("new");
 
 			// this.customermessage = this.customermessage.replace(/(\r?\n|\r)/g,"<br />");
@@ -79,30 +79,24 @@ export default {
 
 			this.addMessage(firstMessage);
 
-			// get messages from db written by this user
-			// axios.get('/messages/' + this.chatroomID).then( response => {
-			// 	this.messages = response.data;
-			// 	console.log(this.messages);
-			// });
-
 			// receive messages from admin
-			Echo.channel('chatroom.'+ this.chatroomID)
+			Echo.channel('chatroom.'+ this.chatroom_id)
 			.listen('MessagePosted', (e) => {
 				// console.log(e);
 
-				if (this.chatroomID != 0 ) {
+				if (this.chatroom_id != 0 ) {
 					this.messages.push({
 						message: e.message.message,
 						username: e.message.username,
 						user_id: e.message.user_id,
-						chatroomID: response.id
+						chatroom_id: response.id
 					});									
 				}
 
 				//Disconnected
 				if (e.message.message == "Disconnected") {
 					// add to existing messages
-					this.chatroomID = 0;
+					this.chatroom_id = 0;
 				}
 			});
 		});

@@ -26,11 +26,14 @@ if (document.getElementById('admin-app-chat')) {
 				// add to existing messages
 				message.username = this.adminName;
 				message.user_id = this.adminID;
-				message.chatroomID = this.activeChatroom;
+				message.chatroom_id = this.activeChatroom;
 				// message.status = "chatting";
-				message.created_at = new Date().toLocaleString();
+				// message.created_at = new Date().toLocaleString();
 				this.messages.push(message);
 
+				console.log(this.activeChatroom);
+				console.log(message);
+				
 				// send mesaage
 				axios.post('/messages', message).then(response => {
 					// Do whatever;
@@ -50,7 +53,7 @@ if (document.getElementById('admin-app-chat')) {
 					document.getElementById("chatroom" + this.activeChatroom).style.backgroundColor = "lightgray";
 				}
 
-				this.activeChatroom = message.chatroomID;
+				this.activeChatroom = message.chatroom_id;
 
 				// turn background button color to 'blue'
 				document.getElementById("chatroom" + this.activeChatroom).style.backgroundColor = "#1daded";
@@ -63,18 +66,18 @@ if (document.getElementById('admin-app-chat')) {
 				});
 			},
 
-			inactiveChatroom(chatroomID) {
+			inactiveChatroom(chatroom_id) {
 				// add to existing messages
 				let message = {};
 
 				message.message = 'Disconnected';
 				message.username = this.adminName;
 				message.user_id = this.adminID;
-				message.chatroomID = chatroomID;
+				message.chatroom_id = chatroom_id;
 				message.status = "disconnected";
-				message.created_at = new Date().toLocaleString();
+				// message.created_at = new Date().toLocaleString();
 				
-				if ( this.activeChatroom == chatroomID ) {
+				if ( this.activeChatroom == chatroom_id ) {
 					this.messages.push(message);
 				}
 
@@ -84,8 +87,8 @@ if (document.getElementById('admin-app-chat')) {
 				})
 
 				// unoccupy a chatroom
-				axios.post('/leavechatroom/' + chatroomID).then( response => {
-					console.log("leaving a chatroom" + chatroomID);
+				axios.post('/leavechatroom/' + chatroom_id).then( response => {
+					console.log("leaving a chatroom" + chatroom_id);
 				});
 
 			},
@@ -158,7 +161,7 @@ if (document.getElementById('admin-app-chat')) {
 							
 							// unoccupy a chatroom
 							axios.post('/leavechatroom/' + response.id).then( response => {
-								// console.log("leaving a chatroom" + e.message.chatroomID);
+								// console.log("leaving a chatroom" + e.message.chatroom_id);
 							});
 						} else {
 							document.getElementById("chatroom" + response.id).style.backgroundColor = "tomato";
@@ -179,17 +182,17 @@ if (document.getElementById('admin-app-chat')) {
 						if ( e.message.status == 'left' ) {
 							console.log("left");
 							// unoccupy a chatroom
-							axios.post('/leavechatroom/' + e.message.chatroomID).then( response => {
-								// console.log("leaving a chatroom" + e.message.chatroomID);
+							axios.post('/leavechatroom/' + e.message.chatroom_id).then( response => {
+								// console.log("leaving a chatroom" + e.message.chatroom_id);
 							});
 						} else {
 							// chatting now
 							// change color of chatroom with a new message
-							document.getElementById("chatroom" + e.message.chatroomID).style.backgroundColor = "tomato";
+							document.getElementById("chatroom" + e.message.chatroom_id).style.backgroundColor = "tomato";
 						}
 
 						// update a chatroom with a new message
-						if ( this.activeChatroom == e.message.chatroomID ) {
+						if ( this.activeChatroom == e.message.chatroom_id ) {
 
 							// console.log(e.message);
 
@@ -197,7 +200,7 @@ if (document.getElementById('admin-app-chat')) {
 								message: e.message.message,
 								username: e.message.username,
 								user_id: e.message.user_id,
-								chatroomID: e.message.chatroomID,
+								chatroom_id: e.message.chatroom_id,
 								created_at: new Date().toLocaleString()
 							});
 						}

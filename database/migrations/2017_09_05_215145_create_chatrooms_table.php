@@ -16,7 +16,6 @@ class CreateChatroomsTable extends Migration
         Schema::create('chatrooms', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->uuid('room_id');
             $table->boolean('occupied')->default('0');
             $table->timestamps();
         });

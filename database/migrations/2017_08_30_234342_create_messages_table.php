@@ -18,7 +18,7 @@ class CreateMessagesTable extends Migration
             $table->text('message');
             $table->integer('user_id');
             $table->string('username');
-            $table->integer('chatroomID');
+            $table->integer('chatroom_id');
             $table->string('status');
             $table->timestamps();
         });

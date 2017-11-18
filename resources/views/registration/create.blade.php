@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 
 	<!-- Custom styles for this template -->
-	<link href="/css/app.css" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
 			<div class="col-sm-8">
 				<h1 class="register-head">Register</h1>
 				<form method="POST" action="/register">
-					{{ csrf_field() }}
+					{!! csrf_field() !!}
 
 					<div class="form-group">
 						<label for="name">Name</label>
@@ -44,9 +44,7 @@
 						<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
 					</div>
 
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Register</button>
-					</div>
+					<button type="submit" class="btn btn-primary">Register</button>
 
 					@include ('layouts.errors')
 				</form>
@@ -60,7 +58,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script type="text/javascript" src="{{ URL::asset('js/ie10-viewport-bug-workaround.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
 
 </body>
 </html>

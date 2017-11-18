@@ -16,15 +16,11 @@ class GalleryController extends Controller
 		$fileCount = new \FilesystemIterator($storagePath, \FilesystemIterator::SKIP_DOTS);
 		$fileCount = iterator_count($fileCount) - 2; // .gitignore & thumb folder
 		
-		// var_dump($files);
-		// die();
-
 		$files = array();
 		$dir = new \DirectoryIterator($storagePath);
-		// $dir = new \DirectoryIterator(public_path() . '/image');
-		// 
-		// get filenames
-		foreach ($dir as $fileinfo) {     
+
+		// get filename & created_time
+		foreach ($dir as $fileinfo) {
 			if (!$fileinfo->isDot() && $fileinfo->getFilename() != '.gitignore' ) {
 				$files[] = [ 'time' => $fileinfo->getMTime(), 'filename' => $fileinfo->getFilename() ];
 			}
@@ -32,7 +28,9 @@ class GalleryController extends Controller
 
 		// sort filenames according to created time
 		usort($files, function ($a, $b){
-			return strcmp($a["time"], $b["time"]);
+			// ordered descended
+			return strcmp($b["time"], $a["time"]);
+			// return strcmp($a["time"], $b["time"]);
 		});
 
 		// echo "<pre>";
@@ -56,34 +54,7 @@ class GalleryController extends Controller
 		$lastPage = (int) ceil($fileCount  / self::PHOTOPERPAGE);
 		$pages = $this->pagination($displayPage, $lastPage);
 
-		// echo "<pre>";
-		// var_dump($startImage);
-		// var_dump($endImage);
-		// var_dump($lastPage);
-		// var_dump($pages);
-		// var_dump($galleries[0]);
-		// echo "</pre>";
-		// die();
 		return view('gallery', compact('storagePath', 'galleries', 'pages', 'displayPage', 'lastPage'));
-	}
-
-	public function index2($displayPage = 1) {
-		// echo "<pre>";
-		// for ($i = 1, $l = 20; $i <= $l; $i++) {
-		// 	var_dump($this->pagination($i, $l));
-		// }
-		// echo "</pre>";
-		// die();
-
-		$startImage = ($displayPage - 1) * self::PHOTOPERPAGE;
-		// $galleries = Gallery::orderBy('id', 'DESC')->take(self::PHOTOPERPAGE)->get();
-		$galleries = Gallery::orderBy('id', 'DESC')->skip($startImage)->take(self::PHOTOPERPAGE)->get();
-		$recordCount = Gallery::count();
-		$lastPage = (int) ceil($recordCount  / self::PHOTOPERPAGE);
-
-		$pages = $this->pagination($displayPage, $lastPage);
-
-		return view('gallery', compact('galleries', 'pages', 'displayPage', 'lastPage'));
 	}
 
 	// https://gist.github.com/kottenator/9d936eb3e4e3c3e02598

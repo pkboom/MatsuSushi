@@ -11,7 +11,7 @@ class ChatroomController extends Controller
 {
 	// turn chatrooms on/off
 	// 0:off, 1:on
-	const CHATMAINBUTTON = 0;
+	const CHATMAINBUTTON = 999;
 
 	public function __construct()
 	{

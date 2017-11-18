@@ -34,8 +34,6 @@ export default {
 			customerPhoneNumber: "",
 			customerAddress: "",
 			customerMessage: "",
-			chatroomID: 0,
-			timeoutID: 0,
 			nameTitle: "Name:",
 			phoneTitle: "Phone:",
 			addressTitle: "Address:",

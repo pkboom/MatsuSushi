@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-use Faker\Factory as Faker;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,13 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-
-    	$faker = Faker::create();
-    	factory(App\Chatroom::class, 10)->create([
-    		'user_id' => 3,
-    		'room_id' => $faker->unique()->uuid,
-    		'occupied' => 0
-    	]);
+        $this->call(UsersTableSeeder::class);
+        $this->call(ChatroomsTableSeeder::class);
     }
 }

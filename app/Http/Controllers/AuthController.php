@@ -10,7 +10,7 @@ use App\User;
 class AuthController extends Controller
 {
 	public function getPushToken() {
-		// $result = $this->getAuthenticatedUser();
+		// get a user
 		$result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
 
 		if ( $result["id"] != auth()->user()->id) {
