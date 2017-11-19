@@ -50,7 +50,7 @@ class RegistrationController extends Controller
 				'message' => 'Disconnected',
 				'user_id' => ($user->toArray())['id'],
 				'username' => ($user->toArray())['name'],
-				'chatroomID' => ($chatroom->toArray())['id'],
+				'chatroom_id' => ($chatroom->toArray())['id'],
 				'status' => 'dummy',
 			];
 			(new Message($messageData))->save();		
