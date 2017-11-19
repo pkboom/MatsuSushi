@@ -7,10 +7,7 @@
  	<!-- CSRF Token -->
  	<meta name="csrf-token" content="{{ csrf_token() }}">
 
- 	<meta name="description" content="">
- 	<meta name="author" content="">
-
- 	<title>Matsu Sushi</title>
+ 	<title>{{ config('app.name', 'MatsuSushi') }}</title>
 
  	<!-- Bootstrap core CSS -->
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -20,16 +17,13 @@
  	<link rel="stylesheet" href="/css/justifiedGallery.min.css" />
  	{{-- fontawesome --}}
  	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
- 	<!-- Custom styles for this template -->
- 	<link href="/css/app.css" rel="stylesheet">
- 	<link href="/css/cart.css" rel="stylesheet">
-
  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
  	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
  	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
- 	<link href="/css/stripe/main.css" rel="stylesheet">
- 	<link href="/css/stripe/form.css" rel="stylesheet">
-
+ 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+ 	<link href="{{ asset('css/cart.css') }}" rel="stylesheet">
+ 	<link href="{{ asset('css/stripe/main.css') }}" rel="stylesheet">
+ 	<link href="{{ asset('css/stripe/form.css') }}" rel="stylesheet">
  </head>
  <body>
 
@@ -44,15 +38,15 @@
  	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
- 	<script src="/js/holder.js"></script>
 
 {{--  	<script src="https://js.stripe.com/v3/"></script>
- 	<script src="/js/stripe/index.js"></script>
- 	<script src="/js/stripe/example3.js"></script>
+ 	<script src="{{ asset('js/stripe/index.js') }}"></script>
+ 	<script src="{{ asset('js/stripe/example3.js') }}"></script>
  --}} 	
- 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- 	<script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script type="text/javascript" src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
 
- 	<script src="/js/app.js"></script> 
+ 	<script src="{{ asset('js/holder.js') }}"></script>
+ 	<script src="{{ asset('js/app.js') }}"></script> 
  </body>
  </html>

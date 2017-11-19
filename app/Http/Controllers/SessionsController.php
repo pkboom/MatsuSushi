@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
 
 class SessionsController extends Controller
@@ -17,22 +16,22 @@ class SessionsController extends Controller
 	public function create()
 	{
 		if(Auth::check()){
-			// return redirect()->to('admin/chat');
 			return redirect()->home();
-		} else {
-			return view('sessions.create');			
-		}
+		} 
 
+		return view('sessions.create');			
 	}
 
 	public function store()
 	{
+		// flash current input to the session
+		request()->flashExcept('password');
 		// Attempt to authenticate the user
 		// If so, sign them in
 		if ( ! auth()->attempt(request(['email', 'password']))) {
 			// If not, redirect back
 			return back()->withErrors([
-				'message' => 'Please check your credentials and try again.'
+				'message' => 'Please check your credentials and try again.',
 			]);
 		}
 
@@ -43,7 +42,6 @@ class SessionsController extends Controller
 	public function destory()
 	{
 		auth()->logout();
-
 		return redirect('login');
 	}
 
