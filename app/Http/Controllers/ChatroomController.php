@@ -40,7 +40,7 @@ class ChatroomController extends Controller
 	public function getChatroom()
 	{
 		$selectedChatroomID = Chatroom::select("id")
-			->where('user_id', '>', 0) // exclude main chatroom button
+			->where('user_id', '<>', self::CHATMAINBUTTON) // exclude main chatroom button
 			->orderBy('updated_at','asc')
 			->first()
 			->toArray();
@@ -63,7 +63,7 @@ class ChatroomController extends Controller
 
 	public function channelon()
 	{
-		return Chatroom::select('occupied')->where('id', '=', self::CHATMAINBUTTON)->get();
+		return Chatroom::select('occupied')->where('id', self::CHATMAINBUTTON)->get();
 	}
 
 	public function toggleMainButon()
@@ -91,12 +91,11 @@ class ChatroomController extends Controller
 
 	public function apiOpenChannels()
 	{
-		// $result = $this->getAuthenticatedUser();
-		$result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
+		// $result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
 
-		if ( $result["id"] != auth()->user()->id) {
-			return "invalid credentials";
-		}
+		// if ( $result["id"] != auth()->user()->id) {
+		// 	return "invalid credentials";
+		// }
 
 		$this->toggleMainButon();
 
@@ -105,6 +104,6 @@ class ChatroomController extends Controller
 
 	public function apiGetChatroomStatus($id)
 	{
-		return Chatroom::select("id", "occupied")->where('user_id', $id)->orWhere('user_id', self::CHATMAINBUTTON)->get()->toArray();
+		return Chatroom::select("id", "occupied")->where('user_id', $id)->get();
 	}
 }

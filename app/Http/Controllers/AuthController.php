@@ -11,11 +11,11 @@ class AuthController extends Controller
 {
 	public function getPushToken() {
 		// get a user
-		$result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
+		// $result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
 
-		if ( $result["id"] != auth()->user()->id) {
-			return "invalid credentials";
-		}
+		// if ( $result["id"] != auth()->user()->id) {
+		// 	return "invalid credentials";
+		// }
 
 		$token = request('token');
 		$email = request('email');

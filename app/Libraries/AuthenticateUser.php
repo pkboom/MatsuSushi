@@ -6,9 +6,6 @@ use JWTAuth;
 
 /**
 * authenticate user based on jwt
-*
-* bind
-* https://m.dotdev.co/understanding-laravel-service-container-bd488ca05280
 */
 
 class AuthenticateUser

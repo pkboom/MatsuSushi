@@ -66,7 +66,7 @@ export default {
 
 		axios.post('/getchatroom').then( response => {
 			this.chatroom_id = response.data.id;
-			console.log("new");
+			console.log(this.chatroom_id);
 
 			// this.customermessage = this.customermessage.replace(/(\r?\n|\r)/g,"<br />");
 			let firstMessage = { 

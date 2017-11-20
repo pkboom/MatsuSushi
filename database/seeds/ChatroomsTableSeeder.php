@@ -13,7 +13,7 @@ class ChatroomsTableSeeder extends Seeder
     {
     	App\Chatroom::insert([
     		'id' => 999,
-    		'user_id' => 0,
+    		'user_id' => 999,
     	]);
     }
 }

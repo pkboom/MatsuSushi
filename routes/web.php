@@ -39,12 +39,13 @@ Route::prefix('cart')->group(function () {
 	Route::get('payment', 'CartController@payment');
 });
 
+
 Route::prefix('api')->group(function () {
-	Route::post('auth', 'AuthController@authenticate');
-	Route::post('channelon', 'ChatroomController@apiOpenChannels');
-	Route::post('sendmessage', 'MessageController@apiSendMessage');
-	Route::post('pushtoken', 'AuthController@getPushToken');
 	Route::get('chatroomstatus/{adminId}', 'ChatroomController@apiGetChatroomStatus');
+	Route::post('auth', 'AuthController@authenticate');
+	Route::post('channelon', 'ChatroomController@apiOpenChannels')->middleware('auth.jwt');
+	Route::post('sendmessage', 'MessageController@apiSendMessage')->middleware('auth.jwt');
+	Route::post('pushtoken', 'AuthController@getPushToken')->middleware('auth.jwt');
 });
 	
 Route::prefix('menu')->group(function () {

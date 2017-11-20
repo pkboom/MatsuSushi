@@ -39,15 +39,15 @@ class MessageController extends Controller
 	public function apiSendMessage()
 	{
 		// $result = $this->getAuthenticatedUser();
-		$result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
+		// $result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
 
-		if ( $result["id"] != auth()->user()->id) {
-			return "invalid credentials";
-		}
+		// if ( $result["id"] != auth()->user()->id) {
+		// 	return "invalid credentials";
+		// }
 
 		if ( request('message') == "Disconnected" ) {
 			// update 'occupied' to empty
-			Chatroom::find(request('chatroomID'))
+			Chatroom::find(request('chatroom_id'))
 				->update(['occupied' => 0]);
 		}
 
@@ -70,7 +70,7 @@ class MessageController extends Controller
 	public function pushSend()
 	{
 		$userID = Chatroom::select("user_id")
-			->where('id', request('chatroomID'))
+			->where('id', request('chatroom_id'))
 			->first();
 
 		$exponentToken = User::find($userID);
@@ -115,8 +115,8 @@ class MessageController extends Controller
 		return ['status' => 'OK'];
 	}
 
-	public function lastmessages($chatroomID) {
-		$lastMessage =  Message::where('chatroom_id', $chatroomID)->latest()->first();
+	public function lastmessages($chatroom_id) {
+		$lastMessage =  Message::where('chatroom_id', $chatroom_id)->latest()->first();
 
 		if ( empty($lastMessage) or ($lastMessage->message == "Disconnected") or ($lastMessage->message == "User left")) {
 		// if ( $lastMessage[0]["message"] == "Disconnected" or $lastMessage[0]["message"] == "User left") {
@@ -129,13 +129,13 @@ class MessageController extends Controller
 	
 	/**
 	 * show last message on admin chatroom screen
-	 * @param  int $chatroomID
+	 * @param  int $chatroom_id
 	 * @return [type]             [description]
 	 */
-	public function adminShow($chatroomID) {
+	public function adminShow($chatroom_id) {
 		// select lastest messages
 		// $lastMessages = [];
-		$lastMessageID =  Message::where('chatroom_id', $chatroomID)
+		$lastMessageID =  Message::where('chatroom_id', $chatroom_id)
 							->where( function($query) {
 								$query->where('message', 'Disconnected')
 									->orWhere('message', 'User left');
@@ -145,7 +145,7 @@ class MessageController extends Controller
 							->id;
 
 		$lastMessages =  Message::with('user')
-						->where('chatroom_id', $chatroomID)
+						->where('chatroom_id', $chatroom_id)
 						->where('id', '>', $lastMessageID)
 						->oldest()
 						->get()

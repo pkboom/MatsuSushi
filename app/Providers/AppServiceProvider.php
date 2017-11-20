@@ -23,7 +23,6 @@ class AppServiceProvider extends ServiceProvider
             // add a variable 'adminID' and give user id to it
             $view->with('adminID', auth()->user()->id);
             $view->with('adminName', auth()->user()->name);
-
         }); 
     }
 
@@ -36,7 +35,6 @@ class AppServiceProvider extends ServiceProvider
     {
         // $this->app->bind(AuthenticateUser::class, AuthenticateUser::class);
         $this->app->bind('App\Libraries\AuthenticateUser', \App\Libraries\AuthenticateUser::class);
-
 
         // App::bind('App\Billing\Stripe', function(){
         //     return new \App\Billing\Stripe('asfdasdfasf');

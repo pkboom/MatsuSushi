@@ -16,7 +16,8 @@ if (document.getElementById('admin-app-chat')) {
 			chatrooms: [],
 			activeChatroom: 0,
 			messages: [],
-			mainChatButton: 0 // main chatbutton on/off
+			mainChatButton: 0, // main chatbutton on/off
+			mainButtonID: 999,
 		},
 
 		methods: {
@@ -46,8 +47,13 @@ if (document.getElementById('admin-app-chat')) {
 
 			// start chatting
 			openChatroom(message) {
+				if (! this.mainChatButton) {
+					return;
+				}
+
 				this.chatBody = true;
 
+				// turn current chatroom to lightgray
 				if ( this.activeChatroom != 0 ) {
 					// turn background color back to 'gray'
 					document.getElementById("chatroom" + this.activeChatroom).style.backgroundColor = "lightgray";
@@ -98,10 +104,12 @@ if (document.getElementById('admin-app-chat')) {
 				// window.clearTimeout(this.timeoutID[this.activeChatroom]);
 			},
 
-			// channelOn(message = '') {
 			toggleMain() {
 				this.mainChatButton = !this.mainChatButton;
 
+				if (! this.mainChatButton && this.activeChatroom) {
+					document.getElementById("chatroom" + this.activeChatroom).style.backgroundColor = "lightgray";
+				}
 				// close chat screen
 				this.chatBody = false;
 				this.activeChatroom = 0;
@@ -111,13 +119,6 @@ if (document.getElementById('admin-app-chat')) {
 				.then( response => {
 					console.log("channel on/off");
 				});
-
-				// if ( message == 'mobile' ) {
-				// 	this.addMessage({
-				// 		message: "togglemainbutton",
-				// 		status: "togglemainbutton"
-				// 	});					
-				// } 
 			}
 		},
 		
@@ -132,7 +133,7 @@ if (document.getElementById('admin-app-chat')) {
 			});
 
 			// messages coming from mobile
-			Echo.channel('chatroom.0')
+			Echo.channel(`chatroom.${this.mainButtonID}`)
 			.listen('MessagePosted', (e) => {
 				if ( e.message.status == 'mobile-togglemainbutton' ) {
 					// console.log("mobile-togglemainbutton");
