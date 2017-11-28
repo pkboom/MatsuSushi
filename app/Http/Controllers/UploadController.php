@@ -13,10 +13,6 @@ class UploadController extends Controller
 		$this->middleware('auth');
 	}
 
-	public function select() {
-		return view('admin.uploadImage');
-	}
-
 	public function store() {
 	    //Validate the form
 		$data = request()->validate([

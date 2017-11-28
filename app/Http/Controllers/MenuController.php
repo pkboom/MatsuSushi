@@ -7,12 +7,6 @@ use App\Menu;
 
 class MenuController extends Controller
 {
-	public function index() {
-		// return view('menu_backup');
-		return view('menu');
-		// return view('menu2');
-	}
-
 	public function items($id) {
 		$menu = Menu::where("category_id", $id)->get();
 

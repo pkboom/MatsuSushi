@@ -10,7 +10,6 @@ use Carbon\Carbon;
 
 class MessageController extends Controller
 {
-
 	// public function __construct()
 	// {
 	// 	// only a guest can access sessionscontroller
@@ -18,7 +17,8 @@ class MessageController extends Controller
 	// }	
 
 	// broacast a message from customer
-	public function create() {
+	public function create()
+	{
 		// tap returns Message instance
 		$data = tap(new Message(request()->all()))->save();
 
@@ -31,20 +31,14 @@ class MessageController extends Controller
 		// Announce that a new message has been posted
 		// event(); // fire an event 
 		// event(new MessagePosted($message, $user));
-		broadcast(new MessagePosted($data))->toOthers(); //broadcast to other users, not me
+		// broadcast to other users, not me
+		broadcast(new MessagePosted($data))->toOthers();
 		
 		return ['status' => 'OK'];
 	}
 
 	public function apiSendMessage()
 	{
-		// $result = $this->getAuthenticatedUser();
-		// $result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
-
-		// if ( $result["id"] != auth()->user()->id) {
-		// 	return "invalid credentials";
-		// }
-
 		if ( request('message') == "Disconnected" ) {
 			// update 'occupied' to empty
 			Chatroom::find(request('chatroom_id'))
@@ -132,7 +126,8 @@ class MessageController extends Controller
 	 * @param  int $chatroom_id
 	 * @return [type]             [description]
 	 */
-	public function adminShow($chatroom_id) {
+	public function adminShow($chatroom_id)
+	{
 		// select lastest messages
 		// $lastMessages = [];
 		$lastMessageID =  Message::where('chatroom_id', $chatroom_id)
@@ -156,10 +151,5 @@ class MessageController extends Controller
 		}
 
 		return $lastMessages;
-	}
-	
-	// chat page in admin
-	public function adminChat() {
-		return view('admin.chat');
-	}
+	}	
 }

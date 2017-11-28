@@ -26,6 +26,11 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        // get chatrooms for admin_id
+        Route::bind('chatroom_user_id', function($value) {
+            return \App\Chatroom::where('user_id', $value)->get() ?? abort(404);
+        });
     }
 
     /**

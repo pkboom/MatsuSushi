@@ -17,7 +17,7 @@ if (document.getElementById('app-chat')) {
 
 				axios.get('/channelon').then( response => {
 					// check if chat is available
-					this.channelOpen = parseInt(response.data[0].occupied);
+					this.channelOpen = response.data;
 
 					// open chat intro if available
 					 if ( this.channelOpen ) {

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Chatroom;
-
 use Illuminate\Support\Facades\DB;
+use App\Chatroom;
+use App\User;
 
 class ChatroomController extends Controller
 {
@@ -15,27 +15,23 @@ class ChatroomController extends Controller
 
 	public function __construct()
 	{
-        //You must be signed in in order to create a post except min, chatrooms
-		$this->middleware('auth')->except([
-			'chatroomCount',
-			'getChatroom',
-			'channelon',
-			'isfull',
+		$this->middleware('auth')->only([
+			'leaveChatroom',
+			'toggleMainButon',
+		]);
+
+		$this->middleware('auth.jwt')->only([
 			'apiOpenChannels',
-			'apiGetChatroomStatus',
 		]);
 	}
 
 	// get chatroom count per admin user
-	public function chatroomCount($id) {
-		$count = Chatroom::selectRaw('count(*) count')
-			->where('user_id', '=', $id) // idle chatrooms
-			->first();
-
-		return $count["count"];
+	public function chatroomCount($chatrooms) {
+		return $chatrooms->count();
 	}
 
-	// get an chatroom that's updated the earliest
+	// get an chatroom that's been updated the earliest
+	// for customer to get in
 	// to distribute the workload
 	public function getChatroom()
 	{
@@ -52,18 +48,18 @@ class ChatroomController extends Controller
 		return $selectedChatroomID;
 	}
 
-	public function leaveChatroom($chatroomID)
+	public function leaveChatroom($chatroom_id)
 	{
 		// update 'occupied' to empty
-		Chatroom::find($chatroomID)
+		Chatroom::find($chatroom_id)
 			->update(['occupied' => 0]);
-			
+
 		return ['status' => 'OK'];
 	}
 
 	public function channelon()
 	{
-		return Chatroom::select('occupied')->where('id', self::CHATMAINBUTTON)->get();
+		return Chatroom::find(self::CHATMAINBUTTON)['occupied'];
 	}
 
 	public function toggleMainButon()
@@ -79,9 +75,9 @@ class ChatroomController extends Controller
 	}
 
 	// get all chatrooms that belongs to admin
-	public function show($adminID)
+	public function show($chatrooms)
 	{
-		return Chatroom::where('user_id', $adminID)->get();
+		return $chatrooms;
 	}
 
 	public function isfull()
@@ -91,19 +87,8 @@ class ChatroomController extends Controller
 
 	public function apiOpenChannels()
 	{
-		// $result = app()->make('App\Libraries\AuthenticateUser')->getAuthenticatedUser();
-
-		// if ( $result["id"] != auth()->user()->id) {
-		// 	return "invalid credentials";
-		// }
-
 		$this->toggleMainButon();
 
 		return ['status' => 'OK'];
-	}
-
-	public function apiGetChatroomStatus($id)
-	{
-		return Chatroom::select("id", "occupied")->where('user_id', $id)->get();
 	}
 }

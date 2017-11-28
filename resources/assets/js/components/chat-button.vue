@@ -15,8 +15,7 @@
 
 		created() {
 			axios.get('/channelon').then( response => {
-				this.channelOpen = parseInt(response.data[0].occupied);
-
+				this.channelOpen = response.data;
 				this.chatButtonTitle = ( this.channelOpen ? "We're online!" : "We're offline!" );
 			});
 		},

@@ -47127,7 +47127,7 @@ if (document.getElementById('app-chat')) {
 
 				axios.get('/channelon').then(function (response) {
 					// check if chat is available
-					_this.channelOpen = parseInt(response.data[0].occupied);
+					_this.channelOpen = response.data;
 
 					// open chat intro if available
 					if (_this.channelOpen) {
@@ -47309,8 +47309,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		var _this = this;
 
 		axios.get('/channelon').then(function (response) {
-			_this.channelOpen = parseInt(response.data[0].occupied);
-
+			_this.channelOpen = response.data;
 			_this.chatButtonTitle = _this.channelOpen ? "We're online!" : "We're offline!";
 		});
 	},
@@ -48661,7 +48660,7 @@ if (document.getElementById('admin-app-chat')) {
 			this.adminName = document.getElementById("adminName").innerHTML;
 
 			axios.get('/channelon').then(function (response) {
-				_this2.mainChatButton = parseInt(response.data[0].occupied);
+				_this2.mainChatButton = response.data;
 				console.log("/channelon " + _this2.mainChatButton);
 			});
 

@@ -17,11 +17,6 @@ class RegistrationController extends Controller
 		$this->middleware('guest');
 	}	
 
-	public function create()
-	{
-		return view('registration.create');
-	}
-
 	public function store() {
 		$data = request()->validate([
 			'name' => 'required|string|max:255',

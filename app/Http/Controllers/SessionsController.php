@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
@@ -22,17 +23,23 @@ class SessionsController extends Controller
 		return view('sessions.create');			
 	}
 
-	public function store()
+	public function store(Request $request)
 	{
+		dd($request->cookie());
 		// flash current input to the session
-		request()->flashExcept('password');
+		// request()->flashExcept('password');
 		// Attempt to authenticate the user
 		// If so, sign them in
 		if ( ! auth()->attempt(request(['email', 'password']))) {
 			// If not, redirect back
-			return back()->withErrors([
-				'message' => 'Please check your credentials and try again.',
-			]);
+			// return rediredt('login')
+			return back()
+				->withErrors([
+					'message' => 'Please check your credentials and try again.',
+				])
+				->withInput(
+					$request->except('password')
+				);
 		}
 
 		// Redirect to the home page

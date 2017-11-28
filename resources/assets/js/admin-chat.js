@@ -128,7 +128,7 @@ if (document.getElementById('admin-app-chat')) {
 			this.adminName = document.getElementById("adminName").innerHTML;
 
 			axios.get('/channelon').then( response => {
-				this.mainChatButton = parseInt(response.data[0].occupied);
+				this.mainChatButton = response.data;
 				console.log("/channelon " + this.mainChatButton);
 			});
 
