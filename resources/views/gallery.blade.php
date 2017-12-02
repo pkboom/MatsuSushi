@@ -1,21 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-	<?php $nav_gallery = "active"; ?>
+	<?php $nav_gallery = 'active'; ?>
 
 	<div class="container">
 		<div id="lightgallery">
-			@foreach ($galleries as $gallery)
-			<a href="/storage/{{ $gallery['filename'] }}">
-				<img src="/storage/thumb/{{ $gallery['filename'] }}" > 
+			@foreach ($photos as $photo)
+			<a href="{{ asset('storage/' . $photo) }}">
+				<img src="{{ asset('storage/' . $photo) }}" > 
 			</a>
 			@endforeach
-
 		</div>
 		<div class="row justify-content-center pagination-container">
 			<div class="col-md-auto">
 				<ul class="pagination">
-					{{-- alternative syntax --}}
 					@if ($displayPage == 1)
 						<li class="disabledLink"> < </li>
 					@else
@@ -24,8 +22,6 @@
 					@foreach ($pages as $page)
 						@if ($displayPage == $page)
 							<li class="active"><a href="{{ url('gallery/pages/'.$page) }}">{{ $page }}</a></li>
-						@elseif ($page == "...")
-							<li>{{ $page }}</li>
 						@else
 							<li><a href="{{ url('gallery/pages/'.$page) }}">{{ $page }}</a></li>
 						@endif

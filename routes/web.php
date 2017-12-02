@@ -31,23 +31,22 @@ Route::get('channelon', 'ChatroomController@channelon');
 Route::get('isfull', 'ChatroomController@isfull');
 
 Route::prefix('chat')->group(function () {
-	Route::post('main', 'ChatroomController@toggleMainButon');
+    Route::post('main', 'ChatroomController@toggleMainButon');
 });
 
 Route::view('cart', 'cart.cart');
 Route::view('cart/payment', 'cart.payment');
 
 Route::prefix('api')->group(function () {
-	Route::get('chatroomstatus/{chatroom_user_id}', 'ChatroomController@show');
-	Route::post('auth', 'AuthController@authenticate');
-	Route::post('channelon', 'ChatroomController@apiOpenChannels');
-	Route::post('sendmessage', 'MessageController@apiSendMessage')->middleware('auth.jwt');
-	Route::post('pushtoken', 'AuthController@getPushToken')->middleware('auth.jwt');
-});
-	
-Route::prefix('menu')->group(function () {
-	Route::view('/', 'menu');	
-	Route::get('category', 'MenuController@category');
-	Route::get('items/{id}', 'MenuController@items');
+    Route::get('chatroomstatus/{chatroom_user_id}', 'ChatroomController@show');
+    Route::post('auth', 'AuthController@authenticate');
+    Route::post('channelon', 'ChatroomController@apiOpenChannels');
+    Route::post('sendmessage', 'MessageController@apiSendMessage')->middleware('auth.jwt');
+    Route::post('pushtoken', 'AuthController@getPushToken')->middleware('auth.jwt');
 });
 
+Route::prefix('menu')->group(function () {
+    Route::view('/', 'menu');
+    Route::get('category', 'MenuController@category');
+    Route::get('items/{id}', 'MenuController@items');
+});

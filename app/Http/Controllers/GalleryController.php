@@ -4,92 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Gallery;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class GalleryController extends Controller
 {
-	const PHOTOPERPAGE = 12;
-	
-		// define("PHOTOPERPAGE", 10);
-	public function index($displayPage = 1) {
-		$storagePath = public_path() .'/storage';
-		
-		$fileCount = new \FilesystemIterator($storagePath, \FilesystemIterator::SKIP_DOTS);
-		$fileCount = iterator_count($fileCount) - 2; // .gitignore & thumb folder
-		
-		$files = array();
-		$dir = new \DirectoryIterator($storagePath);
+    const PHOTOSPERPAGE = 8;
+    const VISIBLEPAGES = 3;
 
-		// get filename & created_time
-		foreach ($dir as $fileinfo) {
-			if (!$fileinfo->isDot() && $fileinfo->getFilename() != '.gitignore' ) {
-				$files[] = [ 'time' => $fileinfo->getMTime(), 'filename' => $fileinfo->getFilename() ];
-			}
-		}
+    public function index($displayPage = 1)
+    {
+        $lastPage;
+        $photos;
 
-		// sort filenames according to created time
-		usort($files, function ($a, $b){
-			// ordered descended
-			return strcmp($b["time"], $a["time"]);
-			// return strcmp($a["time"], $b["time"]);
-		});
+        $pages = collect(File::files(public_path('storage')))
+            ->sort(function ($a, $b) {
+                if ($a->getMTime() == $b->getMTime()) {
+                    return 0;
+                }
+                return ($a->getMTime() < $b->getMTime()) ? 1 : -1;
+            })
+            ->map(function ($value) {
+                return $value->getFilename();
+            })
+            ->values()
+            ->chunk(self::PHOTOSPERPAGE)
+            ->tap(function ($collection) use (&$lastPage, &$photos, $displayPage) {
+                // page count
+                $lastPage = $collection->count();
+                // file names of requested page
+                $photos = $collection[$displayPage - 1]->toArray();
+            })
+            ->map(function ($value, $key) {
+                return $key + 1;
+            })
+            ->filter(function ($value) use ($displayPage) {
+                return -self::VISIBLEPAGES < ($value - $displayPage) && ($value - $displayPage) < self::VISIBLEPAGES;
+            })
+            ->toArray();
 
-		// echo "<pre>";
-		// var_dump($files);
-		// while (list($key, $value) = each($files)) {
-		// 	echo "\$files[$key]: " . $value["time"] . $value["name"] . "\n";
-		// }
-		// echo "</pre>";
-		// die();
-		
-		$galleries = [];
-		$startImage = ($displayPage - 1) * self::PHOTOPERPAGE;
-		$endImage = $startImage + self::PHOTOPERPAGE;
-		$i = -1;
-		foreach ( $files as $image ){
-			$i++;
-			if ( $i >=  $startImage && $i < $endImage ){
-				$galleries[] = $image;
-			}
-		}
-		$lastPage = (int) ceil($fileCount  / self::PHOTOPERPAGE);
-		$pages = $this->pagination($displayPage, $lastPage);
-
-		return view('gallery', compact('storagePath', 'galleries', 'pages', 'displayPage', 'lastPage'));
-	}
-
-	// https://gist.github.com/kottenator/9d936eb3e4e3c3e02598
-	public function pagination($currentPage, $lastPage)	
-	{
-		$delta = 2;
-		$left = $currentPage - $delta;
-		$right = $currentPage + $delta + 1;
-		$range = [];
-		$rangeWithDots = [];
-		$l = 0;
-		
-		$range[] = 1;  
-		for ($i = $currentPage - $delta; $i <= $currentPage + $delta; $i++) {
-			if ($i >= $left && $i < $right && $i < $lastPage && $i > 1) {
-				$range[] = $i;  				
-			}
-		}  
-		$range[] = $lastPage;  
-
-		// var_dump($range);
-		// die();
-
-		foreach ($range as $i) {
-			if ($l) {
-				if ($i - $l === 2) {
-					$rangeWithDots[] = $l + 1;
-				} else if ($i - $l !== 1) {
-					$rangeWithDots[] = '...';
-				}
-			}
-			$rangeWithDots[] = $i;
-			$l = $i;
-		}
-
-		return $rangeWithDots;
-	}
+        return view('gallery', compact('photos', 'pages', 'displayPage', 'lastPage'));
+    }
 }
