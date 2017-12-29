@@ -4,7 +4,7 @@ Route::view('/', 'welcome');
 Route::view('contact', 'contact');
 Route::view('about', 'about');
 Route::get('gallery', 'GalleryController@index');
-Route::get('gallery/pages/{page}', 'GalleryController@index');
+// Route::get('gallery/pages/{page}', 'GalleryController@index');
 
 Route::view('register', 'registration.create');
 Route::post('register', 'RegistrationController@store');

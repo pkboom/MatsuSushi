@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage as Storage;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Upload;
 
-class UploadController extends Controller
+class UploadController2 extends Controller
 {
     public function __construct()
     {
@@ -26,17 +26,15 @@ class UploadController extends Controller
             // return path to the file
             // ex) public/Mxw5iOZn61sZHWUfhJht4Re67iX54biApVg8lVop.png
             $imagePath = $item->store('public');
+            // $thumbPath = '/thumb/' ;
+            // // get thumb path
+            // $thumbPath = str_replace('/', $thumbPath, $imagePath);
 
-            $thumbPath = '/thumb/' ;
-
-            // get thumb path
-            $thumbPath = str_replace('/', $thumbPath, $imagePath);
-
-            $resizedImage = Image::make(Storage::get($imagePath))->resize(400, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->orientate()->encode();
-            Storage::put($thumbPath, $resizedImage);
+            // $resizedImage = Image::make(Storage::get($imagePath))->resize(600, null, function ($constraint) {
+            //     $constraint->aspectRatio();
+            //     $constraint->upsize();
+            // })->orientate()->encode();
+            // Storage::put($thumbPath, $resizedImage);
 
             $imagePath = str_replace('public/', '', $imagePath);
 
