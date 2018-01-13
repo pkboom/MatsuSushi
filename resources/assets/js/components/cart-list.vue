@@ -1,12 +1,18 @@
 <template>
 	<ul class="cartWrap">
-		<cart-item v-for="(item, index) in orders" :key="index" :name="item.name" :price="item.price" :quantity="item.quantity" :count="index" @appliedremove="onRemoveOrder" @appliedquantity="onQuantityChanged"></cart-item>
+		<cartitem v-for="(item, index) in orders" :key="index" :name="item.name" :price="item.price" :quantity="item.quantity" :count="index" @appliedremove="onRemoveOrder" @appliedquantity="onQuantityChanged"></cartitem>
 	</ul>
 </template>
 
 <script>
+import cartitem from './CartItem.vue';
+
 export default {
 	props: [ 'orders' ],
+
+	components: {
+		cartitem
+	},
 
 	methods: {
 		onRemoveOrder(count) {

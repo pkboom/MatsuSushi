@@ -1,5 +1,5 @@
 Vue.component('cart-list', require('./components/cart-list.vue'));
-Vue.component('cart-item', require('./components/cart-item.vue'));
+// Vue.component('cart-item', require('./components/cart-item.vue'));
 Vue.component('cart-total', require('./components/cart-total.vue'));
 
 cartCounter = () => {

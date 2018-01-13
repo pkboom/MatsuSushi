@@ -4,15 +4,23 @@
 			<a href="javascript:void(0)" class="chat-button" @click="onChatClosed" >Welcome To Matsu Sushi</a>
 		</div>
 		<div class="chat-full-body">
-			<chat-log :messages="messages"></chat-log>
-			<chat-composer @messagesent="addMessage"></chat-composer>
+			<chatlog :messages="messages"></chatlog>
+			<chatcomposer @messagesent="addMessage"></chatcomposer>
 		</div>
 	</div>
 </template>
 
 <script>
+import chatcomposer from './ChatComposer.vue';
+import chatlog from './ChatLog.vue';
+
 export default {
 	props: [ "customername", "customerphonenumber", "customeraddress", "customermessage"],
+
+	components: {
+		chatcomposer,
+		chatlog,
+	},
 
 	data() {
 		return {

@@ -1,9 +1,9 @@
 Vue.component('chat-button', require('./components/chat-button.vue'));
 Vue.component('chat-full-window', require('./components/chat-full-window.vue'));
 Vue.component('chat-intro', require('./components/chat-intro.vue'));
-Vue.component('chat-log', require('./components/chat-log.vue'));
-Vue.component('chat-message', require('./components/chat-message.vue'));
-Vue.component('chat-composer', require('./components/chat-composer.vue'));	
+// Vue.component('chat-log', require('./components/chat-log.vue'));
+// Vue.component('chat-message', require('./components/chat-message.vue'));
+// Vue.component('chat-composer', require('./components/chat-composer.vue'));	
 
 // chat for customer
 if (document.getElementById('app-chat')) {
@@ -15,9 +15,9 @@ if (document.getElementById('app-chat')) {
 			Event.$on('applied-order', (value) => {
 				console.log('applied-order received');
 
-				axios.get('/channelon').then( response => {
+				axios.get('/channelon').then( ({data}) => {
 					// check if chat is available
-					this.channelOpen = response.data;
+					this.channelOpen = data;
 
 					// open chat intro if available
 					 if ( this.channelOpen ) {

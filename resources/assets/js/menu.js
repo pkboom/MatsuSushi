@@ -1,4 +1,4 @@
-Vue.component('matsu-menux', require('./components/matsu-menux.vue'));
+// Vue.component('matsu-menux', require('./components/matsu-menux.vue'));
 Vue.component('matsu-menu-category', require('./components/matsu-menu-category.vue'));
 Vue.component('add-to-cart', require('./components/add-to-cart.vue'));
 
@@ -23,9 +23,8 @@ if (document.getElementById('app-menu')) {
 
 			cookieValue ? this.orderItems = cookieValue : console.log("no cookie");
 
-			axios.get('/menu/category').then( response => {
-				// console.log(response.data);
-				this.category = response.data;
+			axios.get('/menu/category').then( ({data}) => {
+				this.category = data;
 			});
 		},
 

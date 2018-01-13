@@ -1,6 +1,6 @@
 <template>
 	<div class="chat-log">
-		<admin-chat-message v-for="message in messages" :key="messages.message" :message="message"></admin-chat-message>
+		<adminchatmessage v-for="message in messages" :key="messages.message" :message="message"></adminchatmessage>
 		<dir id="jumpToHere"></dir>
 		<div class="empty" v-show="messages.length == 0">
 			No messages!
@@ -9,8 +9,14 @@
 </template>
 
 <script>
+import adminchatmessage from './AdminChatMessage.vue';
+
 export default {
 	props: [ "messages"],
+
+	components: {
+		adminchatmessage
+	},
 	
 	// whenever messages changes, this function will run
 	watch: {

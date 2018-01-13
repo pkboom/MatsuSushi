@@ -67,10 +67,10 @@ export default {
 
 		isFull() {
 			// check to see if there is a chatroom available
-			axios.get('/isfull').then( response => {
-				// console.log(response.data);
+			axios.get('/isfull').then( ({data}) => {
+				// console.log(data);
 
-				if ( !response.data ) {
+				if ( !data ) {
 					// chatroom are full
 					console.log('full');
 

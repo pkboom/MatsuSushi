@@ -1,7 +1,7 @@
 Vue.component('admin-chat-button-main', require('./components/admin/chat-button-main.vue'));
 Vue.component('admin-chat-button', require('./components/admin/chat-button.vue'));
 Vue.component('admin-chat-log', require('./components/admin/chat-log.vue'));
-Vue.component('admin-chat-message', require('./components/admin/chat-message.vue'));
+// Vue.component('admin-chat-message', require('./components/admin/chat-message.vue'));
 Vue.component('admin-chat-composer', require('./components/admin/chat-composer.vue'));	
 
 // chat for admin
@@ -36,7 +36,7 @@ if (document.getElementById('admin-app-chat')) {
 				console.log(message);
 				
 				// send mesaage
-				axios.post('/messages', message).then(response => {
+				axios.post('/messages', message).then( ({data}) => {
 					// Do whatever;
 				})
 
@@ -66,8 +66,8 @@ if (document.getElementById('admin-app-chat')) {
 
 				this.messages = [];
 				// get messages from db written by this user
-				axios.get('/admin/messages/' + this.activeChatroom).then( response => {
-					this.messages = response.data;
+				axios.get('/admin/messages/' + this.activeChatroom).then( ({data}) => {
+					this.messages = data;
 					console.log(this.messages);
 				});
 			},
@@ -88,12 +88,12 @@ if (document.getElementById('admin-app-chat')) {
 				}
 
 				// send 'Disconnected'
-				axios.post('/messages', message).then(response => {
+				axios.post('/messages', message).then(({data}) => {
 					// Do whatever;
 				})
 
 				// unoccupy a chatroom
-				axios.post('/leavechatroom/' + chatroom_id).then( response => {
+				axios.post('/leavechatroom/' + chatroom_id).then( ({data}) => {
 					console.log("leaving a chatroom" + chatroom_id);
 				});
 
@@ -127,8 +127,8 @@ if (document.getElementById('admin-app-chat')) {
 			this.adminID = document.getElementById("adminID").innerHTML;
 			this.adminName = document.getElementById("adminName").innerHTML;
 
-			axios.get('/channelon').then( response => {
-				this.mainChatButton = response.data;
+			axios.get('/channelon').then( ({data}) => {
+				this.mainChatButton = data;
 				console.log("/channelon " + this.mainChatButton);
 			});
 
@@ -143,9 +143,9 @@ if (document.getElementById('admin-app-chat')) {
 
 			// get chatrooms of an admin(default: 5)
 			// to open all of them
-			axios.get('/chatroom/' + this.adminID).then( response => {
+			axios.get('/chatroom/' + this.adminID).then( ({data}) => {
 				// get every chatroom info
-				this.chatrooms = response.data;
+				this.chatrooms = data;
 
 				// this.activeChatroom = this.chatrooms[0].id;
 

@@ -1,6 +1,6 @@
 <template>
 	<div class="chat-log">
-		<chat-message v-for="message in messages" :key="messages.message" :message="message"></chat-message>
+		<chatmessage v-for="message in messages" :key="messages.message" :message="message"></chatmessage>
 		<dir id="jumpToHere"></dir>
 		<div class="empty" v-show="messages.length == 0">
 			Chat started!
@@ -9,8 +9,12 @@
 </template>
 
 <script>
+import chatmessage from './chat-message.vue';
+
 export default {
 	props: [ "messages"],
+
+	components: { chatmessage },
 
 	watch: {
 		messages: function() {

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php $admin_upload = "active"; ?>
+<?php $admin_upload = 'active'; ?>
 <div id="app-upload">
 
 	<upload-image-popup v-show="uploaded"></upload-image-popup>
@@ -12,7 +12,9 @@
 
 		<div class="form-group">
 			<p>20 files allowed per upload</p>
-			<input type="file" class="form-control" id="image" name="image[]" required multiple>
+			<label for="image">
+				<input type="file" class="form-control" id="image" name="image[]" required multiple>
+			</label>
 		</div>
 
 		<div class="form-group">

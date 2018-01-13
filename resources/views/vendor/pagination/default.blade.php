@@ -18,7 +18,7 @@
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     {{-- number of pages shown --}}
-                    @if ( $paginator->currentPage() - $page < 3 && $paginator->currentPage() - $page > -3 )
+                    @if ( $paginator->currentPage() - $page < 4 && $paginator->currentPage() - $page > -4 )
                         @if ($page == $paginator->currentPage())
                             <li class="active"><span>{{ $page }}</span></li>
                         @else

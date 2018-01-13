@@ -14,8 +14,8 @@
 		},			
 
 		created() {
-			axios.get('/channelon').then( response => {
-				this.channelOpen = response.data;
+			axios.get('/channelon').then( ({data}) => {
+				this.channelOpen = data;
 				this.chatButtonTitle = ( this.channelOpen ? "We're online!" : "We're offline!" );
 			});
 		},
