@@ -8,12 +8,6 @@ use App\Upload;
 
 class UploadController extends Controller
 {
-    public function __construct()
-    {
-        //You must be signed in in order to create a post except index, show
-        $this->middleware('auth');
-    }
-
     public function store()
     {
         //Validate the form
@@ -45,6 +39,7 @@ class UploadController extends Controller
             ]);
         });
 
-        return back();
+        return back()
+            ->with('flash', 'Images have been uploaded');
     }
 }

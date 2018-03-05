@@ -1,22 +1,37 @@
-/* GLOBAL STYLES
--------------------------------------------------- */
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
 /* Padding below the footer and lighter body text */
 
 body {
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
 	color: #5a5a5a;
 }
 
+a {
+	text-decoration: none !important;
+}
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
+#app {
+	padding-top: 1rem;
+}
 
-/* Carousel base class */
+
+/* CAROUSEL */
+
 .carousel {
+	margin-top: -1rem;
 	margin-bottom: 4rem;
 }
-/* Since positioning the image, we need to help out the caption */
+// /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
 	z-index: 10;
 	bottom: 3rem;
@@ -173,15 +188,12 @@ body {
 }
 
 .pagination a, .pagination .active {
-	padding: 6px 12px;
     color: black;
-	text-decoration: none;
+	// text-decoration: none;
 }
 
 .pagination .active {
-    background-color: rgb(250, 149, 34);
     color: white;
-    border-radius: 5px;
 }
 
 .pagination a:hover:not(.active) {
@@ -201,9 +213,9 @@ body {
 	height: 30px;
 }
 
-.pagination2 li.active {
-	background-color: #ee6e73;
-}
+// .pagination2 li.active {
+// 	background-color: #ee6e73;
+// }
 
 .pagination2 li a {
 	color: #444;
@@ -211,7 +223,7 @@ body {
 	font-size: 1.2rem;
 	padding: 0 10px;
 	line-height: 30px;
-	text-decoration: none;
+	// text-decoration: none;
 }
 
 .pagination2 li.active a {
@@ -245,12 +257,7 @@ body {
 	}
 }
 
-/* admin CSS
--------------------------------------------------- */
-
-.navbar {
-	margin-bottom: 20px;
-}
+/* admin CSS */
 
 .btn-outline-secondary {
 	border-color: transparent;
@@ -269,7 +276,23 @@ body {
 		border: 0;
 		box-shadow: none;
 	}
-
-
 }
 
+/* order */
+
+.order a {
+	display: flex;
+	align-items: center;
+	color: rgba(163, 184, 204, 0.678);
+}
+
+.order svg {
+	height: 20px;
+}
+
+/* Image Upload */
+.upload-image {
+	height:100%;
+	display: flex;
+	justify-content: center;
+}

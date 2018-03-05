@@ -1,0 +1,32 @@
+<template>
+    <div>
+        <div v-for="(category, index) in items" :key="index">
+            <category-edit :category="category" @delete="deleted(index)"></category-edit>
+        </div>
+
+        <new-category @add="added"></new-category>
+    </div>
+</template>
+
+<script>
+    import CategoryEdit from './CategoryEdit.vue';
+    import NewCategory from './NewCategory.vue';
+    import collection from '../mixins/collection';
+
+    export default {
+        mixins: [collection],
+
+        components: {CategoryEdit, NewCategory},
+
+        created() {
+            this.fetch();
+        },
+
+        methods: {
+            fetch() {
+                axios.get(location.pathname)
+                    .then(({data}) => this.items = data);
+            },
+        }
+    }
+</script>

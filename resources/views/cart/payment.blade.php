@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
-@section('content')
+@section('header')
+	<link href="{{ asset('css/stripe/main.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/stripe/form.css') }}" rel="stylesheet">  --}}
+@endsection
 
+@section('content')
 <div class="container">
 	<!--Example 3-->
 	<div class="cell example example3">
@@ -43,3 +47,9 @@
 </div><!-- /.container -->
 
 @endsection('content')
+
+@section('javascript')
+	<script src="https://js.stripe.com/v3/"></script>
+	<script src="{{ asset('js/stripe/index.js') }}"></script>
+	<script src="{{ asset('js/stripe/example3.js') }}"></script>
+@endsection

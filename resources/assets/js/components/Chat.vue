@@ -1,16 +1,33 @@
-Vue.component('chat-button', require('./components/chat-button.vue'));
-Vue.component('chat-full-window', require('./components/chat-full-window.vue'));
-Vue.component('chat-intro', require('./components/chat-intro.vue'));
-// Vue.component('chat-log', require('./components/chat-log.vue'));
-// Vue.component('chat-message', require('./components/chat-message.vue'));
-// Vue.component('chat-composer', require('./components/chat-composer.vue'));	
+<template>
+    <div>
+    	<chat-button v-if="chatButton" @appliedopen="chatIntroOpen"></chat-button>
+        <chat-intro v-if="chatIntro" @introopen="chatroomOpen" @appliedclosed="chatroomClosed" :customermessagefromcart="customerMessage"></chat-intro>
+        <chat-full-window v-if="chatFullWindow" @appliedclosed="chatroomClosed" :customername="customerName" :customerphonenumber="customerPhoneNumber" :customeraddress="customerAddress" :customermessage="customerMessage"></chat-full-window>
+    </div>
 
-// chat for customer
-if (document.getElementById('app-chat')) {
-	const appCustomer = new Vue({ 
-		el: '#app-chat',
+</template>
 
-		created() {
+<script>
+    import ChatButton from './ChatButton.vue';
+    import ChatIntro from './ChatIntro.vue';
+    import ChatFullWindow from './ChatFullWindow.vue';
+
+    export default {
+        data() {
+            return {
+                customerName: '',
+                customerPhoneNumber: '',
+                customerAddress: '',
+                customerMessage: '',
+                chatButton: true,
+                chatIntro: false,
+                chatFullWindow: false,
+            }
+		},
+
+        components: {ChatButton, ChatIntro, ChatFullWindow},
+        
+        created() {
 			// order from cart
 			Event.$on('applied-order', (value) => {
 				console.log('applied-order received');
@@ -30,16 +47,6 @@ if (document.getElementById('app-chat')) {
 			});
 		},
 
-		data: {
-			customerName: '',
-			customerPhoneNumber: '',
-			customerAddress: '',
-			customerMessage: '',
-			chatButton: true,
-			chatIntro: false,
-			chatFullWindow: false
-		},
-
 		methods: {
 			chatIntroOpen(value = null) {
 				// console.log(value);
@@ -48,8 +55,7 @@ if (document.getElementById('app-chat')) {
 				if ( value ) {
 					message = "Order:" + "\n";
 					
-					let cookieValue = JSON.parse(getCookie("ordersInCart"));
-					cookieValue.forEach((item) => {
+					Orders.get().forEach((item) => {
 						message += item.title + "(" + item.quantity + ") $" + item.price + "\n";
 					});
 
@@ -80,6 +86,6 @@ if (document.getElementById('app-chat')) {
 				this.chatIntro = false;
 				this.chatFullWindow = false;
 			},
-		},
-	})
-}
+		}
+    }
+</script>

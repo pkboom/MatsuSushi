@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<?php $nav_home = "active"; ?>
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<ol class="carousel-indicators">
 		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -30,7 +28,6 @@
 	</a>
 </div>
 
-
 <!-- Marketing messaging and featurettes -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
@@ -47,27 +44,24 @@
 
 <div class="container marketing">
 
-	<!-- Three columns of text below the carousel -->
 	<div class="row">
 		<div class="col-lg-4">
 			<a href="#">
 				<img class="rounded-circle" src="/image/main_1.jpg" alt="Generic placeholder image" width="250" height="250">
 			</a>
-		</div><!-- /.col-lg-4 -->
+		</div>
 		<div class="col-lg-4">
 			<a href="#">
 				<img class="rounded-circle" src="/image/main_2.jpg" alt="Generic placeholder image" width="250" height="250">
 			</a>
-		</div><!-- /.col-lg-4 -->
+		</div>
 		<div class="col-lg-4">
 			<a href="#">
 				<img class="rounded-circle" src="/image/main_3.jpg" alt="Generic placeholder image" width="250" height="250">
 			</a>
-		</div><!-- /.col-lg-4 -->
-	</div><!-- /.row -->
+		</div>
+	</div>
 
-
-	<!-- START THE FEATURETTES -->
 
 	<hr class="featurette-divider">
 
@@ -77,7 +71,7 @@
 			<p class="lead">
 				<span style="font-weight: 400">PHONE:</span> (705) 760-9484<br >
 				<span style="font-weight: 400">OPEN:</span> Mon-Sun 11:30 AM ~ 10:00 PM<br >
-				<span style="font-weight: 400">CLOSED:</span> Monday of 2nd Week Every Month<br >
+				<span style="font-weight: 400">CLOSED:</span> Every Tuesday<br >
 				<span style="font-weight: 400">HOLIDAY CLOSURES:</span> Christmas(12/25), New Year's Day(1/1)
 			</p>
 		</div>
@@ -85,6 +79,6 @@
 			<img class="img-fluid mx-auto" src="/image/main-bottom.png" alt="Generic placeholder image">
 		</div>
 	</div>
-</div><!-- /.container -->
+</div>
 @endsection('content')
 

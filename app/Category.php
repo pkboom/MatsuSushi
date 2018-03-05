@@ -8,9 +8,22 @@ class Category extends Model
 {
     protected $guarded = [];
 
-    public function menus()
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+            $category->menu->each->delete();
+        });
+    }
+
+    public function menu()
     {
         return $this->hasMany(Menu::class);
-    }    
+    }
 
+    public function path()
+    {
+        return "/menu/categories/{$this->id}";
+    }
 }

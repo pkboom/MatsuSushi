@@ -1,23 +1,27 @@
 @extends('layouts.master')
 
-@section('content')
-	<?php $nav_gallery = 'active'; ?>
+@section('header')
+ 	<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
+ 	<link rel="stylesheet" href="/css/justifiedGallery.min.css" />
+@endsection
 
+@section('content')
 	<div class="container">
 		<div id="lightgallery">
 			@foreach ($images as $image)
-			<a href="{{ asset('storage/' . $image->filename) }}">
-				<img src="{{ asset('storage/thumb/' . $image->filename) }}" > 
-			</a>
+				<a href="{{ asset('storage/' . $image->filename) }}">
+					<img src="{{ asset('storage/thumb/' . $image->filename) }}"> 
+				</a>
 			@endforeach
 		</div>
 		{{ $images->links() }}
-	</div><!-- /.container -->
-	
- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	</div>
+@endsection 
+
+@section('javascript')
 	<script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script>
-	<!-- justified Gallery -->
 	<script src="/js/jquery.justifiedGallery.min.js"></script>
+	
 	<script type="text/javascript">
 		lightGallery(document.getElementById('lightgallery')); 
 
@@ -27,4 +31,4 @@
 			margins : 5
 		});
 	</script>
-@endsection('content')
+@endsection

@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-	<?php $nav_about = "active"; ?>
-
 	<div class="container">
 		<div class="row about">
 			<div class="col-lg-6 about-image-container">

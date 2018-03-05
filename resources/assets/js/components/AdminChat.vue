@@ -1,24 +1,43 @@
-Vue.component('admin-chat-button-main', require('./components/admin/chat-button-main.vue'));
-Vue.component('admin-chat-button', require('./components/admin/chat-button.vue'));
-Vue.component('admin-chat-log', require('./components/admin/chat-log.vue'));
-// Vue.component('admin-chat-message', require('./components/admin/chat-message.vue'));
-Vue.component('admin-chat-composer', require('./components/admin/chat-composer.vue'));	
+<template>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <admin-chat-button-main :mainchatbutton="mainChatButton" @togglemain="toggleMain"></admin-chat-button-main>
+                <admin-chat-button v-for="chatroom in chatrooms" :key="chatroom.id" :chatroom_id="chatroom.id" @chatroomopen="openChatroom"></admin-chat-button>
+            </div>
+            <div class="col-8">
+                <div class="chat-window-container">
+                    <div class="chat-body">
+                        <admin-chat-log v-show="chatBody" :messages="messages"></admin-chat-log>
+                        <admin-chat-composer v-show="chatBody" @messagesent="addMessage" @disconnect-message="disconnectMessage"></admin-chat-composer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
-// chat for admin
-if (document.getElementById('admin-app-chat')) {
-	const appAdmin = new Vue({ 
-		el: '#admin-app-chat',
+<script>
+    import AdminChatButtonMain from './admin/AdminChatButtonMain.vue';
+    import AdminChatButton from './admin/AdminChatButton.vue';
+    import AdminChatLog from './admin/AdminChatLog.vue';
+    import AdminChatComposer from './admin/AdminChatComposer.vue';
 
-		data: {
-			chatBody: false,
-			adminID: 0,
-			adminName: '',
-			chatrooms: [],
-			activeChatroom: 0,
-			messages: [],
-			mainChatButton: 0, // main chatbutton on/off
-			mainButtonID: 999,
-		},
+    export default {
+		data() {
+            return {
+                chatBody: false,
+                adminID: 0,
+                adminName: '',
+                chatrooms: [],
+                activeChatroom: 0,
+                messages: [],
+                mainChatButton: 0, // main chatbutton on/off
+                mainButtonID: 999,
+            }
+        },
+        
+        components: {AdminChatButtonMain, AdminChatButton, AdminChatLog, AdminChatComposer},
 
 		methods: {
 			addMessage(message) {
@@ -209,5 +228,9 @@ if (document.getElementById('admin-app-chat')) {
 				});				
 			});				
 		}
-	})
-}
+    }
+</script>
+
+<style>
+    
+</style>

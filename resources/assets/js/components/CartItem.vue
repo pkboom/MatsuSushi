@@ -4,7 +4,6 @@
 			<div class="cartSection col-8">
 				<h3>{{ name }}</h3>
 				<p> <input type="text" class="inputQuantity" @change="onQuantityChanged" v-model.number="newQuantity"> x ${{ price }}</p>
-				<!-- <p> <input type="text" class="inputQuantity" :placeholder="quantity" @change="onQuantityChanged" v-model.number="newQuantity"/> x $ {{ price }}</p> -->
 			</div>  
 			<div class="cartSection prodTotal col-3">
 				<p>${{ itemPrice }}</p>

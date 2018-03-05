@@ -9,44 +9,27 @@
 
  	<title>{{ config('app.name', 'MatsuSushi') }}</title>
 
- 	<!-- Bootstrap core CSS -->
- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
- 	<!-- lightgallery -->
- 	<link href="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css" rel="stylesheet">
- 	<!-- justified gallery -->
- 	<link rel="stylesheet" href="/css/justifiedGallery.min.css" />
- 	{{-- fontawesome --}}
- 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
- 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
- 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
- 	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
  	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
- 	<link href="{{ asset('css/cart.css') }}" rel="stylesheet">
- 	<link href="{{ asset('css/stripe/main.css') }}" rel="stylesheet">
- 	<link href="{{ asset('css/stripe/form.css') }}" rel="stylesheet">
+
+	@yield('header') 	
+	 
  </head>
  <body>
+	<div id="app">
 
- 	@include('layouts.nav')
+		@include('layouts.nav')
 
- 	@yield('content') 	
+		@yield('content') 	
 
- 	@include('layouts.footer')
+		@include('layouts.footer')
+		
+		<flash message="{{ session('flash') }}"></flash>
 
- 	@include('chat') 	
-
- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-
-{{--  	<script src="https://js.stripe.com/v3/"></script>
- 	<script src="{{ asset('js/stripe/index.js') }}"></script>
- 	<script src="{{ asset('js/stripe/example3.js') }}"></script>
- --}} 	
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script type="text/javascript" src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
-
- 	<script src="{{ asset('js/holder.js') }}"></script>
- 	<script src="{{ asset('js/app.js') }}"></script> 
+		{{--  <chat></chat>  --}}
+	</div>
+	
+	<script src="{{ asset('js/app.js') }}"></script> 
+	
+	@yield('javascript')
  </body>
  </html>

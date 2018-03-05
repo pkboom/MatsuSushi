@@ -91,8 +91,8 @@ export default {
 			} else {
 				this.isFull();
 				if ( !this.isAdminBusy ) {
-					// delete a cookie
-					document.cookie = "ordersInCart=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+					Orders.delete();
 
 					this.$emit('introopen', {
 						name: this.customerName,

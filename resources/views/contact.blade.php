@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<?php $nav_contact = "active"; ?>
-
 <div class="container" >
 	<div class="row location">
 		<div class="col">

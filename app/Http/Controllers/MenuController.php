@@ -2,20 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Menu;
+use Illuminate\Support\Facades\Request;
+use App\Category;
 
 class MenuController extends Controller
 {
-	public function items($id) {
-		$menu = Menu::where("category_id", $id)->get();
+    public function store(Category $category)
+    {
+        $data = request()->validate([
+            'name' => 'required|string|max:100',
+            'price' => 'required|string|max:50',
+            'descript' => 'required|string'
+            ]);
 
-		return $menu;
-	}
+        return $category->menu()->create($data);
+    }
 
-	public function category() {
-		$category = Category::all();
+    public function update($category, Menu $item)
+    {
+        $data = request()->validate([
+            'name' => 'required|string|max:100',
+            'price' => 'required|string|max:50',
+            'descript' => 'required|string'
+        ]);
 
-		return $category;
-	}
+        $item->update($data);
+
+        return response([], 204);
+    }
+
+    public function destroy($category, Menu $item)
+    {
+        $item->delete();
+
+        return response([], 204);
+    }
 }

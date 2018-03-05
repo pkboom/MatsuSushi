@@ -8,29 +8,24 @@
 
 	<title>admin</title>
 
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+	@yield('header')
+
 </head>
+<body class="my-8">
+	<div id="app">
+		@include('admin.nav')
 
-<body>
+		<div class="mt-4 mx-8">
+			@yield('content')
+		</div>
 
-	@include('admin.nav')
-
-	<div class="container">
-
-		@yield('content')
-
+		<flash message="{{ session('flash') }}"></flash>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="{{ asset('js/app.js') }}"></script> 
 
-	<script src="{{ asset('/js/app.js') }}"></script> 
+	@yield('javascript')
 </body>
 </html>
