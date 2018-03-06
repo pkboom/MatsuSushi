@@ -14,7 +14,7 @@
 				</a>
 			@endforeach
 		</div>
-		{{ $images->links() }}
+		{{ $images->links('vendor.pagination.bootstrap-4') }}
 	</div>
 @endsection 
 
