@@ -10,7 +10,7 @@
 		<div id="lightgallery">
 			@foreach ($images as $image)
 				<a href="{{ asset('storage/' . $image->filename) }}">
-					<img src="{{ asset('storage/thumb/' . $image->filename) }}"> 
+					<img src="{{ asset('storage/thumbs/' . $image->filename) }}"> 
 				</a>
 			@endforeach
 		</div>

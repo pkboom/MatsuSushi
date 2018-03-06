@@ -9,8 +9,8 @@
 				<li class="nav-item {{ request()->is('admin/chat') ? 'active' : '' }}">
 					<a class="nav-link" href="/admin/chat">Chat</a>
 				</li>
-				<li class="nav-item {{ request()->is('admin/upload-image') ? 'active' : '' }}">
-					<a class="nav-link" href="/admin/upload-image">Image</a>
+				<li class="nav-item {{ request()->is('upload') ? 'active' : '' }}">
+					<a class="nav-link" href="/upload">Image</a>
 				</li>
 				<li class="nav-item {{ request()->is('menu/categories') ? 'active' : '' }}">
 					<a class="nav-link" href="/menu/categories">Menu</a>

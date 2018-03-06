@@ -104,18 +104,11 @@ a {
 		font-size: 50px;
 	}
 
-	.menu {
-		width: 80%;
-	}
-
 }
 
 @media (min-width: 62em) {
 	.featurette-heading {
 		margin-top: 7rem;
-	}
-	.menu {
-		width: 50%;
 	}
 }
 
@@ -240,22 +233,6 @@ a {
 	cursor: default;
 }
 
-.menu {
-	margin-top: 3rem;
-	width: 90%;
-}
-
-@media (min-width: 40em) {
-	.menu {
-		width: 70%;
-	}
-}
-
-@media (min-width: 62em) {
-	.menu {
-		width: 50%;
-	}
-}
 
 /* admin CSS */
 

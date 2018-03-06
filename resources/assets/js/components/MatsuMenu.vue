@@ -1,9 +1,9 @@
 <template>
-    <div class="container menu">
-		<h2>Matsu Sushi Menu</h2>
-		<div id="menuAccordion" data-children=".item">
+    <div class="container">
+		<div class="w-2/3 mx-auto">
+			<h2 class="mt-8 py-8 px-2 font-bold">Matsu Sushi Menu</h2>
 			<div v-for="(category, index) in categories" :key="index">
-				<matsu-menu-categories :data="category" :index="index" @order="ordered"></matsu-menu-categories>
+				<matsu-menu-categories :data="category" @order="ordered"></matsu-menu-categories>
 			</div>
 		</div>
     </div>

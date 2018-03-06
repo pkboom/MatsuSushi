@@ -3,7 +3,6 @@
 Route::view('/', 'welcome');
 Route::view('contact', 'contact');
 Route::view('about', 'about');
-Route::get('gallery', 'GalleryController@index');
 
 Route::view('register', 'registration.create');
 Route::post('register', 'RegistrationController@store');
@@ -12,9 +11,6 @@ Route::post('login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destory');
 
 Route::get('admin-id/{email}', 'UserController@adminID');
-
-Route::view('admin/upload-image', 'upload');
-Route::post('admin/upload-image', 'UploadController@store');
 
 Route::post('messages', 'MessageController@create');
 Route::get('lastmessages/{chatroomID}', 'MessageController@lastmessages');
@@ -42,7 +38,7 @@ Route::post('api/channelon', 'ChatroomController@apiOpenChannels');
 Route::post('api/sendmessage', 'MessageController@apiSendMessage')->middleware('auth.jwt');
 Route::post('api/pushtoken', 'AuthController@getPushToken')->middleware('auth.jwt');
 
-Route::view('menu', 'menu');
+Route::view('menu', 'menu.menu');
 Route::get('menu/categories', 'CategoryController@index');
 Route::post('menu/categories', 'CategoryController@store')->middleware('auth');
 Route::patch('menu/categories/{category}', 'CategoryController@update')->middleware('auth');
@@ -51,3 +47,7 @@ Route::get('menu/categories/{category}', 'CategoryController@show');
 Route::post('menu/categories/{category}', 'MenuController@store')->middleware('auth');
 Route::patch('menu/categories/{category}/items/{item}', 'MenuController@update')->middleware('auth');
 Route::delete('menu/categories/{category}/items/{item}', 'MenuController@destroy')->middleware('auth');
+
+Route::get('gallery', 'ImageController@index');
+Route::view('upload', 'images.upload');
+Route::post('upload', 'ImageController@store')->middleware('auth');

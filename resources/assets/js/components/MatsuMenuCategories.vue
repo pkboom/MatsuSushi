@@ -1,15 +1,10 @@
 <template>
-	<div class="item menuName">
-		<a data-toggle="collapse" data-parent="#menuAccordion" :href="'#menuAccordion'+index" aria-expanded="false" :aria-controls="'menuAccordion'+index" :ref="'menuSubA'+index">
-			{{ data.name }}
-		</a>
-		<hr>
-		<div :id="'menuAccordion'+index" class="collapse" role="tabpanel" :ref="'menuSubClass'+index">
-			<p class="mb-3">
-				<div v-for="menu in data.menu">
-					<matsu-menu-items :data="menu" @order="ordered"></matsu-menu-items>
-				</div>
-			</p>
+	<div>
+		<button class="accordion font-semibold text-base" :class="{'accordion-active': isActive}" v-text="data.name" @click="show"></button>
+		<div class="panel" ref="panel">
+			<div v-for="menu in data.menu">
+				<matsu-menu-items :data="menu" @order="ordered"></matsu-menu-items>
+			</div>
 		</div>
 	</div>
 </template>
@@ -18,19 +13,25 @@
 	import MatsuMenuItems from './MatsuMenuItems.vue';
 
 	export default {
-		props: [ 'data', 'index'],
+		props: [ 'data'],
 
-		components: { MatsuMenuItems },
-
-		mounted() {
-			if ( "menuSubA0" in this.$refs ) {
-				// 1st item among subcategoryitems
-				this.$refs.menuSubA0.setAttribute("aria-expanded", "true");
-				this.$refs.menuSubClass0.setAttribute("class", "collapse show");
+		data() {
+			return {
+				isActive: false,
 			}
 		},
 
+		components: { MatsuMenuItems },
+
 		methods: {
+			show(event) {
+				this.isActive = !this.isActive;
+
+				this.$refs.panel.style.maxHeight =
+					this.$refs.panel.style.maxHeight ?
+					null : this.$refs.panel.scrollHeight + "px";
+			},
+			
 			ordered(item) {                
 				this.$emit('order', {
 					name: item.name,
@@ -43,16 +44,42 @@
 </script>
 
 <style>
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
 
-.menuName > a {
-  font-size: 20px;
-  color: #333;
-  text-decoration: none;
-  text-transform: uppercase;
-}
+	.accordion-active,
+    .accordion:hover {
+        background-color: #ccc;
+    }
 
-.menuName > hr {
-  border-color: #333;
-}
+    .accordion:after {
+        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        font-size: 13px;
+        color: #777;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .accordion-active:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
+
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
 
 </style>

@@ -25,3 +25,9 @@ $factory->define(App\Menu::class, function (Faker $faker) {
         'price' => (string) $faker->randomNumber
     ];
 });
+
+$factory->define(App\Image::class, function (Faker $faker) {
+    return [
+        'filename' => $faker->image(),
+    ];
+});
