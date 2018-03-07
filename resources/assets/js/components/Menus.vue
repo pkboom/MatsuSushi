@@ -1,10 +1,10 @@
 <template>
     <div>
         <div v-for="(menu, index) in items" :key="index">
-            <menu-edit :data="menu" @delete="deleted(index)"></menu-edit>
+            <menu-edit :data="menu" @delete="remove(index)"></menu-edit>
         </div>
 
-        <new-menu @add="added"></new-menu>
+        <new-menu @add="add"></new-menu>
     </div>
 </template>
 

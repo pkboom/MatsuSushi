@@ -18,5 +18,7 @@
 		</form>
 		@include ('layouts.errors')
 	</div>
+
+	<matsu-images></matsu-images>
 @endsection
 

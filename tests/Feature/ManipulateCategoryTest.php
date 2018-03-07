@@ -45,7 +45,7 @@ class ManipulateCategoryTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_uer_can_add_a_category()
+    public function an_admin_can_add_a_category()
     {
         $this->signIn();
 
@@ -66,7 +66,7 @@ class ManipulateCategoryTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_delete_a_category()
+    public function an_admin_can_delete_a_category()
     {
         $this->signIn();
 
@@ -95,7 +95,7 @@ class ManipulateCategoryTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_update_a_category()
+    public function an_admin_can_update_a_category()
     {
         $this->withoutExceptionHandling();
         $this->signIn();

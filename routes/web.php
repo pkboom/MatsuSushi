@@ -50,4 +50,5 @@ Route::delete('menu/categories/{category}/items/{item}', 'MenuController@destroy
 
 Route::get('gallery', 'ImageController@index');
 Route::view('upload', 'images.upload');
+Route::delete('upload/{image}', 'ImageController@destroy')->middleware('auth');
 Route::post('upload', 'ImageController@store')->middleware('auth');

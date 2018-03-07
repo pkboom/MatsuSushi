@@ -6,11 +6,11 @@ export default {
     },
 
     methods: {
-        added(item) {
+        add(item) {
             this.items.push(item);
         },
 
-        deleted(index) {
+        remove(index) {
             this.items.splice(index, 1);
         }
     }

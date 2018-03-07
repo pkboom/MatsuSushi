@@ -1,10 +1,10 @@
 <template>
     <div>
         <div v-for="(category, index) in items" :key="index">
-            <category-edit :category="category" @delete="deleted(index)"></category-edit>
+            <category-edit :category="category" @delete="remove(index)"></category-edit>
         </div>
 
-        <new-category @add="added"></new-category>
+        <new-category @add="add"></new-category>
     </div>
 </template>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -29,5 +30,15 @@ class ImageController extends Controller
         });
 
         return back()->with('flash', 'Images have been uploaded.');
+    }
+
+    public function destroy(Image $image)
+    {
+        Storage::disk('public')->delete($image->filename);
+        Storage::disk('public')->delete('thumbs/' . $image->filename);
+
+        $image->delete();
+
+        return response([], 204);
     }
 }

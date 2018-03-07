@@ -22,7 +22,7 @@ class Image extends Model
                 $constraint->upsize();
             })->save(Storage::disk('public')->path('thumbs/') . $filename);
 
-        Image::create([
+        static::create([
             'filename' => $filename,
         ]);
     }

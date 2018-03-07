@@ -60,4 +60,35 @@ class ManipulateImageTest extends TestCase
             ])
             ->assertSessionHasErrors('images.0');
     }
+
+    /** @test */
+    public function a_guest_may_not_delete_an_image()
+    {
+        $this->delete('/upload/1')
+            ->assertRedirect('login');
+    }
+
+    /** @test */
+    public function an_admin_can_delete_an_image()
+    {
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        Storage::fake('public');
+
+        Storage::disk('public')->makeDirectory('thumbs');
+
+        $this->post('/upload', [
+                'images' => [$file = UploadedFile::fake()->image('image.jpg')]
+            ]);
+
+        $this->delete('/upload/1');
+
+        Storage::disk('public')->assertMissing($file->hashName());
+        Storage::disk('public')->assertMissing('thumbs/' . $file->hashName());
+
+        $this->assertDatabaseMissing('images', [
+            'filename' => $file->hashName()
+        ]);
+    }
 }

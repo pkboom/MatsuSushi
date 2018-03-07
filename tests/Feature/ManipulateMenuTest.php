@@ -19,7 +19,7 @@ class ManipulateMenuTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_add_a_menu()
+    public function an_admin_can_add_a_menu()
     {
         $this->signIn();
 
@@ -44,7 +44,7 @@ class ManipulateMenuTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_edit_a_menu_item()
+    public function an_admin_can_edit_a_menu_item()
     {
         $this->signIn();
 
@@ -69,7 +69,7 @@ class ManipulateMenuTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_can_delete_a_menu_item()
+    public function an_admin_can_delete_a_menu_item()
     {
         $this->signIn();
 

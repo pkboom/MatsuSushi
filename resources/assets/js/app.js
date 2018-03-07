@@ -24,6 +24,8 @@ Vue.component('menus', require('./components/Menus.vue'));
 Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('cart', require('./components/Cart.vue'));
 Vue.component('admin-chat', require('./components/AdminChat.vue'));
+Vue.component('matsu-images', require('./components/MatsuImages.vue'));
+
 Vue.component('flash', require('./components/Flash.vue'));
 
 const app = new Vue({
