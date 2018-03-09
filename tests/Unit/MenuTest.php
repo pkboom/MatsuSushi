@@ -15,6 +15,6 @@ class MenuTest extends TestCase
     {
         $item = create(Menu::class);
 
-        $this->assertEquals("/menu/categories/{$item->category->name}/items/1", $item->path());
+        $this->assertEquals("/menu/categories/{$item->category->slug}/items/1", $item->path());
     }
 }

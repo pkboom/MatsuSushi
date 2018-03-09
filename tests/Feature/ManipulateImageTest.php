@@ -31,7 +31,7 @@ class ManipulateImageTest extends TestCase
     }
 
     /** @test */
-    public function au_authenticated_user_can_upload_images()
+    public function au_admin_can_upload_images()
     {
         $this->signIn();
 

@@ -15,11 +15,15 @@ class Category extends Model
         static::deleting(function ($category) {
             $category->menu->each->delete();
         });
+
+        static::created(function ($category) {
+            $category->update(['slug' => str_slug($category->name)]);
+        });
     }
 
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'slug';
     }
 
     public function menu()
@@ -29,6 +33,6 @@ class Category extends Model
 
     public function path()
     {
-        return "/menu/categories/{$this->name}";
+        return "/menu/categories/{$this->slug}";
     }
 }

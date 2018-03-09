@@ -33,9 +33,9 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|unique:categories|max:50'
-        ]);
+            ]);
 
-        return Category::create($data);
+        return response(Category::create($data), 201);
     }
 
     public function destroy(Category $category)
@@ -47,11 +47,18 @@ class CategoryController extends Controller
 
     public function update(Category $category)
     {
-        $data = request()->validate([
-            'name' => 'required|string|max:50'
+        request()->validate([
+                'name' => 'required|string|unique:categories|max:50'
         ]);
 
-        $category->update($data);
+        $category->update([
+            'name' => request('name'),
+            'slug' => str_slug(request('name'))
+        ]);
+
+        if (request()->wantsJson()) {
+            return $category;
+        }
 
         return response([], 204);
     }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(category, index) in items" :key="index">
-            <category-edit :category="category" @delete="remove(index)"></category-edit>
+            <category-edit :category="category" @delete="remove(index)" :index="index" @update="update"></category-edit>
         </div>
 
         <new-category @add="add"></new-category>
@@ -27,6 +27,10 @@
                 axios.get(location.pathname)
                     .then(({data}) => this.items = data);
             },
+
+            update(data) {
+               this.items.splice(data.index, 1, data.data);
+            }
         }
     }
 </script>

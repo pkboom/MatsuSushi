@@ -53003,6 +53003,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = _ref.data;
                 return _this.items = data;
             });
+        },
+        update: function update(data) {
+            this.items.splice(data.index, 1, data.data);
         }
     }
 });
@@ -53093,7 +53096,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53119,7 +53122,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['category'],
+    props: ['category', 'index'],
 
     data: function data() {
         return {
@@ -53140,10 +53143,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             if (this.editing) {
-                axios.patch(location.pathname + '/' + this.category.id, {
+                axios.patch(location.pathname + '/' + this.category.slug, {
                     name: this.name
-                }).then(function () {
-                    return flash('Updated!');
+                }).then(function (_ref) {
+                    var data = _ref.data;
+
+                    flash('Updated!');
+
+                    _this.$emit('update', {
+                        data: data,
+                        index: _this.index
+                    });
                 }).catch(function (error) {
                     flash(error.response.data.errors.name[0], 'danger');
 
@@ -53156,7 +53166,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleted: function deleted() {
             var _this2 = this;
 
-            axios.delete(location.pathname + '/' + this.category.id).then(function () {
+            axios.delete(location.pathname + '/' + this.category.slug).then(function () {
                 flash('Deleted!');
 
                 _this2.$emit('delete');
@@ -53211,7 +53221,7 @@ var render = function() {
       : _c("a", {
           staticClass:
             "text-grey-darkest hover:font-semibold hover:text-black mr-2",
-          attrs: { href: "/menu/categories/" + _vm.category.name },
+          attrs: { href: "/menu/categories/" + _vm.category.slug },
           domProps: { textContent: _vm._s(_vm.name) }
         }),
     _vm._v(" "),
@@ -53411,11 +53421,12 @@ var render = function() {
           { key: index },
           [
             _c("category-edit", {
-              attrs: { category: category },
+              attrs: { category: category, index: index },
               on: {
                 delete: function($event) {
                   _vm.remove(index)
-                }
+                },
+                update: _vm.update
               }
             })
           ],

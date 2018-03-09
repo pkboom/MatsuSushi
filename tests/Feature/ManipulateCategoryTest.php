@@ -97,7 +97,6 @@ class ManipulateCategoryTest extends TestCase
     /** @test */
     public function an_admin_can_update_a_category()
     {
-        $this->withoutExceptionHandling();
         $this->signIn();
 
         $category = create(Category::class);
