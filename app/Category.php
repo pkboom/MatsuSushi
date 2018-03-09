@@ -17,6 +17,11 @@ class Category extends Model
         });
     }
 
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     public function menu()
     {
         return $this->hasMany(Menu::class);
@@ -24,6 +29,6 @@ class Category extends Model
 
     public function path()
     {
-        return "/menu/categories/{$this->id}";
+        return "/menu/categories/{$this->name}";
     }
 }

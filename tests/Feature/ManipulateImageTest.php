@@ -17,7 +17,7 @@ class ManipulateImageTest extends TestCase
     {
         $image = create(Image::class);
 
-        $response = $this->getJson('gallery')->json();
+        $response = $this->getJson('/gallery')->json();
 
         $this->assertCount(1, $response);
         $this->assertEquals($image->filename, $response[0]['filename']);
