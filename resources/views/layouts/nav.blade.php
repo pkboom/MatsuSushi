@@ -10,10 +10,10 @@
 				<a href="/menu" class="text-lg leading-normal text-indigo hover:text-indigo-darker opacity-75 no-underline ml-8 {{ request()->is('menu') ? 'active' : '' }}">MENU</a>
 				<a href="/gallery" class="text-lg leading-normal text-indigo hover:text-indigo-darker opacity-75 no-underline ml-8 {{ request()->is('gallery') ? 'active' : '' }}">GALLERY</a>
 				<a href="/contact" class="text-lg leading-normal text-indigo hover:text-indigo-darker opacity-75 no-underline ml-8 {{ request()->is('contact') ? 'active' : '' }}">CONTACT</a>
-				<a href="/cart" class="flex items-center text-lg leading-normal text-indigo hover:text-indigo-darker opacity-75 no-underline ml-8 {{ request()->is('cart') ? 'active' : '' }}">
+				{{--  <a href="/cart" class="flex items-center text-lg leading-normal text-indigo hover:text-indigo-darker opacity-75 no-underline ml-8 {{ request()->is('cart') ? 'active' : '' }}">
 					ORDER
 					<span class="badge" id="cart-badge">
-				</a>
+				</a>  --}}
 			</div>
 		</div>
 	</div>
