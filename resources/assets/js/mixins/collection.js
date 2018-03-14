@@ -12,6 +12,10 @@ export default {
 
         remove(index) {
             this.items.splice(index, 1);
+        },
+
+        update(data) {
+            this.items.splice(data.index, 1, data.data);
         }
     }
 }

@@ -1,19 +1,8 @@
-        <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->
-        <div class="container marketing">
-        	<!-- FOOTER -->
-        	<footer>
-        		<div class="row"> 
-        			<div class="col">
-        				&copy; MATSU SUSHI<br>
-        				107 Hunter St. East Suite 102 Peterborough, Ontario, Canada
-
-        			</div>
-        			<div class="col">
-
-        			</div>
-        		</div>
-        	</footer>
+    <footer class="bg-grey-lightest py-8 px-6">
+        <div class="flex flex-col-reverse md:flex-row md:items-center md:justify-between px-8">
+            <small class="block text-sm text-grey">
+                &copy; MATSU SUSHI 107 Hunter St. East Suite 102 Peterborough, Ontario, Canada
+            </small>
         </div>
-
+	</footer>
+	

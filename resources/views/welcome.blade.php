@@ -1,84 +1,88 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-	<ol class="carousel-indicators">
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-		<li data-target="#myCarousel" data-slide-to="2"></li>
-	</ol>
-	<div class="carousel-inner">
-		<div class="carousel-item active">
-			<img class="first-slide" src="/image/carousel_1.jpg" alt="First slide">
-		</div>
-		<div class="carousel-item">
-			<img class="second-slide" src="/image/carousel_2.jpg" alt="Second slide">
-		</div>
-		<div class="carousel-item">
-			<img class="third-slide" src="/image/carousel_3.jpg" alt="Third slide">
-		</div>
-	</div>
-	<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	</a>
-</div>
+	<section class="py-8 h-full h-screen" id="main-image">
+        <div class="flex items-center justify-center text-center h-full">
+            <div>
+                <h1 class="text-4xl text-green opacity-75 sm:text-5xl font-semibold leading-none tracking-tight mb-4">Matsu Sushi</h1>
+                <h2 class="text-2xl sm:text-3xl text-blue-darker opacity-75 font-normal leading-tight mb-8">Japanese & Korean Fusion Restaurant</h2>
+            </div>
+        </div>
+    </section>
 
-<!-- Marketing messaging and featurettes -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
+	<section class="bg-white py-8">
+		<div class="w-5/6 max-w-lg mx-auto my-8">
+            <div class="flex flex-wrap -mx-6 -my-6">
+				<p class="text-xl py-8 my-8">
+					For the past ten years, chefs at Matsu Sushi have worked passionately together to provide guests with a unique Japanese & Korean dining experience in Peterborough, Ontario. More than just a sushi restaurant, Matsu Sushi features fresh and interesting ingredients that are firmly rooted in Japanese & Korean culinary tradition. The result is a experience that is refreshing and new.
+				</p>
+            </div>
+        </div>
+    </section>
+	
+    <section class="bg-grey-lighter py-8">
+        <div class="w-5/6 max-w-lg mx-auto mt-8 mb-8">
+            <div class="flex flex-col justfiy-center text-center pb-8">
+                <h2 class="text-4xl font-semibold text-grey-dark opacity-75 leading-none tracking-tight mb-4">Delivery is available!</h2>
+            </div>
+			
+            <div class="bg-white rounded shadow-lg overflow-hidden">
+                <div class="flex flex-col-reverse md:flex-row">
+                    <div class="flex-1">
+						<div class="bg-grey-lightest p-8">
+							<ul class="list-reset">
+								<li class="mb-4">
+									<div class="flex items-center">
+										<div class="mr-4">
+											<svg class="align-middle text-teal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                        </div>
+                                        <p class="text-lg leading-normal">PHONE: (705) 760-9484</p>
+                                    </div>
+                                </li>
+                                <li class="mb-4">
+                                    <div class="flex items-center">
+										<div class="mr-4">
+											<svg class="align-middle text-teal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                        </div>
+                                        <p class="text-lg leading-normal">OPEN: Mon-Sun 11:30 AM ~ 10:00 PM</p>
+                                    </div>
+                                </li>
+                                <li class="mb-4">
+									<div class="flex items-center">
+										<div class="mr-4">
+											<svg class="align-middle text-teal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                        </div>
+                                        <p class="text-lg leading-normal">CLOSED: Every Tuesday</p>
+                                    </div>
+                                </li>
+                                <li class="">
+									<div class="flex items-center">
+										<div class="mr-4">
+											<svg class="align-middle text-teal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                        </div>
+                                        <p class="text-lg leading-normal">HOLIDAY CLOSURES: Christmas(12/25), New Year's Day(1/1)</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+						<div class="flex flex-col items-center p-8 h-full">
+							<h3 class="text-3xl text-blue-darker opacity-75 font-normal leading-none mb-6">Most Ordered Item:</h3>
+							<p class="text-2xl text-blue-darker opacity-75 font-normal leading-none mb-6">Noodle and Maki Special(11: 30 AM to 3 PM)</p>
+							<div class="flex flex-1 mb-8">
+								<div class="flex self-start items-center">
+									<span class="text-3xl text-grey-dark leading-none mr-2">$</span>
+                                    <span class="text-5xl font-semibold tracking-tight leading-none text-teal mr-3">12.95</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="container reading-box">
-	<div class="row justify-content-center">
-		<div class="col">
-			<p>
-				For the past ten years, chefs at Matsu Sushi have worked passionately together to provide guests with a unique Japanese & Korean dining experience in Peterborough, Ontario. More than just a sushi restaurant, Matsu Sushi features fresh and interesting ingredients that are firmly rooted in Japanese & Korean culinary tradition. The result is a experience that is refreshing and new.
+    </section>
 
-			</p>
-		</div>        
-	</div>
-</div>
-
-<div class="container marketing">
-
-	<div class="row">
-		<div class="col-lg-4">
-			<a href="#">
-				<img class="rounded-circle" src="/image/main_1.jpg" alt="Generic placeholder image" width="250" height="250">
-			</a>
-		</div>
-		<div class="col-lg-4">
-			<a href="#">
-				<img class="rounded-circle" src="/image/main_2.jpg" alt="Generic placeholder image" width="250" height="250">
-			</a>
-		</div>
-		<div class="col-lg-4">
-			<a href="#">
-				<img class="rounded-circle" src="/image/main_3.jpg" alt="Generic placeholder image" width="250" height="250">
-			</a>
-		</div>
-	</div>
-
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette">
-		<div class="col-md-7">
-			<h2 class="featurette-heading">Delivery is available! </h2>
-			<p class="lead">
-				<span style="font-weight: 400">PHONE:</span> (705) 760-9484<br >
-				<span style="font-weight: 400">OPEN:</span> Mon-Sun 11:30 AM ~ 10:00 PM<br >
-				<span style="font-weight: 400">CLOSED:</span> Every Tuesday<br >
-				<span style="font-weight: 400">HOLIDAY CLOSURES:</span> Christmas(12/25), New Year's Day(1/1)
-			</p>
-		</div>
-		<div class="col-md-5">
-			<img class="img-fluid mx-auto" src="/image/main-bottom.png" alt="Generic placeholder image">
-		</div>
-	</div>
-</div>
 @endsection('content')
 

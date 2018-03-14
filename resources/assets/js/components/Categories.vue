@@ -26,10 +26,6 @@
             fetch() {
                 axios.get(location.pathname)
                     .then(({data}) => this.items = data);
-            },
-
-            update(data) {
-               this.items.splice(data.index, 1, data.data);
             }
         }
     }

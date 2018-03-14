@@ -45,16 +45,19 @@ class ManipulateCategoryTest extends TestCase
     }
 
     /** @test */
-    public function an_admin_can_add_a_category()
+    public function an_admin_can_add_a_category_with_a_slug()
     {
         $this->signIn();
 
-        $category = make(Category::class);
+        $category = make(Category::class, [
+            'name' => 'some category'
+        ]);
 
         $this->post('/menu/categories', $category->toArray());
 
         $this->assertDatabaseHas('categories', [
-            'name' => $category->name
+            'name' => $category->name,
+            'slug' => 'some-category'
         ]);
     }
 
@@ -108,5 +111,20 @@ class ManipulateCategoryTest extends TestCase
         $this->assertDatabaseHas('categories', [
             'name' => 'something new'
         ]);
+    }
+
+    /** @test */
+    public function a_category_should_be_unique()
+    {
+        $this->signIn();
+
+        $category = create(Category::class);
+
+        $categoryWithSameName = make(Category::class, [
+           'name' => $category->name
+        ]);
+
+        $this->post('/menu/categories', $categoryWithSameName->toArray())
+            ->assertSessionHasErrors('name');
     }
 }

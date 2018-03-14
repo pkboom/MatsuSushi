@@ -9,12 +9,20 @@
 
  	<title>{{ config('app.name', 'MatsuSushi') }}</title>
 
- 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 
-	@yield('header') 	
+    <style media="screen">
+            .font-sans {
+                font-family: 'Source Sans Pro', apple-system, BlinkMacSystemFont, 'Helvetica Neue', arial, sans-serif;
+            }
+    </style>
+
+	@yield('header')
 	 
  </head>
- <body>
+ <body class="font-sans text-black">
 	<div id="app">
 
 		@include('layouts.nav')

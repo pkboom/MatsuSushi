@@ -942,6 +942,9 @@ module.exports = defaults;
         },
         remove: function remove(index) {
             this.items.splice(index, 1);
+        },
+        update: function update(data) {
+            this.items.splice(data.index, 1, data.data);
         }
     }
 });
@@ -53003,9 +53006,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = _ref.data;
                 return _this.items = data;
             });
-        },
-        update: function update(data) {
-            this.items.splice(data.index, 1, data.data);
         }
     }
 });
