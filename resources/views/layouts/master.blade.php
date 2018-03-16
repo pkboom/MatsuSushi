@@ -3,20 +3,17 @@
  <head>
  	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
- 	<!-- CSRF Token -->
  	<meta name="csrf-token" content="{{ csrf_token() }}">
 
  	<title>{{ config('app.name', 'MatsuSushi') }}</title>
 
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/main.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 
     <style media="screen">
-            .font-sans {
-                font-family: 'Source Sans Pro', apple-system, BlinkMacSystemFont, 'Helvetica Neue', arial, sans-serif;
-            }
+		.font-sans {
+			font-family: 'Source Sans Pro', apple-system, BlinkMacSystemFont, 'Helvetica Neue', arial, sans-serif;
+		}
     </style>
 
 	@yield('header')

@@ -13,15 +13,15 @@
 	<section class="bg-white py-8">
 		<div class="w-5/6 max-w-lg mx-auto my-8">
             <div class="flex flex-wrap -mx-6 -my-6">
-				<p class="text-xl py-8 my-8">
-					For the past ten years, chefs at Matsu Sushi have worked passionately together to provide guests with a unique Japanese & Korean dining experience in Peterborough, Ontario. More than just a sushi restaurant, Matsu Sushi features fresh and interesting ingredients that are firmly rooted in Japanese & Korean culinary tradition. The result is a experience that is refreshing and new.
+				<p class="text-xl py-8 my-8 leading-normal">
+					For the past ten years, chefs at Matsu Sushi have worked passionately together to provide guests with a unique Japanese & Korean dining experience in Peterborough, Ontario. More than just a sushi restaurant, Matsu Sushi features fresh and interesting ingredients that are firmly rooted in Japanese & Korean culinary tradition. The result is an experience that is refreshing and new.
 				</p>
             </div>
         </div>
     </section>
 	
     <section class="bg-grey-lighter py-8">
-        <div class="w-5/6 max-w-lg mx-auto mt-8 mb-8">
+        <div class="w-5/6 max-w-lg mx-auto my-8">
             <div class="flex flex-col justfiy-center text-center pb-8">
                 <h2 class="text-4xl font-semibold text-grey-dark opacity-75 leading-none tracking-tight mb-4">Delivery is available!</h2>
             </div>
@@ -81,8 +81,6 @@
                 </div>
             </div>
         </div>
-
     </section>
-
 @endsection('content')
 

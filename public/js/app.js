@@ -52607,7 +52607,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.accordion {\n        background-color: #eee;\n        color: #444;\n        cursor: pointer;\n        padding: 18px;\n        width: 100%;\n        border: none;\n        text-align: left;\n        outline: none;\n        font-size: 15px;\n        -webkit-transition: 0.4s;\n        transition: 0.4s;\n}\n.accordion-active,\n    .accordion:hover {\n        background-color: #ccc;\n}\n.accordion:after {\n        content: '\\2795'; /* Unicode character for \"plus\" sign (+) */\n        font-size: 13px;\n        color: #777;\n        float: right;\n        margin-left: 5px;\n}\n.accordion-active:after {\n        content: \"\\2796\"; /* Unicode character for \"minus\" sign (-) */\n}\n.panel {\n        padding: 0 18px;\n        background-color: white;\n        max-height: 0;\n        overflow: hidden;\n        -webkit-transition: max-height 0.2s ease-out;\n        transition: max-height 0.2s ease-out;\n}\n\n", ""]);
+exports.push([module.i, "\n.accordion {\n        background-color: #eee;\n        color: #444;\n        cursor: pointer;\n        padding: 18px;\n        width: 100%;\n        border: none;\n        text-align: left;\n        outline: none;\n        font-size: 15px;\n        transition: 0.4s;\n}\n.accordion-active,\n    .accordion:hover {\n        background-color: #ccc;\n}\n.accordion:after {\n        content: '\\2795'; /* Unicode character for \"plus\" sign (+) */\n        font-size: 13px;\n        color: #777;\n        float: right;\n        margin-left: 5px;\n}\n.accordion-active:after {\n        content: \"\\2796\"; /* Unicode character for \"minus\" sign (-) */\n}\n.panel {\n        padding: 0 18px;\n        background-color: white;\n        max-height: 0;\n        overflow: hidden;\n        transition: max-height 0.2s ease-out;\n}\n\n", ""]);
 
 // exports
 
@@ -54286,7 +54286,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-button-container {\n\tposition: fixed;\n\tbottom: 0;\n\tright: 0.5rem;\t\t\n\tz-index: 1000;\n}\n.chat-button {\n\tline-height: 2.5rem;\n\tbackground-color: #4286f4;\n\tborder-radius: 4px !important;\n\t-webkit-box-shadow: none;\n\t        box-shadow: none;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\tcolor: white !important;\n\tpadding: .5rem 2rem;\n\ttext-decoration: none !important;\n}\n.weareonline {\n\tmargin-left: 0.5rem;\n}\n", ""]);
+exports.push([module.i, "\n.chat-button-container {\n\tposition: fixed;\n\tbottom: 0;\n\tright: 0.5rem;\t\t\n\tz-index: 1000;\n}\n.chat-button {\n\tline-height: 2.5rem;\n\tbackground-color: #4286f4;\n\tborder-radius: 4px !important;\n\tbox-shadow: none;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\tcolor: white !important;\n\tpadding: .5rem 2rem;\n\ttext-decoration: none !important;\n}\n.weareonline {\n\tmargin-left: 0.5rem;\n}\n", ""]);
 
 // exports
 
@@ -54455,7 +54455,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-window-container {\n\tfont-size: 0.8rem;\n\tborder-radius: 4px 4px 0 0 !important;\n\tposition: fixed;\n\tbottom: 0;\n\tright: 0;        \n\tz-index: 1000;      \n\twidth: 300px; \n\theight: 450px; \n\ttext-align: center;\n\t-webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n\tbox-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n}\n.chat-header {\n\tline-height: 2rem;\n\tbackground-color: #4286f4;\n\tborder-radius: 4px 4px 0 0 !important;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n}\n.chat-header a {\n\tmargin: 0;\n\tcolor: white !important;\n\ttext-decoration: none !important;\n}\n.chat-intro-body {\n\tbackground-color: white;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\theight: 100%;\n}\n.chat-intro-body-wrapper {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t    -ms-flex-direction: column;\n\t        flex-direction: column;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n\tmargin: 0 1rem;\n\tpadding: 1rem 0;\n}\n.chat-intro-body-wrapper p {\n\tmargin-top: .5rem;\n\tmargin-bottom: 0;\n\ttext-align: left;\n\tpadding-left: .3rem;\n}\n.chat-intro-input, .chat-intro-textarea {\n\twidth: 100%;\n\tborder: solid 1px #7a7a7a;\n\tborder-radius: 4px !important;\n\tpadding: .3rem;\n}\n.chat-intro-button {\n\tmargin-top: .5rem;\n\tpadding: .5rem 1rem;\n\tbackground: #4286f4;\n\tborder-color: #4286f4;\n}\n.busyAdmin {\n\tmargin: 1rem;\n}\n\n", ""]);
+exports.push([module.i, "\n.chat-window-container {\n\tfont-size: 0.8rem;\n\tborder-radius: 4px 4px 0 0 !important;\n\tposition: fixed;\n\tbottom: 0;\n\tright: 0;        \n\tz-index: 1000;      \n\twidth: 300px; \n\theight: 450px; \n\ttext-align: center;\n\t-webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n\t-moz-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n\tbox-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n}\n.chat-header {\n\tline-height: 2rem;\n\tbackground-color: #4286f4;\n\tborder-radius: 4px 4px 0 0 !important;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n}\n.chat-header a {\n\tmargin: 0;\n\tcolor: white !important;\n\ttext-decoration: none !important;\n}\n.chat-intro-body {\n\tbackground-color: white;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\theight: 100%;\n}\n.chat-intro-body-wrapper {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n\tmargin: 0 1rem;\n\tpadding: 1rem 0;\n}\n.chat-intro-body-wrapper p {\n\tmargin-top: .5rem;\n\tmargin-bottom: 0;\n\ttext-align: left;\n\tpadding-left: .3rem;\n}\n.chat-intro-input, .chat-intro-textarea {\n\twidth: 100%;\n\tborder: solid 1px #7a7a7a;\n\tborder-radius: 4px !important;\n\tpadding: .3rem;\n}\n.chat-intro-button {\n\tmargin-top: .5rem;\n\tpadding: .5rem 1rem;\n\tbackground: #4286f4;\n\tborder-color: #4286f4;\n}\n.busyAdmin {\n\tmargin: 1rem;\n}\n\n", ""]);
 
 // exports
 
@@ -54872,7 +54872,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-window-container-customer {\n\tborder-radius: 4px 4px 0 0 !important;\n\tposition: fixed;\n\tbottom: 0;\n\tright: 0;        \n\tz-index: 1000;      \n\twidth: 300px; \n\theight: 450px; \n\ttext-align: center;\n\t-webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n\tbox-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n}\n.chat-header {\n\tline-height: 2rem;\n\tbackground-color: #4286f4;\n\tborder-radius: 4px 4px 0 0 !important;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n}\n.chat-header a {\n\tmargin: 0;\n\tcolor: white !important;\n\ttext-decoration: none !important;\n}\n.chat-full-body {\n\tbackground-color: white;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\theight: 100%;\n\tfont-size: 0.9rem;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.chat-window-container-customer {\n\tborder-radius: 4px 4px 0 0 !important;\n\tposition: fixed;\n\tbottom: 0;\n\tright: 0;        \n\tz-index: 1000;      \n\twidth: 300px; \n\theight: 450px; \n\ttext-align: center;\n\t-webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n\t-moz-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n\tbox-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);\n}\n.chat-header {\n\tline-height: 2rem;\n\tbackground-color: #4286f4;\n\tborder-radius: 4px 4px 0 0 !important;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n}\n.chat-header a {\n\tmargin: 0;\n\tcolor: white !important;\n\ttext-decoration: none !important;\n}\n.chat-full-body {\n\tbackground-color: white;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\theight: 100%;\n\tfont-size: 0.9rem;\n}\n\n\n", ""]);
 
 // exports
 
@@ -55080,7 +55080,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-composer {\n\tmargin: 0.5rem;\n\tfont-size: .9rem;\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n.chat-composer textarea {\n\t-webkit-box-flex: 0.8;\n\t    -ms-flex: 0.8 auto;\n\t        flex: 0.8 auto;\n\tpadding: 0.5rem;\n\tborder-radius: 4px !important;\n\tresize: none;\n\toverflow: hidden;\n}\n\n", ""]);
+exports.push([module.i, "\n.chat-composer {\n\tmargin: 0.5rem;\n\tfont-size: .9rem;\n\tdisplay: flex;\n\tjustify-content: center;\n}\n.chat-composer textarea {\n\tflex: 0.8 auto;\n\tpadding: 0.5rem;\n\tborder-radius: 4px !important;\n\tresize: none;\n\toverflow: hidden;\n}\n\n", ""]);
 
 // exports
 
@@ -55395,7 +55395,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n*, *:before, *:after {\n\t-webkit-box-sizing: border-box;\n\t        box-sizing: border-box;\n}\n.chat-message {\n\tpadding: 0 1rem;\n}\n.messageTitle {\n\tdisplay: block;\n\tmargin: 0.5rem;\n\ttext-align: left;\n}\n.adminMessage {\n\tword-wrap:break-word;\n\tdisplay: block;\n\tbackground: #86BB71;\n\tcolor: white;\n\tline-height: 26px;\n\tborder-radius: 7px;\n\twidth: -webkit-fit-content;\n\twidth: -moz-fit-content;\n\twidth: fit-content;\n\tmax-width: 80%;\n\tpadding: 0.1rem 0.5rem;\n\tposition: relative;\n\tmargin-bottom: 0;\n\tmin-width: 20%;\n\ttext-align: left;\n}\n.adminMessage:after {\n\tbottom: 100%;\n\tborder: solid transparent;\n\tcontent: \" \";\n\theight: 0;\n\twidth: 0;\n\tposition: absolute;\n\tpointer-events: none;\n\tborder-width: 10px;\n\tborder-bottom-color: #86BB71;\n\tleft: 0.7rem;\n}\n.customerMessage {\n\tbackground: #94C2ED;\n\tfloat:right;\n\tposition: relative;\n\tmargin-bottom: 0;\n\twhite-space: pre-wrap;\n}\n.customerMessage:after {\n\tborder-bottom-color: #94C2ED;\n\tright: 0.7rem;\n\tleft: unset;\n}\n.align-right {\n\ttext-align: right;\n}\n.clearfix:after {\n\tvisibility: hidden;\n\tdisplay: block;\n\tfont-size: 0;\n\tcontent: \" \";\n\tclear: both;\n\theight: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n*, *:before, *:after {\n\tbox-sizing: border-box;\n}\n.chat-message {\n\tpadding: 0 1rem;\n}\n.messageTitle {\n\tdisplay: block;\n\tmargin: 0.5rem;\n\ttext-align: left;\n}\n.adminMessage {\n\tword-wrap:break-word;\n\tdisplay: block;\n\tbackground: #86BB71;\n\tcolor: white;\n\tline-height: 26px;\n\tborder-radius: 7px;\n\twidth: -webkit-fit-content;\n\twidth: -moz-fit-content;\n\twidth: fit-content;\n\tmax-width: 80%;\n\tpadding: 0.1rem 0.5rem;\n\tposition: relative;\n\tmargin-bottom: 0;\n\tmin-width: 20%;\n\ttext-align: left;\n}\n.adminMessage:after {\n\tbottom: 100%;\n\tborder: solid transparent;\n\tcontent: \" \";\n\theight: 0;\n\twidth: 0;\n\tposition: absolute;\n\tpointer-events: none;\n\tborder-width: 10px;\n\tborder-bottom-color: #86BB71;\n\tleft: 0.7rem;\n}\n.customerMessage {\n\tbackground: #94C2ED;\n\tfloat:right;\n\tposition: relative;\n\tmargin-bottom: 0;\n\twhite-space: pre-wrap;\n}\n.customerMessage:after {\n\tborder-bottom-color: #94C2ED;\n\tright: 0.7rem;\n\tleft: unset;\n}\n.align-right {\n\ttext-align: right;\n}\n.clearfix:after {\n\tvisibility: hidden;\n\tdisplay: block;\n\tfont-size: 0;\n\tcontent: \" \";\n\tclear: both;\n\theight: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -56176,7 +56176,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.totalRow {\n\tpadding: .5rem;\n\ttext-align: right;\n}\n.totalRow.final {\n\tfont-size: 1.25rem;\n\tfont-weight: 600;\n}\n.totalRow span {\n\tdisplay: inline-block;\n\tpadding: 0 0 0 1rem;\n\ttext-align: right;\n}\n.totalRow .label {\n\tfont-family: \"Montserrat\", sans-serif;\n\tfont-size: .85rem;\n\ttext-transform: uppercase;\n\tcolor: #777;\n\twidth: 100px;\n}\n.totalRow .value {\n\twidth: 100px;\n}\n.checkout:link, .checkout:visited {\n\ttext-decoration: none;\n\tfont-family: \"Montserrat\", sans-serif;\n\tfont-size: 1rem;\n\tpadding: .5rem 2rem;\n\tmargin-bottom: 1rem;\n\tcolor: #fff;\n\tbackground: dodgerblue;\n\tfont-weight: bold;\n\tborder-radius: 5px;\n\tfloat: right;\n\ttext-align: right;\n\t-webkit-transition: all 0.3s;\n\ttransition: all 0.3s;\n}\n.checkout:hover, .checkout:focus, .checkout:active {\n\tbackground: #0066cc;\n}\n.payment:link, .payment:visited {\n\tbackground: tomato;\n}\n.payment:hover, .payment:focus, .payment:active {\n\tbackground: #e62200;\n}\n", ""]);
+exports.push([module.i, "\n.totalRow {\n\tpadding: .5rem;\n\ttext-align: right;\n}\n.totalRow.final {\n\tfont-size: 1.25rem;\n\tfont-weight: 600;\n}\n.totalRow span {\n\tdisplay: inline-block;\n\tpadding: 0 0 0 1rem;\n\ttext-align: right;\n}\n.totalRow .label {\n\tfont-family: \"Montserrat\", sans-serif;\n\tfont-size: .85rem;\n\ttext-transform: uppercase;\n\tcolor: #777;\n\twidth: 100px;\n}\n.totalRow .value {\n\twidth: 100px;\n}\n.checkout:link, .checkout:visited {\n\ttext-decoration: none;\n\tfont-family: \"Montserrat\", sans-serif;\n\tfont-size: 1rem;\n\tpadding: .5rem 2rem;\n\tmargin-bottom: 1rem;\n\tcolor: #fff;\n\tbackground: dodgerblue;\n\tfont-weight: bold;\n\tborder-radius: 5px;\n\tfloat: right;\n\ttext-align: right;\n\t-webkit-transition: all 0.3s;\n\t-moz-transition: all 0.3s;\n\t-ms-transition: all 0.3s;\n\t-o-transition: all 0.3s;\n\ttransition: all 0.3s;\n}\n.checkout:hover, .checkout:focus, .checkout:active {\n\tbackground: #0066cc;\n}\n.payment:link, .payment:visited {\n\tbackground: tomato;\n}\n.payment:hover, .payment:focus, .payment:active {\n\tbackground: #e62200;\n}\n", ""]);
 
 // exports
 
@@ -56773,7 +56773,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-button {\n\tline-height: 2.5rem;\n\tbackground-color: lightgray;\n\tborder-radius: 4px !important;\n\t-webkit-box-shadow: none;\n\t        box-shadow: none;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\tcolor: white !important;\n\tpadding: .5rem 2rem;\n\ttext-decoration: none !important;\n}\n.chat-button-on-color {\n\tbackground-color: #1daded !important; \n\t/* on: blue, off: gray*/\n}\n", ""]);
+exports.push([module.i, "\n.chat-button {\n\tline-height: 2.5rem;\n\tbackground-color: lightgray;\n\tborder-radius: 4px !important;\n\tbox-shadow: none;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\tcolor: white !important;\n\tpadding: .5rem 2rem;\n\ttext-decoration: none !important;\n}\n.chat-button-on-color {\n\tbackground-color: #1daded !important; \n\t/* on: blue, off: gray*/\n}\n", ""]);
 
 // exports
 
@@ -56928,7 +56928,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-button-container {\n}\n.chat-button {\n\tline-height: 2.5rem;\n\tbackground-color: lightgray;\n\tborder-radius: 4px !important;\n\t-webkit-box-shadow: none;\n\t        box-shadow: none;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\tcolor: white !important;\n\tpadding: .5rem 2rem;\n\ttext-decoration: none !important;\n}\n", ""]);
+exports.push([module.i, "\n.chat-button-container {\n}\n.chat-button {\n\tline-height: 2.5rem;\n\tbackground-color: lightgray;\n\tborder-radius: 4px !important;\n\tbox-shadow: none;\n\tbackground-clip: padding-box !important;\n\tborder: 0 !important;\n\tcolor: white !important;\n\tpadding: .5rem 2rem;\n\ttext-decoration: none !important;\n}\n", ""]);
 
 // exports
 
@@ -57210,7 +57210,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n*, *:before, *:after {\n\t-webkit-box-sizing: border-box;\n\t        box-sizing: border-box;\n}\n.chat-message {\n\tpadding: 0.5rem 1rem;\n\ttext-align: center;\n}\n.messageTitle {\n\tdisplay: block;\n\tmargin: 0.5rem 0;\n\ttext-align: left;\n}\n.customerMessage {\n\tword-wrap:break-word;\n\tdisplay: block;\n\tbackground: #86BB71;\n\tcolor: white;\n\tline-height: 26px;\n\tborder-radius: 7px;\n\twidth: fit-content;\n\twidth: -webkit-fit-content;\n\twidth: -moz-fit-content;\n\tmax-width: 80%;\n\tpadding: 0.5rem 0.7rem;\n\tposition: relative;\n\tmargin-bottom: 0;\n\tmin-width: 66px;\n\ttext-align: left;\n\twhite-space: pre-wrap;\n}\n.customerMessage:after {\n\tbottom: 100%;\n\tborder: solid transparent;\n\tcontent: \" \";\n\theight: 0;\n\twidth: 0;\n\tposition: absolute;\n\tpointer-events: none;\n\tborder-width: 10px;\n\tborder-bottom-color: #86BB71;\n\tleft: 1.3rem;\n}\n.adminMessage {\n\tbackground: #94C2ED;\n\tfloat:right;\n\tposition: relative;\n}\n.adminMessage:after {\n\tborder-bottom-color: #94C2ED;\n\tright: 1.3rem;\n\tleft: unset;\n}\n.align-right {\n\ttext-align: right;\n}\n.clearfix:after {\n\tvisibility: hidden;\n\tdisplay: block;\n\tfont-size: 0;\n\tcontent: \" \";\n\tclear: both;\n\theight: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n*, *:before, *:after {\n\tbox-sizing: border-box;\n}\n.chat-message {\n\tpadding: 0.5rem 1rem;\n\ttext-align: center;\n}\n.messageTitle {\n\tdisplay: block;\n\tmargin: 0.5rem 0;\n\ttext-align: left;\n}\n.customerMessage {\n\tword-wrap:break-word;\n\tdisplay: block;\n\tbackground: #86BB71;\n\tcolor: white;\n\tline-height: 26px;\n\tborder-radius: 7px;\n\twidth: fit-content;\n\twidth: -webkit-fit-content;\n\twidth: -moz-fit-content;\n\tmax-width: 80%;\n\tpadding: 0.5rem 0.7rem;\n\tposition: relative;\n\tmargin-bottom: 0;\n\tmin-width: 66px;\n\ttext-align: left;\n\twhite-space: pre-wrap;\n}\n.customerMessage:after {\n\tbottom: 100%;\n\tborder: solid transparent;\n\tcontent: \" \";\n\theight: 0;\n\twidth: 0;\n\tposition: absolute;\n\tpointer-events: none;\n\tborder-width: 10px;\n\tborder-bottom-color: #86BB71;\n\tleft: 1.3rem;\n}\n.adminMessage {\n\tbackground: #94C2ED;\n\tfloat:right;\n\tposition: relative;\n}\n.adminMessage:after {\n\tborder-bottom-color: #94C2ED;\n\tright: 1.3rem;\n\tleft: unset;\n}\n.align-right {\n\ttext-align: right;\n}\n.clearfix:after {\n\tvisibility: hidden;\n\tdisplay: block;\n\tfont-size: 0;\n\tcontent: \" \";\n\tclear: both;\n\theight: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -57415,7 +57415,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-composer {\n\tmargin: 1rem 2rem;\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n.chat-composer textarea {\n\t-webkit-box-flex: 0.8;\n\t    -ms-flex: 0.8 auto;\n\t        flex: 0.8 auto;\n\tpadding: 0.5rem;\n\tborder-radius: 4px !important;\n\tresize: none;\n}\n.chat-composer button {\n\tmargin-right: 1rem;\n}\n\n", ""]);
+exports.push([module.i, "\n.chat-composer {\n\tmargin: 1rem 2rem;\n\tdisplay: flex;\n\tjustify-content: center;\n}\n.chat-composer textarea {\n\tflex: 0.8 auto;\n\tpadding: 0.5rem;\n\tborder-radius: 4px !important;\n\tresize: none;\n}\n.chat-composer button {\n\tmargin-right: 1rem;\n}\n\n", ""]);
 
 // exports
 
@@ -57689,7 +57689,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.flex {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n} \n \n", ""]);
+exports.push([module.i, "\n.flex {\n    display: flex;\n} \n \n", ""]);
 
 // exports
 
@@ -57823,7 +57823,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.house-image-wrapper {\n    position: relative;\n    z-index: 0;\n    margin: .5rem;\n}\n.house-image-wrapper:hover {\n    z-index: 100;\n}\n.house-image {\n    -webkit-transition: -webkit-transform 0.2s;\n    transition: -webkit-transform 0.2s;\n    transition: transform 0.2s;\n    transition: transform 0.2s, -webkit-transform 0.2s;\n}\n.house-image-wrapper:hover .house-image {\n    -webkit-transform: scale(1.2, 1.2);\n            transform: scale(1.2, 1.2);\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);\n            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);\n    opacity: .7;\n}\n.delete-icon {\n    display: none;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    font-size: 3rem;\n    color:rgba(29, 29, 29, 0.493);\n}\n.house-image-wrapper:hover .delete-icon {\n    display: block;\n}\n\n", ""]);
+exports.push([module.i, "\n.house-image-wrapper {\n    position: relative;\n    z-index: 0;\n    margin: .5rem;\n}\n.house-image-wrapper:hover {\n    z-index: 100;\n}\n.house-image {\n    transition: transform 0.2s;\n}\n.house-image-wrapper:hover .house-image {\n    transform: scale(1.2, 1.2);\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);\n    opacity: .7;\n}\n.delete-icon {\n    display: none;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    transform: translate(-50%, -50%);\n    font-size: 3rem;\n    color:rgba(29, 29, 29, 0.493);\n}\n.house-image-wrapper:hover .delete-icon {\n    display: block;\n}\n\n", ""]);
 
 // exports
 

@@ -1,11 +1,7 @@
 @extends('layouts.master')
 
-@section('header')
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-@endsection
-
 @section('content')
-    <div class="w-4/5 mx-auto" style="margin-top: 8rem;">
+    <div class="w-4/5 mx-auto">
         <img src="/storage/menu/menu.jpg" alt="">
         <img src="/storage/menu/menu-1.jpg" alt="">
         <img src="/storage/menu/menu-2.jpg" alt="">

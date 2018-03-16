@@ -6,16 +6,18 @@
 @endsection
 
 @section('content')
-	<div class="container">
-		<div id="lightgallery">
-			@foreach ($images as $image)
-				<a href="{{ asset('storage/' . $image->filename) }}">
-					<img src="{{ asset('storage/thumbs/' . $image->filename) }}"> 
-				</a>
-			@endforeach
+	<section class="mt-8" id="gallery">
+		<div class="py-8 w-4/5 mx-auto">
+			<div id="lightgallery">
+				@foreach ($images as $image)
+					<a href="{{ asset('storage/' . $image->filename) }}">
+						<img src="{{ asset('storage/thumbs/' . $image->filename) }}"> 
+					</a>
+				@endforeach
+			</div>
+			{{ $images->links('vendor.pagination.bootstrap-4') }}
 		</div>
-		{{ $images->links('vendor.pagination.bootstrap-4') }}
-	</div>
+	</section>
 @endsection 
 
 @section('javascript')
