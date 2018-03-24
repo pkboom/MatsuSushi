@@ -11,10 +11,10 @@ class ImageController extends Controller
     public function index()
     {
         if (request()->wantsJson()) {
-            return Image::all();
+            return Image::latest()->get();
         }
 
-        $images = Image::paginate(12);
+        $images = Image::latest()->paginate(12);
 
         return view('images.gallery', compact('images'));
     }
