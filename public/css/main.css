@@ -733,28 +733,24 @@ a {
 
 /** Pagination **/
 
-.pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-top: 20px;
+/* .pagination {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
 }
 
 .pagination a {
-  color: rgba(218, 92, 33, .842);
+	color: rgba(218, 92, 33, 0.842);
 }
 
 .page-item.active .page-link {
-  background-color: rgba(45, 223, 39, .432);
-  border-color: rgba(45, 223, 39, .432);
+	background-color: rgba(45, 223, 39, 0.432);
+	border-color: rgba(45, 223, 39, 0.432);
 }
 
 .page-link:hover {
-  color: inherit;
-}
+	color: inherit;
+} */
 
 /* admin CSS */
 

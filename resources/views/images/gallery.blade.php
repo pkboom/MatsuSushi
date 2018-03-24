@@ -6,17 +6,17 @@
 @endsection
 
 @section('content')
-	<section class="mt-8" id="gallery">
-		<div class="py-8 w-4/5 mx-auto">
-			<div id="lightgallery">
-				@foreach ($images as $image)
-					<a href="{{ asset('storage/' . $image->filename) }}">
-						<img src="{{ asset('storage/thumbs/' . $image->filename) }}"> 
-					</a>
-				@endforeach
-			</div>
-			{{ $images->links('vendor.pagination.bootstrap-4') }}
-		</div>
+	<section class="mt-8 pt-8" id="gallery">
+				<div class="w-4/5 mx-auto">
+					<div id="lightgallery">
+						@foreach ($images as $image)
+							<a href="{{ asset('storage/' . $image->filename) }}">
+								<img src="{{ asset('storage/thumbs/' . $image->filename) }}"> 
+							</a>
+						@endforeach
+					</div>
+					{{ $images->links('images.pages') }}
+				</div>
 	</section>
 @endsection 
 
@@ -29,7 +29,6 @@
 
 		$("#lightgallery").justifiedGallery({
 			rowHeight : 200,
-			lastRow : 'nojustify',
 			margins : 5
 		});
 	</script>

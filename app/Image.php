@@ -18,7 +18,7 @@ class Image extends Model
                 $constraint->upsize();
             })
             ->save(Storage::disk('public')->path('') . $filename)
-            ->fit(200, 200, function ($constraint) {
+            ->heighten(200, function ($constraint) {
                 $constraint->upsize();
             })->save(Storage::disk('public')->path('thumbs/') . $filename);
 
