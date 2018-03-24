@@ -30,8 +30,8 @@
                 <div class="flex flex-col-reverse md:flex-row">
                     <div class="flex-1">
 						<div class="bg-grey-lightest p-8">
-							<ul class="list-reset">
-								<li class="mb-4">
+							<ul class="list-reset my-6">
+								<li class="mb-8">
 									<div class="flex items-center">
 										<div class="mr-4">
 											<svg class="align-middle text-teal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -39,7 +39,7 @@
                                         <p class="text-lg leading-normal">PHONE: (705) 760-9484</p>
                                     </div>
                                 </li>
-                                <li class="mb-4">
+                                <li class="mb-8">
                                     <div class="flex items-center">
 										<div class="mr-4">
 											<svg class="align-middle text-teal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -47,7 +47,7 @@
                                         <p class="text-lg leading-normal">OPEN: Mon-Sun 11:30 AM ~ 10:00 PM</p>
                                     </div>
                                 </li>
-                                <li class="mb-4">
+                                <li class="mb-8">
 									<div class="flex items-center">
 										<div class="mr-4">
 											<svg class="align-middle text-teal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -69,11 +69,18 @@
                     <div class="flex-1">
 						<div class="flex flex-col items-center p-8 h-full">
 							<h3 class="text-3xl text-blue-darker opacity-75 font-normal leading-none mb-6">Most Ordered Item:</h3>
-							<p class="text-2xl text-blue-darker opacity-75 font-normal leading-none mb-6">Noodle and Maki Special(11: 30 AM to 3 PM)</p>
-							<div class="flex flex-1 mb-8">
+							<p class="text-2xl text-blue-darker opacity-75 font-normal leading-none mb-6">Peterborough Combo</p>
+							<div class="flex flex-1 mb-6">
 								<div class="flex self-start items-center">
 									<span class="text-3xl text-grey-dark leading-none mr-2">$</span>
-                                    <span class="text-5xl font-semibold tracking-tight leading-none text-teal mr-3">12.95</span>
+                                    <span class="text-4xl font-semibold tracking-tight leading-none text-teal mr-3">18.95</span>
+                                </div>
+                            </div>
+							<p class="text-2xl text-blue-darker opacity-75 font-normal leading-none mb-6">Kawartha Combo</p>
+							<div class="flex flex-1 mb-6">
+								<div class="flex self-start items-center">
+									<span class="text-3xl text-grey-dark leading-none mr-2">$</span>
+                                    <span class="text-4xl font-semibold tracking-tight leading-none text-teal mr-3">24.95</span>
                                 </div>
                             </div>
                         </div>
