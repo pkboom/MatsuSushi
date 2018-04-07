@@ -682,6 +682,16 @@ button,
   }
 }
 
+*::-moz-selection {
+  color: white;
+  background: salmon;
+}
+
+*::selection {
+  color: white;
+  background: salmon;
+}
+
 #main-image:before {
   content: "";
   position: absolute;
@@ -690,7 +700,7 @@ button,
   bottom: 0;
   left: 0;
   right: 0;
-  background: url("/storage/main-image.png") center center;
+  background: url("/images/main-image.png") center center;
   background-size: auto 100%;
   opacity: .9;
 }

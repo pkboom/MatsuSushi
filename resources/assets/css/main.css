@@ -20,6 +20,11 @@
  */
 @tailwind components;
 
+*::selection {
+	color: white;
+	background: salmon;
+}
+
 #main-image:before {
     content: "";
     position: absolute;
@@ -28,7 +33,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-	background: url("/storage/main-image.png") center center;
+	background: url("/images/main-image.png") center center;
 	background-size: auto 100%;
     opacity: 0.9;
 }
