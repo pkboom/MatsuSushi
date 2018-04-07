@@ -6,7 +6,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="shortcut icon" type="image/x-icon" href="/images/sushi.ico" />
 	
-	<title>{{ config('app.name', 'MatsuSushi') }}</title>
+	<title>{{ config('app.name', 'Matsu Sushi') }}</title>
 	
 	<link href="{{ asset('css/main.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
