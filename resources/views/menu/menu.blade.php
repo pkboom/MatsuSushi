@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="w-full sm:w-4/5 mx-auto mt-4">
+    <div class="w-full max-w-xl mx-auto mt-4">
         <img src="/images/menu/menu1.jpg" alt="">
         <img src="/images/menu/menu2.jpg" alt="">
         <img src="/images/menu/menu3.jpg" alt="">
