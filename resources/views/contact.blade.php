@@ -23,8 +23,6 @@
 						<h5 class="text-xl text-white mb-4">OPERATION</h5>
 						<p class="text-lg text-white leading-tight">
 							OPEN: Mon-Sun 11:30 AM ~ 10:00 PM<br>
-							CLOSED: Every Tuesday<br>
-							(Since 8/15, we are open <span class="font-bold">EVERYDAY!</span>)<br>
 							HOLIDAY CLOSURES: Christmas(12/25), New Year's Day(1/1)
 						</p>
 					</div>

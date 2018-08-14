@@ -17,4 +17,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
         tailwindcss('tailwind.js'),
     // ]);
     ])
-    .browserSync('matsu.test/menu');
+    .browserSync('matsusushi.test');
