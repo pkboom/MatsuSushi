@@ -8,8 +8,8 @@
 				<a href="/contact" class="w-full sm:w-auto text-center text-lg leading-normal text-indigo hover:text-indigo-darker opacity-75 no-underline sm:ml-8 py-2 {{ request()->is('contact') ? 'active' : '' }}">CONTACT</a>
 			</div>
 		</div>
-		<div class="sm:hidden absolute pin-t pin-r pr-5 pt-6">
-			<a href="#" class="text-grey-darkest p-2" onclick="
+		<div class="sm:hidden absolute pin-t pin-r pr-4 pt-4">
+			<a href="#" class="block text-grey-darkest p-2 rounded" onclick="
 				document.getElementById('header').classList.toggle('bg-grey-lightest');
 				document.getElementById('menu').classList.toggle('flex');
 			">&#9776;</a>
