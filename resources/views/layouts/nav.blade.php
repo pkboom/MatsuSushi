@@ -8,7 +8,7 @@
 				<a href="/contact" class="text-lg leading-normal text-indigo hover:text-indigo-darker opacity-75 no-underline sm:ml-8 mb-2 {{ request()->is('contact') ? 'active' : '' }}">CONTACT</a>
 			</div>
 		</div>
-		<div class="sm:hidden absolute pin-t pin-r pr-5 pt-5">
+		<div class="sm:hidden absolute pin-t pin-r pr-5 pt-6">
 			<a href="#" class="text-grey-darkest" onclick="
 				document.getElementById('header').classList.toggle('bg-grey-lightest');
 				document.getElementById('menu').classList.toggle('flex');
