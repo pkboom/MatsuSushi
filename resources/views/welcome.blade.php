@@ -4,8 +4,8 @@
 	<section class="py-8 h-full h-screen" id="main-image">
         <div class="flex items-center justify-center text-center h-full">
             <div>
-                <h1 class="text-4xl text-green opacity-75 sm:text-5xl font-semibold leading-none tracking-tight mb-4">Matsu Sushi</h1>
-                <h2 class="text-2xl sm:text-3xl text-blue-darker opacity-75 font-normal leading-tight mb-8">Japanese & Korean Fusion Restaurant</h2>
+                <h1 class="text-4xl text-green-dark sm:text-5xl font-semibold leading-none mb-4">Matsu Sushi</h1>
+                <h2 class="text-2xl sm:text-3xl text-grey-light font-normal leading-tight mb-8">Japanese & Korean Fusion Restaurant</h2>
             </div>
         </div>
     </section>
