@@ -44,7 +44,7 @@
                                     <p class="text-lg leading-normal">
                                         OPEN: Mon-Sun 11:30 AM ~ 10:00 PM
                                         <br>
-                                        (Tuesday closed since December)
+                                        (Tuesdays closed)
                                     </p>
                                 </div>
                             </li>
