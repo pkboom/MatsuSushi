@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -17,7 +18,7 @@ class Category extends Model
         });
 
         static::created(function ($category) {
-            $category->update(['slug' => str_slug($category->name)]);
+            $category->update(['slug' => Str::slug($category->name)]);
         });
     }
 

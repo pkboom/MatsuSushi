@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends Controller
@@ -32,7 +33,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string|unique:categories|max:50'
+            'name' => 'required|string|unique:categories|max:50',
             ]);
 
         return response(Category::create($data), 201);
@@ -48,12 +49,12 @@ class CategoryController extends Controller
     public function update(Category $category)
     {
         request()->validate([
-                'name' => 'required|string|unique:categories|max:50'
+                'name' => 'required|string|unique:categories|max:50',
         ]);
 
         $category->update([
             'name' => request('name'),
-            'slug' => str_slug(request('name'))
+            'slug' => Str::slug(request('name')),
         ]);
 
         if (request()->wantsJson()) {

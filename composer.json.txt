@@ -1,2 +1,0 @@
-http://laraveldaily.com/how-to-use-external-classes-and-php-files-in-laravel-controller/
-share common functions between controllers

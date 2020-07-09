@@ -1,0 +1,208 @@
+.form-label {
+  @apply .mb-2 .block .text-gray-800 .select-none;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  @apply .p-2 .leading-normal .block .w-full .border .border-gray-200 .text-gray-800 .bg-white .font-sans .rounded .text-left .appearance-none .relative;
+
+  &:focus,
+  &.focus {
+    @apply .border-blue-500;
+    box-shadow: 0 0 0 1px theme('colors.blue.400');
+  }
+
+  &::placeholder {
+    @apply .text-gray-600 .opacity-100;
+  }
+
+  &:disabled {
+    @apply .text-gray-600 .bg-gray-100;
+  }
+}
+
+.form-select {
+  @apply .pr-6;
+
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAABGdBTUEAALGPC/xhBQAAAQtJREFUOBG1lEEOgjAQRalbGj2OG9caOACn4ALGtfEuHACiazceR1PWOH/CNA3aMiTaBDpt/7zPdBKy7M/DCL9pGkvxxVp7KsvyJftL5rZt1865M+Ucq6pyyF3hNcI7Cuu+728QYn/JQA5yKaempxuZmQngOwEaYx55nu+1lQh8GIatMGi+01NwBcEmhxBqK4nAPZJ78K0KKFAJmR3oPp8+Iwgob0Oa6+TLoeCvRx+mTUYf/FVBGTPRwDkfLxnaSrRwcH0FWhNOmrkWYbE2XEicqgSa1J0LQ+aPCuQgZiLnwewbGuz5MGoAhcIkCQcjaTBjMgtXGURMVHC1wcQEy0J+Zlj8bKAnY1/UzDe2dbAVqfXn6wAAAABJRU5ErkJggg==');
+  background-size: 0.7rem;
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+
+  &::-ms-expand {
+    @apply .opacity-0;
+  }
+}
+
+.form-checkbox,
+.form-radio {
+  @apply .inline-block .relative .w-4 .h-4;
+}
+
+.form-checkbox-input,
+.form-radio-input {
+  @apply .absolute inset-0 .z-10 .appearance-none .opacity-0 .cursor-auto;
+}
+
+.form-checkbox-square {
+  @apply .block .w-4 .h-4 .p-px .border .bg-white .rounded-sm;
+}
+
+.form-checkbox-icon {
+  @apply .hidden .w-full .h-full;
+}
+
+.form-checkbox-input:checked ~ .form-checkbox-square,
+.form-checkbox-square.checked {
+  @apply .border-2 .border-red-500;
+
+  & .form-checkbox-icon {
+    @apply .block .fill-red-500;
+  }
+}
+
+.form-checkbox-input:disabled ~ .form-checkbox-square {
+  @apply .border-gray-400;
+
+  & .form-checkbox-icon {
+    @apply .fill-gray-400;
+  }
+}
+
+.form-checkbox-square.disabled_checked {
+  @apply .border-gray-400;
+
+  & .form-checkbox-icon {
+    @apply .block .fill-gray-400;
+  }
+}
+
+.form-radio-circle {
+  @apply .block .w-4 .h-4 .p-px .border .bg-white .rounded-full .text-red-500 .relative .flex .items-center .justify-center;
+
+  &:after {
+    @apply .block .bg-red-500 .rounded-full .w-2 .h-2 .opacity-0;
+    content: '';
+  }
+}
+
+.form-radio-input:checked ~ .form-radio-circle {
+  @apply .border-2 .border-red-500;
+
+  &:after {
+    @apply .opacity-100;
+  }
+}
+
+.form-fieldset {
+  @apply .p-3 .leading-none .w-full .border .text-gray-800 .bg-white .font-sans .rounded;
+}
+
+.form-error {
+  @apply .text-red-500 .mt-2 .text-sm;
+}
+
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  @apply .border-red-500;
+
+  &:focus {
+    box-shadow: 0 0 0 1px theme('colors.red.500');
+  }
+}
+
+.date-input {
+  @apply .bg-white .rounded .shadow-lg .p-4 .text-xs;
+
+  z-index: 2000;
+  margin: 3px 0 0 0;
+
+  &.is-hidden {
+    @apply .hidden;
+  }
+
+  & .pika-title {
+    @apply .pb-2 .w-full .text-center;
+  }
+
+  & .pika-prev,
+  & .pika-next {
+    @apply .mt-2 .px-2 .text-teal-700 .cursor-pointer;
+
+    &:hover {
+      @apply .underline;
+    }
+  }
+
+  & .pika-prev {
+    float: left;
+  }
+
+  & .pika-next {
+    float: right;
+  }
+
+  & .pika-label {
+    @apply .inline-block;
+    font-size: 0;
+  }
+
+  & .pika-select-month,
+  & .pika-select-year {
+    @apply .inline-block .border .text-gray-900 .bg-white .text-xs .font-sans .rounded .py-1 .px-2;
+
+    appearance: none;
+
+    &:focus {
+      @apply .border-orange-400;
+      box-shadow: 0 0 0 1px theme('colors.orange.400');
+    }
+  }
+
+  & .pika-select-month {
+    @apply .mr-1;
+  }
+
+  & table {
+    @apply .w-full;
+    border-collapse: collapse;
+
+    & th {
+      @apply .font-sans .text-gray-600 .text-center .w-8 .h-8;
+
+      & abbr {
+        text-decoration: none;
+      }
+    }
+
+    & td {
+      @apply .border .border-gray-200;
+
+      & button {
+        @apply .block .text-gray-800 .text-center .w-8 .h-8;
+
+        &:hover {
+          @apply .bg-gray-200;
+        }
+      }
+
+      &.is-today {
+        @apply .bg-gray-200;
+      }
+
+      &.is-selected {
+        @apply .bg-orange-400;
+
+        & button {
+          @apply .text-white;
+
+          &:hover {
+            @apply .bg-orange-500;
+          }
+        }
+      }
+    }
+  }
+}

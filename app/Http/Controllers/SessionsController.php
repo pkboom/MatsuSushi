@@ -24,13 +24,7 @@ class SessionsController extends Controller
 
     public function store(Request $request)
     {
-        // flash current input to the session
-        // request()->flashExcept('password');
-        // Attempt to authenticate the user
-        // If so, sign them in
         if (!auth()->attempt(request(['email', 'password']))) {
-            // If not, redirect back
-            // return rediredt('login')
             return back()
                 ->withErrors([
                     'message' => 'Please check your credentials and try again.',
@@ -47,6 +41,7 @@ class SessionsController extends Controller
     public function destory()
     {
         auth()->logout();
+
         return redirect('login');
     }
 }

@@ -1,31 +1,17 @@
-window._ = require('lodash');
-window.Popper = require('popper.js').default;
+window._ = require('lodash')
+window.Popper = require('popper.js').default
 
-try {
-    window.$ = window.jQuery = require('jquery');
+window.axios = require('axios')
 
-    require('bootstrap');
-} catch (e) { }
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
-window.axios = require('axios');
+// import Echo from 'laravel-echo'
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// window.Pusher = require('pusher-js')
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
-
-import Echo from 'laravel-echo'
-
-window.Pusher = require('pusher-js');
-
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: '3a5d8e70d831ac820473',
-    cluster: 'us2',
-    encrypted: true
-});
+// window.Echo = new Echo({
+//   broadcaster: 'pusher',
+//   key: process.env.MIX_PUSHER_APP_KEY,
+//   cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//   encrypted: true,
+// })

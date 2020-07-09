@@ -1,54 +1,35 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SessionsController;
+
 Route::view('/', 'welcome');
 Route::view('contact', 'contact');
 Route::view('about', 'about');
 
-Route::view('register', 'registration.create');
-Route::post('register', 'RegistrationController@store');
-Route::get('login', 'SessionsController@create')->name('login');
-Route::post('login', 'SessionsController@store');
-Route::get('logout', 'SessionsController@destory');
-
-Route::get('admin-id/{email}', 'UserController@adminID');
-
-Route::post('messages', 'MessageController@create');
-Route::get('lastmessages/{chatroomID}', 'MessageController@lastmessages');
-Route::get('admin/messages/{id}', 'MessageController@adminShow');
-Route::view('admin/chat', 'admin.chat')->name('home');
-
-Route::get('chatroom/count/{chatroom_user_id}', 'ChatroomController@chatroomCount');
-Route::get('chatroom/{chatroom_user_id}', 'ChatroomController@show');
-
-Route::post('getchatroom', 'ChatroomController@getChatroom');
-Route::post('leavechatroom/{id}', 'ChatroomController@leaveChatroom');
-Route::get('channelon', 'ChatroomController@channelon');
-Route::get('isfull', 'ChatroomController@isfull');
-
-Route::prefix('chat')->group(function () {
-    Route::post('main', 'ChatroomController@toggleMainButon');
-});
+Route::view('register', 'registration.create')->middleware('guest');
+Route::post('register', [RegistrationController::class, 'store'])->middleware('guest');
+Route::get('login', [SessionsController::class, 'create'])->name('login');
+Route::post('login', [SessionsController::class, 'store']);
+Route::get('logout', [SessionsController::class, 'destory']);
 
 Route::view('cart', 'cart.cart');
 Route::view('cart/payment', 'cart.payment');
 
-Route::get('api/chatroomstatus/{chatroom_user_id}', 'ChatroomController@show');
-Route::post('api/auth', 'AuthController@authenticate');
-Route::post('api/channelon', 'ChatroomController@apiOpenChannels');
-Route::post('api/sendmessage', 'MessageController@apiSendMessage')->middleware('auth.jwt');
-Route::post('api/pushtoken', 'AuthController@getPushToken')->middleware('auth.jwt');
-
 Route::view('menu', 'menu.menu');
-Route::get('menu/categories', 'CategoryController@index');
-Route::post('menu/categories', 'CategoryController@store')->middleware('auth');
-Route::patch('menu/categories/{category}', 'CategoryController@update')->middleware('auth');
-Route::delete('menu/categories/{category}', 'CategoryController@destroy')->middleware('auth');
-Route::get('menu/categories/{category}', 'CategoryController@show');
-Route::post('menu/categories/{category}', 'MenuController@store')->middleware('auth');
-Route::patch('menu/categories/{category}/items/{item}', 'MenuController@update')->middleware('auth');
-Route::delete('menu/categories/{category}/items/{item}', 'MenuController@destroy')->middleware('auth');
+Route::get('menu/categories', [CategoryController::class, 'index']);
+Route::post('menu/categories', [CategoryController::class, 'store'])->middleware('auth');
+Route::patch('menu/categories/{category}', [CategoryController::class, 'update'])->middleware('auth');
+Route::delete('menu/categories/{category}', [CategoryController::class, 'destroy'])->middleware('auth');
+Route::get('menu/categories/{category}', [CategoryController::class, 'show']);
+Route::post('menu/categories/{category}', [MenuController::class, 'store'])->middleware('auth');
+Route::patch('menu/categories/{category}/items/{item}', [MenuController::class, 'update'])->middleware('auth');
+Route::delete('menu/categories/{category}/items/{item}', [MenuController::class, 'destroy'])->middleware('auth');
 
-Route::get('gallery', 'ImageController@index');
+Route::get('gallery', [ImageController::class, 'index']);
 Route::view('upload', 'images.upload');
-Route::delete('upload/{image}', 'ImageController@destroy')->middleware('auth');
-Route::post('upload', 'ImageController@store')->middleware('auth');
+Route::delete('upload/{image}', [ImageController::class, 'destroy'])->middleware('auth');
+Route::post('upload', [ImageController::class, 'store'])->middleware('auth');

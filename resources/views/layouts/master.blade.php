@@ -40,7 +40,6 @@
 		
 		<flash message="{{ session('flash') }}"></flash>
 		
-		{{--  <chat></chat>  --}}
 	</div>
 	
 	<script src="{{ asset('js/app.js') }}"></script> 

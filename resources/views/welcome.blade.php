@@ -4,8 +4,8 @@
 	<section class="py-8 h-full h-screen" id="main-image">
         <div class="flex items-center justify-center text-center h-full">
             <div>
-                <h1 class="text-4xl text-green-dark sm:text-5xl font-semibold leading-none mb-4">Matsu Sushi</h1>
-                <h2 class="text-2xl sm:text-3xl text-grey-light font-normal leading-tight mb-8">Japanese & Korean Fusion Restaurant</h2>
+                <h1 class="text-4xl text-green-600 sm:text-5xl font-semibold leading-none mb-4">Matsu Sushi</h1>
+                <h2 class="text-2xl sm:text-3xl text-grey-500 font-normal leading-tight mb-8">Japanese & Korean Fusion Restaurant</h2>
             </div>
         </div>
     </section>
@@ -18,16 +18,16 @@
         </div>
     </section>
 	
-    <section class="bg-grey-lighter py-8">
+    <section class="bg-grey-300 py-8">
         <div class="w-5/6 max-w-lg mx-auto my-8">
             <div class="flex flex-col justfiy-center text-center pb-8">
-                <h2 class="text-3xl sm:text-4xl font-semibold text-grey-dark opacity-75 leading-none tracking-tight mb-4">Delivery is available!</h2>
+                <h2 class="text-3xl sm:text-4xl font-semibold text-grey-600 opacity-75 leading-none tracking-tighter mb-4">Delivery is available!</h2>
             </div>
 			
             <div class="bg-white rounded shadow-lg overflow-hidden">
                 <div class="flex flex-col-reverse md:flex-row">
-                    <div class="flex-1 flex items-center bg-grey-lightest p-8">
-                        <ul class="list-reset my-6">
+                    <div class="flex-1 flex items-center bg-grey-100 p-8">
+                        <ul class="my-6">
                             <li class="mb-8">
                                 <div class="flex items-center">
                                     <div class="mr-4">
@@ -60,19 +60,19 @@
                     </div>
                     <div class="flex-1 p-8">
 						<div class="flex flex-col items-start md:items-center h-full">
-							<h3 class="text-2xl sm:text-3xl text-blue-darker opacity-75 font-normal leading-none mb-6">Most Ordered Item:</h3>
-							<p class="text-2xl text-blue-darker opacity-75 font-normal leading-none mb-6">Peterborough Combo</p>
+							<h3 class="text-2xl sm:text-3xl text-blue-700 opacity-75 font-normal leading-none mb-6">Most Ordered Item:</h3>
+							<p class="text-2xl text-blue-700 opacity-75 font-normal leading-none mb-6">Peterborough Combo</p>
 							<div class="flex flex-1 mb-6">
 								<div class="flex self-start items-center">
-									<span class="text-3xl text-grey-dark leading-none mr-2">$</span>
-                                    <span class="text-4xl font-semibold tracking-tight leading-none text-teal mr-3">18.95</span>
+									<span class="text-3xl text-grey-600 leading-none mr-2">$</span>
+                                    <span class="text-4xl font-semibold tracking-tighter leading-none text-teal mr-3">18.95</span>
                                 </div>
                             </div>
-							<p class="text-2xl text-blue-darker opacity-75 font-normal leading-none mb-6">Kawartha Combo</p>
+							<p class="text-2xl text-blue-700 opacity-75 font-normal leading-none mb-6">Kawartha Combo</p>
 							<div class="flex flex-1 mb-6">
 								<div class="flex self-start items-center">
-									<span class="text-3xl text-grey-dark leading-none mr-2">$</span>
-                                    <span class="text-4xl font-semibold tracking-tight leading-none text-teal mr-3">24.95</span>
+									<span class="text-3xl text-grey-600 leading-none mr-2">$</span>
+                                    <span class="text-4xl font-semibold tracking-tighter leading-none text-teal mr-3">24.95</span>
                                 </div>
                             </div>
                         </div>

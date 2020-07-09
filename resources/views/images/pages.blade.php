@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <ul class="list-reset flex justify-center items-center py-8 text-xl">
+    <ul class="flex justify-center items-center py-8 text-xl">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <li class="">

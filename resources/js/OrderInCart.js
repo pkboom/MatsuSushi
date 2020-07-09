@@ -1,49 +1,50 @@
-import Cookies from './Cookies';
+import Cookies from './Cookies'
 
 class OrderInCart {
-    constructor(cookieName) {
-        this.orders = Cookies.get(cookieName);
-        this.cookieName = cookieName;
-    }
+  constructor(cookieName) {
+    this.orders = Cookies.get(cookieName)
+    this.cookieName = cookieName
+  }
 
-    static getCookie(cookieName) {
-        return new this(cookieName);
-    }
+  static getCookie(cookieName) {
+    return new this(cookieName)
+  }
 
-    get() {
-        return this.orders;
-    }
-    
-    place(order) {
-        this.orders.push(order);
-        this.storeForAWeekInCookie();
-    }
+  get() {
+    return this.orders
+  }
 
-    storeForAWeekInCookie() {
-        Cookies.set(this.cookieName, this.orders, 7);
-    }
+  place(order) {
+    this.orders.push(order)
+    this.storeForAWeekInCookie()
+  }
 
-    remove(index) {
-        this.orders.splice(index, 1);
-        this.storeForAWeekInCookie();
-        return this.orders;
-    }
-    
-    update(index) {
-        this.orders[index].quantity = value;
-        this.storeForAWeekInCookie();
-        return this.orders;
-    }
+  storeForAWeekInCookie() {
+    Cookies.set(this.cookieName, this.orders, 7)
+  }
 
-    subTotal() {
-        return this.orders
-            .map(el => parseFloat(el.price) * parseFloat(el.quantity))
-            .reduce((acc, cur) => acc + cur, 0).toFixed(2)
-    }
+  remove(index) {
+    this.orders.splice(index, 1)
+    this.storeForAWeekInCookie()
+    return this.orders
+  }
 
-    count() {
-        return this.orders.length || null;
-    }
+  update(index, value) {
+    this.orders[index].quantity = value
+    this.storeForAWeekInCookie()
+    return this.orders
+  }
+
+  subTotal() {
+    return this.orders
+      .map(el => parseFloat(el.price) * parseFloat(el.quantity))
+      .reduce((acc, cur) => acc + cur, 0)
+      .toFixed(2)
+  }
+
+  count() {
+    return this.orders.length || null
+  }
 }
 
-export default OrderInCart;
+export default OrderInCart
