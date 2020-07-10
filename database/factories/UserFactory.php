@@ -11,24 +11,3 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
-
-$factory->define(App\Category::class, function (Faker $faker) {
-    return [
-        'name' => $faker->word,
-    ];
-});
-
-$factory->define(App\Menu::class, function (Faker $faker) {
-    return [
-        'name' => $faker->word,
-        'category_id' => factory(App\Category::class),
-        'descript' => $faker->paragraph,
-        'price' => (string) $faker->randomNumber,
-    ];
-});
-
-$factory->define(App\Image::class, function (Faker $faker) {
-    return [
-        'filename' => $faker->image(),
-    ];
-});

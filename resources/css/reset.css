@@ -19,3 +19,8 @@ a {
 ::after {
   border-color: theme('colors.gray.200');
 }
+
+::selection {
+  color: #fff;
+  background: salmon;
+}

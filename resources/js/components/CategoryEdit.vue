@@ -12,7 +12,7 @@
       :href="'/menu/categories/' + category.slug"
       v-else
       v-text="name"
-      class="text-grey-800 hover:font-semibold hover:text-black mr-2"
+      class="text-gray-800 hover:font-semibold hover:text-black mr-2"
     ></a>
 
     <button

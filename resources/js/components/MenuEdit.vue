@@ -13,7 +13,7 @@
       />
       <input
         type="text"
-        v-model="menu.descript"
+        v-model="menu.description"
         @keyup.enter="edited"
         class="w-full appearance-none bg-white text-black border-2 py-2 px-2 rounded"
       />
@@ -21,7 +21,7 @@
     <div v-else class="mr-4 flex flex-col">
       <span v-text="menu.name"></span>
       <span v-text="menu.price"></span>
-      <span v-text="menu.descript"></span>
+      <span v-text="menu.description"></span>
     </div>
 
     <button
@@ -59,7 +59,7 @@ export default {
           .patch(location.pathname + '/items/' + this.menu.id, {
             name: this.menu.name,
             price: this.menu.price,
-            descript: this.menu.descript,
+            description: this.menu.description,
           })
           .then(() => flash('Updated!'))
           .catch(error => {

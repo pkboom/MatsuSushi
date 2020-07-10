@@ -10,7 +10,7 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>

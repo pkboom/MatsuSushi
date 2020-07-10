@@ -14,11 +14,12 @@ mix
   .webpackConfig({
     resolve: {
       alias: {
-        vue$: 'vue/dist/vue.runtime.esm.js',
+        vue$: 'vue/dist/vue.esm.js',
         '@': path.resolve('resources/js'),
       },
     },
   })
+  .browserSync('matsusushi.test')
 
 if (mix.inProduction()) {
   mix.version()

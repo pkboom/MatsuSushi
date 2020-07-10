@@ -3,7 +3,7 @@
         <div class="w-1/2 mr-2 flex flex-col">
             <input type="text" v-model="name" class="w-full appearance-none bg-white text-black border-2 py-2 px-2 rounded mb-2" placeholder="name">
             <input type="text" v-model="price" class="w-full appearance-none bg-white text-black border-2 py-2 px-2 rounded mb-2" placeholder="price">
-            <input type="text" v-model="descript" @keyup.enter="added" class="w-full appearance-none bg-white text-black border-2 py-2 px-2 rounded mb-2" placeholder="descript">
+            <input type="text" v-model="description" @keyup.enter="added" class="w-full appearance-none bg-white text-black border-2 py-2 px-2 rounded mb-2" placeholder="description">
         </div>
 
         <button class="bg-purple text-white py-2 px-2 rounded" @click="added">Add Menu</button>
@@ -18,7 +18,7 @@
             return {
                 name: '',
                 price: '',
-                descript: '',
+                description: '',
             }
         },
         
@@ -27,14 +27,14 @@
                 axios.post(location.pathname, {
                     name: this.name,
                     price: this.price,
-                    descript: this.descript
+                    description: this.description
                 })
                 .then(({data})=> {
                     this.$emit('add', data);
 
                     this.name = '';
                     this.price = '';
-                    this.descript = '';
+                    this.description = '';
                     
                     flash('You have added new menu!');
 

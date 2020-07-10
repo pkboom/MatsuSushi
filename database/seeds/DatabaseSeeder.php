@@ -1,20 +1,26 @@
 <?php
 
+use App\Category;
+use App\Menu;
+use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-
-
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(ChatroomsTableSeeder::class);
+        User::create([
+            'name' => 'Keunbae',
+            'email' => 'admin@matsu.com',
+            'password' => bcrypt('asdfasdf'),
+        ]);
+
+        factory(Category::class, 20)->create()->each(function ($category) {
+            foreach (range(1, rand(5, 15)) as $value) {
+                factory(Menu::class, $value)->create([
+                    'category_id' => $category->id,
+                ]);
+            }
+        });
     }
 }

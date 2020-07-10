@@ -1,11 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 	<section class="bg-white pt-8 mt-8 -mb-1" >
 		<iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=17&center=44.3065%2C-78.3088&key=AIzaSyAA3ikuYTSKZPPXVWgAOgIlSoGJKpviLgw" allowfullscreen></iframe>
 	</section>
 
-    <section class="bg-grey-100 py-8">
+    <section class="bg-gray-100 py-8">
         <div class="w-5/6 max-w-2xl mx-auto my-8">
             <div class="flex flex-wrap -mx-6 -my-6">
                 <div class="w-full lg:w-1/2 px-6 py-6">

@@ -30,7 +30,7 @@ export default {
 
   computed: {
     descriptToLowerCase() {
-      let lowerCaseDescript = this.data.descript.toLowerCase()
+      let lowerCaseDescript = this.data.description.toLowerCase()
       return lowerCaseDescript.replace('california', 'California')
     },
   },

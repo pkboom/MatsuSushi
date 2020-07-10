@@ -13,7 +13,7 @@ class MenuController extends Controller
         $data = request()->validate([
             'name' => 'required|string|max:100',
             'price' => 'required|string|max:50',
-            'descript' => 'required|string'
+            'description' => 'required|string'
             ]);
 
         return $category->menu()->create($data);
@@ -24,7 +24,7 @@ class MenuController extends Controller
         $data = request()->validate([
             'name' => 'required|string|max:100',
             'price' => 'required|string|max:50',
-            'descript' => 'required|string'
+            'description' => 'required|string'
         ]);
 
         $item->update($data);

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Menu;
 use App\Category;
+use App\Menu;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ManipulateMenuTest extends TestCase
 {
@@ -26,13 +26,13 @@ class ManipulateMenuTest extends TestCase
         $category = create(Category::class);
 
         $menu = make(Menu::class, [
-            'category_id' => $category->id
+            'category_id' => $category->id,
         ]);
 
         $this->post($category->path(), $menu->toArray());
 
         $this->assertDatabaseHas('menus', [
-            'name' => $menu->name
+            'name' => $menu->name,
         ]);
     }
 
@@ -53,11 +53,11 @@ class ManipulateMenuTest extends TestCase
         $this->patch($menu->path(), [
             'name' => 'something new',
             'price' => '1',
-            'descript' => 'new descript'
+            'description' => 'new description',
         ]);
 
         $this->assertDatabaseHas('menus', [
-            'name' => 'something new'
+            'name' => 'something new',
         ]);
     }
 
@@ -78,7 +78,7 @@ class ManipulateMenuTest extends TestCase
         $this->deleteJson($menu->path());
 
         $this->assertDatabaseMissing('menus', [
-            'name' => $menu->name
+            'name' => $menu->name,
         ]);
     }
 }
