@@ -13,6 +13,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default" defer></script>
 	<link rel="shortcut icon" type="image/x-icon" href="/images/sushi.ico" />
 	
 	<title>{{ config('app.name', 'Matsu Sushi') }}</title>
