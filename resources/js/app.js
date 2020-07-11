@@ -30,13 +30,6 @@ files.keys().map(key =>
   )
 )
 
-// Vue.component('matsu-menu', require('./components/MatsuMenu.vue'))
-// Vue.component('categories', require('./components/Categories.vue'))
-// Vue.component('menus', require('./components/Menus.vue'))
-// Vue.component('cart', require('./components/Cart.vue'))
-// Vue.component('matsu-images', require('./components/MatsuImages.vue'))
-// Vue.component('flash', require('./components/Flash.vue'))
-
 const app = new Vue({
   el: '#app',
 })

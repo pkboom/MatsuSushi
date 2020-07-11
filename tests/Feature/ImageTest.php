@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Image;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
 
-class ManipulateImageTest extends TestCase
+class ImageTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -37,17 +37,14 @@ class ManipulateImageTest extends TestCase
 
         Storage::fake('public');
 
-        Storage::disk('public')->makeDirectory('thumbs');
-
         $this->post('/upload', [
-                'images' => [$file = UploadedFile::fake()->image('image.jpg')]
+                'images' => [$file = UploadedFile::fake()->image('image.jpg')],
             ]);
 
         Storage::disk('public')->assertExists($file->hashName());
-        Storage::disk('public')->assertExists('thumbs/' . $file->hashName());
 
         $this->assertDatabaseHas('images', [
-            'filename' => $file->hashName()
+            'filename' => $file->hashName(),
         ]);
     }
 
@@ -56,7 +53,7 @@ class ManipulateImageTest extends TestCase
     {
         $this->signIn()
             ->post('/upload', [
-                'images' => [UploadedFile::fake()->create('anyfile.txt', 1)]
+                'images' => [UploadedFile::fake()->create('anyfile.txt', 1)],
             ])
             ->assertSessionHasErrors('images.0');
     }
@@ -76,19 +73,16 @@ class ManipulateImageTest extends TestCase
 
         Storage::fake('public');
 
-        Storage::disk('public')->makeDirectory('thumbs');
-
         $this->post('/upload', [
-                'images' => [$file = UploadedFile::fake()->image('image.jpg')]
+                'images' => [$file = UploadedFile::fake()->image('image.jpg')],
             ]);
 
         $this->delete('/upload/1');
 
         Storage::disk('public')->assertMissing($file->hashName());
-        Storage::disk('public')->assertMissing('thumbs/' . $file->hashName());
 
         $this->assertDatabaseMissing('images', [
-            'filename' => $file->hashName()
+            'filename' => $file->hashName(),
         ]);
     }
 }

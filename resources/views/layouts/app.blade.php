@@ -33,7 +33,7 @@
 		<flash message="{{ session('flash') }}"></flash>
 	</div>
 	
-	<script src="{{ mix('js/app.js') }} defer"></script> 
+	<script src="{{ mix('js/app.js') }}" defer></script> 
 	
 	@yield('javascript')
 </body>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<section class="py-8 h-screen" id="main-image">
+	<section class="h-screen" id="main-image">
         <div class="flex items-center justify-center text-center h-full">
             <div>
                 <h1 class="text-4xl text-green-500 sm:text-5xl font-semibold leading-none mb-4">Matsu Sushi</h1>
@@ -9,7 +9,6 @@
             </div>
         </div>
     </section>
-
 	<section class="bg-white sm:py-8">
 		<div class="max-w-3xl mx-auto w-5/6 my-8">
             <div class="flex text-gray-700 text-lg py-8 my-8 leading-relaxed">
@@ -17,7 +16,6 @@
             </div>
         </div>
     </section>
-	
     <section class="bg-blue-100 py-8">
         <div class="max-w-3xl mx-auto w-5/6 my-8">
             <div class="flex flex-col justfiy-center text-center pb-8">
@@ -63,14 +61,14 @@
 							<p class="font-normal leading-none mb-6 opacity-75 text-blue-700 text-xl">Peterborough Combo</p>
 							<div class="flex flex-1 mb-6">
 								<div class="flex self-start items-center">
-									<span class="leading-none mr-2 text-2xl text-3xl text-gray-600">$</span>
+									<span class="leading-none mr-2 text-2xl text-gray-600">$</span>
                                     <span class="font-semibold leading-none mr-3 text-3xl text-teal-500 tracking-tighter">18.95</span>
                                 </div>
                             </div>
 							<p class="font-normal leading-none mb-6 opacity-75 text-blue-700 text-xl">Kawartha Combo</p>
 							<div class="flex flex-1 mb-6">
 								<div class="flex self-start items-center">
-									<span class="leading-none mr-2 text-2xl text-3xl text-gray-600">$</span>
+									<span class="leading-none mr-2 text-2xl text-gray-600">$</span>
                                     <span class="font-semibold leading-none mr-3 text-3xl text-teal-500 tracking-tighter">24.95</span>
                                 </div>
                             </div>

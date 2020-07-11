@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8fef052920440c2f1fab58d34b43543",
+    "content-hash": "34eca727b670221b34ca079ca236a570",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -695,16 +695,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.19.0",
+            "version": "v7.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "67d6d9688122dcf6c449b74ddc873fc9934e81e6"
+                "reference": "4f373c373915ec828e3374029919a6fe946ed6d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/67d6d9688122dcf6c449b74ddc873fc9934e81e6",
-                "reference": "67d6d9688122dcf6c449b74ddc873fc9934e81e6",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4f373c373915ec828e3374029919a6fe946ed6d9",
+                "reference": "4f373c373915ec828e3374029919a6fe946ed6d9",
                 "shasum": ""
             },
             "require": {
@@ -848,7 +848,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-07-07T14:11:36+00:00"
+            "time": "2020-07-10T16:41:39+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -913,6 +913,61 @@
                 "psysh"
             ],
             "time": "2020-07-07T15:10:00+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/da9350533d0da60d5dc42fb7de9c561c72129bba",
+                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^7.0",
+                "illuminate/filesystem": "^7.0",
+                "illuminate/support": "^7.0",
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/",
+                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "time": "2020-06-30T20:56:33+00:00"
         },
         {
             "name": "league/commonmark",
@@ -5772,6 +5827,101 @@
             "time": "2020-06-22T07:06:58+00:00"
         },
         {
+            "name": "pkboom/laravel-tinker-on-vscode",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pkboom/laravel-tinker-on-vscode.git",
+                "reference": "e7d9660be99d768ab8cf436cfb633c539978141f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pkboom/laravel-tinker-on-vscode/zipball/e7d9660be99d768ab8cf436cfb633c539978141f",
+                "reference": "e7d9660be99d768ab8cf436cfb633c539978141f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/tinker": "^1.0|^2.0",
+                "php": "^7.3",
+                "react/event-loop": "^1.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.2",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pkboom\\TinkerOnVscode\\TinkerOnVscodeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pkboom\\TinkerOnVscode\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Keunbae Park",
+                    "email": "ppotpo@gmail.com"
+                }
+            ],
+            "homepage": "https://github.com/pkboom/tinekr-on-vscode",
+            "keywords": [
+                "TinkerOnVscode",
+                "pkboom"
+            ],
+            "time": "2020-06-11T21:41:46+00:00"
+        },
+        {
+            "name": "react/event-loop",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/event-loop.git",
+                "reference": "6d24de090cd59cfc830263cfba965be77b563c13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/event-loop/zipball/6d24de090cd59cfc830263cfba965be77b563c13",
+                "reference": "6d24de090cd59cfc830263cfba965be77b563c13",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0 || ^6.4 || ^5.7 || ^4.8.35"
+            },
+            "suggest": {
+                "ext-event": "~1.0 for ExtEventLoop",
+                "ext-pcntl": "For signal handling support when using the StreamSelectLoop",
+                "ext-uv": "* for ExtUvLoop"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\EventLoop\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ReactPHP's core reactor event loop that libraries can use for evented I/O.",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2020-01-01T18:39:52+00:00"
+        },
+        {
             "name": "scrivo/highlight.php",
             "version": "v9.18.1.1",
             "source": {
@@ -6553,7 +6703,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "pkboom/laravel-tinker-on-vscode": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

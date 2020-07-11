@@ -2,11 +2,11 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Image;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
 
 class ImageTest extends TestCase
 {
@@ -17,14 +17,11 @@ class ImageTest extends TestCase
     {
         Storage::fake('public');
 
-        Storage::disk('public')->makeDirectory('thumbs');
-
         $file = UploadedFile::fake()->image('image.jpg');
 
         Image::store($file);
 
         Storage::disk('public')->assertExists($file->hashName());
-        Storage::disk('public')->assertExists('thumbs/' . $file->hashName());
 
         $this->assertDatabaseHas('images', [
             'filename' => $file->hashName(),

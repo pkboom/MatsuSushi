@@ -3,11 +3,11 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   theme: {
     extend: {},
-    fill: (theme) => ({
+    fill: theme => ({
       current: 'currentColor',
       ...theme('colors'),
     }),
-    stroke: (theme) => ({
+    stroke: theme => ({
       current: 'currentColor',
       ...theme('colors'),
     }),

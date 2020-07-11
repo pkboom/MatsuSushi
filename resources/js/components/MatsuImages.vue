@@ -1,7 +1,10 @@
 <template>
-  <div class="bg-white rounded border border-gray-400 mx-4" v-if="items.length">
+  <div
+    v-if="images.length"
+    class="bg-white rounded border border-gray-400 mx-4"
+  >
     <div class="flex flex-wrap">
-      <div v-for="(image, index) in items" :key="image.id" class="mr-2">
+      <div v-for="(image, index) in images" :key="image.id" class="mr-2">
         <matsu-image :data="image" @remove="remove(index)" />
       </div>
     </div>
@@ -14,26 +17,16 @@ import collection from '../mixins/collection'
 
 export default {
   components: { MatsuImage },
-
   mixins: [collection],
-
   created() {
     this.fetch()
   },
-
   methods: {
     fetch() {
-      axios.get('/gallery').then(this.refresh)
-    },
-    refresh(response) {
-      this.items = response.data
+      axios
+        .get('/upload/images')
+        .then(response => (this.images = response.data.images))
     },
   },
 }
 </script>
-
-<style>
-.flex {
-  display: flex;
-}
-</style>

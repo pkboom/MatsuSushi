@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Redirect;
 
 class RegistrationController extends Controller
 {
@@ -19,6 +20,6 @@ class RegistrationController extends Controller
 
         auth()->login($user);
 
-        return redirect()->home();
+        return Redirect::to('/upload');
     }
 }

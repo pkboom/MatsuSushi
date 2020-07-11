@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class SessionsController extends Controller
 {
     public function __construct()
     {
-        // only a guest can access sessionscontroller
         $this->middleware('guest', ['except' => ['destory', 'create']]);
     }
 
     public function create()
     {
         if (Auth::check()) {
-            return redirect()->home();
+            return Redirect::to('/upload');
         }
 
         return view('sessions.create');
@@ -34,8 +34,7 @@ class SessionsController extends Controller
                 );
         }
 
-        // Redirect to the home page
-        return redirect()->home();
+        return Redirect::to('/upload');
     }
 
     public function destory()
