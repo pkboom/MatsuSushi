@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Response;
 
 class CheckoutController extends Controller
 {
@@ -33,6 +34,8 @@ class CheckoutController extends Controller
 
         $transaction->orders()->sync(Request::input('orders'));
 
-        return view('thankyou');
+        return Response::json([
+            'transaction' => $transaction,
+        ]);
     }
 }

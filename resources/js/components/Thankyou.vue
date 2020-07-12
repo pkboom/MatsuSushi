@@ -2,7 +2,9 @@
   <layout title="Thank you">
     <div class="p-8 max-w-3xl mx-auto">
       <div class="font-semibold text-xl py-4 border-b">
-        Thank you for ordering with us!
+        Thank you, your order has been placed. Please check your email for order
+        receipt.
+        <div>Order Number: {{ transaction.id }}</div>
       </div>
     </div>
   </layout>
@@ -10,6 +12,9 @@
 
 <script>
 export default {
+  props: {
+    transaction: Object,
+  },
   data() {
     return {
       sending: false,

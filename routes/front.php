@@ -12,4 +12,5 @@ Route::get('cart', CartController::class);
 Route::get('checkout', [CheckoutController::class, 'create']);
 Route::post('checkout', [CheckoutController::class, 'store']);
 
-Route::get('thankyou', ThankyouController::class);
+Route::get('thankyou/{transaction}', ThankyouController::class)
+    ->where('transaction', '[0-9]+');

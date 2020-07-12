@@ -113,7 +113,7 @@ export default {
           localStorage.setItem('phone', this.form.phone)
           localStorage.setItem('address', this.form.address)
 
-          location.href = '/thankyou'
+          location.href = '/thankyou/' + response.data.transaction.id
         })
         .catch(error => {
           this.sending = false

@@ -2370,7 +2370,7 @@ __webpack_require__.r(__webpack_exports__);
         localStorage.setItem('name', _this.form.name);
         localStorage.setItem('phone', _this.form.phone);
         localStorage.setItem('address', _this.form.address);
-        location.href = '/thankyou';
+        location.href = '/thankyou/' + response.data.transaction.id;
       })["catch"](function (error) {
         _this.sending = false;
 
@@ -3537,7 +3537,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    transaction: Object
+  },
   data: function data() {
     return {
       sending: false
@@ -23758,7 +23763,10 @@ var render = function() {
   return _c("layout", { attrs: { title: "Thank you" } }, [
     _c("div", { staticClass: "p-8 max-w-3xl mx-auto" }, [
       _c("div", { staticClass: "font-semibold text-xl py-4 border-b" }, [
-        _vm._v("\n      Thank you for ordering with us!\n    ")
+        _vm._v(
+          "\n      Thank you, your order has been placed. Please check your email for order\n      receipt.\n      "
+        ),
+        _c("div", [_vm._v("Order Number: " + _vm._s(_vm.transaction.id))])
       ])
     ])
   ])
