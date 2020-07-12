@@ -2,6 +2,8 @@ require('./bootstrap')
 
 import Vue from 'vue'
 
+Vue.config.productionTip = false
+
 window.events = new Vue()
 
 window.flash = function(message, level = 'success') {
