@@ -1,6 +1,7 @@
 /* Reset */
 @import 'tailwindcss/base';
 @import 'reset';
+@import 'fonts/playfair-display';
 
 /* Components */
 @import 'tailwindcss/components';

@@ -13,14 +13,6 @@ window.flash = function(message, level = 'success') {
   })
 }
 
-import OrderInCart from './OrderInCart'
-
-window.Orders = OrderInCart.getCookie('ordersInCart')
-
-document.getElementById('cart-badge')
-  ? (document.getElementById('cart-badge').textContent = Orders.count())
-  : null
-
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key =>
   Vue.component(

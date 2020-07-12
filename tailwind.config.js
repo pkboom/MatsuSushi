@@ -2,7 +2,14 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ['Playfair Display', ...defaultTheme.fontFamily.sans],
+      },
+      spacing: {
+        '2px': '2px',
+      },
+    },
     fill: theme => ({
       current: 'currentColor',
       ...theme('colors'),

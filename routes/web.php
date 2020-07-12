@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SessionsController;
 
@@ -28,6 +29,8 @@ Route::get('menu/categories/{category}', [CategoryController::class, 'show']);
 Route::post('menu/categories/{category}', [MenuController::class, 'store'])->middleware('auth');
 Route::patch('menu/categories/{category}/items/{item}', [MenuController::class, 'update'])->middleware('auth');
 Route::delete('menu/categories/{category}/items/{item}', [MenuController::class, 'destroy'])->middleware('auth');
+
+Route::get('order', [OrderController::class, 'index']);
 
 Route::get('gallery', [GalleryController::class, 'index']);
 

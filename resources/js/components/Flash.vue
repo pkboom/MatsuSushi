@@ -1,60 +1,67 @@
 <template>
-    <div
-        class="alert alert-flash"
-        :class="'alert-'+level"
-        role="alert"
-        v-show="show"
-        v-text="body">
+  <div v-show="show" class="fixed bottom-6 right-6 rounded-md bg-green-50 p-4">
+    <div class="flex">
+      <div class="flex-shrink-0">
+        <svg
+          class="h-5 w-5 text-green-400"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div class="ml-3">
+        <p class="text-sm leading-5 font-medium text-green-800">
+          {{ body }}
+        </p>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        props: ['message'],
-
-        data() {
-            return {
-                body: this.message,
-                level: 'success',
-                show: false
-            }
-        },
-        
-        created() {
-            if (this.message) {
-                this.flash();
-            }
-
-            window.events.$on(
-                'flash', data => this.flash(data)
-            );
-        },
-
-        methods: {
-            flash(data) {
-                if (data) {
-                    this.body = data.message;
-                    this.level = data.level;
-                }
-
-                this.show = true;
-
-                this.hide();
-            },
-
-            hide() {
-                setTimeout(() => {
-                    this.show = false;
-                }, 3000);
-            }
-        }
+export default {
+  props: {
+    message: String,
+  },
+  data() {
+    return {
+      body: this.message,
+      level: 'success',
+      show: false,
+      timeout: null,
     }
-</script>
+  },
+  created() {
+    if (this.message) {
+      this.flash()
+    }
 
-<style>
-   .alert-flash {
-       position: fixed;
-       right: 25px;
-       bottom: 25px;
-   } 
-</style>
+    window.events.$on('flash', data => this.flash(data))
+  },
+  methods: {
+    flash(data) {
+      if (data) {
+        this.body = data.message
+        this.level = data.level
+      }
+
+      this.show = true
+
+      clearTimeout(this.timeout)
+      this.timeout = null
+
+      this.hide()
+    },
+    hide() {
+      this.timeout = setTimeout(() => {
+        this.show = false
+      }, 3000)
+    },
+  },
+}
+</script>
