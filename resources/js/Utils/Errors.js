@@ -26,7 +26,9 @@ class Errors {
   has(...keys) {
     return keys.some(key => {
       if (key.slice(-1) === '*') {
-        return Object.keys(this.errors).some(key => key.startsWith(key.slice(0, -1)))
+        return Object.keys(this.errors).some(key =>
+          key.startsWith(key.slice(0, -1))
+        )
       } else {
         return Object.keys(this.errors).includes(key)
       }
@@ -37,7 +39,9 @@ class Errors {
     const error = fields.find(field => this.has(field))
 
     if (error && error.slice(-1) === '*') {
-      let error = Object.keys(this.errors).find(key => key.startsWith(key.slice(0, -1)))
+      let error = Object.keys(this.errors).find(key =>
+        key.startsWith(key.slice(0, -1))
+      )
 
       return error ? this.errors[error][0] : null
     } else {

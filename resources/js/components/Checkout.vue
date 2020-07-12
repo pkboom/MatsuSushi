@@ -2,122 +2,124 @@
   <layout title="Cart">
     <div class="p-8 max-w-3xl mx-auto">
       <div class="font-semibold text-xl py-4 border-b">
-        Order Summary
+        Checkout
       </div>
-      <div class="bg-white rounded overflow-x-auto border-b">
-        <table class="w-full">
-          <tr v-for="(order, key) in orders" :key="key">
-            <td class="py-4 whitespace-no-wrap">
-              <div>
-                {{ order.name }}
-                <button
-                  class="underline text-blue-600 text-xs ml-2"
-                  @click="destroy(key)"
-                >
-                  delete
-                </button>
-              </div>
-              <div class="text-xs text-gray-400 mt-2">
-                {{ order.description }}
-              </div>
-            </td>
-            <td class="py-4 whitespace-no-wrap text-right">
-              $ {{ order.price }}
-            </td>
-          </tr>
-        </table>
+      <div class="bg-white overflow-hidden w-full">
+        <form @submit.prevent="submit">
+          <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+            <div class="pr-6 pb-8 lg:w-1/2">
+              <text-input
+                v-model="form.name"
+                :error="errors.first('name')"
+                label="Name"
+              />
+            </div>
+            <div class="pr-6 pb-8 lg:w-1/2">
+              <text-input
+                v-model="form.phone"
+                :error="errors.first('phone')"
+                label="Phone"
+              />
+            </div>
+            <div class="pr-6 pb-8 w-full">
+              <text-input
+                v-model="form.address"
+                :error="errors.first('address')"
+                label="Address"
+              />
+            </div>
+            <div class="pr-6 pb-8 w-full">
+              <textarea-input
+                v-model="form.request"
+                :error="errors.first('request')"
+                label="Request"
+              />
+            </div>
+          </div>
+          <div class="px-8 flex flex-col items-end py-4 space-y-4">
+            <div>
+              <span class="text-gray-500">Subtotal:</span>
+              $ {{ form.subtotal }}
+            </div>
+            <div>
+              <span class="text-gray-500">GST/HST:</span>
+              $ {{ form.tax }}
+            </div>
+            <div>
+              <span class="text-gray-500">Tip:</span>
+              $ {{ form.tip }}
+            </div>
+            <div>
+              <span class="text-gray-500">Total:</span>
+              <span class="text-red-600 font-bold">$ {{ form.total }}</span>
+            </div>
+          </div>
+          <div
+            class="px-8 py-4 border-t border-gray-100 flex justify-end items-center"
+          >
+            <loading-button :loading="sending" class="btn" type="submit">
+              Checkout
+            </loading-button>
+          </div>
+        </form>
       </div>
-      <div class="flex justify-end py-4">
-        <div class="flex items-center">
-          <span class="mr-2 whitespace-no-wrap">Tip Percentage:</span>
-          <select v-model="tipPercentage" class="mt-1 w-full form-select py-1">
-            <option value="0" />
-            <option value="0.05">5%</option>
-            <option value="0.10">10%</option>
-            <option value="0.15">15%</option>
-            <option value="0.20">20%</option>
-            <option value="0.25">25%</option>
-            <option value="0.30">30%</option>
-          </select>
-        </div>
-      </div>
-      <div class="flex flex-col items-end py-4 space-y-4">
-        <div>
-          <span class="text-gray-500">Subtotal:</span>
-          $ {{ subtotal }}
-        </div>
-        <div>
-          <span class="text-gray-500">GST/HST:</span>
-          $ {{ tax }}
-        </div>
-        <div>
-          <span class="text-gray-500">Tip:</span>
-          $ {{ tip }}
-        </div>
-        <div>
-          <span class="text-gray-500">Total:</span>
-          <span class="text-red-600 font-bold">$ {{ total }}</span>
-        </div>
-      </div>
-    </div>
-    <div>
-      <a href="/address" class="btn">Confirm Order</a>
     </div>
   </layout>
 </template>
 
 <script>
+import Errors from '@/Utils/Errors'
+
 export default {
   data() {
     return {
-      orders: null,
-      subtotal: null,
-      tax: null,
-      tipPercentage: null,
-      tip: 0,
-      total: null,
+      sending: false,
+      form: {
+        name: null,
+        phone: null,
+        address: null,
+        request: null,
+        orders: null,
+        subtotal: null,
+        tax: null,
+        tip: null,
+        total: null,
+      },
+      errors: new Errors(),
     }
-  },
-  watch: {
-    tipPercentage() {
-      this.calculate()
-    },
-    orders() {
-      this.calculate()
-    },
   },
   mounted() {
-    if (localStorage.getItem('orders')) {
-      this.orders = JSON.parse(localStorage.getItem('orders'))
-    }
+    this.form.orders = JSON.parse(localStorage.getItem('orders')).map(
+      order => order.id
+    )
 
-    this.calculate()
+    this.form.name = localStorage.getItem('name')
+    this.form.phone = localStorage.getItem('phone')
+    this.form.address = localStorage.getItem('address')
+    this.form.subtotal = localStorage.getItem('subtotal')
+    this.form.tax = localStorage.getItem('tax')
+    this.form.tip = localStorage.getItem('tip')
+    this.form.total = localStorage.getItem('total')
   },
   methods: {
-    calculate() {
-      this.subtotal = this.orders
-        .map(order => Number(order.price))
-        .reduce((total, price) => total + price, 0)
-        .toFixed(2)
+    submit() {
+      this.sending = true
+      axios
+        .post('/checkout', this.form)
+        .then(response => {
+          this.sending = false
 
-      this.tax = (Number(this.subtotal) * 0.13).toFixed(2)
+          localStorage.setItem('name', this.form.name)
+          localStorage.setItem('phone', this.form.phone)
+          localStorage.setItem('address', this.form.address)
 
-      this.tip = (this.subtotal * this.tipPercentage).toFixed(2)
+          location.href = '/thankyou'
+        })
+        .catch(error => {
+          this.sending = false
 
-      this.total = (
-        Number(this.subtotal) +
-        Number(this.tip) +
-        Number(this.tax)
-      ).toFixed(2)
-    },
-    destroy(selected) {
-      this.orders = this.orders.filter((order, key) => key !== selected)
-
-      localStorage.setItem('orders', JSON.stringify(this.orders))
-
-      events.$emit('orders', {
-        count: this.orders.length,
-      })
+          this.errors.record(error.response.data.errors)
+        })
     },
   },
 }

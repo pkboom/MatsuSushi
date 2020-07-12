@@ -74,12 +74,14 @@ export default {
       subtotal: null,
       tax: null,
       tipPercentage: null,
-      tip: 0,
+      tip: null,
       total: null,
     }
   },
   watch: {
     tipPercentage() {
+      localStorage.setItem('tipPercentage', this.tipPercentage)
+
       this.calculate()
     },
     orders() {
@@ -91,14 +93,18 @@ export default {
       this.orders = JSON.parse(localStorage.getItem('orders'))
     }
 
+    this.tipPercentage = localStorage.getItem('tipPercentage')
+
     this.calculate()
   },
   methods: {
     calculate() {
       this.subtotal = this.orders
-        .map(order => Number(order.price))
-        .reduce((total, price) => total + price, 0)
-        .toFixed(2)
+        ? this.orders
+          .map(order => Number(order.price))
+          .reduce((total, price) => total + price, 0)
+          .toFixed(2)
+        : '0.00'
 
       this.tax = (Number(this.subtotal) * 0.13).toFixed(2)
 
@@ -109,6 +115,11 @@ export default {
         Number(this.tip) +
         Number(this.tax)
       ).toFixed(2)
+
+      localStorage.setItem('subtotal', this.subtotal)
+      localStorage.setItem('tax', this.tax)
+      localStorage.setItem('tip', this.tip)
+      localStorage.setItem('total', this.total)
     },
     destroy(selected) {
       this.orders = this.orders.filter((order, key) => key !== selected)

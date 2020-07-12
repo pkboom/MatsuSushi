@@ -6,6 +6,8 @@ Vue.config.productionTip = false
 
 window.events = new Vue()
 
+Vue.prototype.csrfToken = window.App.csrfToken
+
 window.flash = function(message, level = 'success') {
   window.events.$emit('flash', {
     message: message,
