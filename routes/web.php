@@ -9,7 +9,6 @@ use App\Http\Controllers\SessionsController;
 
 Route::view('/', 'welcome');
 Route::view('contact', 'contact');
-Route::view('about', 'about');
 
 Route::view('register', 'registration.create')->middleware('guest');
 Route::post('register', [RegistrationController::class, 'store'])->middleware('guest');
