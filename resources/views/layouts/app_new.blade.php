@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>admin</title>
+	<title>Matsu Sushi</title>
 	<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="font-sans bg-white leading-none text-gray-800 antialiased">
