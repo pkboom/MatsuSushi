@@ -14,7 +14,7 @@ class SeedImageCommand extends Command
         Image::truncate();
 
         foreach (glob(storage_path('app/public/*')) as $filename) {
-            $filename = str_replace('/home/y/code/matsusushi/storage/app/public/', '', $filename);
+            $filename = preg_replace('/.*public\//', '', $filename);
 
             Image::create([
                 'filename' => $filename,
