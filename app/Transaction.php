@@ -13,8 +13,8 @@ class Transaction extends Model
         return 10;
     }
 
-    public function orders()
+    public function items()
     {
-        return $this->belongsToMany(Item::class, 'item_transaction');
+        return $this->belongsToMany(Item::class);
     }
 }

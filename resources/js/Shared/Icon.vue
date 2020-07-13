@@ -40,7 +40,6 @@
   <svg v-else-if="name === 'time'" viewBox="0 0 20 20"><path d="M9 8.5V4h2v5.586l3.95 3.95-1.414 1.414L9 10.414V8.5zM10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10zm0-2a8 8 0 100-16 8 8 0 000 16z" fill-rule="evenodd" /></svg>
   <svg v-else-if="name === 'users'" viewBox="0 0 24 24"><path d="M9 12A5 5 0 119 2a5 5 0 010 10zm0-2a3 3 0 100-6 3 3 0 000 6zm7 11a1 1 0 01-2 0v-2a3 3 0 00-3-3H7a3 3 0 00-3 3v2a1 1 0 01-2 0v-2a5 5 0 015-5h4a5 5 0 015 5v2zm1-5a1 1 0 010-2 5 5 0 015 5v2a1 1 0 01-2 0v-2a3 3 0 00-3-3zm-2-4a1 1 0 010-2 3 3 0 000-6 1 1 0 010-2 5 5 0 010 10z" /></svg>
   <svg v-else-if="name === 'graph'" viewBox="0 0 24 24"><path d="M20 22H4a2 2 0 01-2-2v-8c0-1.1.9-2 2-2h4V8c0-1.1.9-2 2-2h4V4c0-1.1.9-2 2-2h4a2 2 0 012 2v16a2 2 0 01-2 2zM14 8h-4v12h4V8zm-6 4H4v8h4v-8zm8-8v16h4V4h-4z" /></svg>
-  <svg v-else-if="name === 'cart'" viewBox="0 0 20 20"><path d="M3 5l1.333 4H4a3 3 0 000 6h13v-2H4.007a1.001 1.001 0 11-.008-2H17l3-9H4V.997C4 .453 3.548 0 2.99 0H0v2h2l1 3zm2 15a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z" fill-rule="evenodd" /></svg>
 </template>
 
 <script>

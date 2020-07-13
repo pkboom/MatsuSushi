@@ -1,6 +1,6 @@
 <template>
   <div class="p-6 admin-bg min-h-screen flex justify-center items-center">
-    <div class="w-full max-w-sm">
+    <div class="w-full max-w-md">
       <form
         class="mt-8 bg-white rounded-lg shadow-lg overflow-hidden"
         @submit.prevent="submit"

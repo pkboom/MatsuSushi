@@ -10,14 +10,14 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('stripe_id');
             $table->string('name', 100);
             $table->string('phone', 50);
-            $table->string('address', 150);
+            $table->string('address');
             $table->string('subtotal', 50);
-            $table->string('tax', 50);
-            $table->string('tip', 50);
-            $table->string('total', 50);
+            $table->string('tip', 10);
             $table->text('request')->nullable();
+            $table->string('status', 10);
             $table->timestamps();
         });
     }

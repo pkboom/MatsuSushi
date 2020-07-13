@@ -2,6 +2,7 @@ import Errors from '@/Utils/Errors'
 import { InertiaApp } from '@inertiajs/inertia-vue'
 import PortalVue from 'portal-vue'
 import Route from '../../vendor/tightenco/ziggy/src/js/route.js'
+import vClickOutside from 'v-click-outside'
 import Vue from 'vue'
 import _ from 'lodash'
 
@@ -9,6 +10,7 @@ Vue.config.productionTip = false
 
 Vue.use(InertiaApp)
 Vue.use(PortalVue)
+Vue.use(vClickOutside)
 Vue.prototype.$route = (...args) => Route(...args).url()
 Vue.prototype._ = _
 

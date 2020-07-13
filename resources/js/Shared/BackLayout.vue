@@ -9,7 +9,7 @@
           >
             <inertia-link
               :href="$route('admin.dashboard')"
-              class="text-xl text-white font-serif"
+              class="py-2 text-xl text-white font-serif"
             >
               Matsu Sushi
             </inertia-link>
@@ -72,7 +72,7 @@
           <div class="w-full overflow-hidden px-4 py-8 md:p-12">
             <div
               v-if="$page.flash.success && showFlash"
-              class="mb-8 flex items-center justify-between bg-green-400 rounded max-w-lg"
+              class="mb-8 flex items-center justify-between bg-green-400 rounded max-w-2xl"
             >
               <div class="flex items-center">
                 <icon
@@ -96,7 +96,7 @@
             </div>
             <div
               v-if="$page.flash.error && showFlash"
-              class="mb-8 flex items-center justify-between bg-red-400 rounded max-w-lg"
+              class="mb-8 flex items-center justify-between bg-red-400 rounded max-w-2xl"
             >
               <div class="flex items-center">
                 <icon
@@ -120,7 +120,7 @@
             </div>
             <div
               v-if="$page.errors.any() && showFlash"
-              class="mb-8 flex items-center justify-between bg-red-400 rounded max-w-lg"
+              class="mb-8 flex items-center justify-between bg-red-400 rounded max-w-2xl"
             >
               <div class="flex items-center">
                 <icon

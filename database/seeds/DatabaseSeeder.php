@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('asdfasdf'),
         ]);
 
+        DB::unprepared(file_get_contents(database_path('category_menu.sql')));
+
         $this->call(GallerySeeder::class);
+
+        $this->call(TransactionSeeder::class);
     }
 }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -40,13 +40,13 @@ class CategoryController extends Controller
             ])
         );
 
-        return Redirect::route('categories.edit', $category)->with('success', 'Category created.');
+        return Redirect::route('admin.categories.edit', $category)->with('success', 'Category created.');
     }
 
     public function edit(Category $category)
     {
         return Inertia::render('Categories/Edit', [
-            'category' => $category->only('id', 'name', 'domain', 'api_key', 'skillspass_key', 'skillspass_token', 'skillspass_secret', 'deleted_at'),
+            'category' => $category->only('id', 'name'),
         ]);
     }
 
@@ -63,8 +63,10 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        $category->items->each->delete();
+
         $category->delete();
 
-        return Redirect::route('categories')->with('success', 'Category deleted.');
+        return Redirect::route('admin.categories')->with('success', 'Category deleted.');
     }
 }

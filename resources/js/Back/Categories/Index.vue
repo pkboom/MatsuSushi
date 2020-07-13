@@ -6,7 +6,7 @@
     <div class="mb-6 flex justify-between items-center">
       <search-filter
         v-model="form.search"
-        class="w-full max-w-md mr-4"
+        class="w-full max-w-lg mr-4"
         :filter-show="false"
         @reset="reset"
       />
@@ -29,7 +29,7 @@
           v-for="category in categories.data"
           :key="category.id"
           class="hover:bg-gray-100 focus:bg-gray-100 cursor-pointer"
-          @click="$inertia.visit($route('categories.edit', category.id))"
+          @click="$inertia.visit($route('admin.categories.edit', category.id))"
         >
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ category.name }}
@@ -64,11 +64,11 @@ export default {
     form: {
       handler: _.throttle(function() {
         let query = _.pickBy(this.form)
+
         let url = this.$route(
           'admin.categories',
           Object.keys(query).length ? query : { remember: 'forget' }
         )
-        console.log(url)
         this.$inertia.replace(url)
       }, 300),
       deep: true,

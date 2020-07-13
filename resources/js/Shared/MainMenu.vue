@@ -16,6 +16,14 @@
         icon="apple"
       />
     </div>
+    <div class="mb-4">
+      <menu-item
+        name="Items"
+        url="admin/items*"
+        :link="$route('admin.items')"
+        icon="coffee"
+      />
+    </div>
   </div>
 </template>
 

@@ -51,7 +51,7 @@
         <a href="/cart" class="relative ml-1">
           <icon
             class="w-4 h-4 fill-white focus:fill-gray-400 hover:fill-gray-400"
-            name="cart"
+            name="shopping-cart"
           />
           <span
             class="absolute bg-gray-500 bottom-2 flex h-5 items-center justify-center rounded-full text-sm text-white w-5"

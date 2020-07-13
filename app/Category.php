@@ -8,15 +8,6 @@ class Category extends Model
 {
     protected $guarded = [];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::deleting(function ($category) {
-            $category->item->each->delete();
-        });
-    }
-
     public function getPerPage()
     {
         return 10;
