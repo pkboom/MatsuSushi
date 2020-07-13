@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RegistrationController;
@@ -12,11 +11,6 @@ Route::view('register', 'registration.create')->middleware('guest');
 Route::post('register', [RegistrationController::class, 'store'])->middleware('guest');
 
 Route::view('menu', 'menu.menu');
-Route::get('menu/categories', [CategoryController::class, 'index']);
-Route::post('menu/categories', [CategoryController::class, 'store'])->middleware('auth');
-Route::patch('menu/categories/{category}', [CategoryController::class, 'update'])->middleware('auth');
-Route::delete('menu/categories/{category}', [CategoryController::class, 'destroy'])->middleware('auth');
-Route::get('menu/categories/{category}', [CategoryController::class, 'show']);
 Route::post('menu/categories/{category}', [MenuController::class, 'store'])->middleware('auth');
 Route::patch('menu/categories/{category}/items/{item}', [MenuController::class, 'update'])->middleware('auth');
 Route::delete('menu/categories/{category}/items/{item}', [MenuController::class, 'destroy'])->middleware('auth');
@@ -32,5 +26,7 @@ include 'front.php';
 Route::middleware('auth')
     ->prefix('admin')
     ->group(function () {
-        include 'back.php';
+        foreach (glob(__DIR__.'/back/*.php') as $filename) {
+            include $filename;
+        }
     });
