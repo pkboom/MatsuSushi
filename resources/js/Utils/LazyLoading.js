@@ -3,6 +3,8 @@ let fetchUrl = null
 document.addEventListener('DOMContentLoaded', function() {
   var bottom = document.getElementById('bottom')
 
+  if (!bottom) return
+
   var imageObserver = new IntersectionObserver(function(entries, observer) {
     let currentBottomOffset = bottom.offsetTop < 100 ? 0 : bottom.offsetTop
 

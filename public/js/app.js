@@ -39160,6 +39160,7 @@ __webpack_require__.r(__webpack_exports__);
 var fetchUrl = null;
 document.addEventListener('DOMContentLoaded', function () {
   var bottom = document.getElementById('bottom');
+  if (!bottom) return;
   var imageObserver = new IntersectionObserver(function (entries, observer) {
     var currentBottomOffset = bottom.offsetTop < 100 ? 0 : bottom.offsetTop;
     entries.forEach(function (entry) {
