@@ -11,10 +11,12 @@
     "php": "^7.4",
     "fideloper/proxy": "^4.0",
     "fruitcake/laravel-cors": "^2.0",
+    "inertiajs/inertia-laravel": "^0.2.5",
     "intervention/image": "^2.4",
     "laravel/framework": "^7.0",
     "laravel/tinker": "^2.4",
-    "laravel/ui": "^2.0"
+    "laravel/ui": "^2.0",
+    "tightenco/ziggy": "^0.9.4"
   },
   "require-dev": {
     "beyondcode/laravel-dump-server": "^1.0",

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import MatsuImage from '../components/MatsuImage.vue'
+import MatsuImage from '../Pages/MatsuImage.vue'
 import collection from '../mixins/collection'
 
 export default {

@@ -1,39 +1,19 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html class="h-full bg-gray-100">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-
-	<title>admin</title>
-
-	<link href="{{ mix('css/app.css') }}" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-
-    <style media="screen">
-            .font-sans {
-                font-family: 'Source Sans Pro', apple-system, BlinkMacSystemFont, 'Helvetica Neue', arial, sans-serif;
-            }
-    </style>
-
-	@yield('header')
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default" defer></script>
+    <script src="{{ mix('/js/back/app.js') }}" defer></script>
+    @routes
 </head>
-<body class="my-8">
-	<div id="app">
-		@include('admin.nav')
 
-		<div class="mt-8 mx-8 pt-8">
-			@yield('content')
-		</div>
+<body class="font-sans bg-gray-100 leading-none text-gray-800 antialiased">
 
-		<flash message="{{ session('flash') }}"></flash>
-	</div>
+    @inertia
 
-	<script src="{{ mix('js/app.js') }}" defer></script> 
-
-	@yield('javascript')
 </body>
+
 </html>

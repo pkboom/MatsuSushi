@@ -6,6 +6,7 @@ let tailwindcss = require('tailwindcss')
 
 mix
   .js('resources/js/app.js', 'public/js')
+  .js('resources/js/back/app.js', 'public/js/back')
   .postCss('resources/css/app.css', 'public/css', [
     cssImport(),
     cssNesting(),

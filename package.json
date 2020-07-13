@@ -30,5 +30,8 @@
         "vue": "^2.6.11",
         "vue-template-compiler": "^2.6.11"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@inertiajs/inertia": "^0.1.9",
+        "@inertiajs/inertia-vue": "^0.1.4"
+    }
 }
