@@ -2,34 +2,134 @@
 
 namespace App\Providers;
 
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\UrlWindow;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-
-// use App\Libraries\AuthenticateUser;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        Date::use(CarbonImmutable::class);
+        CarbonImmutable::setWeekStartsAt(CarbonImmutable::SUNDAY);
+        CarbonImmutable::setWeekEndsAt(CarbonImmutable::SATURDAY);
+
+        Inertia::version(function () {
+            return md5_file(public_path('mix-manifest.json'));
+        });
+
+        Inertia::share('app.name', Config::get('app.name'));
+
+        Inertia::share('csrfToken', function () {
+            return csrf_token();
+        });
+
+        Inertia::share('errors', function () {
+            return Session::get('errors') ? Session::get('errors')->getBag('default')->getMessages() : (object) [];
+        });
+
+        Inertia::share('flash', function () {
+            return [
+                'success' => Session::get('success'),
+                'error' => Session::get('error'),
+            ];
+        });
+        Inertia::share('auth', function () {
+            if (Auth::user()) {
+                return [
+                    'user' => [
+                        'id' => Auth::user()->id,
+                        'email' => Auth::user()->email,
+                        'first_name' => Auth::user()->first_name,
+                        'last_name' => Auth::user()->last_name,
+                    ],
+                ];
+            }
+        });
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register()
     {
-        $this->app->bind('App\Libraries\AuthenticateUser', \App\Libraries\AuthenticateUser::class);
+        $this->registerLengthAwarePaginator();
+    }
 
-        // App::bind('App\Billing\Stripe', function(){
-        //     return new \App\Billing\Stripe('asfdasdfasf');
-        // });
+    protected function registerLengthAwarePaginator()
+    {
+        $this->app->bind(LengthAwarePaginator::class, function ($app, $values) {
+            return new class(...array_values($values)) extends LengthAwarePaginator {
+                public function only(...$attributes)
+                {
+                    return $this->transform(function ($item) use ($attributes) {
+                        return $item->only($attributes);
+                    });
+                }
+
+                public function transform($callback)
+                {
+                    $this->items->transform($callback);
+
+                    return $this;
+                }
+
+                public function toArray()
+                {
+                    return [
+                        'data' => $this->items->toArray(),
+                        'links' => $this->links(),
+                    ];
+                }
+
+                public function links($view = null, $data = [])
+                {
+                    $this->appends(Request::all());
+
+                    $window = UrlWindow::make($this);
+
+                    $elements = array_filter([
+                        $window['first'],
+                        is_array($window['slider']) ? '...' : null,
+                        $window['slider'],
+                        is_array($window['last']) ? '...' : null,
+                        $window['last'],
+                    ]);
+
+                    return Collection::make($elements)->flatMap(function ($item) {
+                        if (is_array($item)) {
+                            return Collection::make($item)->map(function ($url, $page) {
+                                return [
+                                    'url' => $url,
+                                    'label' => $page,
+                                    'active' => $this->currentPage() === $page,
+                                ];
+                            });
+                        } else {
+                            return [
+                                [
+                                    'url' => null,
+                                    'label' => '...',
+                                    'active' => false,
+                                ],
+                            ];
+                        }
+                    })->prepend([
+                        'url' => $this->previousPageUrl(),
+                        'label' => 'Previous',
+                        'active' => false,
+                    ])->push([
+                        'url' => $this->nextPageUrl(),
+                        'label' => 'Next',
+                        'active' => false,
+                    ]);
+                }
+            };
+        });
     }
 }
