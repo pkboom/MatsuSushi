@@ -8,8 +8,8 @@
 				<li class="nav-item {{ request()->is('upload') ? 'active' : '' }}">
 					<a class="nav-link" href="/upload">Image</a>
 				</li>
-				<li class="nav-item {{ request()->is('menu/categories') ? 'active' : '' }}">
-					<a class="nav-link" href="/menu/categories">Menu</a>
+				<li class="nav-item {{ request()->is('item/categories') ? 'active' : '' }}">
+					<a class="nav-link" href="/item/categories">Menu</a>
 				</li>
 			</ul>
 

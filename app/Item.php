@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Item extends Model
 {
     protected $guarded = [];
 
@@ -13,8 +13,7 @@ class Menu extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function path()
+    public function getPerPage()
     {
-        return $this->category->path() . '/items/' . $this->id;
+        return 10;
     }
-}

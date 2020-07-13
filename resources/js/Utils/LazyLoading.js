@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             window.scrollTo(0, currentBottomOffset)
 
-            fetchUrl = result.images.next_page_url
+            fetchUrl = result.images.links[result.images.links.length - 1].url
           })
       }
     })

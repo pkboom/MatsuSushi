@@ -15,6 +15,6 @@ class Transaction extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Menu::class, 'menu_transaction');
+        return $this->belongsToMany(Item::class, 'item_transaction');
     }
 }

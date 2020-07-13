@@ -2,33 +2,33 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Category;
-use App\Menu;
+use App\Item;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ManipulateCategoryTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function a_user_can_get_menu_categories()
+    public function a_user_can_get_item_categories()
     {
         $this->withoutExceptionHandling();
 
         $category = create(Category::class);
 
-        $response = $this->getJson('/menu/categories')->json();
+        $response = $this->getJson('/item/categories')->json();
 
         $this->assertEquals($response[0]['name'], $category->name);
     }
 
     /** @test */
-    public function a_user_can_get_menu_items_for_a_given_cateroy()
+    public function a_user_can_get_items_for_a_given_cateroy()
     {
         $category = create(Category::class);
 
-        $menu = create(Menu::class, [
+        $item = create(Item::class, [
             'category_id' => $category->id,
         ]);
 
@@ -40,31 +40,14 @@ class ManipulateCategoryTest extends TestCase
     /** @test */
     public function a_guest_may_not_add_a_category()
     {
-        $this->post('/menu/categories')
+        $this->post('/item/categories')
             ->assertRedirect('login');
-    }
-
-    /** @test */
-    public function an_admin_can_add_a_category_with_a_slug()
-    {
-        $this->signIn();
-
-        $category = make(Category::class, [
-            'name' => 'some category'
-        ]);
-
-        $this->post('/menu/categories', $category->toArray());
-
-        $this->assertDatabaseHas('categories', [
-            'name' => $category->name,
-            'slug' => 'some-category'
-        ]);
     }
 
     /** @test */
     public function a_guest_may_not_delete_a_category()
     {
-        $this->delete('/menu/categories/1')
+        $this->delete('/item/categories/1')
             ->assertRedirect('login');
     }
 
@@ -75,25 +58,25 @@ class ManipulateCategoryTest extends TestCase
 
         $category = create(Category::class);
 
-        $menu = create(Menu::class, [
+        $item = create(Item::class, [
             'category_id' => $category->id,
         ]);
 
         $this->delete($category->path());
 
         $this->assertDatabaseMissing('categories', [
-            'name' => $category->name
+            'name' => $category->name,
         ]);
 
-        $this->assertDatabaseMissing('menus', [
-            'name' => $menu->name
+        $this->assertDatabaseMissing('items', [
+            'name' => $item->name,
         ]);
     }
 
     /** @test */
     public function a_guest_may_not_update_a_category()
     {
-        $this->patch('/menu/categories/1')
+        $this->patch('/item/categories/1')
             ->assertRedirect('login');
     }
 
@@ -105,11 +88,11 @@ class ManipulateCategoryTest extends TestCase
         $category = create(Category::class);
 
         $this->patchJson($category->path(), [
-            'name' => 'something new'
+            'name' => 'something new',
         ]);
 
         $this->assertDatabaseHas('categories', [
-            'name' => 'something new'
+            'name' => 'something new',
         ]);
     }
 
@@ -121,10 +104,10 @@ class ManipulateCategoryTest extends TestCase
         $category = create(Category::class);
 
         $categoryWithSameName = make(Category::class, [
-           'name' => $category->name
+           'name' => $category->name,
         ]);
 
-        $this->post('/menu/categories', $categoryWithSameName->toArray())
+        $this->post('/item/categories', $categoryWithSameName->toArray())
             ->assertSessionHasErrors('name');
     }
 }

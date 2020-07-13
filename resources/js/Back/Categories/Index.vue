@@ -65,9 +65,10 @@ export default {
       handler: _.throttle(function() {
         let query = _.pickBy(this.form)
         let url = this.$route(
-          'categories',
+          'admin.categories',
           Object.keys(query).length ? query : { remember: 'forget' }
         )
+        console.log(url)
         this.$inertia.replace(url)
       }, 300),
       deep: true,

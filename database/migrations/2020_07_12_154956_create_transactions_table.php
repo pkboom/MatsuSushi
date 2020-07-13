@@ -20,17 +20,10 @@ class CreateTransactionsTable extends Migration
             $table->text('request')->nullable();
             $table->timestamps();
         });
-
-        Schema::create('menu_transaction', function (Blueprint $table) {
-            $table->integer('transaction_id')->index();
-            $table->integer('menu_id')->index();
-            $table->timestamps();
-        });
     }
 
     public function down()
     {
         Schema::dropIfExists('transactions');
-        Schema::dropIfExists('menu_transaction');
     }
 }

@@ -17,5 +17,4 @@
             <img src="/images/menu/menu12.jpg" alt="">
         </div>
     </div>
-	{{--  <matsu-menu></matsu-menu>  --}}
 @endsection

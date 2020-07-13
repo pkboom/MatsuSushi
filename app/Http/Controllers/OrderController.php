@@ -9,7 +9,7 @@ class OrderController extends Controller
     public function index()
     {
         return view('orders.index', [
-            'categories' => Category::with('menu')->get(),
+            'categories' => Category::with('items')->get(),
         ]);
     }
 }

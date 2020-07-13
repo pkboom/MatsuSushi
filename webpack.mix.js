@@ -20,7 +20,6 @@ mix
       },
     },
   })
-  .browserSync('matsusushi.test')
 
 if (mix.inProduction()) {
   mix.version()

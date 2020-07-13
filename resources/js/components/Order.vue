@@ -23,7 +23,7 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-12">
           <div
-            v-for="item in menu"
+            v-for="item in items"
             :key="item.id"
             class="grid grid-cols-1 gap-2 border rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
@@ -57,17 +57,17 @@ export default {
         id: this.categories[0].id,
         name: this.categories[0].name,
       },
-      menu: this.categories[0].menu,
+      items: this.categories[0].items,
     }
   },
   methods: {
-    select(menu) {
-      let category = this.categories.find(category => category.id === menu)
+    select(selected) {
+      let category = this.categories.find(category => category.id === selected)
 
       this.currentCategory.id = category.id
       this.currentCategory.name = category.name
 
-      this.menu = category.menu
+      this.items = category.items
     },
     place(order) {
       let orders = []

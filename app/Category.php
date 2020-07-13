@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -14,27 +13,18 @@ class Category extends Model
         parent::boot();
 
         static::deleting(function ($category) {
-            $category->menu->each->delete();
-        });
-
-        static::created(function ($category) {
-            $category->update(['slug' => Str::slug($category->name)]);
+            $category->item->each->delete();
         });
     }
 
-    public function getRouteKeyName()
+    public function getPerPage()
     {
-        return 'slug';
+        return 10;
     }
 
-    public function menu()
+    public function items()
     {
-        return $this->hasMany(Menu::class);
-    }
-
-    public function path()
-    {
-        return "/menu/categories/{$this->slug}";
+        return $this->hasMany(Item::class);
     }
 
     public function scopeFilter($query, array $filters)

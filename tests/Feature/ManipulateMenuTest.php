@@ -3,82 +3,82 @@
 namespace Tests\Feature;
 
 use App\Category;
-use App\Menu;
+use App\Item;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ManipulateMenuTest extends TestCase
+class ManipulateitemTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function a_guest_may_not_create_a_menu_item()
+    public function a_guest_may_not_create_a_item()
     {
-        $this->post('/menu/categories/1')
+        $this->post('/item/categories/1')
             ->assertRedirect('login');
     }
 
     /** @test */
-    public function an_admin_can_add_a_menu()
+    public function an_admin_can_add_a_item()
     {
         $this->signIn();
 
         $category = create(Category::class);
 
-        $menu = make(Menu::class, [
+        $item = make(Item::class, [
             'category_id' => $category->id,
         ]);
 
-        $this->post($category->path(), $menu->toArray());
+        $this->post($category->path(), $item->toArray());
 
-        $this->assertDatabaseHas('menus', [
-            'name' => $menu->name,
+        $this->assertDatabaseHas('items', [
+            'name' => $item->name,
         ]);
     }
 
     /** @test */
-    public function a_guest_may_not_edit_a_menu_item()
+    public function a_guest_may_not_edit_a_item()
     {
-        $this->patch('/menu/categories/1/items/1')
+        $this->patch('/item/categories/1/items/1')
             ->assertRedirect('login');
     }
 
     /** @test */
-    public function an_admin_can_edit_a_menu_item()
+    public function an_admin_can_edit_a_item()
     {
         $this->signIn();
 
-        $menu = create(Menu::class);
+        $item = create(Item::class);
 
-        $this->patch($menu->path(), [
+        $this->patch($item->path(), [
             'name' => 'something new',
             'price' => '1',
             'description' => 'new description',
         ]);
 
-        $this->assertDatabaseHas('menus', [
+        $this->assertDatabaseHas('items', [
             'name' => 'something new',
         ]);
     }
 
     /** @test */
-    public function a_guest_may_not_delete_a_menu_item()
+    public function a_guest_may_not_delete_a_item()
     {
-        $this->delete('/menu/categories/1/items/1')
+        $this->delete('/item/categories/1/items/1')
             ->assertRedirect('login');
     }
 
     /** @test */
-    public function an_admin_can_delete_a_menu_item()
+    public function an_admin_can_delete_a_item()
     {
         $this->signIn();
 
-        $menu = create(Menu::class);
+        $item = create(Item::class);
 
-        $this->deleteJson($menu->path());
+        $this->deleteJson($item->path());
 
-        $this->assertDatabaseMissing('menus', [
-            'name' => $menu->name,
+        $this->assertDatabaseMissing('items', [
+            'name' => $item->name,
         ]);
     }
 }
