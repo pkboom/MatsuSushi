@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ThankyouController;
 
-Route::get('gallery', [GalleryController::class, 'index']);
+Route::get('gallery', [ImageController::class, 'index']);
 
 Route::get('order', [OrderController::class, 'index']);
 

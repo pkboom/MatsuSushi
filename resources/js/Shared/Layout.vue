@@ -48,15 +48,15 @@
             <a href="/cart">Cart</a>
           </div>
         </div>
-        <a href="/cart" class="relative ml-1">
+        <a href="/cart" class="relative ml-2">
           <icon
             class="w-4 h-4 fill-white focus:fill-gray-400 hover:fill-gray-400"
             name="shopping-cart"
           />
           <span
-            class="absolute bg-gray-500 bottom-2 flex h-5 items-center justify-center rounded-full text-sm text-white w-5"
+            class="absolute bg-gray-500 bottom-2 flex h-4 items-center justify-center rounded-full text-sm text-white w-4"
             :class="count > 0 ? 'flex' : 'hidden'"
-            :style="{ bottom: '10px', right: '-13px' }"
+            :style="{ bottom: '16px', right: '-10px', 'font-size': '0.6rem' }"
           >
             <span v-if="count < 10">{{ count }}</span>
             <span v-else>+</span>

@@ -5,7 +5,7 @@
         name="Home"
         url="admin/dashboard"
         :link="$route('admin.dashboard')"
-        icon="store-front"
+        icon="dashboard"
       />
     </div>
     <div class="mb-4">
@@ -21,7 +21,7 @@
         name="Items"
         url="admin/items*"
         :link="$route('admin.items')"
-        icon="menu"
+        icon="coffee"
       />
     </div>
     <div class="mb-4">
@@ -29,7 +29,7 @@
         name="Images"
         url="admin/images*"
         :link="$route('admin.images')"
-        icon="certificate"
+        icon="document"
       />
     </div>
     <div class="mb-4">
@@ -37,7 +37,7 @@
         name="Transactions"
         url="admin/transactions*"
         :link="$route('admin.transactions')"
-        icon="coffee"
+        icon="credit"
       />
     </div>
   </div>

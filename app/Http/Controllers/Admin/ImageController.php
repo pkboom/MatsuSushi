@@ -15,7 +15,13 @@ class ImageController extends Controller
     {
         if (Request::wantsJson()) {
             return Response::json([
-                'images' => Image::latest()->paginate(),
+                'images' => Image::latest()->paginate()
+                    ->transform(function ($image) {
+                        return [
+                            'id' => $image->id,
+                            'path' => '/storage/'.$image->filename,
+                        ];
+                    }),
             ]);
         }
 
@@ -31,7 +37,7 @@ class ImageController extends Controller
 
     public function store()
     {
-        $item = Image::create(
+        $image = Image::create(
             Request::validate([
                 'category_id' => ['required', 'exists:categories,id'],
                 'name' => ['required', 'max:100'],
@@ -43,9 +49,9 @@ class ImageController extends Controller
         return Redirect::route('admin.images')->with('success', 'Image created.');
     }
 
-    public function destroy(Image $item)
+    public function destroy(Image $image)
     {
-        $item->delete();
+        $image->delete();
 
         return Redirect::route('admin.images')->with('success', 'Image deleted.');
     }
