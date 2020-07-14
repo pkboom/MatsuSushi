@@ -1,5 +1,5 @@
 <template>
-  <back-layout title="Images">
+  <admin-layout title="Images">
     <div class="mb-6 flex justify-between items-center">
       <breadcrumb name="Images" />
       <inertia-link class="btn" :href="$route('admin.images.create')">
@@ -10,7 +10,7 @@
     <div>
       <gallery :url="$route('admin.images')" @hit="destroy" />
     </div>
-  </back-layout>
+  </admin-layout>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <back-layout title="Transaction">
+  <admin-layout title="Transaction">
     <div class="mb-8">
       <breadcrumb
         :previous-url="$route('admin.transactions')"
@@ -21,7 +21,7 @@
         <div class="">Status: {{ transaction.status }}</div>
       </div>
     </div>
-  </back-layout>
+  </admin-layout>
 </template>
 
 <script>

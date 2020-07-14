@@ -1,5 +1,5 @@
 <template>
-  <back-layout :title="form.name">
+  <admin-layout :title="form.name">
     <div class="mb-8">
       <breadcrumb
         :previous-url="$route('admin.categories')"
@@ -39,7 +39,7 @@
         </div>
       </form>
     </div>
-  </back-layout>
+  </admin-layout>
 </template>
 
 <script>

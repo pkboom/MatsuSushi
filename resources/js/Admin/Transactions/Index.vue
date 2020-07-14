@@ -1,5 +1,5 @@
 <template>
-  <back-layout title="Transaction">
+  <admin-layout title="Transaction">
     <div class="mb-8">
       <breadcrumb name="Transaction" />
     </div>
@@ -66,7 +66,7 @@
       </table>
     </div>
     <pagination :links="transactions.links" />
-  </back-layout>
+  </admin-layout>
 </template>
 
 <script>

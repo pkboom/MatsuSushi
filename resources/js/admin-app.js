@@ -32,7 +32,7 @@ new Vue({
     h(InertiaApp, {
       props: {
         initialPage: JSON.parse(app.dataset.page),
-        resolveComponent: page => pages(`./Back/${page}.vue`).default,
+        resolveComponent: page => pages(`./Admin/${page}.vue`).default,
         transformProps: props => {
           return {
             ...props,

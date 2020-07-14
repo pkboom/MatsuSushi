@@ -1,5 +1,5 @@
 <template>
-  <back-layout title="Create Category">
+  <admin-layout title="Create Category">
     <div class="mb-8">
       <breadcrumb
         :previous-url="$route('admin.categories')"
@@ -27,7 +27,7 @@
         </div>
       </form>
     </div>
-  </back-layout>
+  </admin-layout>
 </template>
 
 <script>

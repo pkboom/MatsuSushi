@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default" defer></script>
-    <script src="{{ mix('/js/back-app.js') }}" defer></script>
+    <script src="{{ mix('/js/admin-app.js') }}" defer></script>
     @routes
 </head>
 

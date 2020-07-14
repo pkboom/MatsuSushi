@@ -37,16 +37,15 @@ class ImageController extends Controller
 
     public function store()
     {
-        $image = Image::create(
-            Request::validate([
-                'category_id' => ['required', 'exists:categories,id'],
-                'name' => ['required', 'max:100'],
-                'price' => ['required', 'numeric', 'min:0'],
-                'description' => ['nullable', 'string'],
-            ])
-        );
+        Request::validate([
+            'file' => ['required', 'image', 'max:5000'],
+        ]);
 
-        return Redirect::route('admin.images')->with('success', 'Image created.');
+        Image::create([
+            'filename' => Request::file('file')->store('public'),
+        ]);
+
+        return response('File uploaded.');
     }
 
     public function destroy(Image $image)

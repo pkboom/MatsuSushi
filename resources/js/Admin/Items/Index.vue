@@ -1,5 +1,5 @@
 <template>
-  <back-layout title="Item">
+  <admin-layout title="Item">
     <div class="mb-8">
       <breadcrumb name="Item" />
     </div>
@@ -55,7 +55,7 @@
       </table>
     </div>
     <pagination :links="items.links" />
-  </back-layout>
+  </admin-layout>
 </template>
 
 <script>

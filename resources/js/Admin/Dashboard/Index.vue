@@ -1,7 +1,7 @@
 <template>
-  <back-layout title="Dashboard">
+  <admin-layout title="Dashboard">
     <button class="btn" @click="login">Log into kakao</button>
-  </back-layout>
+  </admin-layout>
 </template>
 
 <script>
