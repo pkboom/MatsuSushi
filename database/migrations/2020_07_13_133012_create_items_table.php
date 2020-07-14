@@ -12,8 +12,8 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('category_id');
-            $table->string('price');
             $table->text('description')->nullable();
+            $table->string('price');
             $table->timestamps();
         });
     }
