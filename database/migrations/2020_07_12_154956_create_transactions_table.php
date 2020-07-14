@@ -11,7 +11,9 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->string('stripe_id');
-            $table->string('name', 100);
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
+            $table->string('email');
             $table->string('phone', 50);
             $table->string('address');
             $table->string('subtotal', 50);

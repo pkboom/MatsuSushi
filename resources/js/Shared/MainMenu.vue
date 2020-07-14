@@ -21,6 +21,22 @@
         name="Items"
         url="admin/items*"
         :link="$route('admin.items')"
+        icon="menu"
+      />
+    </div>
+    <div class="mb-4">
+      <menu-item
+        name="Images"
+        url="admin/images*"
+        :link="$route('admin.images')"
+        icon="certificate"
+      />
+    </div>
+    <div class="mb-4">
+      <menu-item
+        name="Transactions"
+        url="admin/transactions*"
+        :link="$route('admin.transactions')"
         icon="coffee"
       />
     </div>

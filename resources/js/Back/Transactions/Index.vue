@@ -1,7 +1,7 @@
 <template>
-  <back-layout title="Category">
+  <back-layout title="Transaction">
     <div class="mb-8">
-      <breadcrumb name="Category" />
+      <breadcrumb name="Transaction" />
     </div>
     <div class="mb-6 flex justify-between items-center">
       <search-filter
@@ -10,48 +10,70 @@
         :filter-show="false"
         @reset="reset"
       />
-      <inertia-link class="btn" :href="$route('admin.categories.create')">
-        <span>Create</span>
-        <span class="hidden md:inline">Category</span>
-      </inertia-link>
     </div>
     <div class="bg-white rounded shadow overflow-x-auto">
       <table class="w-full">
         <tr>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Name
+          </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Email
+          </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Phone
+          </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Total
+          </th>
           <th
             class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
             colspan="2"
           >
-            Name
+            Status
           </th>
         </tr>
         <tr
-          v-for="category in categories.data"
-          :key="category.id"
+          v-for="transaction in transactions.data"
+          :key="transaction.id"
           class="hover:bg-gray-100 focus:bg-gray-100 cursor-pointer"
-          @click="$inertia.visit($route('admin.categories.edit', category.id))"
+          @click="
+            $inertia.visit($route('admin.transactions.show', transaction.id))
+          "
         >
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ category.name }}
+            {{ transaction.name }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ transaction.email }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ transaction.phone }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ transaction.total }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ transaction.status }}
           </td>
           <td class="border-t px-4 align-middle w-min">
             <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
           </td>
         </tr>
-        <tr v-if="categories.data.length === 0">
-          <td class="border-t px-6 py-4" colspan="2">No categories found.</td>
+        <tr v-if="transactions.data.length === 0">
+          <td class="border-t px-6 py-4" colspan="5">No transactions found.</td>
         </tr>
       </table>
     </div>
-    <pagination :links="categories.links" />
+    <pagination :links="transactions.links" />
   </back-layout>
 </template>
 
 <script>
 export default {
   props: {
-    categories: Object,
     filters: Object,
+    transactions: Object,
   },
   data() {
     return {
@@ -66,7 +88,7 @@ export default {
         let query = _.pickBy(this.form)
 
         let url = this.$route(
-          'admin.categories',
+          'admin.transactions',
           Object.keys(query).length ? query : { remember: 'forget' }
         )
         this.$inertia.replace(url)

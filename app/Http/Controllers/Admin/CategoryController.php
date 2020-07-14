@@ -18,10 +18,10 @@ class CategoryController extends Controller
             'categories' => Category::latest()
                 ->filter(Request::only('search'))
                 ->paginate()
-                ->transform(function ($course) {
+                ->transform(function ($category) {
                     return [
-                        'id' => $course->id,
-                        'name' => $course->name,
+                        'id' => $category->id,
+                        'name' => $category->name,
                     ];
                 }),
         ]);

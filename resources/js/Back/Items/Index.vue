@@ -50,7 +50,7 @@
           </td>
         </tr>
         <tr v-if="items.data.length === 0">
-          <td class="border-t px-6 py-4" colspan="5">No items found.</td>
+          <td class="border-t px-6 py-4" colspan="2">No items found.</td>
         </tr>
       </table>
     </div>
