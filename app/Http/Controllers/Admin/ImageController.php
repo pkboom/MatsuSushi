@@ -42,7 +42,7 @@ class ImageController extends Controller
         ]);
 
         Image::create([
-            'filename' => Request::file('file')->store('public'),
+            'filename' => Request::file('file')->store(null, 'public'),
         ]);
 
         return response('File uploaded.');

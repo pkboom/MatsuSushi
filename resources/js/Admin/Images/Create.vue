@@ -73,7 +73,7 @@ export default {
       })
         .then(response => {
           this.$inertia
-            .replace(this.$route('files'))
+            .replace(this.$route('admin.images'))
             .then(() => (this.$page.flash.success = response.data))
         })
         .catch(error => {

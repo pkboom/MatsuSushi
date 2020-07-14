@@ -54,9 +54,9 @@
             name="shopping-cart"
           />
           <span
-            class="absolute bg-gray-500 bottom-2 flex h-4 items-center justify-center rounded-full text-sm text-white w-4"
+            class="absolute bg-gray-500 bottom-2 flex h-5 items-center justify-center rounded-full text-white w-5 text-sm"
             :class="count > 0 ? 'flex' : 'hidden'"
-            :style="{ bottom: '16px', right: '-10px', 'font-size': '0.6rem' }"
+            :style="{ bottom: '16px', right: '-13px' }"
           >
             <span v-if="count < 10">{{ count }}</span>
             <span v-else>+</span>

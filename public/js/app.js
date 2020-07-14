@@ -2602,7 +2602,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
         }
       }).then(function (response) {
-        _this2.$inertia.replace(_this2.$route('files')).then(function () {
+        _this2.$inertia.replace(_this2.$route('admin.images')).then(function () {
           return _this2.$page.flash.success = response.data;
         });
       })["catch"](function (error) {
@@ -30762,13 +30762,9 @@ var render = function() {
                   "span",
                   {
                     staticClass:
-                      "absolute bg-gray-500 bottom-2 flex h-4 items-center justify-center rounded-full text-sm text-white w-4",
+                      "absolute bg-gray-500 bottom-2 flex h-5 items-center justify-center rounded-full text-white w-5 text-sm",
                     class: _vm.count > 0 ? "flex" : "hidden",
-                    style: {
-                      bottom: "16px",
-                      right: "-10px",
-                      "font-size": "0.6rem"
-                    }
+                    style: { bottom: "16px", right: "-13px" }
                   },
                   [
                     _vm.count < 10

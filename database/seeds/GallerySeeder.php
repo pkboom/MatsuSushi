@@ -9,7 +9,7 @@ class GallerySeeder extends Seeder
     {
         foreach (range(1, 30) as $value) {
             Image::create([
-                'filename' => 'example.jpg',
+                'filename' => 'example.jpeg',
             ]);
         }
     }
