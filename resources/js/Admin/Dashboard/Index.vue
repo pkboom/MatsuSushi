@@ -1,15 +1,10 @@
 <template>
   <admin-layout title="Dashboard">
-    <button class="btn" @click="login">Log into kakao</button>
+    <a href="/admin/kakao/login" class="btn">Log into kakao</a>
+    <a href="/admin/kakao/send" class="btn">Send message</a>
   </admin-layout>
 </template>
 
 <script>
-export default {
-  methods: {
-    login() {
-      // kakao into kakao
-    },
-  },
-}
+export default {}
 </script>

@@ -2512,6 +2512,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     login: function login() {// kakao into kakao
@@ -28478,8 +28480,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("admin-layout", { attrs: { title: "Dashboard" } }, [
-    _c("button", { staticClass: "btn", on: { click: _vm.login } }, [
+    _c("a", { staticClass: "btn", attrs: { href: "/admin/kakao/login" } }, [
       _vm._v("Log into kakao")
+    ]),
+    _vm._v(" "),
+    _c("a", { staticClass: "btn", attrs: { href: "/admin/kakao/send" } }, [
+      _vm._v("Send message")
+    ]),
+    _vm._v(" "),
+    _c("a", { staticClass: "btn", attrs: { href: "/admin/kakao/friends" } }, [
+      _vm._v("Get Friends")
     ])
   ])
 }
@@ -47033,8 +47043,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

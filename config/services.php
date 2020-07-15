@@ -25,4 +25,9 @@ return [
     'google_maps' => [
         'key' => env('GOOGLE_MAPS_API_KEY'),
     ],
+
+    'kakao' => [
+        'client_id' => env('KAKAO_CLIENT_ID'),
+        'redirect_uri' => env('KAKAO_REDIRECT_URI'),
+    ],
 ];
