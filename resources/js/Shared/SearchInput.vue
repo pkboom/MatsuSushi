@@ -13,7 +13,9 @@
         @keydown.up.prevent="open"
       >
         <slot v-if="value" />
-        <div v-else-if="data.length === 0" class="text-gray-600">No options found</div>
+        <div v-else-if="data.length === 0" class="text-gray-600">
+          No options found
+        </div>
         <div v-else class="text-gray-600">Click to choose…</div>
       </div>
       <button
@@ -23,7 +25,10 @@
         class="absolute inset-y-0 right-0 px-4 block group"
         @click.stop="clear"
       >
-        <svg class="fill-gray-600 group-hover:fill-red-500 w-2 h-2" viewBox="278.046 126.846 235.908 235.908">
+        <svg
+          class="fill-gray-600 group-hover:fill-red-500 w-2 h-2"
+          viewBox="278.046 126.846 235.908 235.908"
+        >
           <path
             d="M506.784 134.017c-9.56-9.56-25.06-9.56-34.62 0L396 210.18l-76.164-76.164c-9.56-9.56-25.06-9.56-34.62 0-9.56 9.56-9.56 25.06 0 34.62L361.38 244.8l-76.164 76.165c-9.56 9.56-9.56 25.06 0 34.62 9.56 9.56 25.06 9.56 34.62 0L396 279.42l76.164 76.165c9.56 9.56 25.06 9.56 34.62 0 9.56-9.56 9.56-25.06 0-34.62L430.62 244.8l76.164-76.163c9.56-9.56 9.56-25.06 0-34.62z"
           />
@@ -91,7 +96,8 @@ export default {
     boundary: {
       type: String,
       default: 'scrollParent',
-      validator: value => ['scrollParent', 'viewport', 'window'].indexOf(value) !== -1,
+      validator: value =>
+        ['scrollParent', 'viewport', 'window'].indexOf(value) !== -1,
     },
   },
   data() {
@@ -106,7 +112,9 @@ export default {
   computed: {
     filtered() {
       if (this.search) {
-        let searchBy = !_.isArray(this.searchBy) ? [this.searchBy] : this.searchBy
+        let searchBy = !_.isArray(this.searchBy)
+          ? [this.searchBy]
+          : this.searchBy
 
         var fuse = new Fuse(this.data, {
           keys: searchBy,
@@ -130,7 +138,10 @@ export default {
     },
     show(show) {
       if (show) {
-        let selected = _.findIndex(this.data, [this.trackBy, _.get(this.value, this.trackBy)])
+        let selected = _.findIndex(this.data, [
+          this.trackBy,
+          _.get(this.value, this.trackBy),
+        ])
         if (selected !== -1) this.selected = selected
         this.inputWidth = this.$refs.input.offsetWidth
 
@@ -189,10 +200,14 @@ export default {
       this.$nextTick(() => {
         if (
           this.$refs.selected[0].offsetTop >
-          this.$refs.container.scrollTop + this.$refs.container.clientHeight - this.$refs.selected[0].clientHeight
+          this.$refs.container.scrollTop +
+            this.$refs.container.clientHeight -
+            this.$refs.selected[0].clientHeight
         ) {
           this.$refs.container.scrollTop =
-            this.$refs.selected[0].offsetTop + this.$refs.selected[0].clientHeight - this.$refs.container.clientHeight
+            this.$refs.selected[0].offsetTop +
+            this.$refs.selected[0].clientHeight -
+            this.$refs.container.clientHeight
         }
 
         if (this.$refs.selected[0].offsetTop < this.$refs.container.scrollTop) {
@@ -208,7 +223,10 @@ export default {
       }
     },
     choose(option) {
-      this.selected = _.findIndex(this.data, [this.trackBy, _.get(option, this.trackBy)])
+      this.selected = _.findIndex(this.data, [
+        this.trackBy,
+        _.get(option, this.trackBy),
+      ])
       this.$emit('input', option)
       this.$refs.input.focus()
       this.$nextTick(() => this.close())

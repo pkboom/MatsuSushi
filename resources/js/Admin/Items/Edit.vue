@@ -3,7 +3,7 @@
     <div class="mb-8">
       <breadcrumb
         :previous-url="$route('admin.items')"
-        previous-name="Item"
+        previous-name="Items"
         :name="form.name"
       />
     </div>

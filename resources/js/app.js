@@ -1,6 +1,5 @@
-require('./bootstrap')
-
 import Vue from 'vue'
+import './bootstrap'
 
 Vue.config.productionTip = false
 

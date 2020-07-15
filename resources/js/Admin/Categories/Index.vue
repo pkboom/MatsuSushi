@@ -1,7 +1,7 @@
 <template>
-  <admin-layout title="Category">
+  <admin-layout title="Categories">
     <div class="mb-8">
-      <breadcrumb name="Category" />
+      <breadcrumb name="Categories" />
     </div>
     <div class="mb-6 flex justify-between items-center">
       <search-filter
