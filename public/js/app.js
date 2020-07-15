@@ -2506,6 +2506,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Utils_Http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Utils/Http */ "./resources/js/Utils/Http.js");
 //
 //
 //
@@ -2514,9 +2515,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      message: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    Echo.channel('orders').listen('OrderPlaced', function (e) {
+      _this.message = 'Message test. Good day!';
+    });
+  },
   methods: {
-    login: function login() {// kakao into kakao
+    alarmTest: function alarmTest() {
+      this.$refs.alarm.play();
+    },
+    messageTest: function messageTest() {
+      _Utils_Http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/admin/message-test');
     }
   }
 });
@@ -28480,17 +28503,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("admin-layout", { attrs: { title: "Dashboard" } }, [
-    _c("a", { staticClass: "btn", attrs: { href: "/admin/kakao/login" } }, [
-      _vm._v("Log into kakao")
+    _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
+      _vm._v("Alarm Test")
     ]),
     _vm._v(" "),
-    _c("a", { staticClass: "btn", attrs: { href: "/admin/kakao/send" } }, [
-      _vm._v("Send message")
+    _c("button", { staticClass: "btn ml-2", on: { click: _vm.messageTest } }, [
+      _vm._v("Message Test")
     ]),
     _vm._v(" "),
-    _c("a", { staticClass: "btn", attrs: { href: "/admin/kakao/friends" } }, [
-      _vm._v("Get Friends")
-    ])
+    _c("audio", {
+      ref: "alarm",
+      attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
+    }),
+    _vm._v(" "),
+    _c("div", [_vm._v("\n    " + _vm._s(_vm.message) + "\n  ")])
   ])
 }
 var staticRenderFns = []
@@ -46680,14 +46706,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // import Echo from 'laravel-echo'
-// window.Pusher = require('pusher-js')
-// window.Echo = new Echo({
-//   broadcaster: 'pusher',
-//   key: process.env.MIX_PUSHER_APP_KEY,
-//   cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//   encrypted: true,
-// })
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
@@ -47043,8 +47062,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

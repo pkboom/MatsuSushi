@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderPlaced;
 use App\Transaction;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
@@ -15,6 +16,8 @@ class CheckoutController extends Controller
 
     public function store()
     {
+        // event(new OrderPlaced($order = 'some order'));
+
         Request::validate([
             'name' => ['required', 'max:100'],
             'address' => ['required', 'max:150'],
