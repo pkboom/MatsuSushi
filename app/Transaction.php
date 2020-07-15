@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
+    const ONLINE_ORDER_ENABLED = 'enabled';
+
+    const ONLINE_ORDER_DISABLED = 'disabled';
+
     protected $guarded = [];
 
     public function getPerPage()

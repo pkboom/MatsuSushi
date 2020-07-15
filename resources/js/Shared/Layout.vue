@@ -88,7 +88,7 @@ export default {
       this.count = JSON.parse(orders).length
     }
 
-    window.events.$on('orders', data => this.cart(data))
+    events.$on('orders', data => this.cart(data))
   },
   methods: {
     isUrl,

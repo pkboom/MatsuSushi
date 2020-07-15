@@ -30,7 +30,7 @@
       <div class="flex justify-end py-4">
         <div class="flex items-center">
           <span class="mr-2 whitespace-no-wrap">Tip Percentage:</span>
-          <select v-model="tipPercentage" class="mt-1 w-full form-select py-1">
+          <select v-model="tipPercentage" class="w-full form-select py-1 pr-7">
             <option value="0" />
             <option value="0.05">5%</option>
             <option value="0.10">10%</option>

@@ -2520,18 +2520,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    onlineOrder: String,
+    enabled: String
+  },
   data: function data() {
     return {
-      message: null
+      message: null,
+      onlineOrderButton: this.onlineOrder
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     Echo.channel('orders').listen('OrderPlaced', function (e) {
-      _this.message = 'Message test. Good day!';
+      _this.$page.flash.success = 'Message test. Good day!';
     });
   },
   methods: {
@@ -2540,6 +2552,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     messageTest: function messageTest() {
       _Utils_Http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/admin/message-test');
+    },
+    toggleOnlineOrder: function toggleOnlineOrder() {
+      var _this2 = this;
+
+      _Utils_Http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/admin/toggle-online-order').then(function (response) {
+        _this2.onlineOrderButton = response.data.onlineOrder;
+        _this2.$page.flash.success = 'Online order ' + response.data.onlineOrder;
+      });
     }
   }
 });
@@ -3660,7 +3680,7 @@ __webpack_require__.r(__webpack_exports__);
       this.flash();
     }
 
-    window.events.$on('flash', function (data) {
+    events.$on('flash', function (data) {
       return _this.flash(data);
     });
   },
@@ -3916,7 +3936,7 @@ __webpack_require__.r(__webpack_exports__);
       this.count = JSON.parse(orders).length;
     }
 
-    window.events.$on('orders', function (data) {
+    events.$on('orders', function (data) {
       return _this.cart(data);
     });
   },
@@ -4762,8 +4782,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    onlineOrder: String,
+    enabled: String
+  },
   data: function data() {
     return {
       sending: false,
@@ -28578,6 +28609,22 @@ var render = function() {
       attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
     }),
     _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn ml-2", on: { click: _vm.toggleOnlineOrder } },
+      [
+        _vm._v(
+          "\n    " +
+            _vm._s(
+              _vm.onlineOrderButton === _vm.enabled
+                ? "Disable Online Order"
+                : "Enable Online Order"
+            ) +
+            "\n  "
+        )
+      ]
+    ),
+    _vm._v(" "),
     _c("div", [_vm._v("\n    " + _vm._s(_vm.message) + "\n  ")])
   ])
 }
@@ -31742,7 +31789,7 @@ var render = function() {
                   expression: "tipPercentage"
                 }
               ],
-              staticClass: "mt-1 w-full form-select py-1",
+              staticClass: "w-full form-select py-1 pr-7",
               on: {
                 change: function($event) {
                   var $$selectedVal = Array.prototype.filter
@@ -31839,164 +31886,186 @@ var render = function() {
         _vm._v("\n      Checkout\n    ")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.submit($event)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" }, [
-              _c(
-                "div",
-                { staticClass: "pr-6 pb-8 lg:w-1/2" },
-                [
-                  _c("text-input", {
-                    attrs: { error: _vm.errors.first("name"), label: "Name" },
-                    model: {
-                      value: _vm.form.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "name", $$v)
-                      },
-                      expression: "form.name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "pr-6 pb-8 lg:w-1/2" },
-                [
-                  _c("text-input", {
-                    attrs: { error: _vm.errors.first("phone"), label: "Phone" },
-                    model: {
-                      value: _vm.form.phone,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "phone", $$v)
-                      },
-                      expression: "form.phone"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "pr-6 pb-8 w-full" },
-                [
-                  _c("text-input", {
-                    attrs: {
-                      error: _vm.errors.first("address"),
-                      label: "Address"
-                    },
-                    model: {
-                      value: _vm.form.address,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "address", $$v)
-                      },
-                      expression: "form.address"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "pr-6 pb-8 w-full" },
-                [
-                  _c("textarea-input", {
-                    attrs: {
-                      error: _vm.errors.first("request"),
-                      label: "Request"
-                    },
-                    model: {
-                      value: _vm.form.request,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "request", $$v)
-                      },
-                      expression: "form.request"
-                    }
-                  })
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
+      _vm.onlineOrder === _vm.enabled
+        ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c(
-              "div",
-              { staticClass: "px-8 flex flex-col items-end py-4 space-y-4" },
-              [
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Subtotal:")
-                  ]),
-                  _vm._v(
-                    "\n            $ " +
-                      _vm._s(_vm.form.subtotal) +
-                      "\n          "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("GST/HST:")
-                  ]),
-                  _vm._v(
-                    "\n            $ " + _vm._s(_vm.form.tax) + "\n          "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Tip:")
-                  ]),
-                  _vm._v(
-                    "\n            $ " + _vm._s(_vm.form.tip) + "\n          "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Total:")
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-red-600 font-bold" }, [
-                    _vm._v("$ " + _vm._s(_vm.form.total))
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
+              "form",
               {
-                staticClass:
-                  "px-8 py-4 border-t border-gray-100 flex justify-end items-center"
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.submit($event)
+                  }
+                }
               },
               [
+                _c("div", { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" }, [
+                  _c(
+                    "div",
+                    { staticClass: "pr-6 pb-8 lg:w-1/2" },
+                    [
+                      _c("text-input", {
+                        attrs: {
+                          error: _vm.errors.first("name"),
+                          label: "Name"
+                        },
+                        model: {
+                          value: _vm.form.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "name", $$v)
+                          },
+                          expression: "form.name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "pr-6 pb-8 lg:w-1/2" },
+                    [
+                      _c("text-input", {
+                        attrs: {
+                          error: _vm.errors.first("phone"),
+                          label: "Phone"
+                        },
+                        model: {
+                          value: _vm.form.phone,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "phone", $$v)
+                          },
+                          expression: "form.phone"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "pr-6 pb-8 w-full" },
+                    [
+                      _c("text-input", {
+                        attrs: {
+                          error: _vm.errors.first("address"),
+                          label: "Address"
+                        },
+                        model: {
+                          value: _vm.form.address,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "address", $$v)
+                          },
+                          expression: "form.address"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "pr-6 pb-8 w-full" },
+                    [
+                      _c("textarea-input", {
+                        attrs: {
+                          error: _vm.errors.first("request"),
+                          label: "Request"
+                        },
+                        model: {
+                          value: _vm.form.request,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "request", $$v)
+                          },
+                          expression: "form.request"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
                 _c(
-                  "loading-button",
+                  "div",
                   {
-                    staticClass: "btn",
-                    attrs: { loading: _vm.sending, type: "submit" }
+                    staticClass: "px-8 flex flex-col items-end py-4 space-y-4"
                   },
-                  [_vm._v("\n            Checkout\n          ")]
+                  [
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500" }, [
+                        _vm._v("Subtotal:")
+                      ]),
+                      _vm._v(
+                        "\n            $ " +
+                          _vm._s(_vm.form.subtotal) +
+                          "\n          "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500" }, [
+                        _vm._v("GST/HST:")
+                      ]),
+                      _vm._v(
+                        "\n            $ " +
+                          _vm._s(_vm.form.tax) +
+                          "\n          "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500" }, [
+                        _vm._v("Tip:")
+                      ]),
+                      _vm._v(
+                        "\n            $ " +
+                          _vm._s(_vm.form.tip) +
+                          "\n          "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500" }, [
+                        _vm._v("Total:")
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "text-red-600 font-bold" }, [
+                        _vm._v("$ " + _vm._s(_vm.form.total))
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "px-8 py-4 border-t border-gray-100 flex justify-end items-center"
+                  },
+                  [
+                    _c(
+                      "loading-button",
+                      {
+                        staticClass: "btn",
+                        attrs: { loading: _vm.sending, type: "submit" }
+                      },
+                      [_vm._v("\n            Checkout\n          ")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              ]
             )
-          ]
-        )
-      ])
+          ])
+        : _c(
+            "div",
+            { staticClass: "bg-white overflow-hidden pt-2 text-lg w-full" },
+            [
+              _vm._v(
+                "\n      Sorry, online order is temporarily unavailable.\n    "
+              )
+            ]
+          )
     ])
   ])
 }
@@ -47224,8 +47293,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

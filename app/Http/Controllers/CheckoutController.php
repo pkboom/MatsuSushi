@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\OrderPlaced;
 use App\Transaction;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -11,7 +12,10 @@ class CheckoutController extends Controller
 {
     public function create()
     {
-        return view('checkout.create');
+        return view('checkout.create', [
+            'onlineOrder' => Cache::get('online-order', Transaction::ONLINE_ORDER_DISABLED),
+            'enabled' => Transaction::ONLINE_ORDER_ENABLED,
+        ]);
     }
 
     public function store()

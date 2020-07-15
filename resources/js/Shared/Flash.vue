@@ -41,7 +41,7 @@ export default {
       this.flash()
     }
 
-    window.events.$on('flash', data => this.flash(data))
+    events.$on('flash', data => this.flash(data))
   },
   methods: {
     flash(data) {

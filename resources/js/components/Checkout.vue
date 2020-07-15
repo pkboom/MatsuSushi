@@ -4,7 +4,11 @@
       <div class="font-semibold text-xl py-4 border-b">
         Checkout
       </div>
-      <div class="bg-white overflow-hidden w-full">
+
+      <div
+        v-if="onlineOrder === enabled"
+        class="bg-white overflow-hidden w-full"
+      >
         <form @submit.prevent="submit">
           <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
             <div class="pr-6 pb-8 lg:w-1/2">
@@ -63,6 +67,9 @@
           </div>
         </form>
       </div>
+      <div v-else class="bg-white overflow-hidden pt-2 text-lg w-full">
+        Sorry, online order is temporarily unavailable.
+      </div>
     </div>
   </layout>
 </template>
@@ -71,6 +78,10 @@
 import Errors from '@/Utils/Errors'
 
 export default {
+  props: {
+    onlineOrder: String,
+    enabled: String,
+  },
   data() {
     return {
       sending: false,
