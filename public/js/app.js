@@ -2533,14 +2533,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    transactions: Array,
     onlineOrder: Number
   },
   data: function data() {
     return {
-      message: null,
+      transactionData: this.transactions,
       onlineOrderButton: this.onlineOrder
     };
   },
@@ -3163,6 +3178,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -29003,42 +29019,87 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("admin-layout", { attrs: { title: "Dashboard" } }, [
     _c("div", { staticClass: "space-y-4" }, [
-      _c("div", [
-        _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
-          _vm._v("Alarm Test")
-        ])
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
+        },
+        [
+          _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
+            _vm._v("Alarm Test")
+          ]),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn", on: { click: _vm.messageTest } }, [
+            _vm._v("Message Test")
+          ]),
+          _vm._v(" "),
+          _c("audio", {
+            ref: "alarm",
+            attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn", on: { click: _vm.toggleOnlineOrder } },
+            [
+              _vm._v(
+                "\n        " +
+                  _vm._s(
+                    _vm.onlineOrderButton
+                      ? "Disable Online Order"
+                      : "Enable Online Order"
+                  ) +
+                  "\n      "
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "font-bold py-2 text-xl" }, [
+        _vm._v("Latest orders")
       ]),
       _vm._v(" "),
-      _c("div", [
-        _c("button", { staticClass: "btn", on: { click: _vm.messageTest } }, [
-          _vm._v("Message Test")
-        ]),
-        _vm._v(" "),
-        _c("audio", {
-          ref: "alarm",
-          attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "button",
-          { staticClass: "btn", on: { click: _vm.toggleOnlineOrder } },
-          [
-            _vm._v(
-              "\n        " +
-                _vm._s(
-                  _vm.onlineOrderButton
-                    ? "Disable Online Order"
-                    : "Enable Online Order"
-                ) +
-                "\n      "
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", [_vm._v("\n      " + _vm._s(_vm.message) + "\n    ")])
+      _c(
+        "div",
+        { staticClass: "grid gap-4 grid-cols-1 lg:grid-cols-2" },
+        _vm._l(_vm.transactions, function(transaction) {
+          return _c(
+            "div",
+            {
+              key: transaction.id,
+              staticClass: "bg-white rounded p-4 shadow gray-800 space-y-2"
+            },
+            [
+              _c("div", [_vm._v("Name: " + _vm._s(transaction.name))]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Email: " + _vm._s(transaction.email))]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Phone: " + _vm._s(transaction.phone))]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Address: " + _vm._s(transaction.address))]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v("Subtotal: $ " + _vm._s(transaction.subtotal))
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Tip: $ " + _vm._s(transaction.tip))]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Total: $ " + _vm._s(transaction.total))]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Message: " + _vm._s(transaction.message))]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Status: " + _vm._s(transaction.status))]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v("Created at: " + _vm._s(transaction.created_at))
+              ])
+            ]
+          )
+        }),
+        0
+      )
     ])
   ])
 }
@@ -30044,33 +30105,33 @@ var render = function() {
       { staticClass: "bg-white max-w-2xl overflow-hidden rounded shadow" },
       [
         _c("div", { staticClass: "p-8 rounded space-y-4" }, [
-          _c("div", {}, [
+          _c("div", [
             _vm._v("Stripe Id: " + _vm._s(_vm.transaction.stripe_id))
           ]),
           _vm._v(" "),
-          _c("div", {}, [_vm._v("Name: " + _vm._s(_vm.transaction.name))]),
+          _c("div", [_vm._v("Name: " + _vm._s(_vm.transaction.name))]),
           _vm._v(" "),
-          _c("div", {}, [_vm._v("Email: " + _vm._s(_vm.transaction.email))]),
+          _c("div", [_vm._v("Email: " + _vm._s(_vm.transaction.email))]),
           _vm._v(" "),
-          _c("div", {}, [_vm._v("Phone: " + _vm._s(_vm.transaction.phone))]),
+          _c("div", [_vm._v("Phone: " + _vm._s(_vm.transaction.phone))]),
           _vm._v(" "),
-          _c("div", {}, [
-            _vm._v("Address: " + _vm._s(_vm.transaction.address))
-          ]),
+          _c("div", [_vm._v("Address: " + _vm._s(_vm.transaction.address))]),
           _vm._v(" "),
-          _c("div", {}, [
+          _c("div", [
             _vm._v("Subtotal: $ " + _vm._s(_vm.transaction.subtotal))
           ]),
           _vm._v(" "),
-          _c("div", {}, [_vm._v("Tip: $ " + _vm._s(_vm.transaction.tip))]),
+          _c("div", [_vm._v("Tip: $ " + _vm._s(_vm.transaction.tip))]),
           _vm._v(" "),
-          _c("div", {}, [_vm._v("Total: $ " + _vm._s(_vm.transaction.total))]),
+          _c("div", [_vm._v("Total: $ " + _vm._s(_vm.transaction.total))]),
           _vm._v(" "),
-          _c("div", {}, [
-            _vm._v("Message: " + _vm._s(_vm.transaction.message))
-          ]),
+          _c("div", [_vm._v("Message: " + _vm._s(_vm.transaction.message))]),
           _vm._v(" "),
-          _c("div", {}, [_vm._v("Status: " + _vm._s(_vm.transaction.status))])
+          _c("div", [_vm._v("Status: " + _vm._s(_vm.transaction.status))]),
+          _vm._v(" "),
+          _c("div", [
+            _vm._v("Created at: " + _vm._s(_vm.transaction.created_at))
+          ])
         ])
       ]
     )

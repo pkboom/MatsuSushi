@@ -9,16 +9,17 @@
     </div>
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
       <div class="p-8 rounded space-y-4">
-        <div class="">Stripe Id: {{ transaction.stripe_id }}</div>
-        <div class="">Name: {{ transaction.name }}</div>
-        <div class="">Email: {{ transaction.email }}</div>
-        <div class="">Phone: {{ transaction.phone }}</div>
-        <div class="">Address: {{ transaction.address }}</div>
-        <div class="">Subtotal: $ {{ transaction.subtotal }}</div>
-        <div class="">Tip: $ {{ transaction.tip }}</div>
-        <div class="">Total: $ {{ transaction.total }}</div>
-        <div class="">Message: {{ transaction.message }}</div>
-        <div class="">Status: {{ transaction.status }}</div>
+        <div>Stripe Id: {{ transaction.stripe_id }}</div>
+        <div>Name: {{ transaction.name }}</div>
+        <div>Email: {{ transaction.email }}</div>
+        <div>Phone: {{ transaction.phone }}</div>
+        <div>Address: {{ transaction.address }}</div>
+        <div>Subtotal: $ {{ transaction.subtotal }}</div>
+        <div>Tip: $ {{ transaction.tip }}</div>
+        <div>Total: $ {{ transaction.total }}</div>
+        <div>Message: {{ transaction.message }}</div>
+        <div>Status: {{ transaction.status }}</div>
+        <div>Created at: {{ transaction.created_at }}</div>
       </div>
     </div>
   </admin-layout>

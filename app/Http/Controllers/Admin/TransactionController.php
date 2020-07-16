@@ -45,6 +45,7 @@ class TransactionController extends Controller
                 'total' => $transaction->total,
                 'message' => $transaction->message,
                 'status' => $transaction->status,
+                'created_at' => $transaction->created_at->format('Y-m-d H:i:s'),
             ],
         ]);
     }
