@@ -4,10 +4,7 @@
       <div class="font-semibold text-xl py-4 border-b">
         Checkout
       </div>
-      <div
-        v-if="onlineOrder === enabled"
-        class="bg-white overflow-hidden w-full"
-      >
+      <div v-if="onlineOrder" class="bg-white overflow-hidden w-full">
         <div class="col-md-8">
           <form id="payment-form">
             <div id="card-element" class="border rounded p-2 border-gray-500">
@@ -60,8 +57,7 @@ import Errors from '@/Utils/Errors'
 
 export default {
   props: {
-    onlineOrder: String,
-    enabled: String,
+    onlineOrder: Number,
     stripeKey: String,
   },
   data() {

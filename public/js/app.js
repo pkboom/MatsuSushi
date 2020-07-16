@@ -2523,15 +2523,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    onlineOrder: String,
-    enabled: String
+    onlineOrder: Number
   },
   data: function data() {
     return {
@@ -2558,7 +2553,7 @@ __webpack_require__.r(__webpack_exports__);
 
       _Utils_Http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/admin/toggle-online-order').then(function (response) {
         _this2.onlineOrderButton = response.data.onlineOrder;
-        _this2.$page.flash.success = 'Online order ' + response.data.onlineOrder;
+        _this2.$page.flash.success = 'Online order ' + (response.data.onlineOrder ? 'enabled' : 'disabled');
       });
     }
   }
@@ -4633,14 +4628,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    onlineOrder: String,
-    enabled: String
+    onlineOrder: Number
   },
   data: function data() {
     return {
@@ -4690,6 +4681,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -4809,6 +4802,11 @@ __webpack_require__.r(__webpack_exports__);
       events.$emit('orders', {
         count: this.orders.length
       });
+    },
+    checkout: function checkout() {
+      if (this.subtotal > 0) {
+        location.href = '/checkout';
+      }
     }
   }
 });
@@ -4879,14 +4877,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    onlineOrder: String,
-    enabled: String,
+    onlineOrder: Number,
     stripeKey: String
   },
   data: function data() {
@@ -28789,7 +28783,7 @@ var render = function() {
         _vm._v(
           "\n    " +
             _vm._s(
-              _vm.onlineOrderButton === _vm.enabled
+              _vm.onlineOrderButton
                 ? "Disable Online Order"
                 : "Enable Online Order"
             ) +
@@ -31900,7 +31894,7 @@ var render = function() {
         _vm._v("\n      Checkout\n    ")
       ]),
       _vm._v(" "),
-      _vm.onlineOrder === _vm.enabled
+      _vm.onlineOrder
         ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c(
               "form",
@@ -32107,9 +32101,11 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "flex justify-end py-4" }, [
         _c("div", { staticClass: "flex items-center" }, [
-          _c("span", { staticClass: "mr-2 whitespace-no-wrap" }, [
-            _vm._v("Tip Percentage:")
-          ]),
+          _c(
+            "span",
+            { staticClass: "mr-2 whitespace-no-wrap text-green-500" },
+            [_vm._v("\n          Tip percentage:\n        ")]
+          ),
           _vm._v(" "),
           _c(
             "select",
@@ -32184,7 +32180,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "flex justify-end mt-2" }, [
-        _c("a", { staticClass: "btn", attrs: { href: "/checkout" } }, [
+        _c("button", { staticClass: "btn", on: { click: _vm.checkout } }, [
           _vm._v("Checkout")
         ])
       ])
@@ -32219,7 +32215,7 @@ var render = function() {
         _vm._v("\n      Checkout\n    ")
       ]),
       _vm._v(" "),
-      _vm.onlineOrder === _vm.enabled
+      _vm.onlineOrder
         ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c("div", { staticClass: "col-md-8" }, [
               _c("form", { attrs: { id: "payment-form" } }, [
@@ -47618,8 +47614,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

@@ -11,7 +11,6 @@ class AddressController extends Controller
     {
         return view('address', [
             'onlineOrder' => Cache::get('online-order', Transaction::ONLINE_ORDER_DISABLED),
-            'enabled' => Transaction::ONLINE_ORDER_ENABLED,
         ]);
     }
 }

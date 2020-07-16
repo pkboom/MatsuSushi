@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    const ONLINE_ORDER_ENABLED = 'enabled';
+    const ONLINE_ORDER_ENABLED = 1;
 
-    const ONLINE_ORDER_DISABLED = 'disabled';
+    const ONLINE_ORDER_DISABLED = 0;
 
     const TAX = 13;
 

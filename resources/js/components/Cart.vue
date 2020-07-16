@@ -29,7 +29,9 @@
       </div>
       <div class="flex justify-end py-4">
         <div class="flex items-center">
-          <span class="mr-2 whitespace-no-wrap">Tip Percentage:</span>
+          <span class="mr-2 whitespace-no-wrap text-green-500">
+            Tip percentage:
+          </span>
           <select v-model="tipPercentage" class="w-full form-select py-1 pr-7">
             <option value="0" />
             <option value="0.05">5%</option>
@@ -60,7 +62,7 @@
         </div>
       </div>
       <div class="flex justify-end mt-2">
-        <a href="/checkout" class="btn">Checkout</a>
+        <button class="btn" @click="checkout">Checkout</button>
       </div>
     </div>
   </layout>
@@ -101,9 +103,9 @@ export default {
     calculate() {
       this.subtotal = this.orders
         ? this.orders
-          .map(order => Number(order.price))
-          .reduce((total, price) => total + price, 0)
-          .toFixed(2)
+            .map(order => Number(order.price))
+            .reduce((total, price) => total + price, 0)
+            .toFixed(2)
         : '0.00'
 
       this.tax = (Number(this.subtotal) * 0.13).toFixed(2)
@@ -129,6 +131,11 @@ export default {
       events.$emit('orders', {
         count: this.orders.length,
       })
+    },
+    checkout() {
+      if (this.subtotal > 0) {
+        location.href = '/checkout'
+      }
     },
   },
 }

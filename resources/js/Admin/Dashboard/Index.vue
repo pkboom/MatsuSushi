@@ -6,11 +6,7 @@
     <button class="btn ml-2" @click="messageTest">Message Test</button>
     <audio ref="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
     <button class="btn ml-2" @click="toggleOnlineOrder">
-      {{
-        onlineOrderButton === enabled
-          ? 'Disable Online Order'
-          : 'Enable Online Order'
-      }}
+      {{ onlineOrderButton ? 'Disable Online Order' : 'Enable Online Order' }}
     </button>
     <div>
       {{ message }}
@@ -23,8 +19,7 @@ import Http from '@/Utils/Http'
 
 export default {
   props: {
-    onlineOrder: String,
-    enabled: String,
+    onlineOrder: Number,
   },
   data() {
     return {
@@ -48,7 +43,8 @@ export default {
       Http.get('/admin/toggle-online-order').then(response => {
         this.onlineOrderButton = response.data.onlineOrder
 
-        this.$page.flash.success = 'Online order ' + response.data.onlineOrder
+        this.$page.flash.success =
+          'Online order ' + (response.data.onlineOrder ? 'enabled' : 'disabled')
       })
     },
   },
