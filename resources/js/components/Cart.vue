@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="flex justify-end mt-2">
-        <a href="/checkout" class="btn">Confirm Order</a>
+        <a href="/checkout" class="btn">Checkout</a>
       </div>
     </div>
   </layout>

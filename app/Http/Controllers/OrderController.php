@@ -6,9 +6,9 @@ use App\Category;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
-        return view('orders.index', [
+        return view('order', [
             'categories' => Category::with('items')->get(),
         ]);
     }

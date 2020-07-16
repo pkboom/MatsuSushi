@@ -12,9 +12,11 @@ class CheckoutController extends Controller
 {
     public function create()
     {
-        return view('checkout.create', [
+        return view('checkout', [
             'onlineOrder' => Cache::get('online-order', Transaction::ONLINE_ORDER_DISABLED),
             'enabled' => Transaction::ONLINE_ORDER_ENABLED,
+            'stripeKey' => config('services.stripe.key'),
+            'stripeSecret' => config('services.stripe.secret'),
         ]);
     }
 

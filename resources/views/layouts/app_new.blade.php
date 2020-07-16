@@ -13,6 +13,8 @@
 			'csrfToken' => csrf_token(),
 		]) !!};
     </script>
+    
+	@yield('header')
 
 </head>
 

@@ -10,6 +10,8 @@ class Transaction extends Model
 
     const ONLINE_ORDER_DISABLED = 'disabled';
 
+    const TAX = 13;
+
     protected $guarded = [];
 
     public function getPerPage()
@@ -29,7 +31,12 @@ class Transaction extends Model
 
     public function getTotalAttribute()
     {
-        return number_format($this->subtotal + ($this->subtotal * 0.13) + ($this->subtotal * $this->tip), 2);
+        return static::formattedTotal($this->subtotal, $this->tip) * 0.01;
+    }
+
+    public static function formattedTotal($subtotal, $tip)
+    {
+        return  round($subtotal * 100 + ($subtotal * Transaction::TAX) + ($subtotal * 100 * $tip), 0);
     }
 
     public function scopeFilter($query, array $filters)
