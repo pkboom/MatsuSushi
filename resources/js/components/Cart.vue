@@ -27,7 +27,7 @@
           </tr>
         </table>
       </div>
-      <div class="flex justify-end py-4">
+      <div class="flex justify-end pt-4">
         <div class="flex items-center">
           <span class="mr-2 whitespace-no-wrap text-green-500">
             Tip percentage:
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="flex justify-end mt-2">
-        <button class="btn" @click="checkout">Checkout</button>
+        <button class="btn" @click="confirm">Confirm Order</button>
       </div>
     </div>
   </layout>
@@ -132,9 +132,9 @@ export default {
         count: this.orders.length,
       })
     },
-    checkout() {
+    confirm() {
       if (this.subtotal > 0) {
-        location.href = '/checkout'
+        location.href = '/start-your-order'
       }
     },
   },

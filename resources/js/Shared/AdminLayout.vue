@@ -5,16 +5,18 @@
       <div class="min-h-screen flex flex-col">
         <div class="md:flex">
           <div
-            class="bg-gray-900 flex items-center justify-center md:flex-shrink-0 md:w-56 px-6 py-4"
+            class="bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6 py-4"
           >
-            <inertia-link
-              :href="$route('admin.dashboard')"
-              class="py-2 text-xl text-white font-serif"
-            >
-              Matsu Sushi
-            </inertia-link>
+            <div class="w-full flex justify-center">
+              <inertia-link
+                :href="$route('admin.dashboard')"
+                class="py-2 text-xl text-white font-serif"
+              >
+                Matsu Sushi
+              </inertia-link>
+            </div>
             <div
-              class="hamburger hamburger--squeeze inline-block md:hidden "
+              class="hamburger hamburger--squeeze inline-block md:hidden"
               :class="{ 'is-active': open }"
               style="z-index: 99999;"
               @click="open = !open"

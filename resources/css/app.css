@@ -9,6 +9,7 @@
 @import 'form';
 @import 'spinner';
 @import 'matsu';
+@import 'hamburger';
 
 /* Utilities */
 @import 'tailwindcss/utilities';

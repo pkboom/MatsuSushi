@@ -12,6 +12,10 @@ class Transaction extends Model
 
     const TAX = 13;
 
+    const DELIVERY = 1;
+
+    const TYPE = ['delivery', 'takeout'];
+
     protected $guarded = [];
 
     public function getPerPage()
