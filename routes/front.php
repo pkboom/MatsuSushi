@@ -11,6 +11,7 @@ use App\Http\Controllers\ThankyouController;
 Route::get('gallery', [ImageController::class, 'index']);
 
 Route::get('order', OrderController::class);
+
 Route::get('start-your-order', [StartYourOrderController::class, 'create']);
 Route::post('start-your-order', [StartYourOrderController::class, 'store']);
 

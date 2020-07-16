@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Transaction;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 
@@ -13,22 +13,16 @@ class PaymentController extends Controller
 {
     public function create()
     {
-        dump(Request::all());
-        Request::validate([
-            'orders' => ['required', 'array'],
-            'orders.*' => ['required', 'integer'],
-            'percentage' => ['required', 'numeric', 'min:0', 'max:0.3'],
-        ]);
+        dump(Session::get('order')['items']);
 
-        $subTotal = Item::whereIn('id', Request::input('orders'))
+        $subtotal = Item::whereIn('id', Session::get('order')['items'])
             ->get()
             ->map(function ($item) {
                 return $item->price;
             })
             ->sum();
 
-        $total = Transaction::formattedTotal($subTotal, Request::input('percentage'));
-        dump($total);
+        $total = Transaction::formattedTotal($subtotal, Session::get('order')['tip_percentage']);
 
         Stripe::setApiKey(config('services.stripe.secret'));
 

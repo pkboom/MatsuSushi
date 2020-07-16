@@ -106,17 +106,20 @@ export default {
         last_name: null,
         phone: null,
         address: null,
-        takeout_time: null,
+        takeout_time: '12:00pm',
         message: null,
-        orders: JSON.parse(localStorage.getItem('orders')).map(
-          order => order.id
-        ),
-        tip: localStorage.getItem('tipPercentage'),
+        items: [],
+        tip_percentage: localStorage.getItem('tip_percentage'),
       },
       errors: new Errors(),
     }
   },
   mounted() {
+    if (localStorage.getItem('items')) {
+      this.form.items = JSON.parse(localStorage.getItem('items')).map(
+        item => item.id
+      )
+    }
     // this.form.name = localStorage.getItem('name')
     // this.form.phone = localStorage.getItem('phone')
     // this.form.address = localStorage.getItem('address')
@@ -127,14 +130,7 @@ export default {
       axios
         .post('/start-your-order', this.form)
         .then(response => {
-          console.log(response.data)
-          this.sending = false
-
-          // localStorage.setItem('name', this.form.name)
-          // localStorage.setItem('phone', this.form.phone)
-          // localStorage.setItem('address', this.form.address)
-
-          // location.href = '/checkout'
+          location.href = '/checkout'
         })
         .catch(error => {
           this.sending = false

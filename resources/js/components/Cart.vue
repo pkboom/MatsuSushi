@@ -6,7 +6,7 @@
       </div>
       <div class="bg-white rounded overflow-x-auto border-b">
         <table class="w-full">
-          <tr v-for="(order, key) in orders" :key="key">
+          <tr v-for="(order, key) in items" :key="key">
             <td class="py-4 whitespace-no-wrap">
               <div>
                 {{ order.name }}
@@ -72,7 +72,7 @@
 export default {
   data() {
     return {
-      orders: null,
+      items: null,
       subtotal: null,
       tax: null,
       tipPercentage: null,
@@ -82,30 +82,27 @@ export default {
   },
   watch: {
     tipPercentage() {
-      localStorage.setItem('tipPercentage', this.tipPercentage)
+      localStorage.setItem('tip_percentage', this.tipPercentage)
 
-      this.calculate()
-    },
-    orders() {
       this.calculate()
     },
   },
   mounted() {
-    if (localStorage.getItem('orders')) {
-      this.orders = JSON.parse(localStorage.getItem('orders'))
+    if (localStorage.getItem('items')) {
+      this.items = JSON.parse(localStorage.getItem('items'))
     }
 
-    this.tipPercentage = localStorage.getItem('tipPercentage')
+    this.tipPercentage = localStorage.getItem('tip_percentage')
 
     this.calculate()
   },
   methods: {
     calculate() {
-      this.subtotal = this.orders
-        ? this.orders
-            .map(order => Number(order.price))
-            .reduce((total, price) => total + price, 0)
-            .toFixed(2)
+      this.subtotal = this.items
+        ? this.items
+          .map(order => Number(order.price))
+          .reduce((total, price) => total + price, 0)
+          .toFixed(2)
         : '0.00'
 
       this.tax = (Number(this.subtotal) * 0.13).toFixed(2)
@@ -124,13 +121,15 @@ export default {
       localStorage.setItem('total', this.total)
     },
     destroy(selected) {
-      this.orders = this.orders.filter((order, key) => key !== selected)
+      this.items = this.items.filter((order, key) => key !== selected)
 
-      localStorage.setItem('orders', JSON.stringify(this.orders))
+      localStorage.setItem('items', JSON.stringify(this.items))
 
-      events.$emit('orders', {
-        count: this.orders.length,
+      events.$emit('order-items', {
+        count: this.items.length,
       })
+
+      this.calculate()
     },
     confirm() {
       if (this.subtotal > 0) {

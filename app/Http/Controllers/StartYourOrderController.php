@@ -6,6 +6,7 @@ use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 
 class StartYourOrderController extends Controller
 {
@@ -26,10 +27,12 @@ class StartYourOrderController extends Controller
             'address' => ['nullable', 'required_if:type,delivery', 'max:250'],
             'takeout_time' => ['nullable', 'required_if:type,takeout', 'max:50'],
             'message' => ['nullable', 'string'],
-            'orders' => ['required', 'array'],
-            'orders.*' => ['required', 'integer'],
-            'tip' => ['required', 'min:0'],
+            'items' => ['required', 'array'],
+            'items.*' => ['required', 'integer'],
+            'tip_percentage' => ['required', 'min:0'],
         ]);
+
+        Session::put('order', $request);
 
         return Response::json($request);
     }

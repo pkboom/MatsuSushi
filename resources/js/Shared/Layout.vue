@@ -6,8 +6,7 @@
           <div
             class="bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6 py-4"
           >
-            <div class="md:hidden w-13"></div>
-            <div class="w-full flex justify-center">
+            <div class="md:w-full flex justify-center">
               <a href="/" class="py-2 text-xl text-white font-serif">
                 Matsu Sushi
               </a>

@@ -57,7 +57,7 @@
         </div>
         <div v-else class="grid grid-cols-1 gap-8 p-8">
           <div
-            v-for="item in items"
+            v-for="item in categoryItems"
             :key="item.id"
             class="grid grid-cols-1 gap-2 border rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
@@ -93,7 +93,7 @@ export default {
         id: this.categories[0].id,
         name: this.categories[0].name,
       },
-      items: this.categories[0].items,
+      categoryItems: this.categories[0].items,
       search: '',
       searchResult: null,
       menu: this.categories.map(category => category.items).flat(),
@@ -127,22 +127,22 @@ export default {
       this.currentCategory.id = category.id
       this.currentCategory.name = category.name
 
-      this.items = category.items
+      this.categoryItems = category.items
     },
     place(order) {
-      let orders = []
+      let items = []
 
-      if (localStorage.getItem('orders')) {
-        orders = JSON.parse(localStorage.getItem('orders'))
+      if (localStorage.getItem('items')) {
+        items = JSON.parse(localStorage.getItem('items'))
       }
 
-      orders.push(order)
+      items.push(order)
 
-      events.$emit('orders', {
-        count: orders.length,
+      events.$emit('order-items', {
+        count: items.length,
       })
 
-      localStorage.setItem('orders', JSON.stringify(orders))
+      localStorage.setItem('items', JSON.stringify(items))
 
       flash(order.name + ' added to cart')
     },

@@ -59,6 +59,7 @@ export default {
   props: {
     onlineOrder: Number,
     stripeKey: String,
+    order: Object,
   },
   data() {
     return {
@@ -74,7 +75,7 @@ export default {
 
     var stripe = Stripe(this.stripeKey)
 
-    axios.post('/payment', this.payload()).then(({ data }) => {
+    axios.post('/payment').then(({ data }) => {
       var elements = stripe.elements()
       var style = {
         base: {
@@ -184,14 +185,6 @@ export default {
       this.tax = localStorage.getItem('tax')
       this.tip = localStorage.getItem('tip')
       this.total = localStorage.getItem('total')
-    },
-    payload() {
-      return {
-        orders: JSON.parse(localStorage.getItem('orders')).map(
-          order => order.id
-        ),
-        percentage: JSON.parse(localStorage.getItem('tipPercentage')),
-      }
     },
   },
 }

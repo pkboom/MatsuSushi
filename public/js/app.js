@@ -3860,13 +3860,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var orders = localStorage.getItem('orders');
+    var items = localStorage.getItem('items');
 
-    if (orders) {
-      this.count = JSON.parse(orders).length;
+    if (items) {
+      this.count = JSON.parse(items).length;
     }
 
-    events.$on('orders', function (data) {
+    events.$on('order-items', function (data) {
       return _this.cart(data);
     });
   },
@@ -4017,7 +4017,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -4856,7 +4855,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      orders: null,
+      items: null,
       subtotal: null,
       tax: null,
       tipPercentage: null,
@@ -4866,24 +4865,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     tipPercentage: function tipPercentage() {
-      localStorage.setItem('tipPercentage', this.tipPercentage);
-      this.calculate();
-    },
-    orders: function orders() {
+      localStorage.setItem('tip_percentage', this.tipPercentage);
       this.calculate();
     }
   },
   mounted: function mounted() {
-    if (localStorage.getItem('orders')) {
-      this.orders = JSON.parse(localStorage.getItem('orders'));
+    if (localStorage.getItem('items')) {
+      this.items = JSON.parse(localStorage.getItem('items'));
     }
 
-    this.tipPercentage = localStorage.getItem('tipPercentage');
+    this.tipPercentage = localStorage.getItem('tip_percentage');
     this.calculate();
   },
   methods: {
     calculate: function calculate() {
-      this.subtotal = this.orders ? this.orders.map(function (order) {
+      this.subtotal = this.items ? this.items.map(function (order) {
         return Number(order.price);
       }).reduce(function (total, price) {
         return total + price;
@@ -4897,13 +4893,14 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem('total', this.total);
     },
     destroy: function destroy(selected) {
-      this.orders = this.orders.filter(function (order, key) {
+      this.items = this.items.filter(function (order, key) {
         return key !== selected;
       });
-      localStorage.setItem('orders', JSON.stringify(this.orders));
-      events.$emit('orders', {
-        count: this.orders.length
+      localStorage.setItem('items', JSON.stringify(this.items));
+      events.$emit('order-items', {
+        count: this.items.length
       });
+      this.calculate();
     },
     confirm: function confirm() {
       if (this.subtotal > 0) {
@@ -4983,7 +4980,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     onlineOrder: Number,
-    stripeKey: String
+    stripeKey: String,
+    order: Object
   },
   data: function data() {
     return {
@@ -4999,7 +4997,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.orderSummary();
     var stripe = Stripe(this.stripeKey);
-    axios.post('/payment', this.payload()).then(function (_ref) {
+    axios.post('/payment').then(function (_ref) {
       var data = _ref.data;
       var elements = stripe.elements();
       var style = {
@@ -5101,14 +5099,6 @@ __webpack_require__.r(__webpack_exports__);
       this.tax = localStorage.getItem('tax');
       this.tip = localStorage.getItem('tip');
       this.total = localStorage.getItem('total');
-    },
-    payload: function payload() {
-      return {
-        orders: JSON.parse(localStorage.getItem('orders')).map(function (order) {
-          return order.id;
-        }),
-        percentage: JSON.parse(localStorage.getItem('tipPercentage'))
-      };
     }
   }
 });
@@ -5263,7 +5253,7 @@ __webpack_require__.r(__webpack_exports__);
         id: this.categories[0].id,
         name: this.categories[0].name
       },
-      items: this.categories[0].items,
+      categoryItems: this.categories[0].items,
       search: '',
       searchResult: null,
       menu: this.categories.map(function (category) {
@@ -5298,20 +5288,20 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.currentCategory.id = category.id;
       this.currentCategory.name = category.name;
-      this.items = category.items;
+      this.categoryItems = category.items;
     },
     place: function place(order) {
-      var orders = [];
+      var items = [];
 
-      if (localStorage.getItem('orders')) {
-        orders = JSON.parse(localStorage.getItem('orders'));
+      if (localStorage.getItem('items')) {
+        items = JSON.parse(localStorage.getItem('items'));
       }
 
-      orders.push(order);
-      events.$emit('orders', {
-        count: orders.length
+      items.push(order);
+      events.$emit('order-items', {
+        count: items.length
       });
-      localStorage.setItem('orders', JSON.stringify(orders));
+      localStorage.setItem('items', JSON.stringify(items));
       flash(order.name + ' added to cart');
     }
   }
@@ -5435,19 +5425,23 @@ __webpack_require__.r(__webpack_exports__);
         last_name: null,
         phone: null,
         address: null,
-        takeout_time: null,
+        takeout_time: '12:00pm',
         message: null,
-        orders: JSON.parse(localStorage.getItem('orders')).map(function (order) {
-          return order.id;
-        }),
-        tip: localStorage.getItem('tipPercentage')
+        items: [],
+        tip_percentage: localStorage.getItem('tip_percentage')
       },
       errors: new _Utils_Errors__WEBPACK_IMPORTED_MODULE_0__["default"]()
     };
   },
-  mounted: function mounted() {// this.form.name = localStorage.getItem('name')
+  mounted: function mounted() {
+    if (localStorage.getItem('items')) {
+      this.form.items = JSON.parse(localStorage.getItem('items')).map(function (item) {
+        return item.id;
+      });
+    } // this.form.name = localStorage.getItem('name')
     // this.form.phone = localStorage.getItem('phone')
     // this.form.address = localStorage.getItem('address')
+
   },
   methods: {
     submit: function submit() {
@@ -5455,11 +5449,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.sending = true;
       axios.post('/start-your-order', this.form).then(function (response) {
-        console.log(response.data);
-        _this.sending = false; // localStorage.setItem('name', this.form.name)
-        // localStorage.setItem('phone', this.form.phone)
-        // localStorage.setItem('address', this.form.address)
-        // location.href = '/checkout'
+        location.href = '/checkout';
       })["catch"](function (error) {
         _this.sending = false;
 
@@ -5505,7 +5495,7 @@ __webpack_require__.r(__webpack_exports__);
     localStorage.removeItem('orders');
     localStorage.removeItem('subtotal');
     localStorage.removeItem('tax');
-    localStorage.removeItem('tipPercentage');
+    localStorage.removeItem('tip_percentage');
     localStorage.removeItem('tip');
     localStorage.removeItem('total');
     events.$emit('orders', {
@@ -31495,8 +31485,6 @@ var render = function() {
                   "bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6 py-4"
               },
               [
-                _c("div", { staticClass: "md:hidden w-13" }),
-                _vm._v(" "),
                 _vm._m(0),
                 _vm._v(" "),
                 _c(
@@ -31565,7 +31553,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-full flex justify-center" }, [
+    return _c("div", { staticClass: "md:w-full flex justify-center" }, [
       _c(
         "a",
         {
@@ -32414,7 +32402,7 @@ var render = function() {
         _c(
           "table",
           { staticClass: "w-full" },
-          _vm._l(_vm.orders, function(order, key) {
+          _vm._l(_vm.items, function(order, key) {
             return _c("tr", { key: key }, [
               _c("td", { staticClass: "py-4 whitespace-no-wrap" }, [
                 _c("div", [
@@ -32921,7 +32909,7 @@ var render = function() {
             : _c(
                 "div",
                 { staticClass: "grid grid-cols-1 gap-8 p-8" },
-                _vm._l(_vm.items, function(item) {
+                _vm._l(_vm.categoryItems, function(item) {
                   return _c(
                     "div",
                     {

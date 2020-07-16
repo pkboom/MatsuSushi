@@ -67,13 +67,13 @@ export default {
     }
   },
   mounted() {
-    let orders = localStorage.getItem('orders')
+    let items = localStorage.getItem('items')
 
-    if (orders) {
-      this.count = JSON.parse(orders).length
+    if (items) {
+      this.count = JSON.parse(items).length
     }
 
-    events.$on('orders', data => this.cart(data))
+    events.$on('order-items', data => this.cart(data))
   },
   methods: {
     isUrl,

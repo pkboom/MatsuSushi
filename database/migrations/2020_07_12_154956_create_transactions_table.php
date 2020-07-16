@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->string('takeout_time', 50)->nullable();
             $table->text('message')->nullable();
             $table->string('subtotal', 50);
-            $table->string('tip', 10);
+            $table->string('tip_percentage', 10);
             $table->string('status', 10)->nullable();
             $table->timestamps();
         });

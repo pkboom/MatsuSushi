@@ -24,7 +24,7 @@ export default {
     localStorage.removeItem('orders')
     localStorage.removeItem('subtotal')
     localStorage.removeItem('tax')
-    localStorage.removeItem('tipPercentage')
+    localStorage.removeItem('tip_percentage')
     localStorage.removeItem('tip')
     localStorage.removeItem('total')
 

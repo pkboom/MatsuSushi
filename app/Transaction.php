@@ -10,7 +10,7 @@ class Transaction extends Model
 
     const ONLINE_ORDER_DISABLED = 0;
 
-    const TAX = 13;
+    const TAX = 0.13;
 
     const DELIVERY = 1;
 
@@ -38,9 +38,19 @@ class Transaction extends Model
         return static::formattedTotal($this->subtotal, $this->tip) * 0.01;
     }
 
-    public static function formattedTotal($subtotal, $tip)
+    public static function formattedTotal($subtotal, $tipPercentage)
     {
-        return  round($subtotal * 100 + ($subtotal * Transaction::TAX) + ($subtotal * 100 * $tip), 0);
+        return  round($subtotal * 100 + static::tax($subtotal) + static::tip($subtotal, $tipPercentage), 0);
+    }
+
+    public static function tax($subtotal)
+    {
+        return $subtotal * Transaction::TAX;
+    }
+
+    public static function tip($subtotal, $percentage)
+    {
+        return $subtotal * $percentage;
     }
 
     public function scopeFilter($query, array $filters)
