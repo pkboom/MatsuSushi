@@ -1,8 +1,8 @@
 <template>
   <layout title="Order">
-    <div class="flex items-start max-w-7xl mx-auto py-16">
-      <div class="px-8 space-y-6 tracking-wide">
-        <div class="">
+    <div class="flex flex-col md:flex-row items-start max-w-7xl mx-auto py-12">
+      <div class="md:w-auto px-8 space-y-6 tracking-wide w-full">
+        <div>
           <input
             ref="input"
             v-model="search"
@@ -12,7 +12,11 @@
             spellcheck="false"
           />
         </div>
-        <div v-for="category in categories" :key="category.id">
+        <div
+          v-for="category in categories"
+          :key="category.id"
+          class="hidden md:block"
+        >
           <div
             class="cursor-pointer"
             :class="currentCategory.id === category.id ? 'underline' : null"
@@ -23,7 +27,7 @@
         </div>
       </div>
       <div class="w-full">
-        <div class="flex flex-col items-center">
+        <div class="hidden md:flex flex-col items-center">
           <div class="text-3xl text-gray-800 space-y-2">
             <div class="px-8 uppercase">
               {{ search ? 'Result' : currentCategory.name }}
@@ -31,7 +35,7 @@
             <hr class="border-b border-gray-400 border-t py-2px" />
           </div>
         </div>
-        <div v-if="search" class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-12">
+        <div v-if="search" class="grid grid-cols-1 gap-8 p-8">
           <div
             v-for="item in searchResult"
             :key="item.id"
@@ -51,7 +55,7 @@
             </div>
           </div>
         </div>
-        <div v-else class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-12">
+        <div v-else class="grid grid-cols-1 gap-8 p-8">
           <div
             v-for="item in items"
             :key="item.id"

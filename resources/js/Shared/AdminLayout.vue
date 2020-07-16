@@ -31,7 +31,7 @@
               style="z-index: 99998;"
             >
               <div class="flex flex-col items-center my-16">
-                <main-menu />
+                <admin-menu />
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@
         </div>
         <div class="flex flex-grow">
           <div class="admin-bg flex-shrink-0 w-56 p-12 hidden md:block">
-            <main-menu />
+            <admin-menu />
           </div>
           <div class="w-full overflow-hidden px-4 py-8 md:p-12">
             <div

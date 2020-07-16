@@ -1,76 +1,52 @@
 <template>
   <div>
-    <div class="flex justify-between items-center bg-gray-900 py-6 px-16">
-      <div class="">
-        <a
-          href="/"
-          class="font-bold font-serif text-lg text-white tracking-widest"
-        >
-          Matsu Sushi
-        </a>
-      </div>
-      <div class="text-white px-8 flex">
-        <div class="flex space-x-6">
+    <div class="flex flex-col">
+      <div class="min-h-screen flex flex-col">
+        <div class="md:flex">
           <div
-            class="text-md hover:text-gray-400 font-medium"
-            :class="isUrl('') ? 'border-b-2 pb-1' : null"
+            class="bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6 py-4"
           >
-            <a href="/">Home</a>
+            <div class="md:hidden w-13"></div>
+            <div class="w-full flex justify-center">
+              <a href="/" class="py-2 text-xl text-white font-serif">
+                Matsu Sushi
+              </a>
+            </div>
+            <div
+              class="hamburger hamburger--squeeze inline-block md:hidden"
+              :class="{ 'is-active': open }"
+              style="z-index: 99999;"
+              @click="open = !open"
+            >
+              <div class="hamburger-box">
+                <div class="hamburger-inner" />
+              </div>
+            </div>
+            <div
+              class="absolute top-0 inset-x-0 bg-gray-800"
+              :class="{ hidden: !open }"
+              style="z-index: 99998;"
+            >
+              <div>
+                <front-menu
+                  class="flex flex-col items-center my-16 space-y-6 pt-1 text-white text-base"
+                />
+              </div>
+            </div>
           </div>
           <div
-            class="text-md hover:text-gray-400 font-medium"
-            :class="isUrl('menu') ? 'border-b-2 pb-1' : null"
+            class="bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-6 md:py-0 w-full"
           >
-            <a href="/menu">Menu</a>
-          </div>
-          <div
-            class="text-md hover:text-gray-400 font-medium"
-            :class="isUrl('order') ? 'border-b-2 pb-1' : null"
-          >
-            <a href="/order">Order</a>
-          </div>
-          <div
-            class="text-md hover:text-gray-400 font-medium"
-            :class="isUrl('gallery') ? 'border-b-2 pb-1' : null"
-          >
-            <a href="/gallery">Gallery</a>
-          </div>
-          <div
-            class="text-md hover:text-gray-400 font-medium"
-            :class="isUrl('contact') ? 'border-b-2 pb-1' : null"
-          >
-            <a href="/contact">Contact</a>
-          </div>
-          <div
-            class="text-md hover:text-gray-400 font-medium"
-            :class="isUrl('cart') ? 'border-b-2 pb-1' : null"
-          >
-            <a href="/cart">Cart</a>
+            <front-menu class="flex space-x-6 pt-1 text-white text-base" />
           </div>
         </div>
-        <a href="/cart" class="relative ml-2">
-          <icon
-            class="w-4 h-4 fill-white focus:fill-gray-400 hover:fill-gray-400"
-            name="shopping-cart"
-          />
-          <span
-            class="absolute bg-gray-500 bottom-2 flex h-5 items-center justify-center rounded-full text-white w-5 text-sm"
-            :class="count > 0 ? 'flex' : 'hidden'"
-            :style="{ bottom: '16px', right: '-13px' }"
-          >
-            <span v-if="count < 10">{{ count }}</span>
-            <span v-else>+</span>
-          </span>
-        </a>
+        <slot />
       </div>
     </div>
-    <slot />
   </div>
 </template>
 
 <script>
-import { isUrl } from '@/Utils/Helpers'
-
 export default {
   props: {
     title: String,
@@ -78,27 +54,17 @@ export default {
   data() {
     return {
       count: 0,
+      open: false,
     }
   },
   mounted() {
     document.title = this.title + ' | Matsu Sushi'
-    let orders = localStorage.getItem('orders')
-
-    if (orders) {
-      this.count = JSON.parse(orders).length
-    }
-
-    events.$on('orders', data => this.cart(data))
   },
   methods: {
-    isUrl,
     updatePageTitle(title) {
       document.title = title
         ? `${title} | ${this.$page.app.name}`
         : this.$page.app.name
-    },
-    cart(data) {
-      this.count = data.count
     },
   },
 }
