@@ -39,10 +39,11 @@ class TransactionController extends Controller
                 'email' => $transaction->email,
                 'phone' => $transaction->phone,
                 'address' => $transaction->address,
+                'takeout_time' => $transaction->takeout_time,
                 'subtotal' => $transaction->subtotal,
-                'tip' => $transaction->tip * 100,
+                'tip' => $transaction->tip,
                 'total' => $transaction->total,
-                'request' => $transaction->request,
+                'message' => $transaction->message,
                 'status' => $transaction->status,
             ],
         ]);

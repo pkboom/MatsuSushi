@@ -15,9 +15,9 @@
         <div class="">Phone: {{ transaction.phone }}</div>
         <div class="">Address: {{ transaction.address }}</div>
         <div class="">Subtotal: $ {{ transaction.subtotal }}</div>
-        <div class="">Tip: {{ transaction.tip }}%</div>
+        <div class="">Tip: $ {{ transaction.tip }}</div>
         <div class="">Total: $ {{ transaction.total }}</div>
-        <div class="">Request: {{ transaction.request }}</div>
+        <div class="">Message: {{ transaction.message }}</div>
         <div class="">Status: {{ transaction.status }}</div>
       </div>
     </div>

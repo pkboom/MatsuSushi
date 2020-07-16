@@ -4976,26 +4976,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     onlineOrder: Number,
     stripeKey: String,
-    order: Object
+    payDetail: Object
   },
   data: function data() {
     return {
-      subtotal: null,
-      tax: null,
-      tip: null,
-      total: null,
       errors: new _Utils_Errors__WEBPACK_IMPORTED_MODULE_0__["default"]()
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    this.orderSummary();
     var stripe = Stripe(this.stripeKey);
     axios.post('/payment').then(function (_ref) {
       var data = _ref.data;
@@ -5093,12 +5090,6 @@ __webpack_require__.r(__webpack_exports__);
       //     this.sending = false
       //     this.errors.record(error.response.data.errors)
       //   })
-    },
-    orderSummary: function orderSummary() {
-      this.subtotal = localStorage.getItem('subtotal');
-      this.tax = localStorage.getItem('tax');
-      this.tip = localStorage.getItem('tip');
-      this.total = localStorage.getItem('total');
     }
   }
 });
@@ -30071,12 +30062,12 @@ var render = function() {
             _vm._v("Subtotal: $ " + _vm._s(_vm.transaction.subtotal))
           ]),
           _vm._v(" "),
-          _c("div", {}, [_vm._v("Tip: " + _vm._s(_vm.transaction.tip) + "%")]),
+          _c("div", {}, [_vm._v("Tip: $ " + _vm._s(_vm.transaction.tip))]),
           _vm._v(" "),
           _c("div", {}, [_vm._v("Total: $ " + _vm._s(_vm.transaction.total))]),
           _vm._v(" "),
           _c("div", {}, [
-            _vm._v("Request: " + _vm._s(_vm.transaction.request))
+            _vm._v("Message: " + _vm._s(_vm.transaction.message))
           ]),
           _vm._v(" "),
           _c("div", {}, [_vm._v("Status: " + _vm._s(_vm.transaction.status))])
@@ -31530,7 +31521,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-6 md:py-0 w-full"
+                  "bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-8 md:py-0 w-full"
               },
               [
                 _c("front-menu", {
@@ -32578,7 +32569,7 @@ var render = function() {
                       ]),
                       _vm._v(
                         "\n              $ " +
-                          _vm._s(_vm.subtotal) +
+                          _vm._s(_vm.payDetail.subtotal) +
                           "\n            "
                       )
                     ]),
@@ -32589,7 +32580,7 @@ var render = function() {
                       ]),
                       _vm._v(
                         "\n              $ " +
-                          _vm._s(_vm.tax) +
+                          _vm._s(_vm.payDetail.tax) +
                           "\n            "
                       )
                     ]),
@@ -32600,7 +32591,7 @@ var render = function() {
                       ]),
                       _vm._v(
                         "\n              $ " +
-                          _vm._s(_vm.tip) +
+                          _vm._s(_vm.payDetail.tip) +
                           "\n            "
                       )
                     ]),
@@ -32611,7 +32602,11 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "text-red-600 font-bold" }, [
-                        _vm._v("$ " + _vm._s(_vm.total))
+                        _vm._v(
+                          "\n                $ " +
+                            _vm._s(_vm.payDetail.total) +
+                            "\n              "
+                        )
                       ])
                     ])
                   ]
@@ -33231,7 +33226,7 @@ var render = function() {
                         staticClass: "btn",
                         attrs: { loading: _vm.sending, type: "submit" }
                       },
-                      [_vm._v("\n            Create Address\n          ")]
+                      [_vm._v("\n            Proceed to checkout\n          ")]
                     )
                   ],
                   1
@@ -48395,8 +48390,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

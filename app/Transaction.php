@@ -35,12 +35,33 @@ class Transaction extends Model
 
     public function getTotalAttribute()
     {
-        return static::formattedTotal($this->subtotal, $this->tip) * 0.01;
+        return round($this->subtotal + static::tax($this->subtotal) + static::tip($this->subtotal, $this->percentage), 2);
+    }
+
+    public function getTipAttribute()
+    {
+        return $this->subtotal * Transaction::TAX;
+    }
+
+    public static function total($subtotal, $percentage)
+    {
+        return $subtotal + static::tax($subtotal) + static::tip($subtotal, $percentage);
     }
 
     public static function formattedTotal($subtotal, $tipPercentage)
     {
         return  round($subtotal * 100 + static::tax($subtotal) + static::tip($subtotal, $tipPercentage), 0);
+    }
+
+    public static function subtotal($order)
+    {
+        $items = Item::all();
+
+        return collect($order['items'])->map(function ($item) use ($items) {
+            return $items->firstWhere('id', $item);
+        })
+        ->map->price
+        ->sum();
     }
 
     public static function tax($subtotal)
@@ -51,6 +72,16 @@ class Transaction extends Model
     public static function tip($subtotal, $percentage)
     {
         return $subtotal * $percentage;
+    }
+
+    public static function payDetail($order)
+    {
+        return [
+            'subtotal' => round($subtotal = static::subtotal($order), 2),
+            'tax' => round(static::tax($subtotal), 2),
+            'tip' => round(static::tip($subtotal, $order['tip_percentage']), 2),
+            'total' => round(static::total($subtotal, $order['tip_percentage']), 2),
+        ];
     }
 
     public function scopeFilter($query, array $filters)

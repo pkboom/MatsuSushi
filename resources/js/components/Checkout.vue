@@ -13,19 +13,21 @@
             <div class="flex flex-col items-end py-4 space-y-4">
               <div>
                 <span class="text-gray-500">Subtotal:</span>
-                $ {{ subtotal }}
+                $ {{ payDetail.subtotal }}
               </div>
               <div>
                 <span class="text-gray-500">GST/HST:</span>
-                $ {{ tax }}
+                $ {{ payDetail.tax }}
               </div>
               <div>
                 <span class="text-gray-500">Tip:</span>
-                $ {{ tip }}
+                $ {{ payDetail.tip }}
               </div>
               <div>
                 <span class="text-gray-500">Total:</span>
-                <span class="text-red-600 font-bold">$ {{ total }}</span>
+                <span class="text-red-600 font-bold">
+                  $ {{ payDetail.total }}
+                </span>
               </div>
             </div>
             <div class="flex justify-end mt-2">
@@ -59,20 +61,14 @@ export default {
   props: {
     onlineOrder: Number,
     stripeKey: String,
-    order: Object,
+    payDetail: Object,
   },
   data() {
     return {
-      subtotal: null,
-      tax: null,
-      tip: null,
-      total: null,
       errors: new Errors(),
     }
   },
   mounted() {
-    this.orderSummary()
-
     var stripe = Stripe(this.stripeKey)
 
     axios.post('/payment').then(({ data }) => {
@@ -179,12 +175,6 @@ export default {
       //     this.sending = false
       //     this.errors.record(error.response.data.errors)
       //   })
-    },
-    orderSummary() {
-      this.subtotal = localStorage.getItem('subtotal')
-      this.tax = localStorage.getItem('tax')
-      this.tip = localStorage.getItem('tip')
-      this.total = localStorage.getItem('total')
     },
   },
 }

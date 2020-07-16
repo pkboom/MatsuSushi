@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderPlaced;
-use App\Item;
 use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
@@ -14,20 +13,10 @@ class CheckoutController extends Controller
 {
     public function create()
     {
-        $subtotal = Item::whereIn('id', Session::get('order')['items'])
-            ->get()
-            ->map->price
-            ->sum();
-
-        dump($subtotal);
-
         return view('checkout', [
             'onlineOrder' => Cache::get('online-order', Transaction::ONLINE_ORDER_DISABLED),
             'stripeKey' => config('services.stripe.key'),
-            'subtotal' => $subtotal,
-            'total' => Transaction::formattedTotal($subtotal, Session::get('order')['tip_percentage']) * 0.01,
-            'tax' => $subtotal * Transaction::TAX,
-            'tip' => $subtotal * Session::get('order')['tip_percentage'],
+            'payDetail' => Transaction::payDetail(Session::get('order')),
         ]);
     }
 
