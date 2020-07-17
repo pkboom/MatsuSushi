@@ -31,7 +31,7 @@ class DashboardController extends Controller
                         'created_at' => $transaction->created_at->format('Y-m-d H:i:s'),
                     ];
                 }),
-            'online-order' => Cache::get('online-order', Transaction::ONLINE_ORDER_DISABLED),
+            'online-order-enabled' => Cache::get('online-order-enabled', Transaction::ONLINE_ORDER_DISABLED),
         ]);
     }
 }

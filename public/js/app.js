@@ -3756,7 +3756,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    onlineOrder: Number,
+    onlineOrderEnabled: Number,
     stripeKey: String,
     payDetail: Object
   },
@@ -4182,7 +4182,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    onlineOrder: Number
+    onlineOrderEnabled: Number
   },
   data: function data() {
     return {
@@ -29415,7 +29415,7 @@ var render = function() {
         _vm._v("\n      Checkout\n    ")
       ]),
       _vm._v(" "),
-      _vm.onlineOrder
+      _vm.onlineOrderEnabled
         ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c("div", { staticClass: "col-md-8" }, [
               _c("form", { attrs: { id: "payment-form" } }, [
@@ -29865,7 +29865,7 @@ var render = function() {
         _vm._v("\n      Start Your Order\n    ")
       ]),
       _vm._v(" "),
-      _vm.onlineOrder
+      _vm.onlineOrderEnabled
         ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c(
               "form",

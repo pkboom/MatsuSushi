@@ -9,10 +9,8 @@
         <button class="btn" @click="alarmTest">Alarm Test</button>
         <button class="btn" @click="messageTest">Message Test</button>
         <audio ref="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
-        <button class="btn" @click="toggleOnlineOrder">
-          {{
-            onlineOrderButton ? 'Disable Online Order' : 'Enable Online Order'
-          }}
+        <button class="btn" @click="toggleEnable">
+          {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
         </button>
       </div>
       <div class="font-bold py-2 text-xl">Latest orders</div>
@@ -44,12 +42,12 @@ import Http from '@/Utils/Http'
 export default {
   props: {
     transactions: Array,
-    onlineOrder: Number,
+    onlineOrderEnabled: Number,
   },
   data() {
     return {
       transactionData: this.transactions,
-      onlineOrderButton: this.onlineOrder,
+      enabled: this.onlineOrderEnabled,
     }
   },
   mounted() {
@@ -62,14 +60,15 @@ export default {
       this.$refs.alarm.play()
     },
     messageTest() {
-      Http.get('/admin/message-test')
+      Http.get('/admin/message/test')
     },
-    toggleOnlineOrder() {
-      Http.get('/admin/toggle-online-order').then(response => {
-        this.onlineOrderButton = response.data.onlineOrder
+    toggleEnable() {
+      Http.get('/admin/toggle/online/order').then(response => {
+        this.enabled = response.data.onlineOrderEnabled
 
         this.$page.flash.success =
-          'Online order ' + (response.data.onlineOrder ? 'enabled' : 'disabled')
+          'Online order ' +
+          (response.data.onlineOrderEnabled ? 'enabled' : 'disabled')
       })
     },
   },

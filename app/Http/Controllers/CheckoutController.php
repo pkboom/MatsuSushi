@@ -14,7 +14,7 @@ class CheckoutController extends Controller
     public function create()
     {
         return view('checkout', [
-            'onlineOrder' => Cache::get('online-order', Transaction::ONLINE_ORDER_DISABLED),
+            'onlineOrderEnabled' => Cache::get('online-order-enabled', Transaction::ONLINE_ORDER_DISABLED),
             'stripeKey' => config('services.stripe.key'),
             'payDetail' => Transaction::payDetail(Session::get('order')),
         ]);

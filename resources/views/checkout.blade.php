@@ -3,5 +3,5 @@
 <script src="https://js.stripe.com/v3/"></script>
 @endsection('header')
 @section('content')
-<checkout :online-order="{{ $onlineOrder }}" stripe-key="{{ $stripeKey }}" :pay-detail="{{ json_encode($payDetail) }}"></checkout>
+<checkout :online-order-enabled="{{ $onlineOrderEnabled }}" stripe-key="{{ $stripeKey }}" :pay-detail="{{ json_encode($payDetail) }}"></checkout>
 @endsection('content')
