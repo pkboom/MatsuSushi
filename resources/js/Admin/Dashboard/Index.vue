@@ -42,12 +42,12 @@ import Http from '@/Utils/Http'
 export default {
   props: {
     transactions: Array,
-    onlineOrderEnabled: Number,
+    online_order_enabled: Number,
   },
   data() {
     return {
       transactionData: this.transactions,
-      enabled: this.onlineOrderEnabled,
+      enabled: this.online_order_enabled,
     }
   },
   mounted() {
@@ -64,11 +64,11 @@ export default {
     },
     toggleEnable() {
       Http.get('/admin/toggle/online/order').then(response => {
-        this.enabled = response.data.onlineOrderEnabled
+        this.enabled = response.data.online_order_enabled
 
         this.$page.flash.success =
           'Online order ' +
-          (response.data.onlineOrderEnabled ? 'enabled' : 'disabled')
+          (response.data.online_order_enabled ? 'enabled' : 'disabled')
       })
     },
   },

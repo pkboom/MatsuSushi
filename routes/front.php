@@ -4,7 +4,6 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StartYourOrderController;
 use App\Http\Controllers\ThankyouController;
 
@@ -17,10 +16,9 @@ Route::post('start-your-order', [StartYourOrderController::class, 'store']);
 
 Route::get('cart', CartController::class);
 
-Route::get('checkout', [CheckoutController::class, 'create'])->name('checkout');
-Route::post('checkout', [CheckoutController::class, 'store']);
-
-Route::post('payment', [PaymentController::class, 'create']);
+Route::get('checkout', [CheckoutController::class, 'create']);
+Route::post('checkout', [CheckoutController::class, 'checkout']);
 
 Route::get('thankyou/{transaction}', ThankyouController::class)
+    ->name('thankyou')
     ->where('transaction', '[0-9]+');

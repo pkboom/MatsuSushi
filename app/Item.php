@@ -12,11 +12,11 @@ class Item extends Model
     protected static function booted()
     {
         static::saved(function ($item) {
-            Cache::put('menu-items', Item::all(['id', 'price']));
+            Cache::put('menu_items', Item::all(['id', 'price']));
         });
 
         static::deleted(function ($item) {
-            Cache::put('menu-items', Item::all(['id', 'price']));
+            Cache::put('menu_items', Item::all(['id', 'price']));
         });
     }
 

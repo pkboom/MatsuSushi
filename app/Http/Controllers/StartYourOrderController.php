@@ -13,7 +13,7 @@ class StartYourOrderController extends Controller
     public function create()
     {
         return view('start-your-order', [
-            'onlineOrderEnabled' => Cache::get('online-order-enabled', Transaction::ONLINE_ORDER_DISABLED),
+            'online_order_enabled' => Cache::get('online_order_enabled', Transaction::ONLINE_ORDER_DISABLED),
         ]);
     }
 

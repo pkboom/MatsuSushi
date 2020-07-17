@@ -3762,7 +3762,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    onlineOrderEnabled: Number,
+    online_order_enabled: Number,
     stripeKey: String,
     payDetail: Object
   },
@@ -3775,8 +3775,9 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var stripe = Stripe(this.stripeKey);
-    axios.post('/payment').then(function (_ref) {
+    axios.post('/checkout').then(function (_ref) {
       var data = _ref.data;
+      console.log(data);
       var elements = stripe.elements();
       var style = {
         base: {
@@ -3835,7 +3836,7 @@ __webpack_require__.r(__webpack_exports__);
     orderComplete: function orderComplete(paymentIntentId) {
       var self = this;
       this.loading(false);
-      location.href = '/thankyou';
+      console.log(paymentIntentId); // location.href = '/thankyou'
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError: function showError(errorMsgText) {
@@ -3859,17 +3860,6 @@ __webpack_require__.r(__webpack_exports__);
         document.querySelector('#spinner').classList.add('hidden');
         document.querySelector('#button-text').classList.remove('hidden');
       }
-    },
-    submit: function submit() {// this.sending = true
-      // axios
-      //   .post('/checkout', this.form)
-      //   .then(response => {
-      //     this.sending = false
-      //   })
-      //   .catch(error => {
-      //     this.sending = false
-      //     this.errors.record(error.response.data.errors)
-      //   })
     }
   }
 });
@@ -4187,7 +4177,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    onlineOrderEnabled: Number
+    online_order_enabled: Number
   },
   data: function data() {
     return {
@@ -28392,7 +28382,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-8 md:py-0 w-full"
+                  "bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 md:py-0 w-full"
               },
               [
                 _c("front-menu", {
@@ -29421,7 +29411,7 @@ var render = function() {
         _vm._v("\n      Checkout\n    ")
       ]),
       _vm._v(" "),
-      _vm.onlineOrderEnabled
+      _vm.online_order_enabled
         ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c("div", { staticClass: "col-md-8" }, [
               _c("form", { attrs: { id: "payment-form" } }, [
@@ -29873,7 +29863,7 @@ var render = function() {
         _vm._v("\n      Start Your Order\n    ")
       ]),
       _vm._v(" "),
-      _vm.onlineOrderEnabled
+      _vm.online_order_enabled
         ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c(
               "form",

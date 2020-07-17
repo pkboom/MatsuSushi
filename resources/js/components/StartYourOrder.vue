@@ -4,7 +4,7 @@
       <div class="font-semibold text-xl py-4 border-b">
         Start Your Order
       </div>
-      <div v-if="onlineOrderEnabled" class="bg-white overflow-hidden w-full">
+      <div v-if="online_order_enabled" class="bg-white overflow-hidden w-full">
         <form @submit.prevent="submit">
           <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
             <div class="pr-6 pb-8 w-full">
@@ -95,7 +95,7 @@ import Errors from '@/Utils/Errors'
 
 export default {
   props: {
-    onlineOrderEnabled: Number,
+    online_order_enabled: Number,
   },
   data() {
     return {

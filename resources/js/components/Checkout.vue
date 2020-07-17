@@ -4,7 +4,7 @@
       <div class="font-semibold text-xl py-4 border-b">
         Checkout
       </div>
-      <div v-if="onlineOrderEnabled" class="bg-white overflow-hidden w-full">
+      <div v-if="online_order_enabled" class="bg-white overflow-hidden w-full">
         <div class="col-md-8">
           <form id="payment-form">
             <div class="mb-2 w-full">
@@ -65,7 +65,7 @@ import Errors from '@/Utils/Errors'
 
 export default {
   props: {
-    onlineOrderEnabled: Number,
+    online_order_enabled: Number,
     stripeKey: String,
     payDetail: Object,
   },
@@ -77,7 +77,8 @@ export default {
   mounted() {
     var stripe = Stripe(this.stripeKey)
 
-    axios.post('/payment').then(({ data }) => {
+    axios.post('/checkout').then(({ data }) => {
+      console.log(data)
       var elements = stripe.elements()
       var style = {
         base: {
@@ -139,8 +140,9 @@ export default {
     orderComplete(paymentIntentId) {
       var self = this
       this.loading(false)
+      console.log(paymentIntentId)
 
-      location.href = '/thankyou'
+      // location.href = '/thankyou'
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError(errorMsgText) {
@@ -164,18 +166,6 @@ export default {
         document.querySelector('#spinner').classList.add('hidden')
         document.querySelector('#button-text').classList.remove('hidden')
       }
-    },
-    submit() {
-      // this.sending = true
-      // axios
-      //   .post('/checkout', this.form)
-      //   .then(response => {
-      //     this.sending = false
-      //   })
-      //   .catch(error => {
-      //     this.sending = false
-      //     this.errors.record(error.response.data.errors)
-      //   })
     },
   },
 }
