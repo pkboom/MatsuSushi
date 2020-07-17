@@ -102,10 +102,10 @@ export default {
       sending: false,
       form: {
         type: 'delivery',
-        first_name: null,
-        last_name: null,
-        phone: null,
-        address: null,
+        first_name: localStorage.getItem('first_name'),
+        last_name: localStorage.getItem('last_name'),
+        phone: localStorage.getItem('phone'),
+        address: localStorage.getItem('address'),
         takeout_time: '12:00pm',
         message: null,
         items: [],
@@ -127,6 +127,13 @@ export default {
       axios
         .post('/start-your-order', this.form)
         .then(response => {
+          localStorage.setItem('first_name', this.form.first_name)
+          localStorage.setItem('last_name', this.form.last_name)
+          localStorage.setItem('phone', this.form.phone)
+          localStorage.setItem('address', this.form.address)
+
+          localStorage.setItem('last_name', this.form.last_name)
+
           location.href = '/checkout'
         })
         .catch(error => {
