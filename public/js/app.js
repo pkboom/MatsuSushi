@@ -3753,6 +3753,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3812,6 +3818,7 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       self.loading(true);
       stripe.confirmCardPayment(clientSecret, {
+        receipt_email: document.getElementById('email').value,
         payment_method: {
           card: card
         }
@@ -3828,9 +3835,7 @@ __webpack_require__.r(__webpack_exports__);
     orderComplete: function orderComplete(paymentIntentId) {
       var self = this;
       this.loading(false);
-      document.querySelector('.result-message a').setAttribute('href', 'https://dashboard.stripe.com/test/payments/' + paymentIntentId);
-      document.querySelector('.result-message').classList.remove('hidden');
-      document.querySelector('button').disabled = true;
+      location.href = '/thankyou';
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError: function showError(errorMsgText) {
@@ -4195,7 +4200,8 @@ __webpack_require__.r(__webpack_exports__);
         address: null,
         takeout_time: '12:00pm',
         message: null,
-        items: []
+        items: [],
+        tip_percentage: localStorage.getItem('tip_percentage')
       },
       errors: new _Utils_Errors__WEBPACK_IMPORTED_MODULE_0__["default"]()
     };
@@ -29410,7 +29416,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("layout", { attrs: { title: "Cart" } }, [
-    _c("div", { staticClass: "p-8 max-w-xl mx-auto" }, [
+    _c("div", { staticClass: "p-8 max-w-xl mx-auto w-full" }, [
       _c("div", { staticClass: "font-semibold text-xl py-4 border-b" }, [
         _vm._v("\n      Checkout\n    ")
       ]),
@@ -29419,9 +29425,25 @@ var render = function() {
         ? _c("div", { staticClass: "bg-white overflow-hidden w-full" }, [
             _c("div", { staticClass: "col-md-8" }, [
               _c("form", { attrs: { id: "payment-form" } }, [
+                _c("div", { staticClass: "mb-2 w-full" }, [
+                  _c("input", {
+                    staticClass: "border border-gray-500 p-2 rounded w-full",
+                    attrs: {
+                      type: "text",
+                      id: "email",
+                      placeholder: "Email address"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
                 _c("div", {
-                  staticClass: "border rounded p-2 border-gray-500",
+                  staticClass: "border rounded p-2 border-gray-500 mb-2",
                   attrs: { id: "card-element" }
+                }),
+                _vm._v(" "),
+                _c("p", {
+                  staticClass: "text-red-500",
+                  attrs: { id: "card-error", role: "alert" }
                 }),
                 _vm._v(" "),
                 _c(
@@ -29493,20 +29515,6 @@ var render = function() {
                         )
                       ])
                     ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", { attrs: { id: "card-error", role: "alert" } }),
-                _vm._v(" "),
-                _c("p", { staticClass: "result-message hidden" }, [
-                  _vm._v(
-                    "\n            Payment succeeded, see the result in your\n            "
-                  ),
-                  _c("a", { attrs: { href: "", target: "_blank" } }, [
-                    _vm._v("Stripe dashboard.")
-                  ]),
-                  _vm._v(
-                    "\n            Refresh the page to pay again.\n          "
                   )
                 ])
               ])

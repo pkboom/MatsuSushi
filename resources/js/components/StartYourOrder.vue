@@ -109,6 +109,7 @@ export default {
         takeout_time: '12:00pm',
         message: null,
         items: [],
+        tip_percentage: localStorage.getItem('tip_percentage'),
       },
       errors: new Errors(),
     }

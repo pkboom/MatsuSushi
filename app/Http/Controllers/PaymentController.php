@@ -12,14 +12,10 @@ class PaymentController extends Controller
 {
     public function create()
     {
-        $subtotal = Transaction::subtotal(Session::get('order'));
-
-        $total = Transaction::formattedTotal($subtotal, Session::get('order')['tip_percentage']);
-
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $paymentInetent = PaymentIntent::create([
-          'amount' => $total,
+          'amount' => Transaction::formattedTotal(Session::get('order')),
           'currency' => 'cad',
         ]);
 

@@ -1,15 +1,27 @@
 <template>
   <layout title="Cart">
-    <div class="p-8 max-w-xl mx-auto">
+    <div class="p-8 max-w-xl mx-auto w-full">
       <div class="font-semibold text-xl py-4 border-b">
         Checkout
       </div>
       <div v-if="onlineOrderEnabled" class="bg-white overflow-hidden w-full">
         <div class="col-md-8">
           <form id="payment-form">
-            <div id="card-element" class="border rounded p-2 border-gray-500">
+            <div class="mb-2 w-full">
+              <input
+                type="text"
+                id="email"
+                placeholder="Email address"
+                class="border border-gray-500 p-2 rounded w-full"
+              />
+            </div>
+            <div
+              id="card-element"
+              class="border rounded p-2 border-gray-500 mb-2"
+            >
               <!--Stripe.js injects the Card Element-->
             </div>
+            <p id="card-error" role="alert" class="text-red-500"></p>
             <div class="flex flex-col items-end py-4 space-y-4">
               <div>
                 <span class="text-gray-500">Subtotal:</span>
@@ -38,12 +50,6 @@
                 </span>
               </button>
             </div>
-            <p id="card-error" role="alert"></p>
-            <p class="result-message hidden">
-              Payment succeeded, see the result in your
-              <a href="" target="_blank">Stripe dashboard.</a>
-              Refresh the page to pay again.
-            </p>
           </form>
         </div>
       </div>
@@ -115,6 +121,7 @@ export default {
       self.loading(true)
       stripe
         .confirmCardPayment(clientSecret, {
+          receipt_email: document.getElementById('email').value,
           payment_method: {
             card: card,
           },
@@ -132,14 +139,8 @@ export default {
     orderComplete(paymentIntentId) {
       var self = this
       this.loading(false)
-      document
-        .querySelector('.result-message a')
-        .setAttribute(
-          'href',
-          'https://dashboard.stripe.com/test/payments/' + paymentIntentId
-        )
-      document.querySelector('.result-message').classList.remove('hidden')
-      document.querySelector('button').disabled = true
+
+      location.href = '/thankyou'
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError(errorMsgText) {

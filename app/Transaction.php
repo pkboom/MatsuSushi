@@ -49,9 +49,9 @@ class Transaction extends Model
         return round($subtotal + static::tax($subtotal) + static::tip($subtotal, $percentage), 2);
     }
 
-    public static function formattedTotal($subtotal, $percentage)
+    public static function formattedTotal($order)
     {
-        return  static::total($subtotal, $percentage) * 100;
+        return  static::payDetail($order)['total'] * 100;
     }
 
     public static function subtotal($order)
