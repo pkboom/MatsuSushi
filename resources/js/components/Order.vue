@@ -1,7 +1,9 @@
 <template>
   <layout title="Order">
-    <div class="flex flex-col md:flex-row items-start max-w-7xl mx-auto py-12">
-      <div class="md:w-auto px-8 space-y-6 tracking-wide w-full">
+    <div
+      class="flex flex-col items-start max-w-5xl md:flex-row mx-auto py-12 w-full"
+    >
+      <div class="md:w-1/3 px-8 space-y-6 tracking-wide">
         <div>
           <input
             ref="input"

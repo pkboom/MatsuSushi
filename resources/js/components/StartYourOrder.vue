@@ -109,7 +109,6 @@ export default {
         takeout_time: '12:00pm',
         message: null,
         items: [],
-        tip_percentage: localStorage.getItem('tip_percentage'),
       },
       errors: new Errors(),
     }
@@ -120,9 +119,6 @@ export default {
         item => item.id
       )
     }
-    // this.form.name = localStorage.getItem('name')
-    // this.form.phone = localStorage.getItem('phone')
-    // this.form.address = localStorage.getItem('address')
   },
   methods: {
     submit() {

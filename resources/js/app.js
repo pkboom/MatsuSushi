@@ -14,7 +14,7 @@ window.flash = function(message, level = 'success') {
   })
 }
 
-const files = require.context('./', true, /\.vue$/i)
+const files = require.context('./components', true, /\.vue$/i)
 files.keys().map(key =>
   Vue.component(
     key
@@ -22,6 +22,17 @@ files.keys().map(key =>
       .pop()
       .split('.')[0],
     files(key).default
+  )
+)
+
+const shared = require.context('./Shared', true, /\.vue$/i)
+shared.keys().map(key =>
+  Vue.component(
+    key
+      .split('/')
+      .pop()
+      .split('.')[0],
+    shared(key).default
   )
 )
 

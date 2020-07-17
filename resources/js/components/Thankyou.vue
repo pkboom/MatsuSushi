@@ -22,11 +22,6 @@ export default {
   },
   mounted() {
     localStorage.removeItem('orders')
-    localStorage.removeItem('subtotal')
-    localStorage.removeItem('tax')
-    localStorage.removeItem('tip_percentage')
-    localStorage.removeItem('tip')
-    localStorage.removeItem('total')
 
     events.$emit('orders', {
       count: 0,
