@@ -3,10 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Item extends Model
 {
     protected $guarded = [];
+
+    protected static function booted()
+    {
+        static::saved(function ($item) {
+            Cache::put('menu-items', Item::all(['id', 'price']));
+        });
+
+        static::deleted(function ($item) {
+            Cache::put('menu-items', Item::all(['id', 'price']));
+        });
+    }
 
     public function getPerPage()
     {

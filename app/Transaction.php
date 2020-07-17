@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Transaction extends Model
 {
@@ -40,47 +41,51 @@ class Transaction extends Model
 
     public function getTipAttribute()
     {
-        return $this->subtotal * Transaction::TAX;
+        return round($this->subtotal * Transaction::TAX, 2);
     }
 
     public static function total($subtotal, $percentage)
     {
-        return $subtotal + static::tax($subtotal) + static::tip($subtotal, $percentage);
+        return round($subtotal + static::tax($subtotal) + static::tip($subtotal, $percentage), 2);
     }
 
-    public static function formattedTotal($subtotal, $tipPercentage)
+    public static function formattedTotal($subtotal, $percentage)
     {
-        return  round($subtotal * 100 + static::tax($subtotal) + static::tip($subtotal, $tipPercentage), 0);
+        return  static::total($subtotal, $percentage) * 100;
     }
 
     public static function subtotal($order)
     {
-        $items = Item::all();
+        $items = Cache::rememberForever('menu-items', function () {
+            return Item::all(['id', 'price']);
+        });
 
-        return collect($order['items'])->map(function ($item) use ($items) {
+        $subtotal = collect($order['items'])->map(function ($item) use ($items) {
             return $items->firstWhere('id', $item);
         })
         ->map->price
         ->sum();
+
+        return round($subtotal, 2);
     }
 
     public static function tax($subtotal)
     {
-        return $subtotal * Transaction::TAX;
+        return round($subtotal * Transaction::TAX, 2);
     }
 
     public static function tip($subtotal, $percentage)
     {
-        return $subtotal * $percentage;
+        return round($subtotal * $percentage, 2);
     }
 
     public static function payDetail($order)
     {
         return [
-            'subtotal' => round($subtotal = static::subtotal($order), 2),
-            'tax' => round(static::tax($subtotal), 2),
-            'tip' => round(static::tip($subtotal, $order['tip_percentage']), 2),
-            'total' => round(static::total($subtotal, $order['tip_percentage']), 2),
+            'subtotal' => ($subtotal = static::subtotal($order)),
+            'tax' => static::tax($subtotal),
+            'tip' => static::tip($subtotal, $order['tip_percentage']),
+            'total' => static::total($subtotal, $order['tip_percentage']),
         ];
     }
 
