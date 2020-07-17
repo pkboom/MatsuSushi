@@ -28,7 +28,7 @@ class StartYourOrderController extends Controller
             'takeout_time' => ['nullable', 'required_if:type,takeout', 'max:50'],
             'message' => ['nullable', 'string'],
             'items' => ['required', 'array'],
-            'items.*' => ['required', 'integer'],
+            'items.*' => ['required', 'exists:items,id'],
             'tip_percentage' => ['required', 'min:0'],
         ]);
 
