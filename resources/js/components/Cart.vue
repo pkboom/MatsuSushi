@@ -32,7 +32,7 @@
           <span class="mr-2 whitespace-no-wrap text-green-500">
             Tip percentage:
           </span>
-          <select v-model="tipPercentage" class="w-full form-select py-1 pr-7">
+          <select v-model="tip_percentage" class="w-full form-select py-1 pr-7">
             <option value="0" />
             <option value="0.05">5%</option>
             <option value="0.10">10%</option>
@@ -75,24 +75,28 @@ export default {
       items: null,
       subtotal: null,
       tax: null,
-      tipPercentage: null,
+      tip_percentage: localStorage.getItem('tip_percentage') ?? 0,
       tip: null,
       total: null,
     }
   },
   watch: {
-    tipPercentage() {
+    tip_percentage() {
+      localStorage.setItem('tip_percentage', this.tip_percentage)
+
       this.calculate()
     },
   },
   mounted() {
+    localStorage.setItem('tip_percentage', this.tip_percentage)
+
     if (localStorage.getItem('items')) {
       this.items = JSON.parse(localStorage.getItem('items')).sort(
         (a, b) => a.id - b.id
       )
     }
 
-    this.tipPercentage = localStorage.getItem('tip_percentage')
+    this.tip_percentage = localStorage.getItem('tip_percentage')
 
     this.calculate()
   },
@@ -100,14 +104,14 @@ export default {
     calculate() {
       this.subtotal = this.items
         ? this.items
-          .map(order => Number(order.price))
-          .reduce((total, price) => total + price, 0)
-          .toFixed(2)
+            .map(order => Number(order.price))
+            .reduce((total, price) => total + price, 0)
+            .toFixed(2)
         : '0.00'
 
       this.tax = (Number(this.subtotal) * 0.13).toFixed(2)
 
-      this.tip = (this.subtotal * this.tipPercentage).toFixed(2)
+      this.tip = (this.subtotal * this.tip_percentage).toFixed(2)
 
       this.total = (
         Number(this.subtotal) +

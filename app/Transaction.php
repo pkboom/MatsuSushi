@@ -36,12 +36,17 @@ class Transaction extends Model
 
     public function getTotalAttribute()
     {
-        return round($this->subtotal + static::tax($this->subtotal) + static::tip($this->subtotal, $this->percentage), 2);
+        return round($this->subtotal + $this->tax + $this->tip, 2);
+    }
+
+    public function getTaxAttribute()
+    {
+        return round($this->subtotal * Transaction::TAX, 2);
     }
 
     public function getTipAttribute()
     {
-        return round($this->subtotal * Transaction::TAX, 2);
+        return round($this->subtotal * $this->tip_percentage, 2);
     }
 
     public static function total($subtotal, $percentage)
@@ -89,13 +94,64 @@ class Transaction extends Model
         ];
     }
 
+    public static function format($order)
+    {
+        return [
+            'type' => $order['type'],
+            'first_name' => $order['first_name'],
+            'last_name' => $order['last_name'],
+            'phone' => $order['phone'],
+            'address' => $order['address'],
+            'takeout_time' => $order['takeout_time'],
+            'message' => $order['message'],
+            'tip_percentage' => $order['tip_percentage'],
+            'subtotal' => Transaction::subtotal($order),
+        ];
+    }
+
+    public function attributesToArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'address' => $this->address,
+            'takeout_time' => $this->takeout_time,
+            'subtotal' => $this->subtotal,
+            'tax' => $this->tax,
+            'tip' => $this->tip,
+            'total' => $this->total,
+            'message' => $this->message,
+            'created_at' => $this->created_at->format('Y-m-d h:i a'),
+            'new' => $this->new,
+        ];
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'address' => $this->address,
+            'takeout_time' => $this->takeout_time,
+            'subtotal' => $this->subtotal,
+            'tax' => $this->tax,
+            'tip' => $this->tip,
+            'total' => $this->total,
+            'message' => $this->message,
+            'created_at' => $this->created_at->format('Y-m-d h:i a'),
+            'items' => $this->items,
+            'new' => $this->new,
+        ];
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
             $query->where(function ($query) use ($search) {
                 $query->where('first_name', 'like', '%'.$search.'%')
                     ->orWhere('last_name', 'like', '%'.$search.'%')
-                    ->orWhere('email', 'like', '%'.$search.'%')
                     ->orWhere('phone', 'like', '%'.$search.'%');
             });
         });

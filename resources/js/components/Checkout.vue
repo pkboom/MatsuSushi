@@ -78,7 +78,6 @@ export default {
     var stripe = Stripe(this.stripeKey)
 
     axios.post('/checkout').then(({ data }) => {
-      console.log(data)
       var elements = stripe.elements()
       var style = {
         base: {
@@ -140,9 +139,8 @@ export default {
     orderComplete(paymentIntentId) {
       var self = this
       this.loading(false)
-      console.log(paymentIntentId)
 
-      // location.href = '/thankyou'
+      location.href = '/thankyou/' + paymentIntentId
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError(errorMsgText) {

@@ -10,11 +10,10 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('stripe_id');
+            $table->string('stripe_id')->index();
             $table->string('type')->default('delivery');
             $table->string('first_name', 50);
             $table->string('last_name', 50);
-            $table->string('email')->nullable();
             $table->string('phone', 50);
             $table->string('address')->nullable();
             $table->string('takeout_time', 50)->nullable();

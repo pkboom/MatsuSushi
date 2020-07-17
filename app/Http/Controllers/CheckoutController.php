@@ -29,14 +29,10 @@ class CheckoutController extends Controller
           'currency' => 'cad',
         ]);
 
-        Session::put('payment_client_secret', 1234);
+        Session::put('payment_intent_id', $paymentInetent->id);
 
         return Response::json([
             'clientSecret' => $paymentInetent->client_secret,
         ]);
-    }
-
-    public function redirect()
-    {
     }
 }

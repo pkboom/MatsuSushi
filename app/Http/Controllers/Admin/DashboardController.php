@@ -13,23 +13,12 @@ class DashboardController extends Controller
     {
         return Inertia::render('Dashboard/Index', [
             'transactions' => Transaction::with('items')
+                ->whereDate('created_at', now())
                 ->take(10)
                 ->latest()
                 ->get()
                 ->map(function ($transaction) {
-                    return [
-                        'name' => $transaction->name,
-                        'email' => $transaction->email,
-                        'phone' => $transaction->phone,
-                        'address' => $transaction->address,
-                        'takeout_time' => $transaction->takeout_time,
-                        'subtotal' => $transaction->subtotal,
-                        'tip' => $transaction->tip,
-                        'total' => $transaction->total,
-                        'message' => $transaction->message,
-                        'status' => $transaction->status,
-                        'created_at' => $transaction->created_at->format('Y-m-d H:i:s'),
-                    ];
+                    return $transaction->toArray();
                 }),
             'online_order_enabled' => Cache::get('online_order_enabled', Transaction::ONLINE_ORDER_DISABLED),
         ]);

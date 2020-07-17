@@ -3632,28 +3632,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
+    var _localStorage$getItem;
+
     return {
       items: null,
       subtotal: null,
       tax: null,
-      tipPercentage: null,
+      tip_percentage: (_localStorage$getItem = localStorage.getItem('tip_percentage')) !== null && _localStorage$getItem !== void 0 ? _localStorage$getItem : 0,
       tip: null,
       total: null
     };
   },
   watch: {
-    tipPercentage: function tipPercentage() {
+    tip_percentage: function tip_percentage() {
+      localStorage.setItem('tip_percentage', this.tip_percentage);
       this.calculate();
     }
   },
   mounted: function mounted() {
+    localStorage.setItem('tip_percentage', this.tip_percentage);
+
     if (localStorage.getItem('items')) {
       this.items = JSON.parse(localStorage.getItem('items')).sort(function (a, b) {
         return a.id - b.id;
       });
     }
 
-    this.tipPercentage = localStorage.getItem('tip_percentage');
+    this.tip_percentage = localStorage.getItem('tip_percentage');
     this.calculate();
   },
   methods: {
@@ -3664,7 +3669,7 @@ __webpack_require__.r(__webpack_exports__);
         return total + price;
       }, 0).toFixed(2) : '0.00';
       this.tax = (Number(this.subtotal) * 0.13).toFixed(2);
-      this.tip = (this.subtotal * this.tipPercentage).toFixed(2);
+      this.tip = (this.subtotal * this.tip_percentage).toFixed(2);
       this.total = (Number(this.subtotal) + Number(this.tip) + Number(this.tax)).toFixed(2);
     },
     destroy: function destroy(selected) {
@@ -3777,7 +3782,6 @@ __webpack_require__.r(__webpack_exports__);
     var stripe = Stripe(this.stripeKey);
     axios.post('/checkout').then(function (_ref) {
       var data = _ref.data;
-      console.log(data);
       var elements = stripe.elements();
       var style = {
         base: {
@@ -3836,7 +3840,7 @@ __webpack_require__.r(__webpack_exports__);
     orderComplete: function orderComplete(paymentIntentId) {
       var self = this;
       this.loading(false);
-      console.log(paymentIntentId); // location.href = '/thankyou'
+      location.href = '/thankyou/' + paymentIntentId;
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError: function showError(errorMsgText) {
@@ -4184,10 +4188,10 @@ __webpack_require__.r(__webpack_exports__);
       sending: false,
       form: {
         type: 'delivery',
-        first_name: null,
-        last_name: null,
-        phone: null,
-        address: null,
+        first_name: localStorage.getItem('first_name'),
+        last_name: localStorage.getItem('last_name'),
+        phone: localStorage.getItem('phone'),
+        address: localStorage.getItem('address'),
         takeout_time: '12:00pm',
         message: null,
         items: [],
@@ -4209,6 +4213,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.sending = true;
       axios.post('/start-your-order', this.form).then(function (response) {
+        localStorage.setItem('first_name', _this.form.first_name);
+        localStorage.setItem('last_name', _this.form.last_name);
+        localStorage.setItem('phone', _this.form.phone);
+        localStorage.setItem('address', _this.form.address);
         location.href = '/checkout';
       })["catch"](function (error) {
         _this.sending = false;
@@ -4242,6 +4250,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object
@@ -4252,10 +4310,17 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    localStorage.removeItem('orders');
-    events.$emit('orders', {
-      count: 0
-    });
+    localStorage.removeItem('total');
+    localStorage.removeItem('tip');
+    localStorage.removeItem('subtotal');
+    localStorage.removeItem('tax');
+    localStorage.removeItem('items');
+
+    if (this.transaction["new"]) {
+      events.$emit('order-items', {
+        count: 0
+      });
+    }
   },
   methods: {}
 });
@@ -29310,8 +29375,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.tipPercentage,
-                  expression: "tipPercentage"
+                  value: _vm.tip_percentage,
+                  expression: "tip_percentage"
                 }
               ],
               staticClass: "w-full form-select py-1 pr-7",
@@ -29325,7 +29390,7 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.tipPercentage = $event.target.multiple
+                  _vm.tip_percentage = $event.target.multiple
                     ? $$selectedVal
                     : $$selectedVal[0]
                 }
@@ -30132,14 +30197,97 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("layout", { attrs: { title: "Thank you" } }, [
-    _c("div", { staticClass: "p-8 max-w-3xl mx-auto" }, [
-      _c("div", { staticClass: "font-semibold text-xl py-4 border-b" }, [
-        _vm._v(
-          "\n      Thank you, your order has been placed. Please check your email for order\n      receipt.\n      "
-        ),
-        _c("div", [_vm._v("Order Number: " + _vm._s(_vm.transaction.id))])
-      ])
-    ])
+    _c(
+      "div",
+      {
+        staticClass: "mt-8 p-8 max-w-2xl mx-auto space-y-4 rounded bg-gray-100"
+      },
+      [
+        _c("div", { staticClass: "text-xl border-b-2 border-gray-400" }, [
+          _vm._v("\n      Thank you!\n    ")
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _vm._v(
+            "\n      Your order has been placed. Please check your email for order receipt.\n    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "space-y-4" }, [
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [
+              _vm._v("Order Number:")
+            ]),
+            _vm._v("\n        " + _vm._s(_vm.transaction.id) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Name:")]),
+            _vm._v("\n        " + _vm._s(_vm.transaction.name) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Phone:")]),
+            _vm._v("\n        " + _vm._s(_vm.transaction.phone) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Address:")]),
+            _vm._v("\n        " + _vm._s(_vm.transaction.address) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Subtotal:")]),
+            _vm._v(
+              "\n        $ " + _vm._s(_vm.transaction.subtotal) + "\n      "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tax:")]),
+            _vm._v("\n        $ " + _vm._s(_vm.transaction.tax) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tip:")]),
+            _vm._v("\n        $ " + _vm._s(_vm.transaction.tip) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),
+            _vm._v("\n        $ " + _vm._s(_vm.transaction.total) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Message:")]),
+            _vm._v("\n        " + _vm._s(_vm.transaction.message) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Items:")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "space-y-3" },
+            _vm._l(_vm.transaction.items, function(item, key) {
+              return _c(
+                "div",
+                { key: "item" + key, staticClass: "space-y-1" },
+                [
+                  _c("div", [_vm._v(_vm._s(item.name))]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-gray-400 text-sm" }, [
+                    _vm._v(_vm._s(item.description))
+                  ])
+                ]
+              )
+            }),
+            0
+          )
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []

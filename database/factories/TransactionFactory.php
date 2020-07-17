@@ -16,7 +16,6 @@ $factory->define(Transaction::class, function (Faker $faker) {
         'type' => $type,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'email' => $faker->email,
         'phone' => $faker->phoneNumber,
         'subtotal' => $faker->numberBetween(10, 50),
         'tip_percentage' => $faker->randomElement([0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30]),

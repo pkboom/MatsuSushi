@@ -15,10 +15,10 @@
       <table class="w-full">
         <tr>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Name
+            Id
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Email
+            Name
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             Phone
@@ -42,10 +42,10 @@
           "
         >
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ transaction.name }}
+            {{ transaction.id }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ transaction.email }}
+            {{ transaction.name }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ transaction.phone }}

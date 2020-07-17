@@ -132,8 +132,6 @@ export default {
           localStorage.setItem('phone', this.form.phone)
           localStorage.setItem('address', this.form.address)
 
-          localStorage.setItem('last_name', this.form.last_name)
-
           location.href = '/checkout'
         })
         .catch(error => {

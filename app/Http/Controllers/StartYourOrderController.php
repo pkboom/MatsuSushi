@@ -29,8 +29,8 @@ class StartYourOrderController extends Controller
             'message' => ['nullable', 'string'],
             'items' => ['required', 'array'],
             'items.*' => ['required', 'exists:items,id'],
-            'tip_percentage' => ['required', 'min:0'],
-        ]);
+            'tip_percentage' => ['required', 'in:0,0.05,0.10,0.15,0.20,0.25,0.30'],
+            ]);
 
         Session::put('order', $request);
 

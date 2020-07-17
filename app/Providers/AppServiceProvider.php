@@ -47,7 +47,6 @@ class AppServiceProvider extends ServiceProvider
                 return [
                     'user' => [
                         'id' => Auth::user()->id,
-                        'email' => Auth::user()->email,
                         'first_name' => Auth::user()->first_name,
                         'last_name' => Auth::user()->last_name,
                     ],
