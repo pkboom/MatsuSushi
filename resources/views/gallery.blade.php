@@ -1,4 +1,4 @@
 @extends('layouts.app_new')
 @section('content')
-<images></images>
+<gallery-images></gallery-images>
 @endsection('content')

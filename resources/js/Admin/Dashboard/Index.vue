@@ -7,8 +7,13 @@
         class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
       >
         <button class="btn" @click="alarmTest">Alarm Test</button>
+        <audio
+          ref="alarm"
+          src="/sound/jingle-bells-sms.ogg"
+          preload="auto"
+          muted="muted"
+        />
         <button class="btn" @click="messageTest">Message Test</button>
-        <audio ref="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
         <button class="btn" @click="toggleEnable">
           {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
         </button>
@@ -86,8 +91,17 @@ export default {
     }
   },
   mounted() {
+    let self = this
+
     Echo.channel('orders').listen('OrderPlaced', ({ order }) => {
+      if (order === 'test') {
+        this.$page.flash.success = 'Online order messaging ready.'
+        return
+      }
+
       this.transactionData.unshift(order)
+
+      self.$refs.alarm.play()
 
       setTimeout(() => {
         let transaction = this.transactionData.find(

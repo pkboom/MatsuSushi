@@ -6,7 +6,7 @@ use App\Image;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
-class ImageController extends Controller
+class GalleryController extends Controller
 {
     public function index()
     {
@@ -23,6 +23,6 @@ class ImageController extends Controller
             ]);
         }
 
-        return view('images.index');
+        return view('gallery');
     }
 }
