@@ -3,7 +3,7 @@
 			<a href="/" class="flex-shrink-0 text-2xl text-gray-800 font-semibold">Matsu Sushi</a>
 			<div id="item" class="w-full hidden flex-col items-center sm:flex sm:flex-row sm:justify-end mt-2">
 				<a href="/" class="w-full sm:w-auto text-center leading-normal text-indigo-700 hover:text-indigo-900 opacity-75 no-underline sm:ml-8 py-2 {{ request()->is('/') ? 'active' : '' }}">HOME</a>
-				<a href="/item" class="w-full sm:w-auto text-center leading-normal text-indigo-700 hover:text-indigo-900 opacity-75 no-underline sm:ml-8 py-2 {{ request()->is('item') ? 'active' : '' }}">MENU</a>
+				<a href="/menu" class="w-full sm:w-auto text-center leading-normal text-indigo-700 hover:text-indigo-900 opacity-75 no-underline sm:ml-8 py-2 {{ request()->is('item') ? 'active' : '' }}">MENU</a>
 				<a href="/order" class="w-full sm:w-auto text-center leading-normal text-indigo-700 hover:text-indigo-900 opacity-75 no-underline sm:ml-8 py-2 {{ request()->is('order') ? 'active' : '' }}">ORDER</a>
 				<a href="/gallery" class="w-full sm:w-auto text-center leading-normal text-indigo-700 hover:text-indigo-900 opacity-75 no-underline sm:ml-8 py-2 {{ request()->is('gallery') ? 'active' : '' }}">GALLERY</a>
 				<a href="/contact" class="w-full sm:w-auto text-center leading-normal text-indigo-700 hover:text-indigo-900 opacity-75 no-underline sm:ml-8 py-2 {{ request()->is('contact') ? 'active' : '' }}">CONTACT</a>

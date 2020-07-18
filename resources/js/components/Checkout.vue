@@ -1,5 +1,5 @@
 <template>
-  <layout title="Cart">
+  <front-layout title="Cart">
     <div class="p-8 max-w-xl mx-auto w-full">
       <div class="font-semibold text-xl py-4 border-b">
         Checkout
@@ -57,7 +57,7 @@
         Sorry, online order is temporarily unavailable.
       </div>
     </div>
-  </layout>
+  </front-layout>
 </template>
 
 <script>

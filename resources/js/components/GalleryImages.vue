@@ -1,5 +1,5 @@
 <template>
-  <layout title="Gallery">
+  <front-layout title="Gallery">
     <div class="p-4">
       <gallery url="/gallery" @hit="showModal" />
     </div>
@@ -17,7 +17,7 @@
       </span>
       <img ref="modal-image" class="mx-auto block w-full lg:w-4/5" />
     </div>
-  </layout>
+  </front-layout>
 </template>
 
 <script>

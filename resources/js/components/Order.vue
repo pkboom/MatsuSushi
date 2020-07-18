@@ -1,5 +1,5 @@
 <template>
-  <layout title="Order">
+  <front-layout title="Order">
     <div
       class="flex flex-col items-start max-w-5xl md:flex-row mx-auto py-12 w-full"
     >
@@ -79,7 +79,7 @@
         </div>
       </div>
     </div>
-  </layout>
+  </front-layout>
 </template>
 
 <script>

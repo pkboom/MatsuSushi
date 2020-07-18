@@ -1,5 +1,5 @@
 <template>
-  <layout title="Start Your Order">
+  <front-layout title="Start Your Order">
     <div class="p-8 max-w-3xl mx-auto">
       <div class="font-semibold text-xl py-4 border-b">
         Start Your Order
@@ -87,7 +87,7 @@
         Sorry, online order is temporarily unavailable.
       </div>
     </div>
-  </layout>
+  </front-layout>
 </template>
 
 <script>

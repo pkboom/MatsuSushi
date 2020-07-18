@@ -1,5 +1,5 @@
 <template>
-  <layout title="Thank you">
+  <front-layout title="Thank you">
     <div class="mt-8 p-8 max-w-2xl mx-auto space-y-4 rounded bg-gray-100">
       <div class="text-xl border-b-2 border-gray-400">
         Thank you!
@@ -57,7 +57,7 @@
         </div>
       </div>
     </div>
-  </layout>
+  </front-layout>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <layout title="Cart">
+  <front-layout title="Cart">
     <div class="p-8 max-w-3xl mx-auto">
       <div class="font-semibold text-xl py-4 border-b">
         Order Summary
@@ -65,7 +65,7 @@
         <button class="btn" @click="confirm">Confirm Order</button>
       </div>
     </div>
-  </layout>
+  </front-layout>
 </template>
 
 <script>
