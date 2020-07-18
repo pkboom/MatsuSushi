@@ -43450,7 +43450,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("front-layout", { attrs: { title: "Menu" } }, [
+  return _c("front-layout", [
     _c(
       "div",
       {
@@ -43483,7 +43483,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "font-serif leading-9 max-w-3xl mx-auto text-2xl text-center"
+            "font-serif leading-9 max-w-3xl mx-auto text-xl text-center"
         },
         [
           _vm._v(
