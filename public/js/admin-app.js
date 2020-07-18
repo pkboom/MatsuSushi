@@ -4210,6 +4210,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     category: Object
@@ -39145,7 +39178,93 @@ var render = function() {
           ]
         )
       ]
-    )
+    ),
+    _vm._v(" "),
+    _c("h2", { staticClass: "mt-12 text-lg" }, [_vm._v("Items")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "mt-6 bg-white rounded shadow overflow-x-auto" }, [
+      _c(
+        "table",
+        { staticClass: "w-full" },
+        [
+          _c("tr", [
+            _c(
+              "th",
+              {
+                staticClass:
+                  "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+              },
+              [_vm._v("\n          name\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                staticClass:
+                  "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap",
+                attrs: { colspan: "2" }
+              },
+              [_vm._v("\n          price\n        ")]
+            )
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.category.items, function(item, key) {
+            return _c(
+              "tr",
+              {
+                key: "item" + key,
+                staticClass:
+                  "hover:bg-gray-100 focus:bg-gray-100 cursor-pointer",
+                on: {
+                  click: function($event) {
+                    _vm.$inertia.visit(_vm.$route("admin.items.edit", item.id))
+                  }
+                }
+              },
+              [
+                _c(
+                  "td",
+                  { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                  [_vm._v(_vm._s(item.name))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                  [_vm._v("\n          " + _vm._s(item.price) + "\n        ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "border-t px-4 align-middle w-min" },
+                  [
+                    _c("icon", {
+                      staticClass: "block w-6 h-6 fill-gray-400",
+                      attrs: { name: "cheveron-right" }
+                    })
+                  ],
+                  1
+                )
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _vm.category.items.length === 0
+            ? _c("tr", [
+                _c(
+                  "td",
+                  {
+                    staticClass: "border-t px-6 py-4",
+                    attrs: { colspan: "3" }
+                  },
+                  [_vm._v("No items found.")]
+                )
+              ])
+            : _vm._e()
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = []

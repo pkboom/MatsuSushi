@@ -39,6 +39,39 @@
         </div>
       </form>
     </div>
+    <h2 class="mt-12 text-lg">Items</h2>
+    <div class="mt-6 bg-white rounded shadow overflow-x-auto">
+      <table class="w-full">
+        <tr>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            name
+          </th>
+          <th
+            class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+            colspan="2"
+          >
+            price
+          </th>
+        </tr>
+        <tr
+          v-for="(item, key) in category.items"
+          :key="'item' + key"
+          class="hover:bg-gray-100 focus:bg-gray-100 cursor-pointer"
+          @click="$inertia.visit($route('admin.items.edit', item.id))"
+        >
+          <td class="border-t px-6 py-4 whitespace-no-wrap">{{ item.name }}</td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ item.price }}
+          </td>
+          <td class="border-t px-4 align-middle w-min">
+            <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
+          </td>
+        </tr>
+        <tr v-if="category.items.length === 0">
+          <td class="border-t px-6 py-4" colspan="3">No items found.</td>
+        </tr>
+      </table>
+    </div>
   </admin-layout>
 </template>
 
