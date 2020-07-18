@@ -1,6 +1,6 @@
 <template>
   <front-layout title="Cart">
-    <div class="p-8 max-w-3xl mx-auto">
+    <div class="max-w-3xl md:px-16 mx-auto p-8 px-4 w-full">
       <div class="font-semibold text-xl py-4 border-b">
         Order Summary
       </div>

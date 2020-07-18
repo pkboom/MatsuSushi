@@ -35744,7 +35744,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("front-layout", { attrs: { title: "Cart" } }, [
-    _c("div", { staticClass: "p-8 max-w-3xl mx-auto" }, [
+    _c("div", { staticClass: "max-w-3xl md:px-16 mx-auto p-8 px-4 w-full" }, [
       _c("div", { staticClass: "font-semibold text-xl py-4 border-b" }, [
         _vm._v("\n      Order Summary\n    ")
       ]),
