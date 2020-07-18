@@ -132,7 +132,7 @@ export default {
     },
     confirm() {
       if (this.subtotal > 0) {
-        location.href = '/start-your-order'
+        location.href = '/start/your/order'
       }
     },
   },

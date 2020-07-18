@@ -14,21 +14,15 @@
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
-      :class="isUrl('order') ? 'border-b-2 pb-1' : null"
-    >
-      <a href="/order">Order</a>
-    </div>
-    <div
-      class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('gallery') ? 'border-b-2 pb-1' : null"
     >
       <a href="/gallery">Gallery</a>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
-      :class="isUrl('contact') ? 'border-b-2 pb-1' : null"
+      :class="isUrl('order') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/contact">Contact</a>
+      <a href="/order">Order</a>
     </div>
     <div
       class="text-md group hover:text-gray-400 font-medium"

@@ -9,5 +9,5 @@ export function isUrl(...urls) {
 }
 
 export function isNotUrl(...urls) {
-  return !this.isUrl(...urls)
+  return !isUrl(...urls)
 }

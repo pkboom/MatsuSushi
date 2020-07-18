@@ -1,8 +1,5 @@
 <?php
 
-Route::view('/', 'welcome');
-Route::view('contact', 'contact');
-
 include 'auth.php';
 include 'front.php';
 

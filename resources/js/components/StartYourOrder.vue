@@ -125,7 +125,7 @@ export default {
     submit() {
       this.sending = true
       axios
-        .post('/start-your-order', this.form)
+        .post('/start/your/order', this.form)
         .then(response => {
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)

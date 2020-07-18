@@ -1,8 +1,6 @@
 <template>
-  <admin-layout title="Dashboard">
-    <!-- <a href="/admin/kakao/login" class="btn">Log into kakao</a> -->
-    <!-- <a href="/admin/kakao/send" class="btn">Send message</a> -->
-    <div class="space-y-4">
+  <div title="Receive Online Order">
+    <div class="space-y-4 p-8">
       <div
         class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
       >
@@ -14,9 +12,11 @@
           muted="muted"
         />
         <button class="btn" @click="messageTest">Message Test</button>
-        <button class="btn" @click="toggleEnable">
-          {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
-        </button>
+      </div>
+      <div v-if="message">
+        <span class="bg-green-100 px-4 py-3 rounded text-green-800 w-auto">
+          {{ message }}
+        </span>
       </div>
       <div class="font-bold py-2 text-xl">Today's orders</div>
       <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-  </admin-layout>
+  </div>
 </template>
 
 <script>
@@ -82,12 +82,11 @@ import Http from '@/Utils/Http'
 export default {
   props: {
     transactions: Array,
-    online_order_enabled: Number,
   },
   data() {
     return {
       transactionData: this.transactions,
-      enabled: this.online_order_enabled,
+      message: null,
     }
   },
   mounted() {
@@ -95,7 +94,12 @@ export default {
 
     Echo.channel('orders').listen('OrderPlaced', ({ order }) => {
       if (order === 'test') {
-        this.$page.flash.success = 'Online order messaging ready.'
+        this.message = 'Online order messaging ready.'
+
+        setTimeout(() => {
+          this.message = null
+        }, 3000)
+
         return
       }
 
@@ -107,6 +111,7 @@ export default {
         let transaction = this.transactionData.find(
           transaction => transaction.id === order.id
         )
+
         if (transaction) {
           transaction.new = false
         }
@@ -119,15 +124,6 @@ export default {
     },
     messageTest() {
       Http.get('/message/test')
-    },
-    toggleEnable() {
-      Http.get('/admin/toggle/online/order').then(response => {
-        this.enabled = response.data.online_order_enabled
-
-        this.$page.flash.success =
-          'Online order ' +
-          (response.data.online_order_enabled ? 'enabled' : 'disabled')
-      })
     },
   },
 }

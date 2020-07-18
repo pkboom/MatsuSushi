@@ -17,9 +17,7 @@ class DashboardController extends Controller
                 ->take(10)
                 ->latest()
                 ->get()
-                ->map(function ($transaction) {
-                    return $transaction->toArray();
-                }),
+                ->map->toArray(),
             'online_order_enabled' => Cache::get('online_order_enabled', Transaction::ONLINE_ORDER_DISABLED),
         ]);
     }

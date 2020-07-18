@@ -40,9 +40,22 @@
           </div>
         </div>
         <slot />
-        <div id="bottom" class="flex flex-col justify-center">
+        <div
+          v-if="
+            isNotUrl(
+              'gallery',
+              'order',
+              'cart',
+              'start/your/order',
+              'checkout',
+              'thankyou*'
+            )
+          "
+          id="bottom"
+          class="flex flex-col justify-center"
+        >
           <div
-            class="border-2 flex flex-col items-center mx-auto pb-16 pt-12 px-12 space-y-4 text-white"
+            class="border-2 flex flex-col items-center md:mx-auto mx-3 pb-16 pt-12 px-12 space-y-4 text-white"
           >
             <div class="text-4xl uppercase">
               107 Hunter St. East Suite 102
@@ -51,28 +64,32 @@
               Peterborough, ON K9H 1G7
             </div>
           </div>
-          <div class="-mt-7 bg-white mx-auto px-12 py-4 text-blue-900 text-xl">
+          <a
+            href="https://www.google.com/maps/place/Matsu+Sushi+(East+City)+Japanese+and+Korean+Restaurant/@44.3066026,-78.3089279,17z/data=!4m13!1m7!3m6!1s0x89d58cb8987bc695:0x9a6cf675fb1aec67!2s102+Hunter+St+E,+Peterborough,+ON+K9H+1G7!3b1!8m2!3d44.3067303!4d-78.3093375!3m4!1s0x0:0xaeb3dad2b256e13c!8m2!3d44.3064712!4d-78.3088705"
+            target="_blank"
+            class="-mt-7 bg-white focus:bg-blue-900 focus:text-white hover:bg-blue-900 hover:text-white mx-auto px-12 py-4 text-blue-900 text-lg uppercase"
+          >
             View Map
-          </div>
+          </a>
           <div
-            class="gap-8 grid grid-cols-1 lg:grid-cols-3 lg:mt-8 p-16 text-white w-full"
+            class="gap-8 grid grid-cols-1 md:grid-cols-3 md:mt-8 p-16 text-white w-full"
           >
             <div class="text-4xl font-serif whitespace-no-wrap mx-auto">
               Matsu Sushi
             </div>
-            <div class="space-y-2 lg:space-y-4 mx-auto">
+            <div class="space-y-2 md:space-y-4 mx-auto">
               <div class="text-2xl text-center">
                 Contact
               </div>
-              <div class="text-lg text-center">
+              <div class="text-md text-center">
                 (705) 760-9484
               </div>
             </div>
-            <div class="space-y-2 lg:space-y-4 mx-auto">
+            <div class="space-y-2 md:space-y-4 mx-auto">
               <div class="text-2xl text-center">
                 Restaurant Hours
               </div>
-              <div class="text-lg text-center">
+              <div class="text-md text-center">
                 <div>
                   Mon-Sun 11:30 AM ~ 10:00 PM
                 </div>
@@ -83,7 +100,7 @@
             </div>
           </div>
           <div class="flex font-serif justify-center text-sm text-white w-full">
-            Matsu Sushi © 2018. All rights reserved.
+            Matsu Sushi &#9400; 2018. All rights reserved.
           </div>
         </div>
       </div>
@@ -92,6 +109,8 @@
 </template>
 
 <script>
+import { isNotUrl } from '@/Utils/Helpers'
+
 export default {
   props: {
     title: String,
@@ -106,6 +125,7 @@ export default {
     document.title = this.title + ' | Matsu Sushi'
   },
   methods: {
+    isNotUrl,
     updatePageTitle(title) {
       document.title = title
         ? `${title} | ${this.$page.app.name}`
