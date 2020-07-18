@@ -36139,7 +36139,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "font-serif leading-9 max-w-4xl mx-auto text-2xl text-center"
+            "font-serif leading-9 max-w-3xl mx-auto text-2xl text-center"
         },
         [
           _vm._v(

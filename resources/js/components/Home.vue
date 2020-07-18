@@ -9,7 +9,7 @@
       <div class="font-thin mb-8 text-4xl text-center text-gray-900 upperclass">
         WELCOME TO Matsu Sushi
       </div>
-      <div class="font-serif leading-9 max-w-4xl mx-auto text-2xl text-center">
+      <div class="font-serif leading-9 max-w-3xl mx-auto text-2xl text-center">
         Matsu Sushi has worked passionately to provide guests with a unique
         Japanese & Korean dining experience in Peterborough. Our real passion is
         making sure the quality of food and service is unmatched, everyone feels
