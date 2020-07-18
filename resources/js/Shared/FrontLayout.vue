@@ -2,12 +2,15 @@
   <div>
     <div class="flex flex-col">
       <div class="min-h-screen flex flex-col">
-        <div class="md:flex">
+        <div class="md:flex z-10">
           <div
             class="bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6 py-4"
           >
             <div class="md:w-full flex justify-center">
-              <a href="/" class="py-2 text-xl text-white font-serif">
+              <a
+                href="/"
+                class="font-semibold font-serif py-2 text-white text-xl tracking-wide"
+              >
                 Matsu Sushi
               </a>
             </div>

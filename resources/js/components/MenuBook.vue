@@ -16,12 +16,3 @@
     </div>
   </front-layout>
 </template>
-
-<script>
-export default {
-  data() {
-    return {}
-  },
-  methods: {},
-}
-</script>
