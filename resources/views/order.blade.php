@@ -1,4 +1,4 @@
-@extends('layouts.app_new')
+@extends('layouts.app')
 @section('content')
 <order :categories="{{ json_encode($categories) }}"></order>
 @endsection('content')

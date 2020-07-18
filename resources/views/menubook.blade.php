@@ -1,4 +1,4 @@
-@extends('layouts.app_new')
+@extends('layouts.app')
 @section('content')
 <menu-book></menu-book>
 @endsection('content')

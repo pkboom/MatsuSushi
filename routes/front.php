@@ -11,7 +11,7 @@ use App\Http\Controllers\StartYourOrderController;
 use App\Http\Controllers\ThankyouController;
 use Illuminate\Support\Facades\Response;
 
-Route::view('/', 'welcome');
+Route::view('/', 'home');
 
 Route::get('menu', MenuBookController::class);
 

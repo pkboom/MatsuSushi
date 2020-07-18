@@ -1,4 +1,4 @@
-@extends('layouts.app_new')
+@extends('layouts.app')
 @section('header')
 <script src="https://js.stripe.com/v3/"></script>
 @endsection('header')
