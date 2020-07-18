@@ -122,14 +122,12 @@ export default {
     }
   },
   mounted() {
-    document.title = this.title + ' | Matsu Sushi'
+    this.updatePageTitle(this.title)
   },
   methods: {
     isNotUrl,
     updatePageTitle(title) {
-      document.title = title
-        ? `${title} | ${this.$page.app.name}`
-        : this.$page.app.name
+      document.title = title ? `${title} | Matsu Sushi` : 'Matsu Sushi'
     },
   },
 }

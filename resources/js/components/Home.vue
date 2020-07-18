@@ -1,5 +1,5 @@
 <template>
-  <front-layout title="Menu">
+  <front-layout>
     <div class="max-w-5xl mx-auto">
       <img src="/images/menu/menu1.jpg" alt="" />
       <img src="/images/menu/menu2.jpg" alt="" />

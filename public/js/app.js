@@ -2692,12 +2692,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    document.title = this.title + ' | Matsu Sushi';
+    this.updatePageTitle(this.title);
   },
   methods: {
     isNotUrl: _Utils_Helpers__WEBPACK_IMPORTED_MODULE_0__["isNotUrl"],
     updatePageTitle: function updatePageTitle(title) {
-      document.title = title ? "".concat(title, " | ").concat(this.$page.app.name) : this.$page.app.name;
+      document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
     }
   }
 });
@@ -36127,7 +36127,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("front-layout", { attrs: { title: "Menu" } }, [
+  return _c("front-layout", [
     _c("div", { staticClass: "max-w-5xl mx-auto" }, [
       _c("img", { attrs: { src: "/images/menu/menu1.jpg", alt: "" } }),
       _vm._v(" "),
