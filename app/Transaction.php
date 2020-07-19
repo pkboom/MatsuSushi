@@ -56,7 +56,7 @@ class Transaction extends Model
 
     public static function formattedTotal($order)
     {
-        return  static::payDetail($order)['total'] * 100;
+        return  $order ? static::payDetail($order)['total'] * 100 : 0;
     }
 
     public static function subtotal($order)
@@ -86,12 +86,12 @@ class Transaction extends Model
 
     public static function payDetail($order)
     {
-        return [
+        return $order ? [
             'subtotal' => ($subtotal = static::subtotal($order)),
             'tax' => static::tax($subtotal),
             'tip' => static::tip($subtotal, $order['tip_percentage']),
             'total' => static::total($subtotal, $order['tip_percentage']),
-        ];
+        ] : null;
     }
 
     public static function format($order)

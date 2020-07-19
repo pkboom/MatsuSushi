@@ -2513,6 +2513,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     message: String
@@ -2538,11 +2568,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     flash: function flash(data) {
-      if (data) {
-        this.body = data.message;
-        this.level = data.level;
-      }
-
+      if (!data.message) return;
+      this.body = data.message;
+      this.level = data.level;
       this.show = true;
       clearTimeout(this.timeout);
       this.timeout = null;
@@ -2553,7 +2581,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.timeout = setTimeout(function () {
         _this2.show = false;
-      }, 3000);
+      }, 5000);
     }
   }
 });
@@ -3746,7 +3774,7 @@ __webpack_require__.r(__webpack_exports__);
       this.calculate();
     },
     confirm: function confirm() {
-      if (this.subtotal > 0) {
+      if (this.subtotal >= 1) {
         location.href = '/start/your/order';
       }
     }
@@ -3879,6 +3907,8 @@ __webpack_require__.r(__webpack_exports__);
 
         self.payWithCard(stripe, card, data.clientSecret);
       });
+    })["catch"](function (error) {
+      flash(error.response.data, 'error');
     });
   },
   methods: {
@@ -3903,7 +3933,7 @@ __webpack_require__.r(__webpack_exports__);
     orderComplete: function orderComplete(paymentIntentId) {
       var self = this;
       this.loading(false);
-      location.href = '/thankyou/' + paymentIntentId;
+      location.href = '/order/complete/' + paymentIntentId;
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError: function showError(errorMsgText) {
@@ -4424,7 +4454,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.sending = false;
 
-        _this.errors.record(error.response.data.errors);
+        if (error.response) {
+          _this.errors.record(error.response.data.errors);
+        }
+
+        flash(_this.errors.first('items*'), 'error');
       });
     }
   }
@@ -4518,12 +4552,9 @@ __webpack_require__.r(__webpack_exports__);
     localStorage.removeItem('subtotal');
     localStorage.removeItem('tax');
     localStorage.removeItem('items');
-
-    if (this.transaction["new"]) {
-      events.$emit('order-items', {
-        count: 0
-      });
-    }
+    events.$emit('order-items', {
+      count: 0
+    });
   },
   methods: {}
 });
@@ -34096,46 +34127,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
-      ],
-      staticClass: "fixed bottom-6 right-6 rounded-md bg-green-50 p-4"
-    },
-    [
-      _c("div", { staticClass: "flex" }, [
-        _c("div", { staticClass: "flex-shrink-0" }, [
-          _c(
-            "svg",
-            {
-              staticClass: "h-5 w-5 text-green-400",
-              attrs: { viewBox: "0 0 20 20", fill: "currentColor" }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  "fill-rule": "evenodd",
-                  d:
-                    "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
-                  "clip-rule": "evenodd"
-                }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "ml-3" }, [
-          _c(
-            "p",
-            { staticClass: "text-sm leading-5 font-medium text-green-800" },
-            [_vm._v("\n        " + _vm._s(_vm.body) + "\n      ")]
-          )
+  return _c("div", [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.show && _vm.level === "success",
+            expression: "show && level === 'success'"
+          }
+        ],
+        staticClass: "fixed bottom-6 right-6 rounded-md bg-green-50 p-4"
+      },
+      [
+        _c("div", { staticClass: "flex" }, [
+          _c("div", { staticClass: "flex-shrink-0" }, [
+            _c(
+              "svg",
+              {
+                staticClass: "h-5 w-5 text-green-400",
+                attrs: { viewBox: "0 0 20 20", fill: "currentColor" }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
+                    "clip-rule": "evenodd"
+                  }
+                })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ml-3" }, [
+            _c(
+              "p",
+              { staticClass: "text-sm leading-5 font-medium text-green-800" },
+              [_vm._v("\n          " + _vm._s(_vm.body) + "\n        ")]
+            )
+          ])
         ])
-      ])
-    ]
-  )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.show && _vm.level === "error",
+            expression: "show && level === 'error'"
+          }
+        ],
+        staticClass: "fixed bottom-6 right-6 rounded-md bg-red-50 p-4"
+      },
+      [
+        _c("div", { staticClass: "flex" }, [
+          _c("div", { staticClass: "flex-shrink-0" }, [
+            _c(
+              "svg",
+              {
+                staticClass: "h-5 w-5 text-red-400",
+                attrs: { viewBox: "0 0 20 20", fill: "currentColor" }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    "fill-rule": "evenodd",
+                    d:
+                      "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
+                    "clip-rule": "evenodd"
+                  }
+                })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ml-3" }, [
+            _c(
+              "p",
+              { staticClass: "text-sm leading-5 font-medium text-red-800" },
+              [_vm._v("\n          " + _vm._s(_vm.body) + "\n        ")]
+            )
+          ])
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -35945,7 +36029,7 @@ var render = function() {
                       ]),
                       _vm._v(
                         "\n              $ " +
-                          _vm._s(_vm.payDetail.subtotal) +
+                          _vm._s(_vm.payDetail ? _vm.payDetail.subtotal : 0) +
                           "\n            "
                       )
                     ]),
@@ -35956,7 +36040,7 @@ var render = function() {
                       ]),
                       _vm._v(
                         "\n              $ " +
-                          _vm._s(_vm.payDetail.tax) +
+                          _vm._s(_vm.payDetail ? _vm.payDetail.tax : 0) +
                           "\n            "
                       )
                     ]),
@@ -35967,7 +36051,7 @@ var render = function() {
                       ]),
                       _vm._v(
                         "\n              $ " +
-                          _vm._s(_vm.payDetail.tip) +
+                          _vm._s(_vm.payDetail ? _vm.payDetail.tip : 0) +
                           "\n            "
                       )
                     ]),
@@ -35980,7 +36064,7 @@ var render = function() {
                       _c("span", { staticClass: "text-red-600 font-bold" }, [
                         _vm._v(
                           "\n                $ " +
-                            _vm._s(_vm.payDetail.total) +
+                            _vm._s(_vm.payDetail ? _vm.payDetail.total : 0) +
                             "\n              "
                         )
                       ])

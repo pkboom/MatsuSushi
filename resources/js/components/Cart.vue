@@ -131,7 +131,7 @@ export default {
       this.calculate()
     },
     confirm() {
-      if (this.subtotal > 0) {
+      if (this.subtotal >= 1) {
         location.href = '/start/your/order'
       }
     },

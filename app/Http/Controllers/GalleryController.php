@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Response;
 
 class GalleryController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         if (Request::wantsJson()) {
             return Response::json([

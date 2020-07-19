@@ -19,7 +19,7 @@ class StartYourOrderController extends Controller
 
     public function store()
     {
-        $request = Request::validate([
+        $order = Request::validate([
             'type' => ['required', 'in:'.implode(',', Transaction::TYPE)],
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
@@ -30,10 +30,12 @@ class StartYourOrderController extends Controller
             'items' => ['required', 'array'],
             'items.*' => ['required', 'exists:items,id'],
             'tip_percentage' => ['required', 'in:0,0.05,0.10,0.15,0.20,0.25,0.30'],
-            ]);
+        ], [
+            'items.required' => 'Cart is empty.',
+        ]);
 
-        Session::put('order', $request);
+        Session::put('order', $order);
 
-        return Response::json($request);
+        return Response::json($order);
     }
 }

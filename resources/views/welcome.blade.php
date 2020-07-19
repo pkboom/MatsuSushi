@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('front.app')
 
 @section('content')
 	<section class="h-screen" id="main-image">

@@ -137,7 +137,11 @@ export default {
         .catch(error => {
           this.sending = false
 
-          this.errors.record(error.response.data.errors)
+          if (error.response) {
+            this.errors.record(error.response.data.errors)
+          }
+
+          flash(this.errors.first('items*'), 'error')
         })
     },
   },

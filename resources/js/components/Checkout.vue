@@ -25,20 +25,20 @@
             <div class="flex flex-col items-end py-4 space-y-4">
               <div>
                 <span class="text-gray-500">Subtotal:</span>
-                $ {{ payDetail.subtotal }}
+                $ {{ payDetail ? payDetail.subtotal : 0 }}
               </div>
               <div>
                 <span class="text-gray-500">GST/HST:</span>
-                $ {{ payDetail.tax }}
+                $ {{ payDetail ? payDetail.tax : 0 }}
               </div>
               <div>
                 <span class="text-gray-500">Tip:</span>
-                $ {{ payDetail.tip }}
+                $ {{ payDetail ? payDetail.tip : 0 }}
               </div>
               <div>
                 <span class="text-gray-500">Total:</span>
                 <span class="text-red-600 font-bold">
-                  $ {{ payDetail.total }}
+                  $ {{ payDetail ? payDetail.total : 0 }}
                 </span>
               </div>
             </div>
@@ -77,43 +77,48 @@ export default {
   mounted() {
     var stripe = Stripe(this.stripeKey)
 
-    axios.post('/checkout').then(({ data }) => {
-      var elements = stripe.elements()
-      var style = {
-        base: {
-          color: '#32325d',
-          fontFamily: 'Arial, sans-serif',
-          fontSmoothing: 'antialiased',
-          fontSize: '16px',
-          '::placeholder': {
+    axios
+      .post('/checkout')
+      .then(({ data }) => {
+        var elements = stripe.elements()
+        var style = {
+          base: {
             color: '#32325d',
+            fontFamily: 'Arial, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+              color: '#32325d',
+            },
           },
-        },
-        invalid: {
-          fontFamily: 'Arial, sans-serif',
-          color: '#fa755a',
-          iconColor: '#fa755a',
-        },
-      }
-      var card = elements.create('card', { style: style })
-      // Stripe injects an iframe into the DOM
-      card.mount('#card-element')
-      card.on('change', function(event) {
-        // Disable the Pay button if there are no card details in the Element
-        document.querySelector('button').disabled = event.empty
-        document.querySelector('#card-error').textContent = event.error
-          ? event.error.message
-          : ''
-      })
-      var form = document.getElementById('payment-form')
+          invalid: {
+            fontFamily: 'Arial, sans-serif',
+            color: '#fa755a',
+            iconColor: '#fa755a',
+          },
+        }
+        var card = elements.create('card', { style: style })
+        // Stripe injects an iframe into the DOM
+        card.mount('#card-element')
+        card.on('change', function(event) {
+          // Disable the Pay button if there are no card details in the Element
+          document.querySelector('button').disabled = event.empty
+          document.querySelector('#card-error').textContent = event.error
+            ? event.error.message
+            : ''
+        })
+        var form = document.getElementById('payment-form')
 
-      var self = this
-      form.addEventListener('submit', function(event) {
-        event.preventDefault()
-        // Complete payment when the submit button is clicked
-        self.payWithCard(stripe, card, data.clientSecret)
+        var self = this
+        form.addEventListener('submit', function(event) {
+          event.preventDefault()
+          // Complete payment when the submit button is clicked
+          self.payWithCard(stripe, card, data.clientSecret)
+        })
       })
-    })
+      .catch(error => {
+        flash(error.response.data, 'error')
+      })
   },
   methods: {
     payWithCard(stripe, card, clientSecret) {
@@ -140,7 +145,7 @@ export default {
       var self = this
       this.loading(false)
 
-      location.href = '/thankyou/' + paymentIntentId
+      location.href = '/order/complete/' + paymentIntentId
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError(errorMsgText) {

@@ -77,11 +77,9 @@ export default {
     localStorage.removeItem('tax')
     localStorage.removeItem('items')
 
-    if (this.transaction.new) {
-      events.$emit('order-items', {
-        count: 0,
-      })
-    }
+    events.$emit('order-items', {
+      count: 0,
+    })
   },
   methods: {},
 }

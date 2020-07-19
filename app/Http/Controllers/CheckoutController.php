@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
@@ -24,10 +25,14 @@ class CheckoutController extends Controller
     {
         Stripe::setApiKey(config('services.stripe.secret'));
 
-        $paymentInetent = PaymentIntent::create([
-          'amount' => Transaction::formattedTotal(Session::get('order')),
-          'currency' => 'cad',
-        ]);
+        try {
+            $paymentInetent = PaymentIntent::create([
+                'amount' => Transaction::formattedTotal(Session::get('order')),
+                'currency' => 'cad',
+            ]);
+        } catch (Exception $e) {
+            return Response::json($e->getMessage(), 422);
+        }
 
         Session::put('payment_intent_id', $paymentInetent->id);
 
