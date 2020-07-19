@@ -7781,7 +7781,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#bottom {\n  height: 800px;\n  background-image: url('/images/bottom.jpg');\n  background-size: 100% 100%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n", ""]);
+exports.push([module.i, "#bottom {\n  height: 800px;\n  background-image: url('/images/bottom.jpg');\n  background-size: cover;\n  background-position: center top;\n}\n", ""]);
 
 // exports
 
@@ -41822,14 +41822,14 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "border-2 flex flex-col items-center md:mx-auto mx-3 pb-16 pt-12 px-12 space-y-4 text-white"
+          "border-2 border-white flex flex-col items-center md:mx-auto mx-3 pb-14 pt-12 px-12 space-y-4 text-white"
       },
       [
-        _c("div", { staticClass: "text-4xl uppercase" }, [
+        _c("div", { staticClass: "text-4xl text-center uppercase" }, [
           _vm._v("\n            107 Hunter St. East Suite 102\n          ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "text-lg uppercase" }, [
+        _c("div", { staticClass: "text-lg text-center uppercase" }, [
           _vm._v("\n            Peterborough, ON K9H 1G7\n          ")
         ])
       ]

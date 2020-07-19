@@ -58,12 +58,12 @@
           class="flex flex-col justify-center"
         >
           <div
-            class="border-2 flex flex-col items-center md:mx-auto mx-3 pb-16 pt-12 px-12 space-y-4 text-white"
+            class="border-2 border-white flex flex-col items-center md:mx-auto mx-3 pb-14 pt-12 px-12 space-y-4 text-white"
           >
-            <div class="text-4xl uppercase">
+            <div class="text-4xl text-center uppercase">
               107 Hunter St. East Suite 102
             </div>
-            <div class="text-lg uppercase">
+            <div class="text-lg text-center uppercase">
               Peterborough, ON K9H 1G7
             </div>
           </div>
@@ -140,8 +140,7 @@ export default {
 #bottom {
   height: 800px;
   background-image: url('/images/bottom.jpg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-size: cover;
+  background-position: center top;
 }
 </style>
