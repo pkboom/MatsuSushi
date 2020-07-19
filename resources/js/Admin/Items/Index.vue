@@ -29,11 +29,17 @@
     <div class="bg-white rounded shadow overflow-x-auto">
       <table class="w-full">
         <tr>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Name
+          </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Price
+          </th>
           <th
             class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
             colspan="2"
           >
-            Name
+            Description
           </th>
         </tr>
         <tr
@@ -42,15 +48,19 @@
           class="hover:bg-gray-100 focus:bg-gray-100 cursor-pointer"
           @click="$inertia.visit($route('admin.items.edit', item.id))"
         >
+          <td class="border-t px-6 py-4 whitespace-no-wrap">{{ item.name }}</td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ item.name }}
+            $ {{ item.price }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ item.description }}
           </td>
           <td class="border-t px-4 align-middle w-min">
             <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
           </td>
         </tr>
         <tr v-if="items.data.length === 0">
-          <td class="border-t px-6 py-4" colspan="2">No items found.</td>
+          <td class="border-t px-6 py-4" colspan="4">No items found.</td>
         </tr>
       </table>
     </div>

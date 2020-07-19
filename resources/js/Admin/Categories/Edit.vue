@@ -46,11 +46,14 @@
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             name
           </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Price
+          </th>
           <th
             class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
             colspan="2"
           >
-            price
+            Description
           </th>
         </tr>
         <tr
@@ -61,14 +64,17 @@
         >
           <td class="border-t px-6 py-4 whitespace-no-wrap">{{ item.name }}</td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ item.price }}
+            $ {{ item.price }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ item.description }}
           </td>
           <td class="border-t px-4 align-middle w-min">
             <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
           </td>
         </tr>
         <tr v-if="category.items.length === 0">
-          <td class="border-t px-6 py-4" colspan="3">No items found.</td>
+          <td class="border-t px-6 py-4" colspan="4">No items found.</td>
         </tr>
       </table>
     </div>

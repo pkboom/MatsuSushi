@@ -17,13 +17,7 @@ class CategoryController extends Controller
             'filters' => Request::all('search'),
             'categories' => Category::latest()
                 ->filter(Request::only('search'))
-                ->paginate()
-                ->transform(function ($category) {
-                    return [
-                        'id' => $category->id,
-                        'name' => $category->name,
-                    ];
-                }),
+                ->paginate(),
         ]);
     }
 

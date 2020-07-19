@@ -4237,6 +4237,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     category: Object
@@ -4881,6 +4887,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39220,10 +39236,19 @@ var render = function() {
               "th",
               {
                 staticClass:
+                  "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+              },
+              [_vm._v("\n          Price\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "th",
+              {
+                staticClass:
                   "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap",
                 attrs: { colspan: "2" }
               },
-              [_vm._v("\n          price\n        ")]
+              [_vm._v("\n          Description\n        ")]
             )
           ]),
           _vm._v(" "),
@@ -39250,7 +39275,17 @@ var render = function() {
                 _c(
                   "td",
                   { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
-                  [_vm._v("\n          " + _vm._s(item.price) + "\n        ")]
+                  [_vm._v("\n          $ " + _vm._s(item.price) + "\n        ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                  [
+                    _vm._v(
+                      "\n          " + _vm._s(item.description) + "\n        "
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -39274,7 +39309,7 @@ var render = function() {
                   "td",
                   {
                     staticClass: "border-t px-6 py-4",
-                    attrs: { colspan: "3" }
+                    attrs: { colspan: "4" }
                   },
                   [_vm._v("No items found.")]
                 )
@@ -40303,10 +40338,28 @@ var render = function() {
                 "th",
                 {
                   staticClass:
+                    "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+                },
+                [_vm._v("\n          Name\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticClass:
+                    "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+                },
+                [_vm._v("\n          Price\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticClass:
                     "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap",
                   attrs: { colspan: "2" }
                 },
-                [_vm._v("\n          Name\n        ")]
+                [_vm._v("\n          Description\n        ")]
               )
             ]),
             _vm._v(" "),
@@ -40329,7 +40382,27 @@ var render = function() {
                   _c(
                     "td",
                     { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
-                    [_vm._v("\n          " + _vm._s(item.name) + "\n        ")]
+                    [_vm._v(_vm._s(item.name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                    [
+                      _vm._v(
+                        "\n          $ " + _vm._s(item.price) + "\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                    [
+                      _vm._v(
+                        "\n          " + _vm._s(item.description) + "\n        "
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
@@ -40353,7 +40426,7 @@ var render = function() {
                     "td",
                     {
                       staticClass: "border-t px-6 py-4",
-                      attrs: { colspan: "2" }
+                      attrs: { colspan: "4" }
                     },
                     [_vm._v("No items found.")]
                   )

@@ -15,31 +15,17 @@ class ItemController extends Controller
     {
         return Inertia::render('Items/Index', [
             'filters' => Request::all('search', 'category'),
-            'categories' => Category::query()
-                ->latest()
-                ->get()
-                ->map
-                ->only('id', 'name'),
+            'categories' => Category::latest()->get(),
             'items' => Item::latest()
                 ->filter(Request::only('search', 'category'))
-                ->paginate()
-                ->transform(function ($course) {
-                    return [
-                        'id' => $course->id,
-                        'name' => $course->name,
-                    ];
-                }),
+                ->paginate(),
         ]);
     }
 
     public function create()
     {
         return Inertia::render('Items/Create', [
-            'categories' => Category::query()
-                ->latest()
-                ->get()
-                ->map
-                ->only('id', 'name'),
+            'categories' => Category::latest()->get(),
         ]);
     }
 
@@ -60,8 +46,7 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         return Inertia::render('Items/Edit', [
-            'item' => $item->load('category:id,name')
-                ->only('id', 'category', 'name', 'price', 'description'),
+            'item' => $item->load('category'),
         ]);
     }
 
