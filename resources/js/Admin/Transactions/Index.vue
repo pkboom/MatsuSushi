@@ -51,7 +51,7 @@
             {{ transaction.phone }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ transaction.total }}
+            $ {{ transaction.total }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ transaction.status }}
