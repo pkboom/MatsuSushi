@@ -12,9 +12,12 @@
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <div class="pr-6 pb-8 w-full">
             <label class="form-label">Category:</label>
-            <div class="form-input bg-gray-100">
+            <inertia-link
+              :href="'/admin/categories/' + item.category.id + '/edit'"
+              class="form-input bg-gray-100"
+            >
               {{ form.category }}
-            </div>
+            </inertia-link>
           </div>
           <div class="pr-6 pb-8 w-full">
             <text-input

@@ -35,14 +35,8 @@
           </label>
         </div>
         <div
-          class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center"
+          class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
         >
-          <inertia-link
-            class="text-gray-700 hover:underline"
-            :href="$route('password.request')"
-          >
-            Reset Password
-          </inertia-link>
           <loading-button :loading="sending" class="btn" type="submit">
             Log in
           </loading-button>

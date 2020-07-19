@@ -3966,12 +3966,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   remember: 'form',
   data: function data() {
@@ -4769,6 +4763,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -38836,18 +38833,9 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center"
+                  "px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
               },
               [
-                _c(
-                  "inertia-link",
-                  {
-                    staticClass: "text-gray-700 hover:underline",
-                    attrs: { href: _vm.$route("password.request") }
-                  },
-                  [_vm._v("\n          Reset Password\n        ")]
-                ),
-                _vm._v(" "),
                 _c(
                   "loading-button",
                   {
@@ -40046,19 +40034,34 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" }, [
-              _c("div", { staticClass: "pr-6 pb-8 w-full" }, [
-                _c("label", { staticClass: "form-label" }, [
-                  _vm._v("Category:")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-input bg-gray-100" }, [
-                  _vm._v(
-                    "\n            " +
-                      _vm._s(_vm.form.category) +
-                      "\n          "
+              _c(
+                "div",
+                { staticClass: "pr-6 pb-8 w-full" },
+                [
+                  _c("label", { staticClass: "form-label" }, [
+                    _vm._v("Category:")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "inertia-link",
+                    {
+                      staticClass: "form-input bg-gray-100",
+                      attrs: {
+                        href:
+                          "/admin/categories/" + _vm.item.category.id + "/edit"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.form.category) +
+                          "\n          "
+                      )
+                    ]
                   )
-                ])
-              ]),
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "div",
