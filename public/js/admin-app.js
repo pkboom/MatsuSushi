@@ -40525,7 +40525,7 @@ var render = function() {
                     { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
                     [
                       _vm._v(
-                        "\n          " +
+                        "\n          $ " +
                           _vm._s(transaction.total) +
                           "\n        "
                       )
