@@ -34356,7 +34356,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n          Matsu Sushi Ⓒ 2018. All rights reserved.\n        "
+                        "\n          Matsu Sushi Ⓒ 2020. All rights reserved.\n        "
                       )
                     ]
                   )

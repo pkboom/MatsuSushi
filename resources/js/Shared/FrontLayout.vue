@@ -103,7 +103,7 @@
             </div>
           </div>
           <div class="flex font-serif justify-center text-sm text-white w-full">
-            Matsu Sushi &#9400; 2018. All rights reserved.
+            Matsu Sushi &#9400; 2020. All rights reserved.
           </div>
         </div>
       </div>
