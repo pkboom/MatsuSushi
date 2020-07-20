@@ -139,7 +139,8 @@ export default {
 <style >
 #bottom {
   height: 800px;
-  background-image: url('/images/bottom.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)),
+    url('/images/bottom.jpg');
   background-size: cover;
   background-position: center top;
 }

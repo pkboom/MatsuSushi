@@ -7781,7 +7781,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#bottom {\n  height: 800px;\n  background-image: url('/images/bottom.jpg');\n  background-size: cover;\n  background-position: center top;\n}\n", ""]);
+exports.push([module.i, "#bottom {\n  height: 800px;\n  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)),\n    url('/images/bottom.jpg');\n  background-size: cover;\n  background-position: center top;\n}\n", ""]);
 
 // exports
 
@@ -43629,7 +43629,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "py-20" }, [
+    _c("div", { staticClass: "py-36" }, [
       _c(
         "div",
         {
