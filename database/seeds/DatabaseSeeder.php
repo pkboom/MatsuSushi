@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('asdfasdf'),
         ]);
 
-        DB::unprepared(file_get_contents(database_path('category_menu.sql')));
+        DB::unprepared(file_get_contents(database_path('categories.sql')));
+        DB::unprepared(file_get_contents(database_path('items.sql')));
 
         $this->call(GallerySeeder::class);
 

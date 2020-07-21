@@ -3901,11 +3901,10 @@ __webpack_require__.r(__webpack_exports__);
         document.querySelector('#card-error').textContent = event.error ? event.error.message : '';
       });
       var form = document.getElementById('payment-form');
-      var self = _this;
       form.addEventListener('submit', function (event) {
         event.preventDefault(); // Complete payment when the submit button is clicked
 
-        self.payWithCard(stripe, card, data.clientSecret);
+        _this.payWithCard(stripe, card, data.clientSecret);
       });
     })["catch"](function (error) {
       flash(error.response.data, 'error');
@@ -3913,8 +3912,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     payWithCard: function payWithCard(stripe, card, clientSecret) {
-      var self = this;
-      self.loading(true);
+      var _this2 = this;
+
+      this.loading(true);
       stripe.confirmCardPayment(clientSecret, {
         receipt_email: document.getElementById('email').value,
         payment_method: {
@@ -3923,21 +3923,19 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (result) {
         if (result.error) {
           // Show error to your customer
-          self.showError(result.error.message);
+          _this2.showError(result.error.message);
         } else {
           // The payment succeeded!
-          self.orderComplete(result.paymentIntent.id);
+          _this2.orderComplete(result.paymentIntent.id);
         }
       });
     },
     orderComplete: function orderComplete(paymentIntentId) {
-      var self = this;
       this.loading(false);
       location.href = '/order/complete/' + paymentIntentId;
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError: function showError(errorMsgText) {
-      var self = this;
       this.loading(false);
       var errorMsg = document.querySelector('#card-error');
       errorMsg.textContent = errorMsgText;

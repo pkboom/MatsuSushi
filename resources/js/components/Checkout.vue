@@ -109,11 +109,10 @@ export default {
         })
         var form = document.getElementById('payment-form')
 
-        var self = this
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', event => {
           event.preventDefault()
           // Complete payment when the submit button is clicked
-          self.payWithCard(stripe, card, data.clientSecret)
+          this.payWithCard(stripe, card, data.clientSecret)
         })
       })
       .catch(error => {
@@ -122,8 +121,7 @@ export default {
   },
   methods: {
     payWithCard(stripe, card, clientSecret) {
-      var self = this
-      self.loading(true)
+      this.loading(true)
       stripe
         .confirmCardPayment(clientSecret, {
           receipt_email: document.getElementById('email').value,
@@ -131,29 +129,27 @@ export default {
             card: card,
           },
         })
-        .then(function(result) {
+        .then(result => {
           if (result.error) {
             // Show error to your customer
-            self.showError(result.error.message)
+            this.showError(result.error.message)
           } else {
             // The payment succeeded!
-            self.orderComplete(result.paymentIntent.id)
+            this.orderComplete(result.paymentIntent.id)
           }
         })
     },
     orderComplete(paymentIntentId) {
-      var self = this
       this.loading(false)
 
       location.href = '/order/complete/' + paymentIntentId
     },
     // Show the customer the error from Stripe if their card fails to charge
     showError(errorMsgText) {
-      var self = this
       this.loading(false)
       var errorMsg = document.querySelector('#card-error')
       errorMsg.textContent = errorMsgText
-      setTimeout(function() {
+      setTimeout(() => {
         errorMsg.textContent = ''
       }, 4000)
     },

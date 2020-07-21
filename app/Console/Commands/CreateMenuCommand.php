@@ -16,7 +16,9 @@ class CreateMenuCommand extends Command
         Category::truncate();
         Item::truncate();
 
-        DB::unprepared(file_get_contents(database_path('category_menu.sql')));
+        DB::unprepared(file_get_contents(database_path('categories.sql')));
+        DB::unprepared(file_get_contents(database_path('items.sql')));
+        $this->comment('Menu created...');
 
         return 0;
     }
