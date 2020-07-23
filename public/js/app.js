@@ -37094,9 +37094,7 @@ var render = function() {
                     "\n      "
                 )
               ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.transaction.address
+            : _vm.transaction.address
             ? _c("div", [
                 _c("span", { staticClass: "text-gray-500" }, [
                   _vm._v("Address:")
