@@ -34304,7 +34304,7 @@ var render = function() {
               },
               [
                 _c("front-menu", {
-                  staticClass: "flex space-x-6 pt-1 text-white text-base"
+                  staticClass: "flex space-x-7 pt-1 text-white text-base"
                 })
               ],
               1
@@ -35878,11 +35878,9 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "flex justify-end pt-4" }, [
         _c("div", { staticClass: "flex items-center" }, [
-          _c(
-            "span",
-            { staticClass: "mr-2 whitespace-no-wrap text-green-500" },
-            [_vm._v("\n          Tip percentage:\n        ")]
-          ),
+          _c("span", { staticClass: "italic mr-2 whitespace-no-wrap" }, [
+            _vm._v("\n          Tip percentage:\n        ")
+          ]),
           _vm._v(" "),
           _c(
             "select",
@@ -35950,7 +35948,7 @@ var render = function() {
         _c("div", [
           _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),
           _vm._v(" "),
-          _c("span", { staticClass: "text-red-600 font-bold" }, [
+          _c("span", { staticClass: "text-gray-800 font-bold" }, [
             _vm._v("$ " + _vm._s(_vm.total))
           ])
         ])
@@ -36314,7 +36312,10 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "md:w-1/3 px-8 space-y-6 tracking-wide" },
+          {
+            staticClass:
+              "leading-tight md:w-1/3 px-8 space-y-7 text-sm tracking-wide"
+          },
           [
             _c("div", [
               _c("input", {
@@ -36446,7 +36447,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "text-gray600 text-lg text-center self-end"
+                            "font-sans self-end text-center text-gray-600 text-md"
                         },
                         [
                           _vm._v(
@@ -36512,7 +36513,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "text-gray600 text-lg text-center self-end"
+                            "font-sans self-end text-center text-gray-600 text-md"
                         },
                         [
                           _vm._v(
@@ -51512,8 +51513,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

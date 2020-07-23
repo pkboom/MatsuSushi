@@ -1,5 +1,5 @@
 .btn {
-  @apply px-6 py-3 bg-gray-600 text-white text-sm font-bold whitespace-no-wrap;
+  @apply px-6 py-3 bg-blue-800 text-white text-sm font-bold whitespace-no-wrap;
 
   &:hover,
   &:focus {

@@ -3,7 +3,7 @@
     <div
       class="flex flex-col items-start max-w-5xl md:flex-row mx-auto py-12 w-full"
     >
-      <div class="md:w-1/3 px-8 space-y-6 tracking-wide">
+      <div class="leading-tight md:w-1/3 px-8 space-y-7 text-sm tracking-wide">
         <div>
           <input
             ref="input"
@@ -52,7 +52,7 @@
             <div class="text-gray-400 text-md text-center leading-snug">
               {{ item.description }}
             </div>
-            <div class="text-gray600 text-lg text-center self-end">
+            <div class="font-sans self-end text-center text-gray-600 text-md">
               $ {{ item.price }}
             </div>
           </div>
@@ -72,7 +72,7 @@
             <div class="text-gray-400 text-md text-center leading-snug">
               {{ item.description }}
             </div>
-            <div class="text-gray600 text-lg text-center self-end">
+            <div class="font-sans self-end text-center text-gray-600 text-md">
               $ {{ item.price }}
             </div>
           </div>

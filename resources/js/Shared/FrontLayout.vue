@@ -39,7 +39,7 @@
           <div
             class="bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 md:py-0 w-full"
           >
-            <front-menu class="flex space-x-6 pt-1 text-white text-base" />
+            <front-menu class="flex space-x-7 pt-1 text-white text-base" />
           </div>
         </div>
         <slot />

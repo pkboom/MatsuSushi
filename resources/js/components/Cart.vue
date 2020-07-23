@@ -29,7 +29,7 @@
       </div>
       <div class="flex justify-end pt-4">
         <div class="flex items-center">
-          <span class="mr-2 whitespace-no-wrap text-green-500">
+          <span class="italic mr-2 whitespace-no-wrap">
             Tip percentage:
           </span>
           <select v-model="tip_percentage" class="w-full form-select py-1 pr-7">
@@ -58,7 +58,7 @@
         </div>
         <div>
           <span class="text-gray-500">Total:</span>
-          <span class="text-red-600 font-bold">$ {{ total }}</span>
+          <span class="text-gray-800 font-bold">$ {{ total }}</span>
         </div>
       </div>
       <div class="flex justify-end mt-2">
