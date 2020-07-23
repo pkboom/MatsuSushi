@@ -106,13 +106,20 @@ export default {
         last_name: localStorage.getItem('last_name'),
         phone: localStorage.getItem('phone'),
         address: localStorage.getItem('address'),
-        takeout_time: '12:00pm',
+        takeout_time: null,
         message: null,
         items: [],
         tip_percentage: localStorage.getItem('tip_percentage'),
       },
       errors: new Errors(),
     }
+  },
+  watch: {
+    'form.type'() {
+      this.form.type === 'delivery'
+        ? (this.form.takeout_time = null)
+        : (this.form.address = null)
+    },
   },
   mounted() {
     if (localStorage.getItem('items')) {
@@ -130,7 +137,9 @@ export default {
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)
           localStorage.setItem('phone', this.form.phone)
-          localStorage.setItem('address', this.form.address)
+          this.form.address
+            ? localStorage.setItem('address', this.form.address)
+            : null
 
           location.href = '/checkout'
         })

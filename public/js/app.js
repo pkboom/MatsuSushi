@@ -3560,6 +3560,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   inheritAttrs: false,
   props: {
@@ -3572,7 +3574,34 @@ __webpack_require__.r(__webpack_exports__);
       inputTime: this.value,
       formattedTime: this.value,
       menuVisible: false,
-      times: ['12:00am', '12:30am', '1:00am', '1:30am', '2:00am', '2:30am', '3:00am', '3:30am', '4:00am', '4:30am', '5:00am', '5:30am', '6:00am', '6:30am', '7:00am', '7:30am', '8:00am', '8:30am', '9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm', '10:30pm', '11:00pm', '11:30pm']
+      times: [// '12:00am',
+      // '12:30am',
+      // '1:00am',
+      // '1:30am',
+      // '2:00am',
+      // '2:30am',
+      // '3:00am',
+      // '3:30am',
+      // '4:00am',
+      // '4:30am',
+      // '5:00am',
+      // '5:30am',
+      // '6:00am',
+      // '6:30am',
+      // '7:00am',
+      // '7:30am',
+      // '8:00am',
+      // '8:30am',
+      // '9:00am',
+      // '9:30am',
+      // '10:00am',
+      // '10:30am',
+      // '11:00am',
+      '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm' // '10:00pm',
+      // '10:30pm',
+      // '11:00pm',
+      // '11:30pm',
+      ]
     };
   },
   methods: {
@@ -4423,13 +4452,18 @@ __webpack_require__.r(__webpack_exports__);
         last_name: localStorage.getItem('last_name'),
         phone: localStorage.getItem('phone'),
         address: localStorage.getItem('address'),
-        takeout_time: '12:00pm',
+        takeout_time: null,
         message: null,
         items: [],
         tip_percentage: localStorage.getItem('tip_percentage')
       },
       errors: new _Utils_Errors__WEBPACK_IMPORTED_MODULE_0__["default"]()
     };
+  },
+  watch: {
+    'form.type': function formType() {
+      this.form.type === 'delivery' ? this.form.takeout_time = null : this.form.address = null;
+    }
   },
   mounted: function mounted() {
     if (localStorage.getItem('items')) {
@@ -4447,7 +4481,7 @@ __webpack_require__.r(__webpack_exports__);
         localStorage.setItem('first_name', _this.form.first_name);
         localStorage.setItem('last_name', _this.form.last_name);
         localStorage.setItem('phone', _this.form.phone);
-        localStorage.setItem('address', _this.form.address);
+        _this.form.address ? localStorage.setItem('address', _this.form.address) : null;
         location.href = '/checkout';
       })["catch"](function (error) {
         _this.sending = false;
@@ -4473,6 +4507,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -35684,7 +35723,7 @@ var render = function() {
             staticClass: "form-label",
             attrs: { for: "time-input-" + _vm._uid }
           },
-          [_vm._v(_vm._s(_vm.label) + ":")]
+          [_vm._v("\n    " + _vm._s(_vm.label) + ":\n  ")]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -37022,7 +37061,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", [
           _vm._v(
-            "\n      Your order has been placed. Please check your email for order receipt.\n    "
+            "\n      Your order has been placed. Please check your email for an order\n      receipt.\n    "
           )
         ]),
         _vm._v(" "),
@@ -37044,10 +37083,29 @@ var render = function() {
             _vm._v("\n        " + _vm._s(_vm.transaction.phone) + "\n      ")
           ]),
           _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Address:")]),
-            _vm._v("\n        " + _vm._s(_vm.transaction.address) + "\n      ")
-          ]),
+          _vm.transaction.takeout_time
+            ? _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Takeout time:")
+                ]),
+                _vm._v(
+                  "\n        " +
+                    _vm._s(_vm.transaction.takeout_time) +
+                    "\n      "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.transaction.address
+            ? _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Address:")
+                ]),
+                _vm._v(
+                  "\n        " + _vm._s(_vm.transaction.address) + "\n      "
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [_vm._v("Subtotal:")]),
@@ -50674,17 +50732,17 @@ var Errors = /*#__PURE__*/function () {
     value: function has() {
       var _this2 = this;
 
-      for (var _len = arguments.length, keys = new Array(_len), _key = 0; _key < _len; _key++) {
-        keys[_key] = arguments[_key];
+      for (var _len = arguments.length, fields = new Array(_len), _key = 0; _key < _len; _key++) {
+        fields[_key] = arguments[_key];
       }
 
-      return keys.some(function (key) {
-        if (key.slice(-1) === '*') {
+      return fields.some(function (field) {
+        if (field.slice(-1) === '*') {
           return Object.keys(_this2.errors).some(function (key) {
-            return key.startsWith(key.slice(0, -1));
+            return key.startsWith(field.slice(0, -1));
           });
         } else {
-          return Object.keys(_this2.errors).includes(key);
+          return Object.keys(_this2.errors).includes(field);
         }
       });
     }
@@ -50702,14 +50760,12 @@ var Errors = /*#__PURE__*/function () {
       });
 
       if (error && error.slice(-1) === '*') {
-        var _error = Object.keys(this.errors).find(function (key) {
-          return key.startsWith(key.slice(0, -1));
+        error = Object.keys(this.errors).find(function (key) {
+          return key.startsWith(error.slice(0, -1));
         });
-
-        return _error ? this.errors[_error][0] : null;
-      } else {
-        return error ? this.errors[error][0] : null;
       }
+
+      return error ? this.errors[error][0] : null;
     }
   }, {
     key: "get",

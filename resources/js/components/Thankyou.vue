@@ -5,7 +5,8 @@
         Thank you!
       </div>
       <div>
-        Your order has been placed. Please check your email for order receipt.
+        Your order has been placed. Please check your email for an order
+        receipt.
       </div>
       <div class="space-y-4">
         <div>
@@ -20,7 +21,11 @@
           <span class="text-gray-500">Phone:</span>
           {{ transaction.phone }}
         </div>
-        <div>
+        <div v-if="transaction.takeout_time">
+          <span class="text-gray-500">Takeout time:</span>
+          {{ transaction.takeout_time }}
+        </div>
+        <div v-if="transaction.address">
           <span class="text-gray-500">Address:</span>
           {{ transaction.address }}
         </div>

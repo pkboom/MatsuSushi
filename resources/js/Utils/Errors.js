@@ -23,30 +23,28 @@ class Errors {
     return this.count() > 0
   }
 
-  has(...keys) {
-    return keys.some(key => {
-      if (key.slice(-1) === '*') {
+  has(...fields) {
+    return fields.some(field => {
+      if (field.slice(-1) === '*') {
         return Object.keys(this.errors).some(key =>
-          key.startsWith(key.slice(0, -1))
+          key.startsWith(field.slice(0, -1))
         )
       } else {
-        return Object.keys(this.errors).includes(key)
+        return Object.keys(this.errors).includes(field)
       }
     })
   }
 
   first(...fields) {
-    const error = fields.find(field => this.has(field))
+    let error = fields.find(field => this.has(field))
 
     if (error && error.slice(-1) === '*') {
-      let error = Object.keys(this.errors).find(key =>
-        key.startsWith(key.slice(0, -1))
+      error = Object.keys(this.errors).find(key =>
+        key.startsWith(error.slice(0, -1))
       )
-
-      return error ? this.errors[error][0] : null
-    } else {
-      return error ? this.errors[error][0] : null
     }
+
+    return error ? this.errors[error][0] : null
   }
 
   get(field) {

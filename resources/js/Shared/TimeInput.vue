@@ -1,6 +1,8 @@
 <template>
   <div>
-    <label v-if="label" class="form-label" :for="`time-input-${_uid}`">{{ label }}:</label>
+    <label v-if="label" class="form-label" :for="`time-input-${_uid}`">
+      {{ label }}:
+    </label>
     <div class="relative">
       <input
         :id="`time-input-${_uid}`"
@@ -59,29 +61,29 @@ export default {
       formattedTime: this.value,
       menuVisible: false,
       times: [
-        '12:00am',
-        '12:30am',
-        '1:00am',
-        '1:30am',
-        '2:00am',
-        '2:30am',
-        '3:00am',
-        '3:30am',
-        '4:00am',
-        '4:30am',
-        '5:00am',
-        '5:30am',
-        '6:00am',
-        '6:30am',
-        '7:00am',
-        '7:30am',
-        '8:00am',
-        '8:30am',
-        '9:00am',
-        '9:30am',
-        '10:00am',
-        '10:30am',
-        '11:00am',
+        // '12:00am',
+        // '12:30am',
+        // '1:00am',
+        // '1:30am',
+        // '2:00am',
+        // '2:30am',
+        // '3:00am',
+        // '3:30am',
+        // '4:00am',
+        // '4:30am',
+        // '5:00am',
+        // '5:30am',
+        // '6:00am',
+        // '6:30am',
+        // '7:00am',
+        // '7:30am',
+        // '8:00am',
+        // '8:30am',
+        // '9:00am',
+        // '9:30am',
+        // '10:00am',
+        // '10:30am',
+        // '11:00am',
         '11:30am',
         '12:00pm',
         '12:30pm',
@@ -103,10 +105,10 @@ export default {
         '8:30pm',
         '9:00pm',
         '9:30pm',
-        '10:00pm',
-        '10:30pm',
-        '11:00pm',
-        '11:30pm',
+        // '10:00pm',
+        // '10:30pm',
+        // '11:00pm',
+        // '11:30pm',
       ],
     }
   },
@@ -138,7 +140,10 @@ export default {
 
       if ((index === -1 || index === 0) && offset === -1) {
         var newIndex = this.times.length - 1
-      } else if ((index === -1 || index === this.times.length - 1) && offset === 1) {
+      } else if (
+        (index === -1 || index === this.times.length - 1) &&
+        offset === 1
+      ) {
         var newIndex = 0
       } else {
         var newIndex = index + offset
