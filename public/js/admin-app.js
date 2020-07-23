@@ -43674,29 +43674,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("front-layout", { attrs: { title: "Menu" } }, [
     _c("div", { staticClass: "max-w-5xl mx-auto" }, [
-      _c("img", { attrs: { src: "/images/menu/menu1.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-1.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu2.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-2.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu3.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-3.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu4.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-4.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu5.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-5.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu6.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-6.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu7.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-7.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu8.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-8.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu9.jpg", alt: "" } }),
+      _c("img", { attrs: { src: "/images/menu/menu-9.jpg", alt: "" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu10.jpg", alt: "" } }),
-      _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu11.jpg", alt: "" } }),
-      _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu12.jpg", alt: "" } })
+      _c("img", { attrs: { src: "/images/menu/menu-10.jpg", alt: "" } })
     ])
   ])
 }
@@ -60258,7 +60254,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })
