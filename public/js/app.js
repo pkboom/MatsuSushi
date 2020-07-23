@@ -4284,6 +4284,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -36679,14 +36683,29 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Address:")
-                ]),
-                _vm._v(
-                  "\n          " + _vm._s(transaction.address) + "\n        "
-                )
-              ]),
+              transaction.takeout_time
+                ? _c("div", [
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Takeout time:")
+                    ]),
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(transaction.takeout_time) +
+                        "\n        "
+                    )
+                  ])
+                : transaction.address
+                ? _c("div", [
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Address:")
+                    ]),
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(transaction.address) +
+                        "\n        "
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", [
                 _c("span", { staticClass: "text-gray-500" }, [
