@@ -1,5 +1,5 @@
 <template>
-  <admin-layout title="Transaction">
+  <admin-layout :title="transaction.name">
     <div class="mb-8">
       <breadcrumb
         :previous-url="$route('admin.transactions')"

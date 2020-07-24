@@ -93,8 +93,6 @@ export default {
     }
   },
   mounted() {
-    let self = this
-
     Echo.channel('orders').listen('OrderPlaced', ({ order }) => {
       if (order === 'test') {
         this.$page.flash.success = 'Online order messaging ready.'
@@ -103,7 +101,7 @@ export default {
 
       this.transactionData.unshift(order)
 
-      self.$refs.alarm.play()
+      this.$refs.alarm.play()
 
       setTimeout(() => {
         let transaction = this.transactionData.find(

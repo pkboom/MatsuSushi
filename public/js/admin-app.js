@@ -4474,7 +4474,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var self = this;
     Echo.channel('orders').listen('OrderPlaced', function (_ref) {
       var order = _ref.order;
 
@@ -4485,7 +4484,8 @@ __webpack_require__.r(__webpack_exports__);
 
       _this.transactionData.unshift(order);
 
-      self.$refs.alarm.play();
+      _this.$refs.alarm.play();
+
       setTimeout(function () {
         var transaction = _this.transactionData.find(function (transaction) {
           return transaction.id === order.id;
@@ -7506,7 +7506,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var self = this;
+    document.title = 'Matsu Sushi';
     Echo.channel('orders').listen('OrderPlaced', function (_ref) {
       var order = _ref.order;
 
@@ -7520,7 +7520,8 @@ __webpack_require__.r(__webpack_exports__);
 
       _this.transactionData.unshift(order);
 
-      self.$refs.alarm.play();
+      _this.$refs.alarm.play();
+
       setTimeout(function () {
         var transaction = _this.transactionData.find(function (transaction) {
           return transaction.id === order.id;
@@ -40731,7 +40732,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("admin-layout", { attrs: { title: "Transaction" } }, [
+  return _c("admin-layout", { attrs: { title: _vm.transaction.name } }, [
     _c(
       "div",
       { staticClass: "mb-8" },
@@ -44025,189 +44026,174 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "bg-gray-100 min-h-screen",
-      attrs: { title: "Receive Online Order" }
-    },
-    [
-      _c("div", { staticClass: "space-y-4 p-8" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
-          },
-          [
-            _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
-              _vm._v("Alarm Test")
-            ]),
-            _vm._v(" "),
-            _c("audio", {
-              ref: "alarm",
-              attrs: {
-                src: "/sound/jingle-bells-sms.ogg",
-                preload: "auto",
-                muted: "muted"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn", on: { click: _vm.messageTest } },
-              [_vm._v("Message Test")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _vm.message
-          ? _c("div", [
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "bg-green-100 px-4 py-3 rounded text-green-800 w-auto"
-                },
-                [_vm._v("\n        " + _vm._s(_vm.message) + "\n      ")]
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "font-bold py-2 text-xl" }, [
-          _vm._v("Today's orders")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "grid gap-4 grid-cols-1 lg:grid-cols-2" },
-          _vm._l(_vm.transactionData, function(transaction) {
-            return _c(
-              "div",
-              {
-                key: transaction.id,
-                staticClass:
-                  "bg-white border gray-800 p-4 rounded shadow space-y-4"
-              },
-              [
-                _c("div", { staticClass: "flex items-center" }, [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Order Number:")
-                  ]),
-                  _vm._v(
-                    "\n          " + _vm._s(transaction.id) + "\n          "
-                  ),
-                  transaction.new
-                    ? _c(
-                        "span",
-                        {
-                          staticClass:
-                            "bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
-                        },
-                        [_vm._v("\n            New\n          ")]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Name:")
-                  ]),
-                  _vm._v(
-                    "\n          " + _vm._s(transaction.name) + "\n        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Phone:")
-                  ]),
-                  _vm._v(
-                    "\n          " + _vm._s(transaction.phone) + "\n        "
-                  )
-                ]),
-                _vm._v(" "),
-                transaction.takeout_time
-                  ? _c("div", [
-                      _c("span", { staticClass: "text-gray-500" }, [
-                        _vm._v("Takeout time:")
-                      ]),
-                      _vm._v(
-                        "\n          " +
-                          _vm._s(transaction.takeout_time) +
-                          "\n        "
-                      )
-                    ])
-                  : transaction.address
-                  ? _c("div", [
-                      _c("span", { staticClass: "text-gray-500" }, [
-                        _vm._v("Address:")
-                      ]),
-                      _vm._v(
-                        "\n          " +
-                          _vm._s(transaction.address) +
-                          "\n        "
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Total:")
-                  ]),
-                  _vm._v(
-                    "\n          $ " + _vm._s(transaction.total) + "\n        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Created at:")
-                  ]),
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(transaction.created_at) +
-                      "\n        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("span", { staticClass: "text-gray-500" }, [
-                    _vm._v("Message:")
-                  ]),
-                  _vm._v(
-                    "\n          " + _vm._s(transaction.message) + "\n        "
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(0, true),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "space-y-3" },
-                  _vm._l(transaction.items, function(item, key) {
-                    return _c(
-                      "div",
-                      { key: "item" + key, staticClass: "space-y-1" },
-                      [
-                        _c("div", [_vm._v(_vm._s(item.name))]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-gray-400 text-sm" }, [
-                          _vm._v(_vm._s(item.description))
-                        ])
-                      ]
-                    )
-                  }),
-                  0
-                )
-              ]
-            )
+  return _c("div", { staticClass: "bg-gray-100 min-h-screen" }, [
+    _c("div", { staticClass: "space-y-4 p-8" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
+        },
+        [
+          _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
+            _vm._v("Alarm Test")
+          ]),
+          _vm._v(" "),
+          _c("audio", {
+            ref: "alarm",
+            attrs: {
+              src: "/sound/jingle-bells-sms.ogg",
+              preload: "auto",
+              muted: "muted"
+            }
           }),
-          0
-        )
-      ])
-    ]
-  )
+          _vm._v(" "),
+          _c("button", { staticClass: "btn", on: { click: _vm.messageTest } }, [
+            _vm._v("Message Test")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm.message
+        ? _c("div", [
+            _c(
+              "span",
+              {
+                staticClass:
+                  "bg-green-100 px-4 py-3 rounded text-green-800 w-auto"
+              },
+              [_vm._v("\n        " + _vm._s(_vm.message) + "\n      ")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "font-bold py-2 text-xl" }, [
+        _vm._v("Today's orders")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "grid gap-4 grid-cols-1 lg:grid-cols-2" },
+        _vm._l(_vm.transactionData, function(transaction) {
+          return _c(
+            "div",
+            {
+              key: transaction.id,
+              staticClass:
+                "bg-white border gray-800 p-4 rounded shadow space-y-4"
+            },
+            [
+              _c("div", { staticClass: "flex items-center" }, [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Order Number:")
+                ]),
+                _vm._v(
+                  "\n          " + _vm._s(transaction.id) + "\n          "
+                ),
+                transaction.new
+                  ? _c(
+                      "span",
+                      {
+                        staticClass:
+                          "bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
+                      },
+                      [_vm._v("\n            New\n          ")]
+                    )
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [_vm._v("Name:")]),
+                _vm._v("\n          " + _vm._s(transaction.name) + "\n        ")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Phone:")
+                ]),
+                _vm._v(
+                  "\n          " + _vm._s(transaction.phone) + "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              transaction.takeout_time
+                ? _c("div", [
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Takeout time:")
+                    ]),
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(transaction.takeout_time) +
+                        "\n        "
+                    )
+                  ])
+                : transaction.address
+                ? _c("div", [
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Address:")
+                    ]),
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(transaction.address) +
+                        "\n        "
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Total:")
+                ]),
+                _vm._v(
+                  "\n          $ " + _vm._s(transaction.total) + "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Created at:")
+                ]),
+                _vm._v(
+                  "\n          " + _vm._s(transaction.created_at) + "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Message:")
+                ]),
+                _vm._v(
+                  "\n          " + _vm._s(transaction.message) + "\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "space-y-3" },
+                _vm._l(transaction.items, function(item, key) {
+                  return _c(
+                    "div",
+                    { key: "item" + key, staticClass: "space-y-1" },
+                    [
+                      _c("div", [_vm._v(_vm._s(item.name))]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-gray-400 text-sm" }, [
+                        _vm._v(_vm._s(item.description))
+                      ])
+                    ]
+                  )
+                }),
+                0
+              )
+            ]
+          )
+        }),
+        0
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {

@@ -1,5 +1,5 @@
 <template>
-  <div title="Receive Online Order" class="bg-gray-100 min-h-screen">
+  <div class="bg-gray-100 min-h-screen">
     <div class="space-y-4 p-8">
       <div
         class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
@@ -92,7 +92,7 @@ export default {
     }
   },
   mounted() {
-    let self = this
+    document.title = 'Matsu Sushi'
 
     Echo.channel('orders').listen('OrderPlaced', ({ order }) => {
       if (order === 'test') {
@@ -107,7 +107,7 @@ export default {
 
       this.transactionData.unshift(order)
 
-      self.$refs.alarm.play()
+      this.$refs.alarm.play()
 
       setTimeout(() => {
         let transaction = this.transactionData.find(
