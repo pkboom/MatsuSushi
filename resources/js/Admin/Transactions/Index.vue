@@ -1,7 +1,7 @@
 <template>
-  <admin-layout title="Transaction">
+  <admin-layout title="Transactions">
     <div class="mb-8">
-      <breadcrumb name="Transaction" />
+      <breadcrumb name="Transactions" />
     </div>
     <div class="mb-6 flex justify-between items-center">
       <search-filter

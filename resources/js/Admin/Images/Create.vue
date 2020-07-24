@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import Http from '@/Utils/Http'
 import Errors from '@/Utils/Errors'
 
 export default {
@@ -61,16 +60,17 @@ export default {
       let formData = new FormData()
       formData.append('file', this.file || '')
 
-      Http.post(this.$route('admin.images.store'), formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        onUploadProgress: progressEvent => {
-          this.uploadPercentage = parseInt(
-            Math.round((progressEvent.loaded * 100) / progressEvent.total)
-          )
-        },
-      })
+      axios
+        .post(this.$route('admin.images.store'), formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+          onUploadProgress: progressEvent => {
+            this.uploadPercentage = parseInt(
+              Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            )
+          },
+        })
         .then(response => {
           this.$inertia
             .replace(this.$route('admin.images'))

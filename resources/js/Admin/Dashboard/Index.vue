@@ -81,8 +81,6 @@
 </template>
 
 <script>
-import Http from '@/Utils/Http'
-
 export default {
   props: {
     transactions: Array,
@@ -122,10 +120,10 @@ export default {
       this.$refs.alarm.play()
     },
     messageTest() {
-      Http.get('/message/test')
+      axios.get('/message/test')
     },
     toggleEnable() {
-      Http.get('/admin/toggle/online/order').then(response => {
+      axios.get('/admin/toggle/online/order').then(response => {
         this.enabled = response.data.online_order_enabled
 
         this.$page.flash.success =

@@ -3,7 +3,7 @@
     <div class="mb-8">
       <breadcrumb
         :previous-url="$route('admin.transactions')"
-        previous-name="Transaction"
+        previous-name="Transactions"
         :name="transaction.name"
       />
     </div>

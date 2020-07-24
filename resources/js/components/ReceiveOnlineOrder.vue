@@ -81,8 +81,6 @@
 </template>
 
 <script>
-import Http from '@/Utils/Http'
-
 export default {
   props: {
     transactions: Array,
@@ -127,7 +125,7 @@ export default {
       this.$refs.alarm.play()
     },
     messageTest() {
-      Http.get('/message/test')
+      axios.get('/message/test')
     },
   },
 }

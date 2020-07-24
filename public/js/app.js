@@ -4203,7 +4203,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Utils_Http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Utils/Http */ "./resources/js/Utils/Http.js");
 //
 //
 //
@@ -4286,7 +4285,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transactions: Array
@@ -4331,7 +4329,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.alarm.play();
     },
     messageTest: function messageTest() {
-      _Utils_Http__WEBPACK_IMPORTED_MODULE_0__["default"].get('/message/test');
+      axios.get('/message/test');
     }
   }
 });
@@ -50823,26 +50821,6 @@ function isUrl() {
 function isNotUrl() {
   return !isUrl.apply(void 0, arguments);
 }
-
-/***/ }),
-
-/***/ "./resources/js/Utils/Http.js":
-/*!************************************!*\
-  !*** ./resources/js/Utils/Http.js ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-/* harmony default export */ __webpack_exports__["default"] = (axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest'
-  }
-}));
 
 /***/ }),
 
