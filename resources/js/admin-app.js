@@ -4,8 +4,6 @@ import PortalVue from 'portal-vue'
 import Route from '../../vendor/tightenco/ziggy/src/js/route.js'
 import vClickOutside from 'v-click-outside'
 import Vue from 'vue'
-import _ from 'lodash'
-import './echo'
 import './bootstrap'
 
 Vue.config.productionTip = false

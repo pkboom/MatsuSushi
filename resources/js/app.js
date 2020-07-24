@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import './bootstrap'
-import './echo'
 
 Vue.config.productionTip = false
 
