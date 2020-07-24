@@ -5,7 +5,7 @@
         Matsu Sushi
       </div>
     </div>
-    <div class="py-36">
+    <div class="py-44">
       <div class="font-thin mb-8 text-4xl text-center text-gray-900 upperclass">
         WELCOME TO Matsu Sushi
       </div>

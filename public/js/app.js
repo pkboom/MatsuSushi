@@ -36244,7 +36244,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "py-36" }, [
+    _c("div", { staticClass: "py-44" }, [
       _c(
         "div",
         {
@@ -36440,7 +36440,7 @@ var render = function() {
                     {
                       key: item.id,
                       staticClass:
-                        "grid grid-cols-1 gap-2 border rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md",
+                        "grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md",
                       on: {
                         click: function($event) {
                           return _vm.place(item)
@@ -36506,7 +36506,7 @@ var render = function() {
                     {
                       key: item.id,
                       staticClass:
-                        "grid grid-cols-1 gap-2 border rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md",
+                        "grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md",
                       on: {
                         click: function($event) {
                           return _vm.place(item)

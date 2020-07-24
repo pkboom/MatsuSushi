@@ -41,7 +41,7 @@
           <div
             v-for="item in searchResult"
             :key="item.id"
-            class="grid grid-cols-1 gap-2 border rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
+            class="grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
           >
             <div
@@ -61,7 +61,7 @@
           <div
             v-for="item in categoryItems"
             :key="item.id"
-            class="grid grid-cols-1 gap-2 border rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
+            class="grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
           >
             <div
