@@ -2836,7 +2836,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Utils_Http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Utils/Http */ "./resources/js/Utils/Http.js");
 //
 //
 //
@@ -2844,7 +2843,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     url: String
@@ -2861,7 +2859,7 @@ __webpack_require__.r(__webpack_exports__);
         var currentBottomOffset = bottom.offsetTop < 100 ? 0 : bottom.offsetTop;
         entries.forEach(function (entry) {
           if (entry.isIntersecting && fetchUrl !== null) {
-            _Utils_Http__WEBPACK_IMPORTED_MODULE_0__["default"].get(fetchUrl).then(function (response) {
+            axios.get(fetchUrl).then(function (response) {
               response.data.images.data.forEach(function (image) {
                 var div = document.createElement('div');
 
