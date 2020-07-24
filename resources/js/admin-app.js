@@ -6,6 +6,7 @@ import vClickOutside from 'v-click-outside'
 import Vue from 'vue'
 import _ from 'lodash'
 import './echo'
+import './bootstrap'
 
 Vue.config.productionTip = false
 
