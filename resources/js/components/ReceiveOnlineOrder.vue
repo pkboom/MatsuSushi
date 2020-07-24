@@ -23,7 +23,7 @@
         <div
           v-for="transaction in transactionData"
           :key="transaction.id"
-          class="bg-white rounded p-4 shadow gray-800 space-y-4"
+          class="bg-white border gray-800 p-4 rounded shadow space-y-4"
         >
           <div class="flex items-center">
             <span class="text-gray-500">Order Number:</span>

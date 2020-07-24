@@ -36643,7 +36643,8 @@ var render = function() {
             "div",
             {
               key: transaction.id,
-              staticClass: "bg-white rounded p-4 shadow gray-800 space-y-4"
+              staticClass:
+                "bg-white border gray-800 p-4 rounded shadow space-y-4"
             },
             [
               _c("div", { staticClass: "flex items-center" }, [
