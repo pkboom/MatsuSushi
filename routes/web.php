@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Middleware\VerifyWebhookSignature;
 use Illuminate\Support\Facades\Route;
 
 include 'auth.php';
@@ -14,4 +15,4 @@ Route::middleware('auth')
         }
     });
 
-Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook'])->middleware(VerifyWebhookSignature::class);
