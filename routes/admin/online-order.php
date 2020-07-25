@@ -3,6 +3,7 @@
 use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Route;
 
 Route::get('toggle/online/order', function () {
     Cache::put(

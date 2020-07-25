@@ -17,6 +17,10 @@ class Transaction extends Model
 
     const TYPE = ['delivery', 'takeout'];
 
+    const TRANSACTION_SUCCEEDED = 'succeeded';
+
+    const TRANSACTION_READY = 'ready';
+
     protected $guarded = [];
 
     public function getPerPage()

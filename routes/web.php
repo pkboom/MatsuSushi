@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\StripeWebhookController;
+use Illuminate\Support\Facades\Route;
+
 include 'auth.php';
 include 'front.php';
 
@@ -10,3 +13,5 @@ Route::middleware('auth')
             include $filename;
         }
     });
+
+Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);

@@ -6,7 +6,9 @@ use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 
 class StartYourOrderController extends Controller
 {
@@ -34,8 +36,38 @@ class StartYourOrderController extends Controller
             'items.required' => 'Cart is empty.',
         ]);
 
-        Session::put('order', $order);
+        $transaction = Transaction::create(Transaction::format($order));
 
-        return Response::json($order);
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'cad',
+                    'product_data' => [
+                        'name' => 'Order',
+                    ],
+                    'unit_amount' => Transaction::formattedTotal($order),
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => URL::route('thankyou', $transaction->id),
+            'cancel_url' => URL::previous(),
+            'metadata' => [
+                'items' => implode(',', $order['items']),
+            ],
+        ]);
+
+        $transaction->update([
+            'status' => Transaction::TRANSACTION_READY,
+            'stripe_id' => $session->payment_intent,
+        ]);
+
+        return Response::json([
+            'session' => $session->id,
+            'key' => config('services.stripe.key'),
+        ]);
     }
 }

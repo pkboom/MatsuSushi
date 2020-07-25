@@ -86,6 +86,5 @@ export default {
       count: 0,
     })
   },
-  methods: {},
 }
 </script>

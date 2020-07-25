@@ -116,9 +116,11 @@ export default {
   },
   watch: {
     'form.type'() {
-      this.form.type === 'delivery'
-        ? (this.form.takeout_time = null)
-        : (this.form.address = null)
+      this.form.type === 'takeout'
+        ? (this.form.address = null)
+        : (this.form.address = localStorage.getItem('address'))
+
+      this.form.takeout_time = null
     },
   },
   mounted() {
@@ -137,11 +139,17 @@ export default {
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)
           localStorage.setItem('phone', this.form.phone)
-          this.form.address
-            ? localStorage.setItem('address', this.form.address)
-            : null
+          localStorage.setItem('address', this.form.address ?? '')
 
-          location.href = '/checkout'
+          Stripe(response.data.key)
+            .redirectToCheckout({
+              sessionId: response.data.session,
+            })
+            .then(result => {
+              this.sending = false
+
+              flash(result.error.message, 'error')
+            })
         })
         .catch(error => {
           this.sending = false
