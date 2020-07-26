@@ -25,6 +25,7 @@ class StartYourOrderController extends Controller
             'type' => ['required', 'in:'.implode(',', Transaction::TYPE)],
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
+            'email' => ['required', 'max:50'],
             'phone' => ['required', 'max:50'],
             'address' => ['nullable', 'required_if:type,delivery', 'max:250'],
             'takeout_time' => ['nullable', 'required_if:type,takeout', 'max:50'],
@@ -42,6 +43,7 @@ class StartYourOrderController extends Controller
 
         $session = Session::create([
             'payment_method_types' => ['card'],
+            'customer_email' => Request::input('email'),
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'cad',

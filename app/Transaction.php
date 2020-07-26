@@ -104,6 +104,7 @@ class Transaction extends Model
             'type' => $order['type'],
             'first_name' => $order['first_name'],
             'last_name' => $order['last_name'],
+            'email' => $order['email'],
             'phone' => $order['phone'],
             'address' => $order['address'],
             'takeout_time' => $order['takeout_time'],

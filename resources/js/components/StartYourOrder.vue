@@ -47,6 +47,13 @@
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
+                v-model="form.email"
+                :error="errors.first('email')"
+                label="Email"
+              />
+            </div>
+            <div class="pr-6 pb-8 w-full lg:w-1/2">
+              <text-input
                 v-model="form.phone"
                 :error="errors.first('phone')"
                 label="Phone"
@@ -104,6 +111,7 @@ export default {
         type: 'delivery',
         first_name: localStorage.getItem('first_name'),
         last_name: localStorage.getItem('last_name'),
+        email: localStorage.getItem('email'),
         phone: localStorage.getItem('phone'),
         address: localStorage.getItem('address'),
         takeout_time: null,
@@ -138,6 +146,7 @@ export default {
         .then(response => {
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)
+          localStorage.setItem('email', this.form.email)
           localStorage.setItem('phone', this.form.phone)
           localStorage.setItem('address', this.form.address ?? '')
 

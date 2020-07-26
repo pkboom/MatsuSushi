@@ -7469,6 +7469,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -7481,6 +7488,7 @@ __webpack_require__.r(__webpack_exports__);
         type: 'delivery',
         first_name: localStorage.getItem('first_name'),
         last_name: localStorage.getItem('last_name'),
+        email: localStorage.getItem('email'),
         phone: localStorage.getItem('phone'),
         address: localStorage.getItem('address'),
         takeout_time: null,
@@ -7514,6 +7522,7 @@ __webpack_require__.r(__webpack_exports__);
 
         localStorage.setItem('first_name', _this.form.first_name);
         localStorage.setItem('last_name', _this.form.last_name);
+        localStorage.setItem('email', _this.form.email);
         localStorage.setItem('phone', _this.form.phone);
         localStorage.setItem('address', (_this$form$address = _this.form.address) !== null && _this$form$address !== void 0 ? _this$form$address : '');
         Stripe(response.data.key).redirectToCheckout({
@@ -44044,6 +44053,27 @@ var render = function() {
                             _vm.$set(_vm.form, "last_name", $$v)
                           },
                           expression: "form.last_name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
+                    [
+                      _c("text-input", {
+                        attrs: {
+                          error: _vm.errors.first("email"),
+                          label: "Email"
+                        },
+                        model: {
+                          value: _vm.form.email,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "email", $$v)
+                          },
+                          expression: "form.email"
                         }
                       })
                     ],
