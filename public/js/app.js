@@ -2852,9 +2852,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchImages: function fetchImages() {
+      var _this = this;
+
       var bottom = this.$refs.bottom;
       var fetchUrl = this.url;
-      var $this = this;
       var imageObserver = new IntersectionObserver(function (entries, observer) {
         var currentBottomOffset = bottom.offsetTop < 100 ? 0 : bottom.offsetTop;
         entries.forEach(function (entry) {
@@ -2875,7 +2876,7 @@ __webpack_require__.r(__webpack_exports__);
                 img.setAttribute('src', image.path);
                 img.classList.add('grid-image');
                 img.addEventListener('click', function () {
-                  $this.$emit('hit', image);
+                  _this.$emit('hit', image);
                 });
                 div.appendChild(img);
                 document.getElementById('container').appendChild(div);

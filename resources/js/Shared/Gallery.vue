@@ -17,12 +17,11 @@ export default {
     fetchImages() {
       let bottom = this.$refs.bottom
       let fetchUrl = this.url
-      let $this = this
 
-      let imageObserver = new IntersectionObserver(function(entries, observer) {
+      let imageObserver = new IntersectionObserver((entries, observer) => {
         let currentBottomOffset = bottom.offsetTop < 100 ? 0 : bottom.offsetTop
 
-        entries.forEach(function(entry) {
+        entries.forEach(entry => {
           if (entry.isIntersecting && fetchUrl !== null) {
             axios.get(fetchUrl).then(response => {
               response.data.images.data.forEach(image => {
@@ -39,8 +38,8 @@ export default {
                 let img = document.createElement('img')
                 img.setAttribute('src', image.path)
                 img.classList.add('grid-image')
-                img.addEventListener('click', function() {
-                  $this.$emit('hit', image)
+                img.addEventListener('click', () => {
+                  this.$emit('hit', image)
                 })
                 div.appendChild(img)
 
