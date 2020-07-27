@@ -36004,7 +36004,7 @@ var render = function() {
         },
         [
           _vm._v(
-            "\n      Matsu Sushi has worked passionately to provide guests with a unique\n      Japanese & Korean dining experience in Peterborough. Our real passion is\n      making sure the quality of food and service is unmatched, everyone feels\n      at home.\n    "
+            "\n      Matsu Sushi has worked passionately to provide guests with a unique\n      Japanese & Korean dining experience in Peterborough. Our real passion is\n      making sure the quality of food and service is unmatched and everyone\n      feels at home.\n    "
           )
         ]
       )

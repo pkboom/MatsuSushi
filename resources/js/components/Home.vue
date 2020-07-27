@@ -17,8 +17,8 @@
       >
         Matsu Sushi has worked passionately to provide guests with a unique
         Japanese & Korean dining experience in Peterborough. Our real passion is
-        making sure the quality of food and service is unmatched, everyone feels
-        at home.
+        making sure the quality of food and service is unmatched and everyone
+        feels at home.
       </div>
     </div>
   </front-layout>
