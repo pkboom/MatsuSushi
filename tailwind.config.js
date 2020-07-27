@@ -31,11 +31,15 @@ module.exports = {
     'last',
   ],
   purge: {
+    enabled: true,
     content: [
       './resources/**/*.js',
       './resources/**/*.php',
       './resources/**/*.vue',
     ],
+    options: {
+      whitelistPatterns: [/nprogress/],
+    },
   },
   plugins: [require('@tailwindcss/ui')],
 }
