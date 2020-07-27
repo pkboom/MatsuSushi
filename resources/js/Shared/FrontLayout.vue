@@ -54,6 +54,7 @@
               'thankyou*'
             )
           "
+          ref="bottom"
           id="bottom"
           class="flex flex-col justify-center"
         >
@@ -126,11 +127,26 @@ export default {
   },
   mounted() {
     this.updatePageTitle(this.title)
+
+    this.fetchImage()
   },
   methods: {
     isNotUrl,
     updatePageTitle(title) {
       document.title = title ? `${title} | Matsu Sushi` : 'Matsu Sushi'
+    },
+    fetchImage() {
+      console.log('observe')
+      let imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.getElementById('bottom').style.backgroundImage =
+              'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')'
+          }
+        })
+      })
+
+      imageObserver.observe(bottom)
     },
   },
 }
@@ -139,8 +155,6 @@ export default {
 <style >
 #bottom {
   height: 800px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)),
-    url('/images/bottom.jpg');
   background-size: cover;
   background-position: center top;
 }

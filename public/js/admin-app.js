@@ -5919,6 +5919,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5932,11 +5933,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.updatePageTitle(this.title);
+    this.fetchImage();
   },
   methods: {
     isNotUrl: _Utils_Helpers__WEBPACK_IMPORTED_MODULE_0__["isNotUrl"],
     updatePageTitle: function updatePageTitle(title) {
       document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
+    },
+    fetchImage: function fetchImage() {
+      console.log('observe');
+      var imageObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            document.getElementById('bottom').style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
+          }
+        });
+      });
+      imageObserver.observe(bottom);
     }
   }
 });
@@ -6065,7 +6078,7 @@ __webpack_require__.r(__webpack_exports__);
       var bottom = this.$refs.bottom;
       var fetchUrl = this.url;
       var imageObserver = new IntersectionObserver(function (entries, observer) {
-        var currentBottomOffset = bottom.offsetTop < 100 ? 0 : bottom.offsetTop;
+        var currentBottomOffset = bottom.offsetTop < 300 ? 0 : bottom.offsetTop;
         entries.forEach(function (entry) {
           if (entry.isIntersecting && fetchUrl !== null) {
             axios.get(fetchUrl).then(function (response) {
@@ -7658,7 +7671,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#bottom {\n  height: 800px;\n  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)),\n    url('/images/bottom.jpg');\n  background-size: cover;\n  background-position: center top;\n}\n", ""]);
+exports.push([module.i, "#bottom {\n  height: 800px;\n  background-size: cover;\n  background-position: center top;\n}\n", ""]);
 
 // exports
 
@@ -41638,6 +41651,7 @@ var render = function() {
             ? _c(
                 "div",
                 {
+                  ref: "bottom",
                   staticClass: "flex flex-col justify-center",
                   attrs: { id: "bottom" }
                 },

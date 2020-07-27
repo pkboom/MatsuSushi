@@ -19,7 +19,7 @@ export default {
       let fetchUrl = this.url
 
       let imageObserver = new IntersectionObserver((entries, observer) => {
-        let currentBottomOffset = bottom.offsetTop < 100 ? 0 : bottom.offsetTop
+        let currentBottomOffset = bottom.offsetTop < 300 ? 0 : bottom.offsetTop
 
         entries.forEach(entry => {
           if (entry.isIntersecting && fetchUrl !== null) {
