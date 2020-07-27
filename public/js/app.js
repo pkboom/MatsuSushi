@@ -35974,7 +35974,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "font-bold font-serif text-5xl text-white tracking-widest"
+              "font-bold font-serif md:text-5xl text-3xl text-white tracking-widest"
           },
           [_vm._v("\n      Matsu Sushi\n    ")]
         )

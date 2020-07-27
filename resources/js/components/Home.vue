@@ -1,7 +1,9 @@
 <template>
   <front-layout>
     <div id="top" class="-mt-16 flex items-center justify-center">
-      <div class="font-bold font-serif text-5xl text-white tracking-widest">
+      <div
+        class="font-bold font-serif md:text-5xl text-3xl text-white tracking-widest"
+      >
         Matsu Sushi
       </div>
     </div>
