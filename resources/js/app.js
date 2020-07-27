@@ -1,7 +1,10 @@
 import Vue from 'vue'
+import vClickOutside from 'v-click-outside'
 import './bootstrap'
 
 Vue.config.productionTip = false
+
+Vue.use(vClickOutside)
 
 window.events = new Vue()
 

@@ -1,10 +1,28 @@
 <template>
   <front-layout title="Order">
     <div
-      class="flex flex-col items-start max-w-5xl md:flex-row mx-auto py-12 w-full"
+      class="flex flex-col items-start max-w-5xl md:flex-row md:py-12 mx-auto py-4 w-full"
     >
-      <div class="leading-tight md:w-1/3 px-8 space-y-7 text-sm tracking-wide">
-        <div>
+      <div
+        class="leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
+      >
+        <search-input
+          v-model="currentCategory"
+          :data="categories"
+          track-by="id"
+          :search-by="['name']"
+          class="block md:hidden"
+        >
+          <div v-if="currentCategory" class="flex items-center justify-between">
+            <div class="truncate">{{ currentCategory.name }}</div>
+          </div>
+          <template v-slot:option="{ option }">
+            <div class="flex items-center justify-between">
+              <div>{{ option.name }}</div>
+            </div>
+          </template>
+        </search-input>
+        <div class="hidden md:block">
           <input
             ref="input"
             v-model="search"
@@ -57,15 +75,15 @@
             </div>
           </div>
         </div>
-        <div v-else class="grid grid-cols-1 gap-8 p-8">
+        <div v-else class="gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4">
           <div
-            v-for="item in categoryItems"
+            v-for="item in currentCategory.items"
             :key="item.id"
             class="grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
           >
             <div
-              class="text-gray-700 text-xl text-center uppercase tracking-wide"
+              class="text-gray-700 text-lg md:text-xl text-center uppercase tracking-wide"
             >
               {{ item.name }}
             </div>
@@ -91,11 +109,7 @@ export default {
   },
   data() {
     return {
-      currentCategory: {
-        id: this.categories[0].id,
-        name: this.categories[0].name,
-      },
-      categoryItems: this.categories[0].items,
+      currentCategory: this.categories[0],
       search: '',
       searchResult: null,
       menu: this.categories.map(category => category.items).flat(),
@@ -124,12 +138,9 @@ export default {
     select(selected) {
       this.search = null
 
-      let category = this.categories.find(category => category.id === selected)
-
-      this.currentCategory.id = category.id
-      this.currentCategory.name = category.name
-
-      this.categoryItems = category.items
+      this.currentCategory = this.categories.find(
+        category => category.id === selected
+      )
     },
     place(order) {
       let items = []

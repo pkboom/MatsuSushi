@@ -5919,7 +5919,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5941,14 +5940,15 @@ __webpack_require__.r(__webpack_exports__);
       document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
     },
     fetchImage: function fetchImage() {
+      var bottom = document.getElementById('bottom');
       var imageObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            document.getElementById('bottom').style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
+            bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
           }
         });
       });
-      imageObserver.observe(bottom);
+      bottom && imageObserver.observe(bottom);
     }
   }
 });
@@ -7170,6 +7170,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -7177,11 +7195,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      currentCategory: {
-        id: this.categories[0].id,
-        name: this.categories[0].name
-      },
-      categoryItems: this.categories[0].items,
+      currentCategory: this.categories[0],
       search: '',
       searchResult: null,
       menu: this.categories.map(function (category) {
@@ -7211,12 +7225,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     select: function select(selected) {
       this.search = null;
-      var category = this.categories.find(function (category) {
+      this.currentCategory = this.categories.find(function (category) {
         return category.id === selected;
       });
-      this.currentCategory.id = category.id;
-      this.currentCategory.name = category.name;
-      this.categoryItems = category.items;
     },
     place: function place(order) {
       var items = [];
@@ -41650,7 +41661,6 @@ var render = function() {
             ? _c(
                 "div",
                 {
-                  ref: "bottom",
                   staticClass: "flex flex-col justify-center",
                   attrs: { id: "bottom" }
                 },
@@ -43491,17 +43501,64 @@ var render = function() {
       "div",
       {
         staticClass:
-          "flex flex-col items-start max-w-5xl md:flex-row mx-auto py-12 w-full"
+          "flex flex-col items-start max-w-5xl md:flex-row md:py-12 mx-auto py-4 w-full"
       },
       [
         _c(
           "div",
           {
             staticClass:
-              "leading-tight md:w-1/3 px-8 space-y-7 text-sm tracking-wide"
+              "leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
           },
           [
-            _c("div", [
+            _c(
+              "search-input",
+              {
+                staticClass: "block md:hidden",
+                attrs: {
+                  data: _vm.categories,
+                  "track-by": "id",
+                  "search-by": ["name"]
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "option",
+                    fn: function(ref) {
+                      var option = ref.option
+                      return [
+                        _c(
+                          "div",
+                          { staticClass: "flex items-center justify-between" },
+                          [_c("div", [_vm._v(_vm._s(option.name))])]
+                        )
+                      ]
+                    }
+                  }
+                ]),
+                model: {
+                  value: _vm.currentCategory,
+                  callback: function($$v) {
+                    _vm.currentCategory = $$v
+                  },
+                  expression: "currentCategory"
+                }
+              },
+              [
+                _vm.currentCategory
+                  ? _c(
+                      "div",
+                      { staticClass: "flex items-center justify-between" },
+                      [
+                        _c("div", { staticClass: "truncate" }, [
+                          _vm._v(_vm._s(_vm.currentCategory.name))
+                        ])
+                      ]
+                    )
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "hidden md:block" }, [
               _c("input", {
                 directives: [
                   {
@@ -43648,8 +43705,8 @@ var render = function() {
               )
             : _c(
                 "div",
-                { staticClass: "grid grid-cols-1 gap-8 p-8" },
-                _vm._l(_vm.categoryItems, function(item) {
+                { staticClass: "gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4" },
+                _vm._l(_vm.currentCategory.items, function(item) {
                   return _c(
                     "div",
                     {
@@ -43667,7 +43724,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "text-gray-700 text-xl text-center uppercase tracking-wide"
+                            "text-gray-700 text-lg md:text-xl text-center uppercase tracking-wide"
                         },
                         [
                           _vm._v(

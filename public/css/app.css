@@ -3679,6 +3679,10 @@ input:focus,
     font-size: 1rem;
   }
 
+  .md\:text-xl {
+    font-size: 1.25rem;
+  }
+
   .md\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -3711,6 +3715,11 @@ input:focus,
     padding-right: 2.5rem;
   }
 
+  .md\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
   .md\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -3731,6 +3740,11 @@ input:focus,
 
   .md\:w-full {
     width: 100%;
+  }
+
+  .md\:gap-8 {
+    grid-gap: 2rem;
+    gap: 2rem;
   }
 
   .md\:grid-cols-3 {

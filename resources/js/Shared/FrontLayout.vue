@@ -54,7 +54,6 @@
               'thankyou*'
             )
           "
-          ref="bottom"
           id="bottom"
           class="flex flex-col justify-center"
         >
@@ -136,16 +135,18 @@ export default {
       document.title = title ? `${title} | Matsu Sushi` : 'Matsu Sushi'
     },
     fetchImage() {
+      let bottom = document.getElementById('bottom')
+
       let imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            document.getElementById('bottom').style.backgroundImage =
+            bottom.style.backgroundImage =
               'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')'
           }
         })
       })
 
-      imageObserver.observe(bottom)
+      bottom && imageObserver.observe(bottom)
     },
   },
 }

@@ -2711,7 +2711,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2733,14 +2732,15 @@ __webpack_require__.r(__webpack_exports__);
       document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
     },
     fetchImage: function fetchImage() {
+      var bottom = document.getElementById('bottom');
       var imageObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            document.getElementById('bottom').style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
+            bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
           }
         });
       });
-      imageObserver.observe(bottom);
+      bottom && imageObserver.observe(bottom);
     }
   }
 });
@@ -3962,6 +3962,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -3969,11 +3987,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      currentCategory: {
-        id: this.categories[0].id,
-        name: this.categories[0].name
-      },
-      categoryItems: this.categories[0].items,
+      currentCategory: this.categories[0],
       search: '',
       searchResult: null,
       menu: this.categories.map(function (category) {
@@ -4003,12 +4017,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     select: function select(selected) {
       this.search = null;
-      var category = this.categories.find(function (category) {
+      this.currentCategory = this.categories.find(function (category) {
         return category.id === selected;
       });
-      this.currentCategory.id = category.id;
-      this.currentCategory.name = category.name;
-      this.categoryItems = category.items;
     },
     place: function place(order) {
       var items = [];
@@ -33254,6 +33265,19 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/v-click-outside/dist/v-click-outside.umd.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/v-click-outside/dist/v-click-outside.umd.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,n){ true?module.exports=n():undefined}(this,function(){var e="__v-click-outside",n="undefined"!=typeof window,t="undefined"!=typeof navigator,i=n&&("ontouchstart"in window||t&&navigator.msMaxTouchPoints>0)?["touchstart"]:["click"];function o(n,t){var o=function(e){var n="function"==typeof e;if(!n&&"object"!=typeof e)throw new Error("v-click-outside: Binding value must be a function or an object");return{handler:n?e:e.handler,middleware:e.middleware||function(e){return e},events:e.events||i,isActive:!(!1===e.isActive)}}(t.value),r=o.handler,d=o.middleware;o.isActive&&(n[e]=o.events.map(function(e){return{event:e,handler:function(e){return function(e){var n=e.el,t=e.event,i=e.handler,o=e.middleware,r=t.path||t.composedPath&&t.composedPath(),d=r?r.indexOf(n)<0:!n.contains(t.target);t.target!==n&&d&&o(t)&&i(t)}({event:e,el:n,handler:r,middleware:d})}}}),n[e].forEach(function(t){var i=t.event,o=t.handler;return setTimeout(function(){n[e]&&document.documentElement.addEventListener(i,o,!1)},0)}))}function r(n){(n[e]||[]).forEach(function(e){return document.documentElement.removeEventListener(e.event,e.handler,!1)}),delete n[e]}var d=n?{bind:o,update:function(e,n){var t=n.value,i=n.oldValue;JSON.stringify(t)!==JSON.stringify(i)&&(r(e),o(e,{value:t}))},unbind:r}:{};return{install:function(e){e.directive("click-outside",d)},directive:d}});
+//# sourceMappingURL=v-click-outside.umd.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Shared/AdminLayout.vue?vue&type=template&id=653ed7a6&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Shared/AdminLayout.vue?vue&type=template&id=653ed7a6& ***!
@@ -34215,7 +34239,6 @@ var render = function() {
             ? _c(
                 "div",
                 {
-                  ref: "bottom",
                   staticClass: "flex flex-col justify-center",
                   attrs: { id: "bottom" }
                 },
@@ -36056,17 +36079,64 @@ var render = function() {
       "div",
       {
         staticClass:
-          "flex flex-col items-start max-w-5xl md:flex-row mx-auto py-12 w-full"
+          "flex flex-col items-start max-w-5xl md:flex-row md:py-12 mx-auto py-4 w-full"
       },
       [
         _c(
           "div",
           {
             staticClass:
-              "leading-tight md:w-1/3 px-8 space-y-7 text-sm tracking-wide"
+              "leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
           },
           [
-            _c("div", [
+            _c(
+              "search-input",
+              {
+                staticClass: "block md:hidden",
+                attrs: {
+                  data: _vm.categories,
+                  "track-by": "id",
+                  "search-by": ["name"]
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "option",
+                    fn: function(ref) {
+                      var option = ref.option
+                      return [
+                        _c(
+                          "div",
+                          { staticClass: "flex items-center justify-between" },
+                          [_c("div", [_vm._v(_vm._s(option.name))])]
+                        )
+                      ]
+                    }
+                  }
+                ]),
+                model: {
+                  value: _vm.currentCategory,
+                  callback: function($$v) {
+                    _vm.currentCategory = $$v
+                  },
+                  expression: "currentCategory"
+                }
+              },
+              [
+                _vm.currentCategory
+                  ? _c(
+                      "div",
+                      { staticClass: "flex items-center justify-between" },
+                      [
+                        _c("div", { staticClass: "truncate" }, [
+                          _vm._v(_vm._s(_vm.currentCategory.name))
+                        ])
+                      ]
+                    )
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "hidden md:block" }, [
               _c("input", {
                 directives: [
                   {
@@ -36213,8 +36283,8 @@ var render = function() {
               )
             : _c(
                 "div",
-                { staticClass: "grid grid-cols-1 gap-8 p-8" },
-                _vm._l(_vm.categoryItems, function(item) {
+                { staticClass: "gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4" },
+                _vm._l(_vm.currentCategory.items, function(item) {
                   return _c(
                     "div",
                     {
@@ -36232,7 +36302,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "text-gray-700 text-xl text-center uppercase tracking-wide"
+                            "text-gray-700 text-lg md:text-xl text-center uppercase tracking-wide"
                         },
                         [
                           _vm._v(
@@ -50570,10 +50640,14 @@ function isNotUrl() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! v-click-outside */ "./node_modules/v-click-outside/dist/v-click-outside.umd.js");
+/* harmony import */ var v_click_outside__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(v_click_outside__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].config.productionTip = false;
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(v_click_outside__WEBPACK_IMPORTED_MODULE_1___default.a);
 window.events = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]();
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.csrfToken = window.App.csrfToken;
 
