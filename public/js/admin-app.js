@@ -43403,21 +43403,26 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "py-44" }, [
+    _c("div", { staticClass: "py-20 md:py-44" }, [
       _c(
         "div",
         {
           staticClass:
             "font-thin mb-8 text-4xl text-center text-gray-900 upperclass"
         },
-        [_vm._v("\n      WELCOME TO Matsu Sushi\n    ")]
+        [
+          _vm._v("\n      WELCOME\n      "),
+          _c("span", { staticClass: "hidden md:inline" }, [
+            _vm._v("TO Matsu Sushi")
+          ])
+        ]
       ),
       _vm._v(" "),
       _c(
         "div",
         {
           staticClass:
-            "font-serif leading-9 max-w-3xl mx-auto text-xl text-center"
+            "font-serif leading-9 max-w-3xl md:px-0 mx-auto px-4 text-center text-xl"
         },
         [
           _vm._v(
