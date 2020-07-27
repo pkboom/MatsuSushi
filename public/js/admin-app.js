@@ -43396,7 +43396,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "font-bold font-serif md:text-5xl text-3xl text-white tracking-widest"
+              "font-bold font-serif text-3xl md:text-5xl text-white tracking-widest"
           },
           [_vm._v("\n      Matsu Sushi\n    ")]
         )
@@ -43413,7 +43413,7 @@ var render = function() {
         [
           _vm._v("\n      WELCOME\n      "),
           _c("span", { staticClass: "hidden md:inline" }, [
-            _vm._v("TO Matsu Sushi")
+            _vm._v("TO MATSU SUSHI")
           ])
         ]
       ),
@@ -43422,7 +43422,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "font-serif leading-9 max-w-3xl md:px-0 mx-auto px-4 text-center text-xl"
+            "font-serif leading-9 max-w-3xl md:px-0 mx-auto px-4 text-center text-md md:text-xl"
         },
         [
           _vm._v(

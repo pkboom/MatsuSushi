@@ -2,7 +2,7 @@
   <front-layout>
     <div id="top" class="-mt-16 flex items-center justify-center">
       <div
-        class="font-bold font-serif md:text-5xl text-3xl text-white tracking-widest"
+        class="font-bold font-serif text-3xl md:text-5xl text-white tracking-widest"
       >
         Matsu Sushi
       </div>
@@ -10,10 +10,10 @@
     <div class="py-20 md:py-44">
       <div class="font-thin mb-8 text-4xl text-center text-gray-900 upperclass">
         WELCOME
-        <span class="hidden md:inline">TO Matsu Sushi</span>
+        <span class="hidden md:inline">TO MATSU SUSHI</span>
       </div>
       <div
-        class="font-serif leading-9 max-w-3xl md:px-0 mx-auto px-4 text-center text-xl"
+        class="font-serif leading-9 max-w-3xl md:px-0 mx-auto px-4 text-center text-md md:text-xl"
       >
         Matsu Sushi has worked passionately to provide guests with a unique
         Japanese & Korean dining experience in Peterborough. Our real passion is

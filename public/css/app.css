@@ -2228,10 +2228,6 @@ input:focus,
   font-size: 2.25rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
-}
-
 .leading-5 {
   line-height: 1.25rem;
 }
@@ -2551,11 +2547,6 @@ input:focus,
 .py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
-}
-
-.py-44 {
-  padding-top: 11rem;
-  padding-bottom: 11rem;
 }
 
 .py-2px {
@@ -3683,6 +3674,10 @@ input:focus,
     font-size: 1.25rem;
   }
 
+  .md\:text-5xl {
+    font-size: 3rem;
+  }
+
   .md\:mx-auto {
     margin-left: auto;
     margin-right: auto;
@@ -3696,6 +3691,10 @@ input:focus,
     margin-top: 2rem;
   }
 
+  .md\:p-8 {
+    padding: 2rem;
+  }
+
   .md\:p-12 {
     padding: 3rem;
   }
@@ -3705,9 +3704,19 @@ input:focus,
     padding-bottom: 0;
   }
 
+  .md\:px-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .md\:px-10 {
@@ -3728,6 +3737,11 @@ input:focus,
   .md\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
+  }
+
+  .md\:py-44 {
+    padding-top: 11rem;
+    padding-bottom: 11rem;
   }
 
   .md\:w-56 {
