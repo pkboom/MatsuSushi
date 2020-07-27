@@ -62401,22 +62401,6 @@ var render = function() {
         })
       ],
       1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "mb-4" },
-      [
-        _c("menu-item", {
-          attrs: {
-            name: "Bookings",
-            url: "admin/bookings*",
-            link: _vm.$route("admin.bookgins"),
-            icon: "credit"
-          }
-        })
-      ],
-      1
     )
   ])
 }
