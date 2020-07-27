@@ -11,6 +11,7 @@ class ReceiveOnlineOrderController extends Controller
         return view('receive-online-order', [
             'transactions' => Transaction::with('items')
                 ->whereDate('created_at', now())
+                ->whereStatus(Transaction::TRANSACTION_SUCCEEDED)
                 ->take(10)
                 ->latest()
                 ->get()

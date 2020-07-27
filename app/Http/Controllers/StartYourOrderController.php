@@ -63,7 +63,7 @@ class StartYourOrderController extends Controller
         ]);
 
         $transaction->update([
-            'status' => Transaction::TRANSACTION_READY,
+            'status' => Transaction::TRANSACTION_INPROCESS,
             'stripe_id' => $session->payment_intent,
         ]);
 

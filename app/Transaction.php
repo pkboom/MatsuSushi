@@ -19,7 +19,7 @@ class Transaction extends Model
 
     const TRANSACTION_SUCCEEDED = 'succeeded';
 
-    const TRANSACTION_READY = 'ready';
+    const TRANSACTION_INPROCESS = 'in_process';
 
     protected $guarded = [];
 
@@ -128,6 +128,7 @@ class Transaction extends Model
             'total' => $this->total,
             'message' => $this->message,
             'created_at' => $this->created_at->format('Y-m-d h:i a'),
+            'status' => $this->status,
             'new' => $this->new,
         ];
     }
@@ -147,6 +148,7 @@ class Transaction extends Model
             'message' => $this->message,
             'created_at' => $this->created_at->format('Y-m-d h:i a'),
             'items' => $this->items,
+            'status' => $this->status,
             'new' => $this->new,
         ];
     }

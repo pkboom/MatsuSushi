@@ -14,6 +14,7 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/Index', [
             'transactions' => Transaction::with('items')
                 ->whereDate('created_at', now())
+                ->whereStatus(Transaction::TRANSACTION_SUCCEEDED)
                 ->take(10)
                 ->latest()
                 ->get()
