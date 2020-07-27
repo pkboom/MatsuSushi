@@ -26,7 +26,7 @@
 
 <style scoped>
 #top {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url('/images/top.png');
   background-size: cover;
   height: 100vh;

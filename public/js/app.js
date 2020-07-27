@@ -4523,7 +4523,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#top[data-v-f2b6376c] {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),\n    url('/images/top.png');\n  background-size: cover;\n  height: 100vh;\n  background-position: center;\n  margin-top: -4.2rem;\n}\n", ""]);
+exports.push([module.i, "#top[data-v-f2b6376c] {\n  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),\n    url('/images/top.png');\n  background-size: cover;\n  height: 100vh;\n  background-position: center;\n  margin-top: -4.2rem;\n}\n", ""]);
 
 // exports
 
@@ -72512,8 +72512,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
