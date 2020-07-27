@@ -35752,8 +35752,8 @@ var render = function() {
           { staticClass: "w-full" },
           _vm._l(_vm.items, function(order, key) {
             return _c("tr", { key: key }, [
-              _c("td", { staticClass: "py-4 whitespace-no-wrap" }, [
-                _c("div", [
+              _c("td", { staticClass: "py-4" }, [
+                _c("div", { staticClass: "whitespace-no-wrap" }, [
                   _vm._v(
                     "\n              " + _vm._s(order.name) + "\n              "
                   ),

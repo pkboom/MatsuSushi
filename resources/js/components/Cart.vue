@@ -7,8 +7,8 @@
       <div class="bg-white rounded overflow-x-auto border-b">
         <table class="w-full">
           <tr v-for="(order, key) in items" :key="key">
-            <td class="py-4 whitespace-no-wrap">
-              <div>
+            <td class="py-4">
+              <div class="whitespace-no-wrap">
                 {{ order.name }}
                 <button
                   class="underline text-blue-600 text-xs ml-2"
