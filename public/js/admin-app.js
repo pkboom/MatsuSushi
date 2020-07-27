@@ -5941,7 +5941,6 @@ __webpack_require__.r(__webpack_exports__);
       document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
     },
     fetchImage: function fetchImage() {
-      console.log('observe');
       var imageObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -43442,7 +43441,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("front-layout", { attrs: { title: "Menu" } }, [
-    _c("div", { staticClass: "max-w-5xl mx-auto" }, [
+    _c("div", { staticClass: "max-w-5xl mx-auto min-h-screen" }, [
       _c("img", { attrs: { src: "/images/menu/menu-v1-01.jpg", alt: "" } }),
       _vm._v(" "),
       _c("img", { attrs: { src: "/images/menu/menu-v1-02.jpg", alt: "" } }),

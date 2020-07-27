@@ -136,7 +136,6 @@ export default {
       document.title = title ? `${title} | Matsu Sushi` : 'Matsu Sushi'
     },
     fetchImage() {
-      console.log('observe')
       let imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
