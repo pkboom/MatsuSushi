@@ -5446,6 +5446,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -62388,6 +62396,22 @@ var render = function() {
             name: "Transactions",
             url: "admin/transactions*",
             link: _vm.$route("admin.transactions"),
+            icon: "credit"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "mb-4" },
+      [
+        _c("menu-item", {
+          attrs: {
+            name: "Bookings",
+            url: "admin/bookings*",
+            link: _vm.$route("admin.bookgins"),
             icon: "credit"
           }
         })

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\TransactionController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('transactions', [TransactionController::class, 'index'])
     ->name('admin.transactions')

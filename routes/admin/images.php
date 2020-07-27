@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ImageController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('images', [ImageController::class, 'index'])
     ->name('admin.images')
