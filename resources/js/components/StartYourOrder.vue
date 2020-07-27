@@ -71,6 +71,8 @@
                 v-model="form.takeout_time"
                 :error="errors.first('takeout_time')"
                 label="Takeout time"
+                :from="from"
+                :to="to"
               />
             </div>
             <div class="pr-6 pb-8 w-full">
@@ -99,6 +101,7 @@
 
 <script>
 import Errors from '@/Utils/Errors'
+import moment from 'moment'
 
 export default {
   props: {
@@ -107,6 +110,12 @@ export default {
   data() {
     return {
       sending: false,
+      from: moment().isAfter(moment('11:00am', 'h:mma'))
+        ? moment()
+            .add(30, 'minutes')
+            .format('h:mma')
+        : '11:00am',
+      to: '9:01pm',
       form: {
         type: 'delivery',
         first_name: localStorage.getItem('first_name'),

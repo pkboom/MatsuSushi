@@ -48,12 +48,22 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   inheritAttrs: false,
   props: {
     value: String,
     label: String,
     error: String,
+    from: {
+      type: String,
+      default: null,
+    },
+    to: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -61,29 +71,29 @@ export default {
       formattedTime: this.value,
       menuVisible: false,
       times: [
-        // '12:00am',
-        // '12:30am',
-        // '1:00am',
-        // '1:30am',
-        // '2:00am',
-        // '2:30am',
-        // '3:00am',
-        // '3:30am',
-        // '4:00am',
-        // '4:30am',
-        // '5:00am',
-        // '5:30am',
-        // '6:00am',
-        // '6:30am',
-        // '7:00am',
-        // '7:30am',
-        // '8:00am',
-        // '8:30am',
-        // '9:00am',
-        // '9:30am',
-        // '10:00am',
-        // '10:30am',
-        // '11:00am',
+        '12:00am',
+        '12:30am',
+        '1:00am',
+        '1:30am',
+        '2:00am',
+        '2:30am',
+        '3:00am',
+        '3:30am',
+        '4:00am',
+        '4:30am',
+        '5:00am',
+        '5:30am',
+        '6:00am',
+        '6:30am',
+        '7:00am',
+        '7:30am',
+        '8:00am',
+        '8:30am',
+        '9:00am',
+        '9:30am',
+        '10:00am',
+        '10:30am',
+        '11:00am',
         '11:30am',
         '12:00pm',
         '12:30pm',
@@ -105,12 +115,23 @@ export default {
         '8:30pm',
         '9:00pm',
         '9:30pm',
-        // '10:00pm',
-        // '10:30pm',
-        // '11:00pm',
-        // '11:30pm',
+        '10:00pm',
+        '10:30pm',
+        '11:00pm',
+        '11:30pm',
       ],
     }
+  },
+  mounted() {
+    this.times = this.times
+      .map(time => moment(time, 'h:mma'))
+      .filter(time =>
+        this.from ? time.isAfter(moment(this.from, 'h:mma')) : true
+      )
+      .filter(time =>
+        this.to ? time.isBefore(moment(this.to, 'h:mma')) : true
+      )
+      .map(time => time.format('h:mma'))
   },
   methods: {
     focus() {
