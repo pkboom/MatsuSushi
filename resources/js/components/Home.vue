@@ -27,10 +27,16 @@
 <style scoped>
 #top {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url('/images/top.png');
+    url('/images/top-half.png');
   background-size: cover;
   height: 100vh;
   background-position: center;
   margin-top: -4.2rem;
+}
+@media (min-width: 768px) {
+  #top {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url('/images/top.png');
+  }
 }
 </style>

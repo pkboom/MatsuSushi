@@ -122,6 +122,7 @@ export default {
     return {
       count: 0,
       open: false,
+      lgWidth: 768,
     }
   },
   mounted() {
@@ -140,8 +141,13 @@ export default {
       let imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            bottom.style.backgroundImage =
-              'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')'
+            if (window.innerWidth >= this.lgWidth) {
+              bottom.style.backgroundImage =
+                'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')'
+            } else {
+              bottom.style.backgroundImage =
+                'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom-half.jpg\')'
+            }
           }
         })
       })

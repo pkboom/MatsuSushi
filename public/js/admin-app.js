@@ -5935,7 +5935,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       count: 0,
-      open: false
+      open: false,
+      lgWidth: 768
     };
   },
   mounted: function mounted() {
@@ -5948,11 +5949,17 @@ __webpack_require__.r(__webpack_exports__);
       document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
     },
     fetchImage: function fetchImage() {
+      var _this = this;
+
       var bottom = document.getElementById('bottom');
       var imageObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
+            if (window.innerWidth >= _this.lgWidth) {
+              bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
+            } else {
+              bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom-half.jpg\')';
+            }
           }
         });
       });
@@ -7731,7 +7738,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#top[data-v-f2b6376c] {\n  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),\n    url('/images/top.png');\n  background-size: cover;\n  height: 100vh;\n  background-position: center;\n  margin-top: -4.2rem;\n}\n", ""]);
+exports.push([module.i, "#top[data-v-f2b6376c] {\n  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),\n    url('/images/top-half.png');\n  background-size: cover;\n  height: 100vh;\n  background-position: center;\n  margin-top: -4.2rem;\n}\n@media (min-width: 768px) {\n#top[data-v-f2b6376c] {\n    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),\n      url('/images/top.png');\n}\n}\n", ""]);
 
 // exports
 
