@@ -31,7 +31,7 @@
             >
               <div>
                 <front-menu
-                  class="flex flex-col items-center my-16 space-y-7 pt-1 text-white text-base"
+                  class="flex flex-col items-center my-16 space-y-8 pt-1 text-white text-base"
                 />
               </div>
             </div>

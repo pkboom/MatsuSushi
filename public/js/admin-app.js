@@ -62889,7 +62889,7 @@ var render = function() {
                       [
                         _c("front-menu", {
                           staticClass:
-                            "flex flex-col items-center my-16 space-y-7 pt-1 text-white text-base"
+                            "flex flex-col items-center my-16 space-y-8 pt-1 text-white text-base"
                         })
                       ],
                       1
