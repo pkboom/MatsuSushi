@@ -1,37 +1,37 @@
 <template>
   <div>
     <div
-      class="text-lg md:text-md hover:text-gray-400 font-medium"
+      class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('') ? 'border-b-2 pb-1' : null"
     >
       <a href="/">Home</a>
     </div>
     <div
-      class="text-lg md:text-md hover:text-gray-400 font-medium"
+      class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('menu') ? 'border-b-2 pb-1' : null"
     >
       <a href="/menu">Menu</a>
     </div>
     <div
-      class="text-lg md:text-md hover:text-gray-400 font-medium"
+      class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('gallery') ? 'border-b-2 pb-1' : null"
     >
       <a href="/gallery">Gallery</a>
     </div>
     <div
-      class="text-lg md:text-md hover:text-gray-400 font-medium"
+      class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('reservation') ? 'border-b-2 pb-1' : null"
     >
       <a href="/reserve">Reservation</a>
     </div>
     <div
-      class="text-lg md:text-md hover:text-gray-400 font-medium"
+      class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('order') ? 'border-b-2 pb-1' : null"
     >
       <a href="/order">Order</a>
     </div>
     <div
-      class="text-lg md:text-md group hover:text-gray-400 font-medium"
+      class="text-md group hover:text-gray-400 font-medium"
       :class="isUrl('cart') ? 'border-b-2 pb-1' : null"
     >
       <a href="/cart" class="flex items-center">

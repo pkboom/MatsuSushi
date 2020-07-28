@@ -65748,7 +65748,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
+        staticClass: "text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/" } }, [_vm._v("Home")])]
@@ -65757,7 +65757,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
+        staticClass: "text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("menu") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/menu" } }, [_vm._v("Menu")])]
@@ -65766,7 +65766,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
+        staticClass: "text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("gallery") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/gallery" } }, [_vm._v("Gallery")])]
@@ -65775,7 +65775,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
+        staticClass: "text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("reservation") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/reserve" } }, [_vm._v("Reservation")])]
@@ -65784,7 +65784,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
+        staticClass: "text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("order") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/order" } }, [_vm._v("Order")])]
@@ -65793,7 +65793,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-lg md:text-md group hover:text-gray-400 font-medium",
+        staticClass: "text-md group hover:text-gray-400 font-medium",
         class: _vm.isUrl("cart") ? "border-b-2 pb-1" : null
       },
       [
