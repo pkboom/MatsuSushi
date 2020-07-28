@@ -5121,6 +5121,185 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    closed_days: String,
+    closed_dates: Array
+  },
+  remember: 'form',
+  data: function data() {
+    return {
+      sending: false,
+      form: {
+        days: this.closed_days,
+        dates: this.closed_dates
+      }
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.sending = true;
+      this.$inertia.post(this.$route('admin.reservations.disable.store'), this.form).then(function () {
+        return _this.sending = false;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Admin/Reservations/Edit.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Admin/Reservations/Edit.vue?vue&type=script&lang=js& ***!
@@ -5264,6 +5443,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -63718,6 +63909,444 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=template&id=4b63d01d&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=template&id=4b63d01d& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("admin-layout", { attrs: { title: "Disable Reservation" } }, [
+    _c(
+      "div",
+      { staticClass: "mb-8" },
+      [
+        _c("breadcrumb", {
+          attrs: {
+            "previous-url": _vm.$route("admin.reservations"),
+            "previous-name": "Reservations",
+            name: "Disable"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "bg-white max-w-2xl overflow-hidden rounded shadow" },
+      [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submit($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" }, [
+              _c("div", { staticClass: "pr-6 pb-8 w-full" }, [
+                _c("div", { staticClass: "flex flex-col space-y-3" }, [
+                  _c("div", [_vm._v("We are closed on")]),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: {
+                          type: "radio",
+                          name: "option",
+                          value: "mondays"
+                        },
+                        domProps: { checked: _vm._q(_vm.form.days, "mondays") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", "mondays")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [_vm._v("Mondays")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: {
+                          type: "radio",
+                          name: "option",
+                          value: "tuesdays"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.days, "tuesdays")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", "tuesdays")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [_vm._v("Tuesdays")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: {
+                          type: "radio",
+                          name: "option",
+                          value: "wendesdays"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.days, "wendesdays")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", "wendesdays")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v("Wendesdays")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: {
+                          type: "radio",
+                          name: "option",
+                          value: "thursdays"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.days, "thursdays")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", "thursdays")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [_vm._v("Thursdays")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: {
+                          type: "radio",
+                          name: "option",
+                          value: "fridays"
+                        },
+                        domProps: { checked: _vm._q(_vm.form.days, "fridays") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", "fridays")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [_vm._v("Fridays")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: {
+                          type: "radio",
+                          name: "option",
+                          value: "saturdays"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.form.days, "saturdays")
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", "saturdays")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [_vm._v("Saturdays")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: {
+                          type: "radio",
+                          name: "option",
+                          value: "sundays"
+                        },
+                        domProps: { checked: _vm._q(_vm.form.days, "sundays") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", "sundays")
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [_vm._v("Sundays")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "inline-flex items-center mr-6" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.days,
+                            expression: "form.days"
+                          }
+                        ],
+                        staticClass: "form-radio",
+                        attrs: { type: "radio", name: "option" },
+                        domProps: {
+                          value: null,
+                          checked: _vm._q(_vm.form.days, null)
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.form, "days", null)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v("We work everyday")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.$page.errors.first("days")
+                    ? _c("div", { staticClass: "form-error" }, [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(_vm.$page.errors.first("days")) +
+                            "\n            "
+                        )
+                      ])
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
+                [
+                  _c("date-input", {
+                    attrs: {
+                      error: _vm.$page.errors.first("dates.0"),
+                      label: "No reservation date"
+                    },
+                    model: {
+                      value: _vm.form.dates[0],
+                      callback: function($$v) {
+                        _vm.$set(_vm.form.dates, 0, $$v)
+                      },
+                      expression: "form.dates[0]"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
+                [
+                  _c("date-input", {
+                    attrs: {
+                      error: _vm.$page.errors.first("dates.1"),
+                      label: "No reservation date"
+                    },
+                    model: {
+                      value: _vm.form.dates[1],
+                      callback: function($$v) {
+                        _vm.$set(_vm.form.dates, 1, $$v)
+                      },
+                      expression: "form.dates[1]"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
+                [
+                  _c("date-input", {
+                    attrs: {
+                      error: _vm.$page.errors.first("dates.2"),
+                      label: "No reservation date"
+                    },
+                    model: {
+                      value: _vm.form.dates[2],
+                      callback: function($$v) {
+                        _vm.$set(_vm.form.dates, 2, $$v)
+                      },
+                      expression: "form.dates[2]"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
+                [
+                  _c("date-input", {
+                    attrs: {
+                      error: _vm.$page.errors.first("dates.3"),
+                      label: "No reservation date"
+                    },
+                    model: {
+                      value: _vm.form.dates[3],
+                      callback: function($$v) {
+                        _vm.$set(_vm.form.dates, 3, $$v)
+                      },
+                      expression: "form.dates[3]"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+              },
+              [
+                _c(
+                  "loading-button",
+                  {
+                    staticClass: "btn",
+                    attrs: { loading: _vm.sending, type: "submit" }
+                  },
+                  [_vm._v("\n          Complete Setup\n        ")]
+                )
+              ],
+              1
+            )
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Admin/Reservations/Edit.vue?vue&type=template&id=0f4ae1f8&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Admin/Reservations/Edit.vue?vue&type=template&id=0f4ae1f8& ***!
@@ -64010,18 +64639,42 @@ var render = function() {
           }),
           _vm._v(" "),
           _c(
-            "inertia-link",
-            {
-              staticClass: "btn",
-              attrs: { href: _vm.$route("admin.reservations.create") }
-            },
+            "div",
+            { staticClass: "flex" },
             [
-              _c("span", [_vm._v("Create")]),
+              _c(
+                "inertia-link",
+                {
+                  staticClass: "btn",
+                  attrs: {
+                    href: _vm.$route("admin.reservations.disable.create")
+                  }
+                },
+                [
+                  _c("span", [_vm._v("Disable")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "hidden lg:inline" }, [
+                    _vm._v("Reservation")
+                  ])
+                ]
+              ),
               _vm._v(" "),
-              _c("span", { staticClass: "hidden md:inline" }, [
-                _vm._v("Reservation")
-              ])
-            ]
+              _c(
+                "inertia-link",
+                {
+                  staticClass: "btn ml-2",
+                  attrs: { href: _vm.$route("admin.reservations.create") }
+                },
+                [
+                  _c("span", [_vm._v("Create")]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "hidden lg:inline" }, [
+                    _vm._v("Reservation")
+                  ])
+                ]
+              )
+            ],
+            1
           )
         ],
         1
@@ -80898,6 +81551,7 @@ var map = {
 	"./Admin/Items/Edit.vue": "./resources/js/Admin/Items/Edit.vue",
 	"./Admin/Items/Index.vue": "./resources/js/Admin/Items/Index.vue",
 	"./Admin/Reservations/Create.vue": "./resources/js/Admin/Reservations/Create.vue",
+	"./Admin/Reservations/Disable/Create.vue": "./resources/js/Admin/Reservations/Disable/Create.vue",
 	"./Admin/Reservations/Edit.vue": "./resources/js/Admin/Reservations/Edit.vue",
 	"./Admin/Reservations/Index.vue": "./resources/js/Admin/Reservations/Index.vue",
 	"./Admin/Transactions/Index.vue": "./resources/js/Admin/Transactions/Index.vue",
@@ -81846,6 +82500,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_68e6a876___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_68e6a876___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Admin/Reservations/Disable/Create.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/Admin/Reservations/Disable/Create.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Create_vue_vue_type_template_id_4b63d01d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=4b63d01d& */ "./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=template&id=4b63d01d&");
+/* harmony import */ var _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js& */ "./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Create_vue_vue_type_template_id_4b63d01d___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Create_vue_vue_type_template_id_4b63d01d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Admin/Reservations/Disable/Create.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=template&id=4b63d01d&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=template&id=4b63d01d& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_4b63d01d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Create.vue?vue&type=template&id=4b63d01d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Admin/Reservations/Disable/Create.vue?vue&type=template&id=4b63d01d&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_4b63d01d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Create_vue_vue_type_template_id_4b63d01d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

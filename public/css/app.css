@@ -3929,6 +3929,10 @@ input:focus,
     }
   }
 
+  .lg\:inline {
+    display: inline;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }
