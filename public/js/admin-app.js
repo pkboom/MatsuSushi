@@ -4460,6 +4460,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transactions: Array,
@@ -4468,7 +4476,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       transactionData: this.transactions,
-      enabled: this.online_order_enabled
+      enabled: this.online_order_enabled,
+      newReservation: false
     };
   },
   mounted: function mounted() {
@@ -4495,6 +4504,10 @@ __webpack_require__.r(__webpack_exports__);
           transaction["new"] = false;
         }
       }, 1000 * 60 * 30);
+    }).listen('ReservationComplete', function () {
+      _this.newReservation = true;
+
+      _this.$refs.alarm.play();
     });
   },
   methods: {
@@ -62539,8 +62552,18 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "font-bold py-2 text-xl" }, [
-        _vm._v("Today's orders")
+      _c("div", { staticClass: "flex font-bold items-center py-2 text-xl" }, [
+        _vm._v("\n      Today's orders\n      "),
+        _vm.newReservation
+          ? _c(
+              "span",
+              {
+                staticClass:
+                  "bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
+              },
+              [_vm._v("\n        NEW RESERVATION\n      ")]
+            )
+          : _vm._e()
       ]),
       _vm._v(" "),
       _c(
@@ -68222,7 +68245,7 @@ var render = function() {
                         staticClass: "btn",
                         attrs: { loading: _vm.sending, type: "submit" }
                       },
-                      [_vm._v("\n            Reserve\n          ")]
+                      [_vm._v("\n            Complete Reservation\n          ")]
                     )
                   ],
                   1

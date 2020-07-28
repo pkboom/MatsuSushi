@@ -18,7 +18,15 @@
           {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
         </button>
       </div>
-      <div class="font-bold py-2 text-xl">Today's orders</div>
+      <div class="flex font-bold items-center py-2 text-xl">
+        Today's orders
+        <span
+          v-if="newReservation"
+          class="bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
+        >
+          NEW RESERVATION
+        </span>
+      </div>
       <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
         <div
           v-for="transaction in transactionData"
@@ -90,28 +98,35 @@ export default {
     return {
       transactionData: this.transactions,
       enabled: this.online_order_enabled,
+      newReservation: false,
     }
   },
   mounted() {
-    Echo.channel('orders').listen('OrderPlaced', ({ order }) => {
-      if (order === 'test') {
-        this.$page.flash.success = 'Online order messaging ready.'
-        return
-      }
-
-      this.transactionData.unshift(order)
-
-      this.$refs.alarm.play()
-
-      setTimeout(() => {
-        let transaction = this.transactionData.find(
-          transaction => transaction.id === order.id
-        )
-        if (transaction) {
-          transaction.new = false
+    Echo.channel('orders')
+      .listen('OrderPlaced', ({ order }) => {
+        if (order === 'test') {
+          this.$page.flash.success = 'Online order messaging ready.'
+          return
         }
-      }, 1000 * 60 * 30)
-    })
+
+        this.transactionData.unshift(order)
+
+        this.$refs.alarm.play()
+
+        setTimeout(() => {
+          let transaction = this.transactionData.find(
+            transaction => transaction.id === order.id
+          )
+          if (transaction) {
+            transaction.new = false
+          }
+        }, 1000 * 60 * 30)
+      })
+      .listen('ReservationComplete', () => {
+        this.newReservation = true
+
+        this.$refs.alarm.play()
+      })
   },
   methods: {
     alarmTest() {

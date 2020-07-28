@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ReservationComplete;
 use App\Reservation;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Request;
@@ -34,6 +35,8 @@ class ReservationController extends Controller
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
                 'reserved_at' => $reserved_at,
         ]);
+
+        event(new ReservationComplete());
 
         return Response::json([
             'message' => 'Your reservation is confirmed! Thanks.',

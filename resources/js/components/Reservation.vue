@@ -64,7 +64,7 @@
             class="px-8 py-4 border-t border-gray-100 flex justify-end items-center"
           >
             <loading-button :loading="sending" class="btn" type="submit">
-              Reserve
+              Complete Reservation
             </loading-button>
           </div>
         </form>

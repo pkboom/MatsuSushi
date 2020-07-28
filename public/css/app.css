@@ -1864,6 +1864,12 @@ input:focus,
   background-color: rgba(249, 128, 128, var(--bg-opacity));
 }
 
+.bg-orange-100 {
+  --bg-opacity: 1;
+  background-color: #feecdc;
+  background-color: rgba(254, 236, 220, var(--bg-opacity));
+}
+
 .bg-orange-400 {
   --bg-opacity: 1;
   background-color: #ff8a4c;
@@ -2778,6 +2784,12 @@ input:focus,
   --text-opacity: 1;
   color: #9b1c1c;
   color: rgba(155, 28, 28, var(--text-opacity));
+}
+
+.text-orange-600 {
+  --text-opacity: 1;
+  color: #d03801;
+  color: rgba(208, 56, 1, var(--text-opacity));
 }
 
 .text-green-400 {

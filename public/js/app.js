@@ -59669,7 +59669,7 @@ var render = function() {
                         staticClass: "btn",
                         attrs: { loading: _vm.sending, type: "submit" }
                       },
-                      [_vm._v("\n            Reserve\n          ")]
+                      [_vm._v("\n            Complete Reservation\n          ")]
                     )
                   ],
                   1
