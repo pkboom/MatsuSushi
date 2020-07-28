@@ -10,17 +10,17 @@ Route::get('reservations', [ReservationController::class, 'index'])
 Route::get('reservations/create', [ReservationController::class, 'create'])
     ->name('admin.reservations.create');
 
-// Route::post('reservations', [ReservationController::class, 'store'])
-//     ->name('admin.reservations.store');
+Route::post('reservations', [ReservationController::class, 'store'])
+    ->name('admin.reservations.store');
 
 Route::get('reservations/{reservation}/edit', [ReservationController::class, 'edit'])
     ->name('admin.reservations.edit')
     ->where('reservations', '[0-9]+');
 
-// Route::put('reservations/{reservation}', [ReservationController::class, 'update'])
-//     ->name('admin.reservations.update')
-//     ->where('reservations', '[0-9]+');
+Route::put('reservations/{reservation}', [ReservationController::class, 'update'])
+    ->name('admin.reservations.update')
+    ->where('reservations', '[0-9]+');
 
-// Route::delete('reservations/{reservation}', [ReservationController::class, 'destroy'])
-//     ->name('admin.reservations.destroy')
-//     ->where('reservations', '[0-9]+');
+Route::delete('reservations/{reservation}', [ReservationController::class, 'destroy'])
+    ->name('admin.reservations.destroy')
+    ->where('reservations', '[0-9]+');

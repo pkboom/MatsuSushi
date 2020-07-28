@@ -18,7 +18,7 @@ class ReservationController extends Controller
 
     public function store()
     {
-        $reservation = Request::validate([
+        Request::validate([
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
             'phone' => ['required', 'max:50'],
@@ -30,7 +30,7 @@ class ReservationController extends Controller
 
         $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
 
-        $reservation = Reservation::create(
+        Reservation::create(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
                 'reserved_at' => $reserved_at,
         ]);
