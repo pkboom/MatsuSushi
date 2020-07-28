@@ -7,12 +7,6 @@
         class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
       >
         <button class="btn" @click="alarmTest">Alarm Test</button>
-        <audio
-          ref="alarm"
-          src="/sound/jingle-bells-sms.ogg"
-          preload="auto"
-          muted="muted"
-        />
         <button class="btn" @click="messageTest">Message Test</button>
         <button class="btn" @click="toggleEnable">
           {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
@@ -85,6 +79,7 @@
         </div>
       </div>
     </div>
+    <audio ref="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
   </admin-layout>
 </template>
 
@@ -102,7 +97,7 @@ export default {
     }
   },
   mounted() {
-    Echo.channel('orders')
+    Echo.channel('matsusushi')
       .listen('OrderPlaced', ({ order }) => {
         if (order === 'test') {
           this.$page.flash.success = 'Online order messaging ready.'

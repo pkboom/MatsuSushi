@@ -4463,11 +4463,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transactions: Array,
@@ -4483,7 +4478,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    Echo.channel('orders').listen('OrderPlaced', function (_ref) {
+    Echo.channel('matsusushi').listen('OrderPlaced', function (_ref) {
       var order = _ref.order;
 
       if (order === 'test') {
@@ -7859,11 +7854,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transactions: Array
@@ -7878,7 +7868,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     document.title = 'Matsu Sushi';
-    Echo.channel('orders').listen('OrderPlaced', function (_ref) {
+    Echo.channel('matsusushi').listen('OrderPlaced', function (_ref) {
       var order = _ref.order;
 
       if (order === 'test') {
@@ -7902,6 +7892,10 @@ __webpack_require__.r(__webpack_exports__);
           transaction["new"] = false;
         }
       }, 1000 * 60 * 30);
+    }).listen('ReservationComplete', function () {
+      _this.newReservation = true;
+
+      _this.$refs.alarm.play();
     });
   },
   methods: {
@@ -62523,15 +62517,6 @@ var render = function() {
             _vm._v("Alarm Test")
           ]),
           _vm._v(" "),
-          _c("audio", {
-            ref: "alarm",
-            attrs: {
-              src: "/sound/jingle-bells-sms.ogg",
-              preload: "auto",
-              muted: "muted"
-            }
-          }),
-          _vm._v(" "),
           _c("button", { staticClass: "btn", on: { click: _vm.messageTest } }, [
             _vm._v("Message Test")
           ]),
@@ -62694,7 +62679,12 @@ var render = function() {
         }),
         0
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c("audio", {
+      ref: "alarm",
+      attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
+    })
   ])
 }
 var staticRenderFns = []
@@ -67868,15 +67858,6 @@ var render = function() {
             _vm._v("Alarm Test")
           ]),
           _vm._v(" "),
-          _c("audio", {
-            ref: "alarm",
-            attrs: {
-              src: "/sound/jingle-bells-sms.ogg",
-              preload: "auto",
-              muted: "muted"
-            }
-          }),
-          _vm._v(" "),
           _c("button", { staticClass: "btn", on: { click: _vm.messageTest } }, [
             _vm._v("Message Test")
           ])
@@ -68027,7 +68008,12 @@ var render = function() {
         }),
         0
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c("audio", {
+      ref: "alarm",
+      attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
+    })
   ])
 }
 var staticRenderFns = [
@@ -83766,7 +83752,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "5ee0910b32816170dc32",
+  key: "19b5357dc20bc2ffab06",
   cluster: "us2",
   encrypted: true
 });

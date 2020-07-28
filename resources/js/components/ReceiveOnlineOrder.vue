@@ -5,12 +5,6 @@
         class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
       >
         <button class="btn" @click="alarmTest">Alarm Test</button>
-        <audio
-          ref="alarm"
-          src="/sound/jingle-bells-sms.ogg"
-          preload="auto"
-          muted="muted"
-        />
         <button class="btn" @click="messageTest">Message Test</button>
       </div>
       <div v-if="message">
@@ -77,6 +71,7 @@
         </div>
       </div>
     </div>
+    <audio ref="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
   </div>
 </template>
 
@@ -94,31 +89,37 @@ export default {
   mounted() {
     document.title = 'Matsu Sushi'
 
-    Echo.channel('orders').listen('OrderPlaced', ({ order }) => {
-      if (order === 'test') {
-        this.message = 'Online order messaging ready.'
+    Echo.channel('matsusushi')
+      .listen('OrderPlaced', ({ order }) => {
+        if (order === 'test') {
+          this.message = 'Online order messaging ready.'
+
+          setTimeout(() => {
+            this.message = null
+          }, 3000)
+
+          return
+        }
+
+        this.transactionData.unshift(order)
+
+        this.$refs.alarm.play()
 
         setTimeout(() => {
-          this.message = null
-        }, 3000)
+          let transaction = this.transactionData.find(
+            transaction => transaction.id === order.id
+          )
 
-        return
-      }
+          if (transaction) {
+            transaction.new = false
+          }
+        }, 1000 * 60 * 30)
+      })
+      .listen('ReservationComplete', () => {
+        this.newReservation = true
 
-      this.transactionData.unshift(order)
-
-      this.$refs.alarm.play()
-
-      setTimeout(() => {
-        let transaction = this.transactionData.find(
-          transaction => transaction.id === order.id
-        )
-
-        if (transaction) {
-          transaction.new = false
-        }
-      }, 1000 * 60 * 30)
-    })
+        this.$refs.alarm.play()
+      })
   },
   methods: {
     alarmTest() {
