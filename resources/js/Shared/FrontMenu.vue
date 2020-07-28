@@ -18,12 +18,12 @@
     >
       <a href="/gallery">Gallery</a>
     </div>
-    <!-- <div
+    <div
       class="text-lg md:text-md hover:text-gray-400 font-medium"
       :class="isUrl('reservation') ? 'border-b-2 pb-1' : null"
     >
       <a href="/reserve">Reservation</a>
-    </div> -->
+    </div>
     <div
       class="text-lg md:text-md hover:text-gray-400 font-medium"
       :class="isUrl('order') ? 'border-b-2 pb-1' : null"

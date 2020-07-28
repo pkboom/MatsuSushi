@@ -40,14 +40,14 @@
         icon="credit"
       />
     </div>
-    <!-- <div class="mb-4">
+    <div class="mb-4">
       <menu-item
         name="Reservations"
         url="admin/reservations*"
         :link="$route('admin.reservations')"
         icon="credit"
       />
-    </div> -->
+    </div>
   </div>
 </template>
 

@@ -110,7 +110,6 @@ export default {
 
           this.errors.reset()
 
-          console.log('asdf')
           flash(response.data.message)
         })
         .catch(error => {

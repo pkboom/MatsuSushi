@@ -4427,7 +4427,6 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.errors.reset();
 
-        console.log('asdf');
         flash(response.data.message);
       })["catch"](function (error) {
         _this.sending = false;
@@ -56494,6 +56493,22 @@ var render = function() {
         })
       ],
       1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "mb-4" },
+      [
+        _c("menu-item", {
+          attrs: {
+            name: "Reservations",
+            url: "admin/reservations*",
+            link: _vm.$route("admin.reservations"),
+            icon: "credit"
+          }
+        })
+      ],
+      1
     )
   ])
 }
@@ -57202,6 +57217,15 @@ var render = function() {
         class: _vm.isUrl("gallery") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/gallery" } }, [_vm._v("Gallery")])]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
+        class: _vm.isUrl("reservation") ? "border-b-2 pb-1" : null
+      },
+      [_c("a", { attrs: { href: "/reserve" } }, [_vm._v("Reservation")])]
     ),
     _vm._v(" "),
     _c(
@@ -73788,19 +73812,17 @@ var Errors = /*#__PURE__*/function () {
         });
       }
 
-      return error && this.errors[error] ? this.errors[error][0] : null;
+      return error && this.errors ? this.errors[error][0] : null;
     }
   }, {
     key: "get",
     value: function get(field) {
-      return this.errors[field] || [];
+      return this.errors[field] || {};
     }
   }, {
     key: "reset",
     value: function reset() {
-      this.errors = _.mapValues(this.errors, function () {
-        return null;
-      });
+      this.errors = {};
     }
   }]);
 
