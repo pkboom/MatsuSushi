@@ -55423,7 +55423,7 @@ var render = function() {
                       [
                         _c("front-menu", {
                           staticClass:
-                            "flex flex-col items-center my-16 space-y-6 pt-1 text-white text-base"
+                            "flex flex-col items-center my-16 space-y-7 pt-1 text-white text-base"
                         })
                       ],
                       1
@@ -55623,7 +55623,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-md hover:text-gray-400 font-medium",
+        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/" } }, [_vm._v("Home")])]
@@ -55632,7 +55632,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-md hover:text-gray-400 font-medium",
+        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("menu") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/menu" } }, [_vm._v("Menu")])]
@@ -55641,7 +55641,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-md hover:text-gray-400 font-medium",
+        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("gallery") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/gallery" } }, [_vm._v("Gallery")])]
@@ -55650,7 +55650,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-md hover:text-gray-400 font-medium",
+        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("order") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/order" } }, [_vm._v("Order")])]
@@ -55659,7 +55659,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "text-md group hover:text-gray-400 font-medium",
+        staticClass: "text-lg md:text-md group hover:text-gray-400 font-medium",
         class: _vm.isUrl("cart") ? "border-b-2 pb-1" : null
       },
       [
