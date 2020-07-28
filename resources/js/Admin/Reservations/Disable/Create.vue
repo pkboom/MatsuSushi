@@ -13,86 +13,94 @@
           <div class="pr-6 pb-8 w-full">
             <div class="flex flex-col space-y-3">
               <div>We are closed on</div>
-              <label class="inline-flex items-center mr-6">
+              <div class="flex items-center">
                 <input
+                  id="mondays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   value="mondays"
                 />
-                <span class="ml-2">Mondays</span>
-              </label>
-              <label class="inline-flex items-center mr-6">
+                <label for="mondays" class="ml-2">Mondays</label>
+              </div>
+              <div class="flex items-center">
                 <input
+                  id="tuesdays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   value="tuesdays"
                 />
-                <span class="ml-2">Tuesdays</span>
-              </label>
-              <label class="inline-flex items-center mr-6">
+                <label for="tuesdays" class="ml-2">Tuesdays</label>
+              </div>
+              <div class="flex items-center">
                 <input
+                  id="wendesdays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   value="wendesdays"
                 />
-                <span class="ml-2">Wendesdays</span>
-              </label>
-              <label class="inline-flex items-center mr-6">
+                <label for="wendesdays" class="ml-2">Wendesdays</label>
+              </div>
+              <div class="flex items-center">
                 <input
+                  id="thursdays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   value="thursdays"
                 />
-                <span class="ml-2">Thursdays</span>
-              </label>
-              <label class="inline-flex items-center mr-6">
+                <label for="thursdays" class="ml-2">Thursdays</label>
+              </div>
+              <div class="flex items-center">
                 <input
+                  id="fridays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   value="fridays"
                 />
-                <span class="ml-2">Fridays</span>
-              </label>
-              <label class="inline-flex items-center mr-6">
+                <label for="fridays" class="ml-2">Fridays</label>
+              </div>
+              <div class="flex items-center">
                 <input
+                  id="saturdays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   value="saturdays"
                 />
-                <span class="ml-2">Saturdays</span>
-              </label>
-              <label class="inline-flex items-center mr-6">
+                <label for="saturdays" class="ml-2">Saturdays</label>
+              </div>
+              <div class="flex items-center">
                 <input
+                  id="sundays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   value="sundays"
                 />
-                <span class="ml-2">Sundays</span>
-              </label>
-              <label class="inline-flex items-center mr-6">
+                <label for="sundays" class="ml-2">Sundays</label>
+              </div>
+              <div class="flex items-center">
                 <input
+                  id="everyday"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
                   :value="null"
                 />
-                <span class="ml-2">We work everyday</span>
-              </label>
+                <label for="everyday" class="ml-2">We work everyday</label>
+              </div>
               <div v-if="$page.errors.first('days')" class="form-error">
                 {{ $page.errors.first('days') }}
               </div>

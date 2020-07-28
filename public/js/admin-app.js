@@ -5271,6 +5271,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     closed_days: String,
@@ -63960,264 +63968,261 @@ var render = function() {
                 _c("div", { staticClass: "flex flex-col space-y-3" }, [
                   _c("div", [_vm._v("We are closed on")]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: {
-                          type: "radio",
-                          name: "option",
-                          value: "mondays"
-                        },
-                        domProps: { checked: _vm._q(_vm.form.days, "mondays") },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", "mondays")
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [_vm._v("Mondays")])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
+                        id: "mondays",
+                        type: "radio",
+                        name: "option",
+                        value: "mondays"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "mondays") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "mondays")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "mondays" } },
+                      [_vm._v("Mondays")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: {
-                          type: "radio",
-                          name: "option",
-                          value: "tuesdays"
-                        },
-                        domProps: {
-                          checked: _vm._q(_vm.form.days, "tuesdays")
-                        },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", "tuesdays")
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [_vm._v("Tuesdays")])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
+                        id: "tuesdays",
+                        type: "radio",
+                        name: "option",
+                        value: "tuesdays"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "tuesdays") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "tuesdays")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "tuesdays" } },
+                      [_vm._v("Tuesdays")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: {
-                          type: "radio",
-                          name: "option",
-                          value: "wendesdays"
-                        },
-                        domProps: {
-                          checked: _vm._q(_vm.form.days, "wendesdays")
-                        },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", "wendesdays")
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [
-                        _vm._v("Wendesdays")
-                      ])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
+                        id: "wendesdays",
+                        type: "radio",
+                        name: "option",
+                        value: "wendesdays"
+                      },
+                      domProps: {
+                        checked: _vm._q(_vm.form.days, "wendesdays")
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "wendesdays")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "wendesdays" } },
+                      [_vm._v("Wendesdays")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: {
-                          type: "radio",
-                          name: "option",
-                          value: "thursdays"
-                        },
-                        domProps: {
-                          checked: _vm._q(_vm.form.days, "thursdays")
-                        },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", "thursdays")
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [_vm._v("Thursdays")])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
+                        id: "thursdays",
+                        type: "radio",
+                        name: "option",
+                        value: "thursdays"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "thursdays") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "thursdays")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "thursdays" } },
+                      [_vm._v("Thursdays")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: {
-                          type: "radio",
-                          name: "option",
-                          value: "fridays"
-                        },
-                        domProps: { checked: _vm._q(_vm.form.days, "fridays") },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", "fridays")
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [_vm._v("Fridays")])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
+                        id: "fridays",
+                        type: "radio",
+                        name: "option",
+                        value: "fridays"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "fridays") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "fridays")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "fridays" } },
+                      [_vm._v("Fridays")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: {
-                          type: "radio",
-                          name: "option",
-                          value: "saturdays"
-                        },
-                        domProps: {
-                          checked: _vm._q(_vm.form.days, "saturdays")
-                        },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", "saturdays")
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [_vm._v("Saturdays")])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
+                        id: "saturdays",
+                        type: "radio",
+                        name: "option",
+                        value: "saturdays"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "saturdays") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "saturdays")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "saturdays" } },
+                      [_vm._v("Saturdays")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: {
-                          type: "radio",
-                          name: "option",
-                          value: "sundays"
-                        },
-                        domProps: { checked: _vm._q(_vm.form.days, "sundays") },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", "sundays")
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [_vm._v("Sundays")])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
+                        id: "sundays",
+                        type: "radio",
+                        name: "option",
+                        value: "sundays"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "sundays") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "sundays")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "sundays" } },
+                      [_vm._v("Sundays")]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "inline-flex items-center mr-6" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.days,
-                            expression: "form.days"
-                          }
-                        ],
-                        staticClass: "form-radio",
-                        attrs: { type: "radio", name: "option" },
-                        domProps: {
-                          value: null,
-                          checked: _vm._q(_vm.form.days, null)
-                        },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.form, "days", null)
-                          }
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [
-                        _vm._v("We work everyday")
-                      ])
-                    ]
-                  ),
+                      ],
+                      staticClass: "form-radio",
+                      attrs: { id: "everyday", type: "radio", name: "option" },
+                      domProps: {
+                        value: null,
+                        checked: _vm._q(_vm.form.days, null)
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", null)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "everyday" } },
+                      [_vm._v("We work everyday")]
+                    )
+                  ]),
                   _vm._v(" "),
                   _vm.$page.errors.first("days")
                     ? _c("div", { staticClass: "form-error" }, [
