@@ -55389,7 +55389,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6 py-4"
+                  "bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6"
               },
               [
                 _vm._m(0),
@@ -55437,7 +55437,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 md:py-0 w-full"
+                  "bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 py-4 w-full"
               },
               [
                 _c("front-menu", {

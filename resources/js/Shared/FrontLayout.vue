@@ -4,7 +4,7 @@
       <div class="min-h-screen flex flex-col">
         <div class="md:flex z-10">
           <div
-            class="bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6 py-4"
+            class="bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6"
           >
             <div class="md:w-full flex justify-center">
               <a
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div
-            class="bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 md:py-0 w-full"
+            class="bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 py-4 w-full"
           >
             <front-menu class="flex space-x-7 pt-1 text-white text-base" />
           </div>
