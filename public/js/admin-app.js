@@ -64680,15 +64680,6 @@ var render = function() {
       "div",
       {
         staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
-        class: _vm.isUrl("reservation") ? "border-b-2 pb-1" : null
-      },
-      [_c("a", { attrs: { href: "/reserve" } }, [_vm._v("Reservation")])]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "text-lg md:text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("order") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/order" } }, [_vm._v("Order")])]
