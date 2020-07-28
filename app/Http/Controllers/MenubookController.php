@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class MenuBookController extends Controller
+class MenubookController extends Controller
 {
     public function __invoke()
     {

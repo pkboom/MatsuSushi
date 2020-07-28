@@ -1,4 +1,4 @@
 @extends('front.app')
 @section('content')
-<menu-book></menu-book>
+<menubook></menubook>
 @endsection('content')

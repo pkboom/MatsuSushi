@@ -44,11 +44,14 @@ class Errors {
       )
     }
 
-    return error ? this.errors[error][0] : null
+    return error && this.errors[error] ? this.errors[error][0] : null
   }
 
   get(field) {
     return this.errors[field] || []
+  }
+  reset() {
+    this.errors = _.mapValues(this.errors, () => null)
   }
 }
 

@@ -115,7 +115,7 @@ export default {
             .add(30, 'minutes')
             .format('h:mma')
         : '11:00am',
-      to: '9:01pm',
+      to: '9:30pm',
       form: {
         type: 'delivery',
         first_name: localStorage.getItem('first_name'),

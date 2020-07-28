@@ -37,7 +37,7 @@
             </div>
           </div>
           <div
-            class="bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 py-4 w-full"
+            class="bg-gray-900 hidden md:flex md:items-center md:justify-end md:px-10 py-5 w-full"
           >
             <front-menu class="flex space-x-7 pt-1 text-white text-base" />
           </div>

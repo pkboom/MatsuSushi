@@ -42,9 +42,9 @@
     </div>
     <!-- <div class="mb-4">
       <menu-item
-        name="Bookings"
-        url="admin/bookings*"
-        :link="$route('admin.bookgins')"
+        name="Reservations"
+        url="admin/reservations*"
+        :link="$route('admin.reservations')"
         icon="credit"
       />
     </div> -->
