@@ -60,6 +60,10 @@
           <span class="text-gray-500">Total:</span>
           <span class="text-gray-800 font-bold">$ {{ total }}</span>
         </div>
+        <div>
+          <span class="text-gray-500">(Delivery fee:</span>
+          $ {{ fee }}.00)
+        </div>
       </div>
       <div class="flex justify-end mt-2">
         <button class="btn" @click="confirm">Confirm Order</button>
@@ -70,6 +74,9 @@
 
 <script>
 export default {
+  props: {
+    fee: String,
+  },
   data() {
     return {
       items: null,

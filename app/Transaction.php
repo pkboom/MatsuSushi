@@ -13,13 +13,16 @@ class Transaction extends Model
 
     const TAX = 0.13;
 
-    const DELIVERY = 1;
-
-    const TYPE = ['delivery', 'takeout'];
+    const TYPE = [
+        'Delivery' => 'delivery',
+        'Takeout' => 'takeout',
+    ];
 
     const TRANSACTION_SUCCEEDED = 'succeeded';
 
     const TRANSACTION_INPROCESS = 'in_process';
+
+    const DELIVERY_FEE = 5;
 
     protected $guarded = [];
 
@@ -40,12 +43,16 @@ class Transaction extends Model
 
     public function getTotalAttribute()
     {
-        return round($this->subtotal + $this->tax + $this->tip, 2);
+        $total = round($this->subtotal + $this->tax + $this->tip, 2);
+
+        return $this->type === static::TYPE['Delivery'] ?
+            $total + static::DELIVERY_FEE :
+            $total;
     }
 
     public function getTaxAttribute()
     {
-        return round($this->subtotal * Transaction::TAX, 2);
+        return round($this->subtotal * static::TAX, 2);
     }
 
     public function getTipAttribute()
@@ -53,14 +60,25 @@ class Transaction extends Model
         return round($this->subtotal * $this->tip_percentage, 2);
     }
 
-    public static function total($subtotal, $percentage)
-    {
-        return round($subtotal + static::tax($subtotal) + static::tip($subtotal, $percentage), 2);
-    }
-
     public static function formattedTotal($order)
     {
-        return  $order ? static::payDetail($order)['total'] * 100 : 0;
+        return  $order ?
+            static::total(static::subtotal($order), $order) * 100 :
+            0;
+    }
+
+    public static function total($subtotal, $order)
+    {
+        $total = round(
+            $subtotal +
+            static::tax($subtotal) +
+            static::tip($subtotal, $order['tip_percentage']),
+            2
+        );
+
+        return $order['type'] === static::TYPE['Delivery'] ?
+            $total + static::DELIVERY_FEE :
+            $total;
     }
 
     public static function subtotal($order)
@@ -80,22 +98,12 @@ class Transaction extends Model
 
     public static function tax($subtotal)
     {
-        return round($subtotal * Transaction::TAX, 2);
+        return round($subtotal * static::TAX, 2);
     }
 
     public static function tip($subtotal, $percentage)
     {
         return round($subtotal * $percentage, 2);
-    }
-
-    public static function payDetail($order)
-    {
-        return $order ? [
-            'subtotal' => ($subtotal = static::subtotal($order)),
-            'tax' => static::tax($subtotal),
-            'tip' => static::tip($subtotal, $order['tip_percentage']),
-            'total' => static::total($subtotal, $order['tip_percentage']),
-        ] : null;
     }
 
     public static function format($order)
@@ -110,7 +118,7 @@ class Transaction extends Model
             'takeout_time' => $order['takeout_time'],
             'message' => $order['message'],
             'tip_percentage' => $order['tip_percentage'],
-            'subtotal' => Transaction::subtotal($order),
+            'subtotal' => static::subtotal($order),
         ];
     }
 
@@ -137,6 +145,7 @@ class Transaction extends Model
     {
         return [
             'id' => $this->id,
+            'type' => $this->type,
             'name' => $this->name,
             'phone' => $this->phone,
             'address' => $this->address,
@@ -150,6 +159,7 @@ class Transaction extends Model
             'items' => $this->items,
             'status' => $this->status,
             'new' => $this->new,
+            'fee' => static::DELIVERY_FEE,
         ];
     }
 

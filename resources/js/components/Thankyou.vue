@@ -41,6 +41,10 @@
           <span class="text-gray-500">Tip:</span>
           $ {{ transaction.tip }}
         </div>
+        <div v-if="transaction.type === 'delivery'">
+          <span class="text-gray-500">Delivery fee:</span>
+          $ {{ transaction.fee }}
+        </div>
         <div>
           <span class="text-gray-500">Total:</span>
           $ {{ transaction.total }}

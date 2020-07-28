@@ -5181,6 +5181,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object
@@ -6981,7 +6997,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    fee: String
+  },
   data: function data() {
     var _localStorage$getItem;
 
@@ -7598,6 +7621,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -61859,6 +61886,34 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Subtotal:")]),
+            _vm._v(
+              "\n        $ " + _vm._s(_vm.transaction.subtotal) + "\n      "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tax:")]),
+            _vm._v("\n        $ " + _vm._s(_vm.transaction.tax) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tip:")]),
+            _vm._v("\n        $ " + _vm._s(_vm.transaction.tip) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _vm.transaction.type === "delivery"
+            ? _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Delivery fee:")
+                ]),
+                _vm._v(
+                  "\n        $ " + _vm._s(_vm.transaction.fee) + "\n      "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),
             _vm._v("\n        $ " + _vm._s(_vm.transaction.total) + "\n      ")
           ]),
@@ -64499,6 +64554,13 @@ var render = function() {
           _c("span", { staticClass: "text-gray-800 font-bold" }, [
             _vm._v("$ " + _vm._s(_vm.total))
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("span", { staticClass: "text-gray-500" }, [
+            _vm._v("(Delivery fee:")
+          ]),
+          _vm._v("\n        $ " + _vm._s(_vm.fee) + ".00)\n      ")
         ])
       ]),
       _vm._v(" "),
@@ -65672,6 +65734,17 @@ var render = function() {
             _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tip:")]),
             _vm._v("\n        $ " + _vm._s(_vm.transaction.tip) + "\n      ")
           ]),
+          _vm._v(" "),
+          _vm.transaction.type === "delivery"
+            ? _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Delivery fee:")
+                ]),
+                _vm._v(
+                  "\n        $ " + _vm._s(_vm.transaction.fee) + "\n      "
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),

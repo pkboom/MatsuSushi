@@ -1,4 +1,4 @@
 @extends('front.app')
 @section('content')
-<cart></cart>
+<cart fee="{{ $fee }}"></cart>
 @endsection('content')
