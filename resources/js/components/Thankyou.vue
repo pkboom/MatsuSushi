@@ -25,7 +25,7 @@
           <span class="text-gray-500">Takeout time:</span>
           {{ transaction.takeout_time }}
         </div>
-        <div v-else-if="transaction.address">
+        <div v-if="transaction.address">
           <span class="text-gray-500">Address:</span>
           {{ transaction.address }}
         </div>
@@ -49,7 +49,7 @@
           <span class="text-gray-500">Total:</span>
           $ {{ transaction.total }}
         </div>
-        <div>
+        <div v-if="transaction.message">
           <span class="text-gray-500">Message:</span>
           {{ transaction.message }}
         </div>

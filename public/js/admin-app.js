@@ -62227,7 +62227,9 @@ var render = function() {
                         "\n        "
                     )
                   ])
-                : transaction.address
+                : _vm._e(),
+              _vm._v(" "),
+              transaction.address
                 ? _c("div", [
                     _c("span", { staticClass: "text-gray-500" }, [
                       _vm._v("Address:")
@@ -62258,14 +62260,18 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Message:")
-                ]),
-                _vm._v(
-                  "\n          " + _vm._s(transaction.message) + "\n        "
-                )
-              ]),
+              transaction.message
+                ? _c("div", [
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Message:")
+                    ]),
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(transaction.message) +
+                        "\n        "
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", [
                 _c("span", { staticClass: "text-gray-500" }, [_vm._v("Items:")])
@@ -66831,7 +66837,9 @@ var render = function() {
                         "\n        "
                     )
                   ])
-                : transaction.address
+                : _vm._e(),
+              _vm._v(" "),
+              transaction.address
                 ? _c("div", [
                     _c("span", { staticClass: "text-gray-500" }, [
                       _vm._v("Address:")
@@ -66862,14 +66870,18 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Message:")
-                ]),
-                _vm._v(
-                  "\n          " + _vm._s(transaction.message) + "\n        "
-                )
-              ]),
+              transaction.message
+                ? _c("div", [
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Message:")
+                    ]),
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(transaction.message) +
+                        "\n        "
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _vm._m(0, true),
               _vm._v(" "),
@@ -67499,7 +67511,9 @@ var render = function() {
                     "\n      "
                 )
               ])
-            : _vm.transaction.address
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.transaction.address
             ? _c("div", [
                 _c("span", { staticClass: "text-gray-500" }, [
                   _vm._v("Address:")
@@ -67543,10 +67557,16 @@ var render = function() {
             _vm._v("\n        $ " + _vm._s(_vm.transaction.total) + "\n      ")
           ]),
           _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Message:")]),
-            _vm._v("\n        " + _vm._s(_vm.transaction.message) + "\n      ")
-          ]),
+          _vm.transaction.message
+            ? _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Message:")
+                ]),
+                _vm._v(
+                  "\n        " + _vm._s(_vm.transaction.message) + "\n      "
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [_vm._v("Items:")])
@@ -83362,7 +83382,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })
