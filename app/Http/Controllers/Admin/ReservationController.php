@@ -15,7 +15,9 @@ class ReservationController extends Controller
     {
         return Inertia::render('Reservations/Index', [
             'filters' => Request::all('search'),
-            'reservations' => Reservation::latest()
+            'reservations' => Reservation::query()
+                ->whereDate('reserved_at', '>=', now()->startOfDay())
+                ->oldest('reserved_at')
                 ->filter(Request::only('search'))
                 ->paginate()
                 ->transform(function ($reservation) {
@@ -24,8 +26,8 @@ class ReservationController extends Controller
                         'name' => $reservation->name,
                         'phone' => $reservation->phone,
                         'people' => $reservation->people,
-                        'reserved_at' => $reservation->reserved_at->format('Y-m-d h:i a'),
-                        'created_at' => $reservation->created_at->format('Y-m-d'),
+                        'reserved_at' => $reservation->reserved_at->format('m-d h:i a'),
+                        'created_at' => $reservation->created_at->format('m-d'),
                     ];
                 }),
         ]);

@@ -59,6 +59,12 @@
         >
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ reservation.name }}
+            <span
+              v-if="isToday(reservation.reserved_at)"
+              class="px-2 py-1 bg-orange-100 text-sm text-orange-600 rounded ml-2"
+            >
+              Today
+            </span>
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ reservation.phone }}
@@ -86,6 +92,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: {
     filters: Object,
@@ -115,6 +123,11 @@ export default {
   methods: {
     reset() {
       this.form = _.mapValues(this.form, () => null)
+    },
+    isToday(date) {
+      console.log(moment(date, 'MM-DD'))
+      console.log(moment(date, 'MM-DD').isSame(moment(), 'day'))
+      return moment(date, 'MM-DD').isSame(moment(), 'day')
     },
   },
 }

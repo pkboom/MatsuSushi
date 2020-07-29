@@ -2246,6 +2246,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -56496,14 +56505,26 @@ var render = function() {
       "div",
       { staticClass: "mb-4" },
       [
-        _c("menu-item", {
-          attrs: {
-            name: "Reservations",
-            url: "admin/reservations*",
-            link: _vm.$route("admin.reservations"),
-            icon: "calendar"
-          }
-        })
+        _c(
+          "menu-item",
+          {
+            attrs: {
+              name: "Reservations",
+              url: "admin/reservations*",
+              link: _vm.$route("admin.reservations")
+            }
+          },
+          [
+            _c("icon", {
+              staticClass: "w-5 h-5 -ml-0.5 mr-3",
+              class: _vm.isUrl("admin/reservations*")
+                ? "fill-gray-100"
+                : "fill-gray-400 group-hover:fill-gray-100",
+              attrs: { name: "calendar" }
+            })
+          ],
+          1
+        )
       ],
       1
     )
@@ -73919,7 +73940,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "5ee0910b32816170dc32",
+  key: "19b5357dc20bc2ffab06",
   cluster: "us2",
   encrypted: true
 });
@@ -74581,8 +74602,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

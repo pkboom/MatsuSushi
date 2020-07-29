@@ -5449,6 +5449,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -5536,6 +5538,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     filters: Object,
@@ -5566,6 +5575,11 @@ __webpack_require__.r(__webpack_exports__);
       this.form = _.mapValues(this.form, function () {
         return null;
       });
+    },
+    isToday: function isToday(date) {
+      console.log(moment__WEBPACK_IMPORTED_MODULE_0___default()(date, 'MM-DD'));
+      console.log(moment__WEBPACK_IMPORTED_MODULE_0___default()(date, 'MM-DD').isSame(moment__WEBPACK_IMPORTED_MODULE_0___default()(), 'day'));
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(date, 'MM-DD').isSame(moment__WEBPACK_IMPORTED_MODULE_0___default()(), 'day');
     }
   }
 });
@@ -5994,6 +6008,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Utils/Helpers */ "./resources/js/Utils/Helpers.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -64753,8 +64776,20 @@ var render = function() {
                     { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
                     [
                       _vm._v(
-                        "\n          " + _vm._s(reservation.name) + "\n        "
-                      )
+                        "\n          " +
+                          _vm._s(reservation.name) +
+                          "\n          "
+                      ),
+                      _vm.isToday(reservation.reserved_at)
+                        ? _c(
+                            "span",
+                            {
+                              staticClass:
+                                "px-2 py-1 bg-orange-100 text-sm text-orange-600 rounded ml-2"
+                            },
+                            [_vm._v("\n            Today\n          ")]
+                          )
+                        : _vm._e()
                     ]
                   ),
                   _vm._v(" "),
@@ -65717,14 +65752,26 @@ var render = function() {
       "div",
       { staticClass: "mb-4" },
       [
-        _c("menu-item", {
-          attrs: {
-            name: "Reservations",
-            url: "admin/reservations*",
-            link: _vm.$route("admin.reservations"),
-            icon: "calendar"
-          }
-        })
+        _c(
+          "menu-item",
+          {
+            attrs: {
+              name: "Reservations",
+              url: "admin/reservations*",
+              link: _vm.$route("admin.reservations")
+            }
+          },
+          [
+            _c("icon", {
+              staticClass: "w-5 h-5 -ml-0.5 mr-3",
+              class: _vm.isUrl("admin/reservations*")
+                ? "fill-gray-100"
+                : "fill-gray-400 group-hover:fill-gray-100",
+              attrs: { name: "calendar" }
+            })
+          ],
+          1
+        )
       ],
       1
     )
@@ -84474,7 +84521,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "5ee0910b32816170dc32",
+  key: "19b5357dc20bc2ffab06",
   cluster: "us2",
   encrypted: true
 });
@@ -85417,7 +85464,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })

@@ -45,8 +45,17 @@
         name="Reservations"
         url="admin/reservations*"
         :link="$route('admin.reservations')"
-        icon="calendar"
-      />
+      >
+        <icon
+          name="calendar"
+          class="w-5 h-5 -ml-0.5 mr-3"
+          :class="
+            isUrl('admin/reservations*')
+              ? 'fill-gray-100'
+              : 'fill-gray-400 group-hover:fill-gray-100'
+          "
+        />
+      </menu-item>
     </div>
   </div>
 </template>
