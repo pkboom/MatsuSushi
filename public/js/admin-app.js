@@ -5591,8 +5591,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     isToday: function isToday(date) {
-      console.log(moment__WEBPACK_IMPORTED_MODULE_0___default()(date, 'MM-DD'));
-      console.log(moment__WEBPACK_IMPORTED_MODULE_0___default()(date, 'MM-DD').isSame(moment__WEBPACK_IMPORTED_MODULE_0___default()(), 'day'));
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(date, 'MM-DD').isSame(moment__WEBPACK_IMPORTED_MODULE_0___default()(), 'day');
     }
   }

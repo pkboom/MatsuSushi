@@ -125,8 +125,6 @@ export default {
       this.form = _.mapValues(this.form, () => null)
     },
     isToday(date) {
-      console.log(moment(date, 'MM-DD'))
-      console.log(moment(date, 'MM-DD').isSame(moment(), 'day'))
       return moment(date, 'MM-DD').isSame(moment(), 'day')
     },
   },
