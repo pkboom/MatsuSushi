@@ -15,12 +15,23 @@
               <div>We are closed on</div>
               <div class="flex items-center">
                 <input
+                  id="sundays"
+                  v-model="form.days"
+                  type="radio"
+                  class="form-radio"
+                  name="option"
+                  value="0"
+                />
+                <label for="sundays" class="ml-2">Sundays</label>
+              </div>
+              <div class="flex items-center">
+                <input
                   id="mondays"
                   v-model="form.days"
                   type="radio"
                   class="form-radio"
                   name="option"
-                  value="mondays"
+                  value="1"
                 />
                 <label for="mondays" class="ml-2">Mondays</label>
               </div>
@@ -31,7 +42,7 @@
                   type="radio"
                   class="form-radio"
                   name="option"
-                  value="tuesdays"
+                  value="2"
                 />
                 <label for="tuesdays" class="ml-2">Tuesdays</label>
               </div>
@@ -42,7 +53,7 @@
                   type="radio"
                   class="form-radio"
                   name="option"
-                  value="wendesdays"
+                  value="3"
                 />
                 <label for="wendesdays" class="ml-2">Wendesdays</label>
               </div>
@@ -53,7 +64,7 @@
                   type="radio"
                   class="form-radio"
                   name="option"
-                  value="thursdays"
+                  value="4"
                 />
                 <label for="thursdays" class="ml-2">Thursdays</label>
               </div>
@@ -64,7 +75,7 @@
                   type="radio"
                   class="form-radio"
                   name="option"
-                  value="fridays"
+                  value="5"
                 />
                 <label for="fridays" class="ml-2">Fridays</label>
               </div>
@@ -75,20 +86,9 @@
                   type="radio"
                   class="form-radio"
                   name="option"
-                  value="saturdays"
+                  value="6"
                 />
                 <label for="saturdays" class="ml-2">Saturdays</label>
-              </div>
-              <div class="flex items-center">
-                <input
-                  id="sundays"
-                  v-model="form.days"
-                  type="radio"
-                  class="form-radio"
-                  name="option"
-                  value="sundays"
-                />
-                <label for="sundays" class="ml-2">Sundays</label>
               </div>
               <div class="flex items-center">
                 <input

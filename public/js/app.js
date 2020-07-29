@@ -4290,8 +4290,6 @@ __webpack_require__.r(__webpack_exports__);
       }, 1000 * 60 * 30);
     }).listen('ReservationComplete', function () {
       _this.newReservation = true;
-
-      _this.$refs.alarm.play();
     });
   },
   methods: {

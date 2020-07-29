@@ -7,7 +7,7 @@ use App\Item;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ManipulateitemTest extends TestCase
+class ItemsTest extends TestCase
 {
     use RefreshDatabase;
 

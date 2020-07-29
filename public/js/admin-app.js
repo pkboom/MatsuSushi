@@ -4501,8 +4501,6 @@ __webpack_require__.r(__webpack_exports__);
       }, 1000 * 60 * 30);
     }).listen('ReservationComplete', function () {
       _this.newReservation = true;
-
-      _this.$refs.alarm.play();
     });
   },
   methods: {
@@ -8093,8 +8091,6 @@ __webpack_require__.r(__webpack_exports__);
       }, 1000 * 60 * 30);
     }).listen('ReservationComplete', function () {
       _this.newReservation = true;
-
-      _this.$refs.alarm.play();
     });
   },
   methods: {
@@ -63980,15 +63976,47 @@ var render = function() {
                       ],
                       staticClass: "form-radio",
                       attrs: {
+                        id: "sundays",
+                        type: "radio",
+                        name: "option",
+                        value: "0"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "0") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "days", "0")
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "ml-2", attrs: { for: "sundays" } },
+                      [_vm._v("Sundays")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "flex items-center" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.days,
+                          expression: "form.days"
+                        }
+                      ],
+                      staticClass: "form-radio",
+                      attrs: {
                         id: "mondays",
                         type: "radio",
                         name: "option",
-                        value: "mondays"
+                        value: "1"
                       },
-                      domProps: { checked: _vm._q(_vm.form.days, "mondays") },
+                      domProps: { checked: _vm._q(_vm.form.days, "1") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "days", "mondays")
+                          return _vm.$set(_vm.form, "days", "1")
                         }
                       }
                     }),
@@ -64015,12 +64043,12 @@ var render = function() {
                         id: "tuesdays",
                         type: "radio",
                         name: "option",
-                        value: "tuesdays"
+                        value: "2"
                       },
-                      domProps: { checked: _vm._q(_vm.form.days, "tuesdays") },
+                      domProps: { checked: _vm._q(_vm.form.days, "2") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "days", "tuesdays")
+                          return _vm.$set(_vm.form, "days", "2")
                         }
                       }
                     }),
@@ -64047,14 +64075,12 @@ var render = function() {
                         id: "wendesdays",
                         type: "radio",
                         name: "option",
-                        value: "wendesdays"
+                        value: "3"
                       },
-                      domProps: {
-                        checked: _vm._q(_vm.form.days, "wendesdays")
-                      },
+                      domProps: { checked: _vm._q(_vm.form.days, "3") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "days", "wendesdays")
+                          return _vm.$set(_vm.form, "days", "3")
                         }
                       }
                     }),
@@ -64081,12 +64107,12 @@ var render = function() {
                         id: "thursdays",
                         type: "radio",
                         name: "option",
-                        value: "thursdays"
+                        value: "4"
                       },
-                      domProps: { checked: _vm._q(_vm.form.days, "thursdays") },
+                      domProps: { checked: _vm._q(_vm.form.days, "4") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "days", "thursdays")
+                          return _vm.$set(_vm.form, "days", "4")
                         }
                       }
                     }),
@@ -64113,12 +64139,12 @@ var render = function() {
                         id: "fridays",
                         type: "radio",
                         name: "option",
-                        value: "fridays"
+                        value: "5"
                       },
-                      domProps: { checked: _vm._q(_vm.form.days, "fridays") },
+                      domProps: { checked: _vm._q(_vm.form.days, "5") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "days", "fridays")
+                          return _vm.$set(_vm.form, "days", "5")
                         }
                       }
                     }),
@@ -64145,12 +64171,12 @@ var render = function() {
                         id: "saturdays",
                         type: "radio",
                         name: "option",
-                        value: "saturdays"
+                        value: "6"
                       },
-                      domProps: { checked: _vm._q(_vm.form.days, "saturdays") },
+                      domProps: { checked: _vm._q(_vm.form.days, "6") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "days", "saturdays")
+                          return _vm.$set(_vm.form, "days", "6")
                         }
                       }
                     }),
@@ -64159,38 +64185,6 @@ var render = function() {
                       "label",
                       { staticClass: "ml-2", attrs: { for: "saturdays" } },
                       [_vm._v("Saturdays")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "flex items-center" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.days,
-                          expression: "form.days"
-                        }
-                      ],
-                      staticClass: "form-radio",
-                      attrs: {
-                        id: "sundays",
-                        type: "radio",
-                        name: "option",
-                        value: "sundays"
-                      },
-                      domProps: { checked: _vm._q(_vm.form.days, "sundays") },
-                      on: {
-                        change: function($event) {
-                          return _vm.$set(_vm.form, "days", "sundays")
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      { staticClass: "ml-2", attrs: { for: "sundays" } },
-                      [_vm._v("Sundays")]
                     )
                   ]),
                   _vm._v(" "),

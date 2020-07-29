@@ -117,8 +117,6 @@ export default {
       })
       .listen('ReservationComplete', () => {
         this.newReservation = true
-
-        this.$refs.alarm.play()
       })
   },
   methods: {
