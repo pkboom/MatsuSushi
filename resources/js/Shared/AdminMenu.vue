@@ -48,7 +48,7 @@
       >
         <icon
           name="calendar"
-          class="w-5 h-5 -ml-0.5 mr-3"
+          class="w-5 h-5 -ml-0.5 mr-1.5"
           :class="
             isUrl('admin/reservations*')
               ? 'fill-gray-100'

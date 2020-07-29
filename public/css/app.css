@@ -2270,10 +2270,6 @@ input:focus,
   margin-left: 0.5rem;
 }
 
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -2324,6 +2320,10 @@ input:focus,
 
 .ml-auto {
   margin-left: auto;
+}
+
+.mr-1\.5 {
+  margin-right: 0.375rem;
 }
 
 .-mr-6 {
