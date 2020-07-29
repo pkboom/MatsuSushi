@@ -4531,6 +4531,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.$route('admin.dashboard')).then(function (response) {
         _this3.transactionData = response.data;
       });
+    },
+    isNew: function isNew(createdAt) {
+      if (moment__WEBPACK_IMPORTED_MODULE_0___default()(createdAt, 'YYYY-MM-DD hh:mm a').isBefore(moment__WEBPACK_IMPORTED_MODULE_0___default()().add(1, 'hours'))) {
+        return true;
+      }
     }
   }
 });
@@ -62794,7 +62799,7 @@ var render = function() {
                 _vm._v(
                   "\n          " + _vm._s(transaction.id) + "\n          "
                 ),
-                transaction.new
+                _vm.isNew(transaction.created_at)
                   ? _c(
                       "span",
                       {

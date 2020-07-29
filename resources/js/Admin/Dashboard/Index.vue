@@ -31,7 +31,7 @@
             <span class="text-gray-500">Order Number:</span>
             {{ transaction.id }}
             <span
-              v-if="transaction.new"
+              v-if="isNew(transaction.created_at)"
               class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
             >
               New
@@ -151,6 +151,15 @@ export default {
       axios.get(this.$route('admin.dashboard')).then(response => {
         this.transactionData = response.data
       })
+    },
+    isNew(createdAt) {
+      if (
+        moment(createdAt, 'YYYY-MM-DD hh:mm a').isBefore(
+          moment().add(1, 'hours')
+        )
+      ) {
+        return true
+      }
     },
   },
 }
