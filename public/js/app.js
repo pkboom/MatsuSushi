@@ -2246,15 +2246,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -56505,26 +56496,14 @@ var render = function() {
       "div",
       { staticClass: "mb-4" },
       [
-        _c(
-          "menu-item",
-          {
-            attrs: {
-              name: "Reservations",
-              url: "admin/reservations*",
-              link: _vm.$route("admin.reservations")
-            }
-          },
-          [
-            _c("icon", {
-              staticClass: "w-5 h-5 -ml-0.5 mr-1.5",
-              class: _vm.isUrl("admin/reservations*")
-                ? "fill-gray-100"
-                : "fill-gray-400 group-hover:fill-gray-100",
-              attrs: { name: "calendar" }
-            })
-          ],
-          1
-        )
+        _c("menu-item", {
+          attrs: {
+            name: "Reservations",
+            url: "admin/reservations*",
+            link: _vm.$route("admin.reservations"),
+            icon: "calendar"
+          }
+        })
       ],
       1
     )
@@ -57578,11 +57557,12 @@ var render = function() {
         })
       ])
     : _vm.name === "calendar"
-    ? _c("svg", { attrs: { viewBox: "0 0 24 24" } }, [
+    ? _c("svg", { attrs: { viewBox: "0 0 20 20" } }, [
         _c("path", {
           attrs: {
             d:
-              "M17 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h2V3a1 1 0 1 1 2 0v1h6V3a1 1 0 0 1 2 0v1zm-2 2H9v1a1 1 0 1 1-2 0V6H5v4h14V6h-2v1a1 1 0 0 1-2 0V6zm4 6H5v8h14v-8z"
+              "M1 3.995C1 2.893 1.893 2 2.995 2h14.01C18.107 2 19 2.893 19 3.995v14.01A1.995 1.995 0 0117.005 20H2.995A1.995 1.995 0 011 18.005V3.995zM3 6h14v12H3V6zm2-6h2v2H5V0zm8 0h2v2h-2V0zM5 9h2v2H5V9zm0 4h2v2H5v-2zm4-4h2v2H9V9zm0 4h2v2H9v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z",
+            "fill-rule": "evenodd"
           }
         })
       ])
