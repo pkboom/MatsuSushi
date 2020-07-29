@@ -154,8 +154,8 @@ export default {
     },
     isNew(createdAt) {
       if (
-        moment(createdAt, 'YYYY-MM-DD hh:mm a').isBefore(
-          moment().add(1, 'hours')
+        moment(createdAt, 'YYYY-MM-DD hh:mm a').isAfter(
+          moment().subtract(1, 'hours')
         )
       ) {
         return true

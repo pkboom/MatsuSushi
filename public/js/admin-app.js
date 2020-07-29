@@ -4533,7 +4533,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     isNew: function isNew(createdAt) {
-      if (moment__WEBPACK_IMPORTED_MODULE_0___default()(createdAt, 'YYYY-MM-DD hh:mm a').isBefore(moment__WEBPACK_IMPORTED_MODULE_0___default()().add(1, 'hours'))) {
+      if (moment__WEBPACK_IMPORTED_MODULE_0___default()(createdAt, 'YYYY-MM-DD hh:mm a').isAfter(moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, 'hours'))) {
         return true;
       }
     }
