@@ -84,6 +84,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: {
     transactions: Array,
@@ -120,6 +122,14 @@ export default {
       .listen('ReservationComplete', () => {
         this.newReservation = true
       })
+
+    this.processNewOrdersIntervalId = setInterval(
+      this.processNewOrders,
+      moment.duration('1', 'minutes')
+    )
+  },
+  beforeDestroy() {
+    clearInterval(this.processNewOrdersIntervalId)
   },
   methods: {
     alarmTest() {
@@ -135,6 +145,11 @@ export default {
         this.$page.flash.success =
           'Online order ' +
           (response.data.online_order_enabled ? 'enabled' : 'disabled')
+      })
+    },
+    processNewOrders() {
+      axios.get(this.$route('admin.dashboard')).then(response => {
+        this.transactionData = response.data
       })
     },
   },

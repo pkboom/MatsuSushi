@@ -4378,6 +4378,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -4463,6 +4465,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transactions: Array,
@@ -4502,6 +4505,10 @@ __webpack_require__.r(__webpack_exports__);
     }).listen('ReservationComplete', function () {
       _this.newReservation = true;
     });
+    this.processNewOrdersIntervalId = setInterval(this.processNewOrders, moment__WEBPACK_IMPORTED_MODULE_0___default.a.duration('1', 'minutes'));
+  },
+  beforeDestroy: function beforeDestroy() {
+    clearInterval(this.processNewOrdersIntervalId);
   },
   methods: {
     alarmTest: function alarmTest() {
@@ -4516,6 +4523,13 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/admin/toggle/online/order').then(function (response) {
         _this2.enabled = response.data.online_order_enabled;
         _this2.$page.flash.success = 'Online order ' + (response.data.online_order_enabled ? 'enabled' : 'disabled');
+      });
+    },
+    processNewOrders: function processNewOrders() {
+      var _this3 = this;
+
+      axios.get(this.$route('admin.dashboard')).then(function (response) {
+        _this3.transactionData = response.data;
       });
     }
   }
