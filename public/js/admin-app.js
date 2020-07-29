@@ -65722,7 +65722,7 @@ var render = function() {
             name: "Reservations",
             url: "admin/reservations*",
             link: _vm.$route("admin.reservations"),
-            icon: "credit"
+            icon: "calendar"
           }
         })
       ],

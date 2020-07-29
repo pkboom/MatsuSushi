@@ -45,7 +45,7 @@
         name="Reservations"
         url="admin/reservations*"
         :link="$route('admin.reservations')"
-        icon="credit"
+        icon="calendar"
       />
     </div>
   </div>
