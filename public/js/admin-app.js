@@ -5788,6 +5788,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object
@@ -65154,10 +65158,29 @@ var render = function() {
             _vm._v("\n        " + _vm._s(_vm.transaction.phone) + "\n      ")
           ]),
           _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Address:")]),
-            _vm._v("\n        " + _vm._s(_vm.transaction.address) + "\n      ")
-          ]),
+          _vm.transaction.takeout_time
+            ? _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Takeout time:")
+                ]),
+                _vm._v(
+                  "\n        " +
+                    _vm._s(_vm.transaction.takeout_time) +
+                    "\n      "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.transaction.address
+            ? _c("div", [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Address:")
+                ]),
+                _vm._v(
+                  "\n        " + _vm._s(_vm.transaction.address) + "\n      "
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [_vm._v("Subtotal:")]),
@@ -85444,7 +85467,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })

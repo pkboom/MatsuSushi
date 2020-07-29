@@ -2322,10 +2322,6 @@ input:focus,
   margin-left: auto;
 }
 
-.mr-1\.5 {
-  margin-right: 0.375rem;
-}
-
 .-mr-6 {
   margin-right: -1.5rem;
 }
@@ -2344,10 +2340,6 @@ input:focus,
 
 .-mt-16 {
   margin-top: -4rem;
-}
-
-.-ml-0\.5 {
-  margin-left: -0.125rem;
 }
 
 .max-w-md {
