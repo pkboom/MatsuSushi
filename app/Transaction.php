@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Events\OrderPlaced;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
@@ -227,5 +228,15 @@ class Transaction extends Model
                     ->orWhere('phone', 'like', '%'.$search.'%');
             });
         });
+    }
+
+    public function scopeDate($query, $column = 'created_at', $date = null)
+    {
+        $date = $date ? Carbon::parse($date) : Carbon::today();
+
+        $query->whereBetween($column, [
+            $date->startOfDay()->toDateTimeString(),
+            $date->endOfDay()->toDateTimeString(),
+        ]);
     }
 }

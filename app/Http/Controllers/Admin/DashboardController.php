@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Transaction;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -17,7 +18,7 @@ class DashboardController extends Controller
             Stripe::setApiKey(config('services.stripe.secret'));
 
             return Transaction::with('items')
-                ->whereDate('created_at', now())
+                ->date('created_at', Carbon::today())
                 ->where('status', '<>', Transaction::TRANSACTION_FAILED)
                 ->latest()
                 ->take(30)
