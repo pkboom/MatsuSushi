@@ -8127,6 +8127,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.errors.reset();
 
         flash(response.data.message, 'success', 20);
+        localStorage.setItem('first_name'["this"].first_name);
+        localStorage.setItem('last_name'["this"].last_name);
+        localStorage.setItem('phone'["this"].phone);
       })["catch"](function (error) {
         _this.sending = false;
 
