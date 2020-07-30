@@ -22,10 +22,21 @@
       </div>
       <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
         <div
-          v-for="transaction in transactionData"
+          v-for="transaction in transactions"
           :key="transaction.id"
           class="bg-white rounded p-4 shadow gray-800 space-y-4"
         >
+          <div
+            v-if="transaction.status !== 'succeeded'"
+            class="flex items-center"
+          >
+            <span class="text-gray-500">Status:</span>
+            <span
+              class="bg-red-100 font-bold ml-2 px-4 py-1 rounded-full text-red-600 text-xs"
+            >
+              {{ transaction.status }}
+            </span>
+          </div>
           <div class="flex items-center">
             <span class="text-gray-500">Order Number:</span>
             {{ transaction.id }}
@@ -87,32 +98,35 @@ import moment from 'moment'
 
 export default {
   props: {
-    transactions: Array,
     online_order_enabled: Number,
   },
   data() {
     return {
-      transactionData: this.transactions,
+      transactions: null,
       enabled: this.online_order_enabled,
       newReservation: false,
     }
   },
   mounted() {
+    this.getTodayOrders()
+
     Echo.channel('matsusushi')
       .listen('OrderPlaced', () => {
         this.$refs.alarm.play()
+
+        this.getTodayOrders()
       })
       .listen('ReservationComplete', () => {
         this.newReservation = true
       })
 
-    this.processNewOrdersIntervalId = setInterval(
-      this.processNewOrders,
-      moment.duration('1', 'minutes')
+    this.getTodayOrdersIntervalId = setInterval(
+      this.getTodayOrders,
+      moment.duration('3', 'minutes')
     )
   },
   beforeDestroy() {
-    clearInterval(this.processNewOrdersIntervalId)
+    clearInterval(this.getTodayOrdersIntervalId)
   },
   methods: {
     alarmTest() {
@@ -127,9 +141,9 @@ export default {
           (response.data.online_order_enabled ? 'enabled' : 'disabled')
       })
     },
-    processNewOrders() {
+    getTodayOrders() {
       axios.get(this.$route('admin.dashboard')).then(response => {
-        this.transactionData = response.data
+        this.transactions = response.data
       })
     },
     isNew(createdAt) {

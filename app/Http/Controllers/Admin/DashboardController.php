@@ -7,25 +7,31 @@ use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Stripe\Stripe;
 
 class DashboardController extends Controller
 {
     public function __invoke()
     {
-        $transactions = Transaction::with('items')
-            ->whereDate('created_at', now())
-            ->whereStatus(Transaction::TRANSACTION_SUCCEEDED)
-            ->take(10)
-            ->latest()
-            ->get()
-            ->map->toArray();
-
         if (Request::wantsJson()) {
-            return $transactions;
+            Stripe::setApiKey(config('services.stripe.secret'));
+
+            return Transaction::with('items')
+                ->whereDate('created_at', now())
+                ->where('status', '<>', Transaction::TRANSACTION_FAILED)
+                ->latest()
+                ->take(30)
+                ->get()
+                ->map(function ($transaction) {
+                    if ($transaction->needsConfirmation()) {
+                        $transaction->confirm();
+                    }
+
+                    return $transaction;
+                });
         }
 
         return Inertia::render('Dashboard/Index', [
-            'transactions' => $transactions,
             'online_order_enabled' => Cache::get('online_order_enabled', Transaction::ONLINE_ORDER_DISABLED),
         ]);
     }

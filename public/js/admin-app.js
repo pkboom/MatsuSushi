@@ -4464,6 +4464,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -4482,6 +4493,8 @@ __webpack_require__.r(__webpack_exports__);
     this.getTodayOrders();
     Echo.channel('matsusushi').listen('OrderPlaced', function () {
       _this.$refs.alarm.play();
+
+      _this.getTodayOrders();
     }).listen('ReservationComplete', function () {
       _this.newReservation = true;
     });
@@ -5589,6 +5602,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7975,120 +7994,6 @@ __webpack_require__.r(__webpack_exports__);
       });
       localStorage.setItem('items', JSON.stringify(items));
       flash(order.name + ' added to cart');
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReceiveOnlineOrder.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReceiveOnlineOrder.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    transactions: Array
-  },
-  data: function data() {
-    return {
-      transactionData: this.transactions,
-      message: null
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    document.title = 'Matsu Sushi';
-    Echo.channel('matsusushi').listen('OrderPlaced', function () {
-      _this.$refs.alarm.play();
-    }).listen('ReservationComplete', function () {
-      _this.newReservation = true;
-    });
-  },
-  methods: {
-    alarmTest: function alarmTest() {
-      this.$refs.alarm.play();
     }
   }
 });
@@ -62743,6 +62648,29 @@ var render = function() {
               staticClass: "bg-white rounded p-4 shadow gray-800 space-y-4"
             },
             [
+              transaction.status !== "succeeded"
+                ? _c("div", { staticClass: "flex items-center" }, [
+                    _c("span", { staticClass: "text-gray-500" }, [
+                      _vm._v("Status:")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "bg-red-100 font-bold ml-2 px-4 py-1 rounded-full text-red-600 text-xs"
+                      },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(transaction.status) +
+                            "\n          "
+                        )
+                      ]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "flex items-center" }, [
                 _c("span", { staticClass: "text-gray-500" }, [
                   _vm._v("Order Number:")
@@ -64940,10 +64868,19 @@ var render = function() {
                 "th",
                 {
                   staticClass:
+                    "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+                },
+                [_vm._v("\n          Status\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticClass:
                     "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap",
                   attrs: { colspan: "2" }
                 },
-                [_vm._v("\n          Status\n        ")]
+                [_vm._v("\n          Created At\n        ")]
               )
             ]),
             _vm._v(" "),
@@ -65021,6 +64958,18 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "td",
+                    { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                    [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(transaction.created_at) +
+                          "\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
                     { staticClass: "border-t px-4 align-middle w-min" },
                     [
                       _c("icon", {
@@ -65040,7 +64989,7 @@ var render = function() {
                     "td",
                     {
                       staticClass: "border-t px-6 py-4",
-                      attrs: { colspan: "5" }
+                      attrs: { colspan: "7" }
                     },
                     [_vm._v("No transactions found.")]
                   )
@@ -66470,60 +66419,6 @@ var render = function() {
         class: _vm.isUrl("reservation") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/reserve" } }, [_vm._v("Reservation")])]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "text-md hover:text-gray-400 font-medium",
-        class: _vm.isUrl("order") ? "border-b-2 pb-1" : null
-      },
-      [_c("a", { attrs: { href: "/order" } }, [_vm._v("Order")])]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "text-md group hover:text-gray-400 font-medium",
-        class: _vm.isUrl("cart") ? "border-b-2 pb-1" : null
-      },
-      [
-        _c(
-          "a",
-          { staticClass: "flex items-center", attrs: { href: "/cart" } },
-          [
-            _c("span", { staticClass: "mr-1" }, [_vm._v("Cart")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "relative" },
-              [
-                _c("icon", {
-                  staticClass:
-                    "w-4 h-4 fill-white group-hover:fill-gray-400 focus:fill-gray-400 hover:fill-gray-400",
-                  attrs: { name: "shopping-cart" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "absolute bg-gray-500 bottom-2 flex h-5 items-center justify-center rounded-full text-white w-5 text-sm",
-                    class: _vm.count > 0 ? "flex" : "hidden",
-                    style: { bottom: "10px", right: "-13px" }
-                  },
-                  [
-                    _vm.count < 10
-                      ? _c("span", [_vm._v(_vm._s(_vm.count))])
-                      : _c("span", [_vm._v("+")])
-                  ]
-                )
-              ],
-              1
-            )
-          ]
-        )
-      ]
     )
   ])
 }
@@ -68503,204 +68398,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383&":
-/*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383& ***!
-  \*********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-gray-100 min-h-screen" }, [
-    _c("div", { staticClass: "space-y-4 p-8" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
-        },
-        [
-          _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
-            _vm._v("Alarm Test")
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _vm.message
-        ? _c("div", [
-            _c(
-              "span",
-              {
-                staticClass:
-                  "bg-green-100 px-4 py-3 rounded text-green-800 w-auto"
-              },
-              [_vm._v("\n        " + _vm._s(_vm.message) + "\n      ")]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "font-bold py-2 text-xl" }, [
-        _vm._v("Today's orders")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "grid gap-4 grid-cols-1 lg:grid-cols-2" },
-        _vm._l(_vm.transactionData, function(transaction) {
-          return _c(
-            "div",
-            {
-              key: transaction.id,
-              staticClass:
-                "bg-white border gray-800 p-4 rounded shadow space-y-4"
-            },
-            [
-              _c("div", { staticClass: "flex items-center" }, [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Order Number:")
-                ]),
-                _vm._v(
-                  "\n          " + _vm._s(transaction.id) + "\n          "
-                ),
-                transaction.new
-                  ? _c(
-                      "span",
-                      {
-                        staticClass:
-                          "bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
-                      },
-                      [_vm._v("\n            New\n          ")]
-                    )
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [_vm._v("Name:")]),
-                _vm._v("\n          " + _vm._s(transaction.name) + "\n        ")
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Phone:")
-                ]),
-                _vm._v(
-                  "\n          " + _vm._s(transaction.phone) + "\n        "
-                )
-              ]),
-              _vm._v(" "),
-              transaction.takeout_time
-                ? _c("div", [
-                    _c("span", { staticClass: "text-gray-500" }, [
-                      _vm._v("Takeout time:")
-                    ]),
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(transaction.takeout_time) +
-                        "\n        "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              transaction.address
-                ? _c("div", [
-                    _c("span", { staticClass: "text-gray-500" }, [
-                      _vm._v("Address:")
-                    ]),
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(transaction.address) +
-                        "\n        "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Total:")
-                ]),
-                _vm._v(
-                  "\n          $ " + _vm._s(transaction.total) + "\n        "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Created at:")
-                ]),
-                _vm._v(
-                  "\n          " + _vm._s(transaction.created_at) + "\n        "
-                )
-              ]),
-              _vm._v(" "),
-              transaction.message
-                ? _c("div", [
-                    _c("span", { staticClass: "text-gray-500" }, [
-                      _vm._v("Message:")
-                    ]),
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(transaction.message) +
-                        "\n        "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._m(0, true),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "space-y-3" },
-                _vm._l(transaction.items, function(item, key) {
-                  return _c(
-                    "div",
-                    { key: "item" + key, staticClass: "space-y-1" },
-                    [
-                      _c("div", [_vm._v(_vm._s(item.name))]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "text-gray-400 text-sm" }, [
-                        _vm._v(_vm._s(item.description))
-                      ])
-                    ]
-                  )
-                }),
-                0
-              )
-            ]
-          )
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("audio", {
-      ref: "alarm",
-      attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
-    })
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("span", { staticClass: "text-gray-500" }, [_vm._v("Items:")])
-    ])
-  }
-]
 render._withStripped = true
 
 
@@ -81602,7 +81299,6 @@ var map = {
 	"./components/Home.vue": "./resources/js/components/Home.vue",
 	"./components/Menubook.vue": "./resources/js/components/Menubook.vue",
 	"./components/Order.vue": "./resources/js/components/Order.vue",
-	"./components/ReceiveOnlineOrder.vue": "./resources/js/components/ReceiveOnlineOrder.vue",
 	"./components/Reservation.vue": "./resources/js/components/Reservation.vue",
 	"./components/StartYourOrder.vue": "./resources/js/components/StartYourOrder.vue",
 	"./components/Thankyou.vue": "./resources/js/components/Thankyou.vue"
@@ -84830,75 +84526,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Order_vue_vue_type_template_id_8a00ae1a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/ReceiveOnlineOrder.vue":
-/*!********************************************************!*\
-  !*** ./resources/js/components/ReceiveOnlineOrder.vue ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ReceiveOnlineOrder_vue_vue_type_template_id_3dfeb383___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383& */ "./resources/js/components/ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383&");
-/* harmony import */ var _ReceiveOnlineOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReceiveOnlineOrder.vue?vue&type=script&lang=js& */ "./resources/js/components/ReceiveOnlineOrder.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ReceiveOnlineOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ReceiveOnlineOrder_vue_vue_type_template_id_3dfeb383___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ReceiveOnlineOrder_vue_vue_type_template_id_3dfeb383___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/ReceiveOnlineOrder.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/ReceiveOnlineOrder.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/components/ReceiveOnlineOrder.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReceiveOnlineOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ReceiveOnlineOrder.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReceiveOnlineOrder.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReceiveOnlineOrder_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383& ***!
-  \***************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReceiveOnlineOrder_vue_vue_type_template_id_3dfeb383___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ReceiveOnlineOrder.vue?vue&type=template&id=3dfeb383&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReceiveOnlineOrder_vue_vue_type_template_id_3dfeb383___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReceiveOnlineOrder_vue_vue_type_template_id_3dfeb383___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

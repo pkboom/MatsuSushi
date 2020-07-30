@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\OrderPlaced;
 use App\Transaction;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
@@ -27,13 +26,7 @@ class StripeWebhookController extends Controller
     {
         $transaction = Transaction::whereStripeId(Request::input('data.object.payment_intent'))->firstOrFail();
 
-        $transaction->update([
-            'status' => Transaction::TRANSACTION_SUCCEEDED,
-        ]);
-
-        $transaction->items()->attach(explode(',', Request::input('data.object.metadata.items')));
-
-        event(new OrderPlaced());
+        $transaction->succeeded();
 
         return $this->successMethod();
     }

@@ -57,15 +57,14 @@ class StartYourOrderController extends Controller
             'mode' => 'payment',
             'success_url' => URL::route('thankyou', $transaction->id),
             'cancel_url' => URL::previous(),
-            'metadata' => [
-                'items' => implode(',', $order['items']),
-            ],
         ]);
 
         $transaction->update([
             'status' => Transaction::TRANSACTION_INPROCESS,
             'stripe_id' => $session->payment_intent,
         ]);
+
+        $transaction->items()->sync($order['items']);
 
         return Response::json([
             'session' => $session->id,

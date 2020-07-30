@@ -2,8 +2,11 @@
 
 namespace App;
 
+use App\Events\OrderPlaced;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Stripe\PaymentIntent;
 
 class Transaction extends Model
 {
@@ -20,9 +23,13 @@ class Transaction extends Model
 
     const TRANSACTION_SUCCEEDED = 'succeeded';
 
-    const TRANSACTION_INPROCESS = 'in_process';
+    const TRANSACTION_INPROCESS = 'in process';
+
+    const TRANSACTION_FAILED = 'failed';
 
     const DELIVERY_FEE = 5;
+
+    const TIME_TO_LIVE = 3;
 
     protected $guarded = [];
 
@@ -160,6 +167,55 @@ class Transaction extends Model
             'status' => $this->status,
             'fee' => static::DELIVERY_FEE,
         ];
+    }
+
+    public function needsConfirmation()
+    {
+        return $this->olderThanMinutes(static::TIME_TO_LIVE) && $this->isInProcess();
+    }
+
+    public function olderThanMinutes($minutes)
+    {
+        return $this->created_at->isBefore(now()->subMinutes($minutes));
+    }
+
+    public function isInProcess()
+    {
+        return $this->status === static::TRANSACTION_INPROCESS;
+    }
+
+    public function confirm()
+    {
+        try {
+            $paymentIntent = PaymentIntent::retrieve($this->stripe_id);
+        } catch (Exception $e) {
+            $this->failed($e->getMessage());
+        }
+
+        if ($paymentIntent->status === Transaction::TRANSACTION_SUCCEEDED) {
+            $this->succeeded();
+        } else {
+            $this->failed('Too long in process');
+        }
+    }
+
+    public function succeeded()
+    {
+        $this->update([
+            'status' => Transaction::TRANSACTION_SUCCEEDED,
+        ]);
+
+        event(new OrderPlaced());
+    }
+
+    public function failed($message)
+    {
+        $this->update([
+            'status' => Transaction::TRANSACTION_FAILED,
+            'message' => $message,
+        ]);
+
+        $this->items()->detach();
     }
 
     public function scopeFilter($query, array $filters)
