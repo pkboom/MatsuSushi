@@ -21,6 +21,10 @@ $factory->define(Transaction::class, function (Faker $faker) {
         'subtotal' => $faker->numberBetween(10, 50),
         'tip_percentage' => $faker->randomElement([0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30]),
         'message' => $faker->paragraph,
-        'status' => $faker->randomElement(['success', 'refund', 'fail']),
+        'status' => $faker->randomElement([
+            Transaction::TRANSACTION_SUCCEEDED,
+            Transaction::TRANSACTION_INPROCESS,
+            Transaction::TRANSACTION_FAILED,
+        ]),
      ] + $optional;
 });

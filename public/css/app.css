@@ -1858,6 +1858,12 @@ input:focus,
   background-color: rgba(253, 242, 242, var(--bg-opacity));
 }
 
+.bg-red-100 {
+  --bg-opacity: 1;
+  background-color: #fde8e8;
+  background-color: rgba(253, 232, 232, var(--bg-opacity));
+}
+
 .bg-red-400 {
   --bg-opacity: 1;
   background-color: #f98080;
@@ -2785,6 +2791,12 @@ input:focus,
   color: rgba(240, 82, 82, var(--text-opacity));
 }
 
+.text-red-600 {
+  --text-opacity: 1;
+  color: #e02424;
+  color: rgba(224, 36, 36, var(--text-opacity));
+}
+
 .text-red-800 {
   --text-opacity: 1;
   color: #9b1c1c;
@@ -2967,10 +2979,6 @@ input:focus,
 
 .w-56 {
   width: 14rem;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .w-full {
