@@ -4472,9 +4472,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -62648,13 +62645,13 @@ var render = function() {
               staticClass: "bg-white rounded p-4 shadow gray-800 space-y-4"
             },
             [
-              transaction.status !== "succeeded"
-                ? _c("div", { staticClass: "flex items-center" }, [
-                    _c("span", { staticClass: "text-gray-500" }, [
-                      _vm._v("Status:")
-                    ]),
-                    _vm._v(" "),
-                    _c(
+              _c("div", { staticClass: "flex items-center" }, [
+                _c("span", { staticClass: "text-gray-500" }, [
+                  _vm._v("Status:")
+                ]),
+                _vm._v(" "),
+                transaction.status !== "succeeded"
+                  ? _c(
                       "span",
                       {
                         staticClass:
@@ -62668,17 +62665,8 @@ var render = function() {
                         )
                       ]
                     )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("div", { staticClass: "flex items-center" }, [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Order Number:")
-                ]),
-                _vm._v(
-                  "\n          " + _vm._s(transaction.id) + "\n          "
-                ),
-                _vm.isNew(transaction.created_at)
+                  : transaction.status === "succeeded" &&
+                    _vm.isNew(transaction.created_at)
                   ? _c(
                       "span",
                       {
@@ -66419,6 +66407,60 @@ var render = function() {
         class: _vm.isUrl("reservation") ? "border-b-2 pb-1" : null
       },
       [_c("a", { attrs: { href: "/reserve" } }, [_vm._v("Reservation")])]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "text-md hover:text-gray-400 font-medium",
+        class: _vm.isUrl("order") ? "border-b-2 pb-1" : null
+      },
+      [_c("a", { attrs: { href: "/order" } }, [_vm._v("Order")])]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "text-md group hover:text-gray-400 font-medium",
+        class: _vm.isUrl("cart") ? "border-b-2 pb-1" : null
+      },
+      [
+        _c(
+          "a",
+          { staticClass: "flex items-center", attrs: { href: "/cart" } },
+          [
+            _c("span", { staticClass: "mr-1" }, [_vm._v("Cart")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "relative" },
+              [
+                _c("icon", {
+                  staticClass:
+                    "w-4 h-4 fill-white group-hover:fill-gray-400 focus:fill-gray-400 hover:fill-gray-400",
+                  attrs: { name: "shopping-cart" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "absolute bg-gray-500 bottom-2 flex h-5 items-center justify-center rounded-full text-white w-5 text-sm",
+                    class: _vm.count > 0 ? "flex" : "hidden",
+                    style: { bottom: "10px", right: "-13px" }
+                  },
+                  [
+                    _vm.count < 10
+                      ? _c("span", [_vm._v(_vm._s(_vm.count))])
+                      : _c("span", [_vm._v("+")])
+                  ]
+                )
+              ],
+              1
+            )
+          ]
+        )
+      ]
     )
   ])
 }

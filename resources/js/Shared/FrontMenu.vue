@@ -24,7 +24,7 @@
     >
       <a href="/reserve">Reservation</a>
     </div>
-    <!-- <div
+    <div
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('order') ? 'border-b-2 pb-1' : null"
     >
@@ -51,7 +51,7 @@
           </span>
         </div>
       </a>
-    </div> -->
+    </div>
   </div>
 </template>
 

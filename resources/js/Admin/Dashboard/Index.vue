@@ -26,22 +26,19 @@
           :key="transaction.id"
           class="bg-white rounded p-4 shadow gray-800 space-y-4"
         >
-          <div
-            v-if="transaction.status !== 'succeeded'"
-            class="flex items-center"
-          >
+          <div class="flex items-center">
             <span class="text-gray-500">Status:</span>
             <span
+              v-if="transaction.status !== 'succeeded'"
               class="bg-red-100 font-bold ml-2 px-4 py-1 rounded-full text-red-600 text-xs"
             >
               {{ transaction.status }}
             </span>
-          </div>
-          <div class="flex items-center">
-            <span class="text-gray-500">Order Number:</span>
-            {{ transaction.id }}
             <span
-              v-if="isNew(transaction.created_at)"
+              v-else-if="
+                transaction.status === 'succeeded' &&
+                isNew(transaction.created_at)
+              "
               class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
             >
               New
