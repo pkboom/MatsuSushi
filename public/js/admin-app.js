@@ -4472,6 +4472,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -8127,9 +8130,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.errors.reset();
 
         flash(response.data.message, 'success', 20);
-        localStorage.setItem('first_name'["this"].first_name);
-        localStorage.setItem('last_name'["this"].last_name);
-        localStorage.setItem('phone'["this"].phone);
+        localStorage.setItem('first_name', _this.form.first_name);
+        localStorage.setItem('last_name', _this.form.last_name);
+        localStorage.setItem('phone', _this.form.phone);
       })["catch"](function (error) {
         _this.sending = false;
 
@@ -62678,8 +62681,7 @@ var render = function() {
                         )
                       ]
                     )
-                  : transaction.status === "succeeded" &&
-                    _vm.isNew(transaction.created_at)
+                  : _vm.isNew(transaction.created_at)
                   ? _c(
                       "span",
                       {
@@ -62688,7 +62690,14 @@ var render = function() {
                       },
                       [_vm._v("\n            new\n          ")]
                     )
-                  : _vm._e()
+                  : _c(
+                      "span",
+                      {
+                        staticClass:
+                          "bg-gray-100 font-bold ml-2 px-4 py-1 rounded-full text-gray-600 text-xs"
+                      },
+                      [_vm._v("\n            served\n          ")]
+                    )
               ]),
               _vm._v(" "),
               _c("div", [

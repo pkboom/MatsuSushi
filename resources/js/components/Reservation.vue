@@ -115,9 +115,9 @@ export default {
 
           flash(response.data.message, 'success', 20)
 
-          localStorage.setItem('first_name'.this.first_name)
-          localStorage.setItem('last_name'.this.last_name)
-          localStorage.setItem('phone'.this.phone)
+          localStorage.setItem('first_name', this.form.first_name)
+          localStorage.setItem('last_name', this.form.last_name)
+          localStorage.setItem('phone', this.form.phone)
         })
         .catch(error => {
           this.sending = false

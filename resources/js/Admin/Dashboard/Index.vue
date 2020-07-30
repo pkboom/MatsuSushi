@@ -35,13 +35,16 @@
               {{ transaction.status }}
             </span>
             <span
-              v-else-if="
-                transaction.status === 'succeeded' &&
-                isNew(transaction.created_at)
-              "
+              v-else-if="isNew(transaction.created_at)"
               class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
             >
               new
+            </span>
+            <span
+              v-else
+              class="bg-gray-100 font-bold ml-2 px-4 py-1 rounded-full text-gray-600 text-xs"
+            >
+              served
             </span>
           </div>
           <div>
