@@ -59,6 +59,10 @@ class ReservationController extends Controller
             }
         });
 
+        if (Reservation::isDuplicate(Request::input('phone'), $reserved_at)) {
+            fail_validation('date', "Your reservation on {$reserved_at->format('F j')} is already confirmed.");
+        }
+
         Reservation::create(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
                 'reserved_at' => $reserved_at,

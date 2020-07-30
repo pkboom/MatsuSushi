@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
@@ -22,6 +23,14 @@ class Reservation extends Model
         return $this->first_name.' '.$this->last_name;
     }
 
+    public static function isDuplicate($phone, $reservationDate)
+    {
+        return Reservation::query()
+            ->date('reserved_at', $reservationDate)
+            ->wherePhone($phone)
+            ->count();
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
@@ -31,5 +40,15 @@ class Reservation extends Model
                     ->orWhere('phone', 'like', '%'.$search.'%');
             });
         });
+    }
+
+    public function scopeDate($query, $column = 'created_at', $date = null)
+    {
+        $date = $date ? Carbon::parse($date) : Carbon::today();
+
+        $query->whereBetween($column, [
+            $date->startOfDay()->toDateTimeString(),
+            $date->endOfDay()->toDateTimeString(),
+        ]);
     }
 }
