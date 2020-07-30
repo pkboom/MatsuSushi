@@ -4464,16 +4464,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    transactions: Array,
     online_order_enabled: Number
   },
   data: function data() {
     return {
-      transactionData: this.transactions,
+      transactions: null,
       enabled: this.online_order_enabled,
       newReservation: false
     };
@@ -4481,41 +4479,20 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    Echo.channel('matsusushi').listen('OrderPlaced', function (_ref) {
-      var order = _ref.order;
-
-      if (order === 'test') {
-        _this.$page.flash.success = 'Online order messaging ready.';
-        return;
-      }
-
-      _this.transactionData.unshift(order);
-
+    this.getTodayOrders();
+    Echo.channel('matsusushi').listen('OrderPlaced', function () {
       _this.$refs.alarm.play();
-
-      setTimeout(function () {
-        var transaction = _this.transactionData.find(function (transaction) {
-          return transaction.id === order.id;
-        });
-
-        if (transaction) {
-          transaction["new"] = false;
-        }
-      }, 1000 * 60 * 30);
     }).listen('ReservationComplete', function () {
       _this.newReservation = true;
     });
-    this.processNewOrdersIntervalId = setInterval(this.processNewOrders, moment__WEBPACK_IMPORTED_MODULE_0___default.a.duration('1', 'minutes'));
+    this.getTodayOrdersIntervalId = setInterval(this.getTodayOrders, moment__WEBPACK_IMPORTED_MODULE_0___default.a.duration('3', 'minutes'));
   },
   beforeDestroy: function beforeDestroy() {
-    clearInterval(this.processNewOrdersIntervalId);
+    clearInterval(this.getTodayOrdersIntervalId);
   },
   methods: {
     alarmTest: function alarmTest() {
       this.$refs.alarm.play();
-    },
-    messageTest: function messageTest() {
-      axios.get('/message/test');
     },
     toggleEnable: function toggleEnable() {
       var _this2 = this;
@@ -4525,11 +4502,11 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$page.flash.success = 'Online order ' + (response.data.online_order_enabled ? 'enabled' : 'disabled');
       });
     },
-    processNewOrders: function processNewOrders() {
+    getTodayOrders: function getTodayOrders() {
       var _this3 = this;
 
       axios.get(this.$route('admin.dashboard')).then(function (response) {
-        _this3.transactionData = response.data;
+        _this3.transactions = response.data;
       });
     },
     isNew: function isNew(createdAt) {
@@ -5728,6 +5705,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -8085,7 +8066,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transactions: Array
@@ -8100,30 +8080,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     document.title = 'Matsu Sushi';
-    Echo.channel('matsusushi').listen('OrderPlaced', function (_ref) {
-      var order = _ref.order;
-
-      if (order === 'test') {
-        _this.message = 'Online order messaging ready.';
-        setTimeout(function () {
-          _this.message = null;
-        }, 3000);
-        return;
-      }
-
-      _this.transactionData.unshift(order);
-
+    Echo.channel('matsusushi').listen('OrderPlaced', function () {
       _this.$refs.alarm.play();
-
-      setTimeout(function () {
-        var transaction = _this.transactionData.find(function (transaction) {
-          return transaction.id === order.id;
-        });
-
-        if (transaction) {
-          transaction["new"] = false;
-        }
-      }, 1000 * 60 * 30);
     }).listen('ReservationComplete', function () {
       _this.newReservation = true;
     });
@@ -8131,9 +8089,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     alarmTest: function alarmTest() {
       this.$refs.alarm.play();
-    },
-    messageTest: function messageTest() {
-      axios.get('/message/test');
     }
   }
 });
@@ -62747,10 +62702,6 @@ var render = function() {
             _vm._v("Alarm Test")
           ]),
           _vm._v(" "),
-          _c("button", { staticClass: "btn", on: { click: _vm.messageTest } }, [
-            _vm._v("Message Test")
-          ]),
-          _vm._v(" "),
           _c(
             "button",
             { staticClass: "btn", on: { click: _vm.toggleEnable } },
@@ -62784,7 +62735,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "grid gap-4 grid-cols-1 lg:grid-cols-2" },
-        _vm._l(_vm.transactionData, function(transaction) {
+        _vm._l(_vm.transactions, function(transaction) {
           return _c(
             "div",
             {
@@ -65163,6 +65114,15 @@ var render = function() {
                   [_vm._v("\n          New\n        ")]
                 )
               : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [
+              _vm._v("Stripe Id:")
+            ]),
+            _vm._v(
+              "\n        " + _vm._s(_vm.transaction.stripe_id) + "\n      "
+            )
           ]),
           _vm._v(" "),
           _c("div", [
@@ -68575,10 +68535,6 @@ var render = function() {
         [
           _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
             _vm._v("Alarm Test")
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn", on: { click: _vm.messageTest } }, [
-            _vm._v("Message Test")
           ])
         ]
       ),

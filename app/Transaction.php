@@ -144,6 +144,7 @@ class Transaction extends Model
     {
         return [
             'id' => $this->id,
+            'stripe_id' => $this->stripe_id,
             'type' => $this->type,
             'name' => $this->name,
             'phone' => $this->phone,

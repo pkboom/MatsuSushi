@@ -20,6 +20,10 @@
           </span>
         </div>
         <div>
+          <span class="text-gray-500">Stripe Id:</span>
+          {{ transaction.stripe_id }}
+        </div>
+        <div>
           <span class="text-gray-500">Name:</span>
           {{ transaction.name }}
         </div>
