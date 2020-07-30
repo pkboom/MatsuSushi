@@ -33,9 +33,7 @@ class StripeWebhookController extends Controller
 
         $transaction->items()->attach(explode(',', Request::input('data.object.metadata.items')));
 
-        $transaction->new = true;
-
-        event(new OrderPlaced($transaction->toArray()));
+        event(new OrderPlaced());
 
         return $this->successMethod();
     }

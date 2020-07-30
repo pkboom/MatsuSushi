@@ -5,7 +5,6 @@
         class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
       >
         <button class="btn" @click="alarmTest">Alarm Test</button>
-        <button class="btn" @click="messageTest">Message Test</button>
       </div>
       <div v-if="message">
         <span class="bg-green-100 px-4 py-3 rounded text-green-800 w-auto">
@@ -90,30 +89,8 @@ export default {
     document.title = 'Matsu Sushi'
 
     Echo.channel('matsusushi')
-      .listen('OrderPlaced', ({ order }) => {
-        if (order === 'test') {
-          this.message = 'Online order messaging ready.'
-
-          setTimeout(() => {
-            this.message = null
-          }, 3000)
-
-          return
-        }
-
-        this.transactionData.unshift(order)
-
+      .listen('OrderPlaced', () => {
         this.$refs.alarm.play()
-
-        setTimeout(() => {
-          let transaction = this.transactionData.find(
-            transaction => transaction.id === order.id
-          )
-
-          if (transaction) {
-            transaction.new = false
-          }
-        }, 1000 * 60 * 30)
       })
       .listen('ReservationComplete', () => {
         this.newReservation = true
@@ -122,9 +99,6 @@ export default {
   methods: {
     alarmTest() {
       this.$refs.alarm.play()
-    },
-    messageTest() {
-      axios.get('/message/test')
     },
   },
 }

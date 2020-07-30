@@ -137,7 +137,6 @@ class Transaction extends Model
             'message' => $this->message,
             'created_at' => $this->created_at->format('Y-m-d h:i a'),
             'status' => $this->status,
-            'new' => $this->new,
         ];
     }
 
@@ -158,7 +157,6 @@ class Transaction extends Model
             'created_at' => $this->created_at->format('Y-m-d h:i a'),
             'items' => $this->items,
             'status' => $this->status,
-            'new' => $this->new,
             'fee' => static::DELIVERY_FEE,
         ];
     }

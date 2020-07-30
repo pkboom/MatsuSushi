@@ -1,6 +1,5 @@
 <?php
 
-use App\Events\OrderPlaced;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MenubookController;
@@ -9,7 +8,6 @@ use App\Http\Controllers\ReceiveOnlineOrderController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\StartYourOrderController;
 use App\Http\Controllers\ThankyouController;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home');
@@ -31,9 +29,3 @@ Route::post('start/your/order', [StartYourOrderController::class, 'store']);
 Route::get('thankyou/{transaction}', ThankyouController::class)->name('thankyou');
 
 Route::get('receive/online/order', ReceiveOnlineOrderController::class);
-
-Route::get('message/test', function () {
-    event(new OrderPlaced('test'));
-
-    return Response::json('ok');
-});

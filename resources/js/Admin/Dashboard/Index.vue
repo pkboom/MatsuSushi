@@ -7,7 +7,6 @@
         class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
       >
         <button class="btn" @click="alarmTest">Alarm Test</button>
-        <button class="btn" @click="messageTest">Message Test</button>
         <button class="btn" @click="toggleEnable">
           {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
         </button>
@@ -100,24 +99,8 @@ export default {
   },
   mounted() {
     Echo.channel('matsusushi')
-      .listen('OrderPlaced', ({ order }) => {
-        if (order === 'test') {
-          this.$page.flash.success = 'Online order messaging ready.'
-          return
-        }
-
-        this.transactionData.unshift(order)
-
+      .listen('OrderPlaced', () => {
         this.$refs.alarm.play()
-
-        setTimeout(() => {
-          let transaction = this.transactionData.find(
-            transaction => transaction.id === order.id
-          )
-          if (transaction) {
-            transaction.new = false
-          }
-        }, 1000 * 60 * 30)
       })
       .listen('ReservationComplete', () => {
         this.newReservation = true
@@ -134,9 +117,6 @@ export default {
   methods: {
     alarmTest() {
       this.$refs.alarm.play()
-    },
-    messageTest() {
-      axios.get('/message/test')
     },
     toggleEnable() {
       axios.get('/admin/toggle/online/order').then(response => {
