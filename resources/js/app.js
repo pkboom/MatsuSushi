@@ -10,10 +10,11 @@ window.events = new Vue()
 
 Vue.prototype.csrfToken = window.App.csrfToken
 
-window.flash = function(message, level = 'success') {
+window.flash = function(message, level = 'success', ttl = 5) {
   window.events.$emit('flash', {
     message: message,
     level: level,
+    ttl: ttl,
   })
 }
 

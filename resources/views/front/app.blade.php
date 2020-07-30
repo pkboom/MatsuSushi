@@ -35,7 +35,7 @@
 <body class="font-sans bg-white leading-none text-gray-800 antialiased">
     <div id="app">
         @yield('content')
-        <flash message="{{ session('flash') }}"></flash>
+        <flash message="{{ session('flash') }}" :ttl="{{ session('ttl', 5) }}"></flash>
     </div>
     <script src="{{ mix('js/app.js') }}" defer></script>
 </body>

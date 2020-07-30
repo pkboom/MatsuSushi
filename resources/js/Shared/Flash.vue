@@ -57,6 +57,10 @@
 export default {
   props: {
     message: String,
+    ttl: {
+      type: Number,
+      default: 5,
+    },
   },
   data() {
     return {
@@ -64,6 +68,7 @@ export default {
       level: 'success',
       show: false,
       timeout: null,
+      messageTtl: this.ttl,
     }
   },
   created() {
@@ -79,6 +84,7 @@ export default {
 
       this.body = data.message
       this.level = data.level
+      this.messageTtl = data.ttl
 
       this.show = true
 
@@ -90,7 +96,7 @@ export default {
     hide() {
       this.timeout = setTimeout(() => {
         this.show = false
-      }, 5000)
+      }, this.messageTtl * 1000)
     },
   },
 }

@@ -2652,14 +2652,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    message: String
+    message: String,
+    ttl: {
+      type: Number,
+      "default": 5
+    }
   },
   data: function data() {
     return {
       body: this.message,
       level: 'success',
       show: false,
-      timeout: null
+      timeout: null,
+      messageTtl: this.ttl
     };
   },
   created: function created() {
@@ -2678,6 +2683,7 @@ __webpack_require__.r(__webpack_exports__);
       if (!data.message) return;
       this.body = data.message;
       this.level = data.level;
+      this.messageTtl = data.ttl;
       this.show = true;
       clearTimeout(this.timeout);
       this.timeout = null;
@@ -2688,7 +2694,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.timeout = setTimeout(function () {
         _this2.show = false;
-      }, 5000);
+      }, this.messageTtl * 1000);
     }
   }
 });
@@ -4255,7 +4261,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    reservation_enabled: Number
+    reservation_enabled: Number,
+    encrypted_time: String
   },
   data: function data() {
     return {
@@ -4263,6 +4270,8 @@ __webpack_require__.r(__webpack_exports__);
       from: '11:00am',
       to: '9:30pm',
       form: {
+        matsu_honeypot: null,
+        encrypted_time: this.encrypted_time,
         first_name: localStorage.getItem('first_name'),
         last_name: localStorage.getItem('last_name'),
         phone: localStorage.getItem('phone'),
@@ -4284,11 +4293,12 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.errors.reset();
 
-        flash(response.data.message);
+        flash(response.data.message, 'success', 20);
       })["catch"](function (error) {
         _this.sending = false;
 
-        if (error.response) {
+        if (error.response.status === 400) {// spam
+        } else if (error.response) {
           _this.errors.record(error.response.data.errors);
         }
       });
@@ -73538,9 +73548,11 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.csrfToken = window.App.csr
 
 window.flash = function (message) {
   var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';
+  var ttl = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 5;
   window.events.$emit('flash', {
     message: message,
-    level: level
+    level: level,
+    ttl: ttl
   });
 };
 

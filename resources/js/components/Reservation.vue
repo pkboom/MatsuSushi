@@ -82,6 +82,7 @@ import Errors from '@/Utils/Errors'
 export default {
   props: {
     reservation_enabled: Number,
+    encrypted_time: String,
   },
   data() {
     return {
@@ -89,6 +90,8 @@ export default {
       from: '11:00am',
       to: '9:30pm',
       form: {
+        matsu_honeypot: null,
+        encrypted_time: this.encrypted_time,
         first_name: localStorage.getItem('first_name'),
         last_name: localStorage.getItem('last_name'),
         phone: localStorage.getItem('phone'),
@@ -110,12 +113,14 @@ export default {
 
           this.errors.reset()
 
-          flash(response.data.message)
+          flash(response.data.message, 'success', 20)
         })
         .catch(error => {
           this.sending = false
 
-          if (error.response) {
+          if (error.response.status === 400) {
+            // spam
+          } else if (error.response) {
             this.errors.record(error.response.data.errors)
           }
         })

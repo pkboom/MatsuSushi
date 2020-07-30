@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Events\ReservationComplete;
 use App\Reservation;
 use Carbon\CarbonImmutable;
+use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use Spatie\Honeypot\EncryptedTime;
 
 class ReservationController extends Controller
 {
@@ -15,11 +17,26 @@ class ReservationController extends Controller
     {
         return view('reservation', [
             'reservation_enabled' => 1,
+            'encrypted_time' => EncryptedTime::create(now()->addSecond()),
         ]);
     }
 
     public function store()
     {
+        if (!Request::has('matsu_honeypot')) {
+            return Response::json([], 400);
+        }
+
+        if (Request::input('matsu_honeypot') !== null) {
+            return Response::json([], 400);
+        }
+
+        try {
+            (new EncryptedTime(Request::input('encrypted_time')))->isFuture();
+        } catch (Exception $decryptException) {
+            return Response::json([], 400);
+        }
+
         Request::validate([
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
@@ -50,7 +67,7 @@ class ReservationController extends Controller
         event(new ReservationComplete());
 
         return Response::json([
-            'message' => 'Your reservation is confirmed! Thanks.',
+            'message' => "Thank you! Your reservation on {$reserved_at->format('F j')} has been confirmed!",
         ]);
     }
 }
