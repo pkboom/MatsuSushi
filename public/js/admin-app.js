@@ -62673,7 +62673,7 @@ var render = function() {
                         staticClass:
                           "bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
                       },
-                      [_vm._v("\n            New\n          ")]
+                      [_vm._v("\n            new\n          ")]
                     )
                   : _vm._e()
               ]),
