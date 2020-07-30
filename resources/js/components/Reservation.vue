@@ -107,7 +107,7 @@ export default {
     submit() {
       this.sending = true
       axios
-        .post('/reserve', this.form)
+        .post('/reservation', this.form)
         .then(response => {
           this.sending = false
 

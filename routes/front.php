@@ -15,8 +15,8 @@ Route::get('menu', MenubookController::class);
 
 Route::get('gallery', GalleryController::class);
 
-Route::get('reserve', [ReservationController::class, 'create']);
-Route::post('reserve', [ReservationController::class, 'store']);
+Route::get('reservation', [ReservationController::class, 'create']);
+Route::post('reservation', [ReservationController::class, 'store']);
 
 Route::get('order', OrderController::class);
 

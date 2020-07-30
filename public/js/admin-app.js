@@ -8124,7 +8124,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.sending = true;
-      axios.post('/reserve', this.form).then(function (response) {
+      axios.post('/reservation', this.form).then(function (response) {
         _this.sending = false;
 
         _this.errors.reset();
@@ -66428,7 +66428,7 @@ var render = function() {
         staticClass: "text-md hover:text-gray-400 font-medium",
         class: _vm.isUrl("reservation") ? "border-b-2 pb-1" : null
       },
-      [_c("a", { attrs: { href: "/reserve" } }, [_vm._v("Reservation")])]
+      [_c("a", { attrs: { href: "/reservation" } }, [_vm._v("Reservation")])]
     ),
     _vm._v(" "),
     _c(

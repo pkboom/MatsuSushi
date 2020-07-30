@@ -22,7 +22,7 @@
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('reservation') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/reserve">Reservation</a>
+      <a href="/reservation">Reservation</a>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
