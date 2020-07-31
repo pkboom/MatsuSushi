@@ -172,12 +172,12 @@ class Transaction extends Model
 
     public function needsConfirmation()
     {
-        return $this->olderThanMinutes(static::TIME_TO_LIVE) && $this->isInProcess();
+        return $this->isPast(static::TIME_TO_LIVE) && $this->isInProcess();
     }
 
-    public function olderThanMinutes($minutes)
+    public function isPast($minutes)
     {
-        return $this->created_at->isBefore(now()->subMinutes($minutes));
+        return $this->created_at->addMinutes($minutes)->isPast();
     }
 
     public function isInProcess()
