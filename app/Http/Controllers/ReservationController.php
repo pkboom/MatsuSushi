@@ -63,6 +63,10 @@ class ReservationController extends Controller
             fail_validation('date', "Your reservation on {$reserved_at->format('F j')} is already confirmed.");
         }
 
+        if ($reserved_at->subDays(Reservation::VALID_DAYS)->isFuture()) {
+            fail_validation('date', 'Reservation is available within 2 weeks.');
+        }
+
         Reservation::create(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
                 'reserved_at' => $reserved_at,

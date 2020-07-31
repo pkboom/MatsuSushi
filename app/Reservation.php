@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    const VALID_DAYS = 14;
+
     protected $guarded = [];
 
     protected $dates = [
