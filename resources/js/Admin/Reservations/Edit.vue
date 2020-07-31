@@ -60,6 +60,14 @@
               label="Message"
             />
           </div>
+          <div class="pr-6 pb-8 w-full">
+            <div class="form-label">SMS:</div>
+            <div class="leading-tight">
+              Reminder: Your table for {{ form.people }} at Matsu Sushi is
+              booked on {{ form.date }} {{ form.time }}. Please respond '1' to
+              confirm or '9' to cancel. Thank you.
+            </div>
+          </div>
         </div>
         <div
           class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center"

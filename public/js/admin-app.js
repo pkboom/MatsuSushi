@@ -5465,6 +5465,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     reservation: Object
@@ -64623,7 +64631,23 @@ var render = function() {
                     })
                   ],
                   1
-                )
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "pr-6 pb-8 w-full" }, [
+                  _c("div", { staticClass: "form-label" }, [_vm._v("SMS:")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "leading-tight" }, [
+                    _vm._v(
+                      "\n            Reminder: Your table for " +
+                        _vm._s(_vm.form.people) +
+                        " at Matsu Sushi is\n            booked on " +
+                        _vm._s(_vm.form.date) +
+                        " " +
+                        _vm._s(_vm.form.time) +
+                        ". Please respond '1' to\n            confirm or '9' to cancel. Thank you.\n          "
+                    )
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _c(
