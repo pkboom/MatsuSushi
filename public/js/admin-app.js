@@ -62726,7 +62726,7 @@ var render = function() {
                     "span",
                     {
                       staticClass:
-                        "bg-gray-100 font-bold ml-2 px-4 py-1 rounded-full text-gray-600 text-xs"
+                        "bg-gray-400 font-bold ml-2 px-4 py-1 rounded-full text-white text-xs"
                     },
                     [_vm._v("\n          served\n        ")]
                   )
