@@ -62603,7 +62603,7 @@ var render = function() {
                     "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap",
                   attrs: { colspan: "2" }
                 },
-                [_vm._v("\n          Priority\n        ")]
+                [_vm._v("\n          Priority(9-1)\n        ")]
               )
             ]),
             _vm._v(" "),
