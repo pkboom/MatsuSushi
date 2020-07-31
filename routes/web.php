@@ -15,4 +15,5 @@ Route::middleware('auth')
         }
     });
 
-Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook'])->middleware(VerifyWebhookSignature::class);
+Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook'])
+    ->middleware(VerifyWebhookSignature::class);

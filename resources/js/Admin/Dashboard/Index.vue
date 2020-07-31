@@ -89,7 +89,7 @@
         </div>
       </div>
     </div>
-    <audio ref="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
+    <audio id="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
   </admin-layout>
 </template>
 
@@ -112,7 +112,7 @@ export default {
 
     Echo.channel('matsusushi')
       .listen('OrderPlaced', () => {
-        this.$refs.alarm.play()
+        document.getElementById('alarm').play()
 
         this.getTodayOrders()
       })
@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     alarmTest() {
-      this.$refs.alarm.play()
+      document.getElementById('alarm').play()
     },
     toggleEnable() {
       axios.get('/admin/toggle/online/order').then(response => {

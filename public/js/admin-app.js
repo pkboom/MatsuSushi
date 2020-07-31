@@ -4492,7 +4492,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.getTodayOrders();
     Echo.channel('matsusushi').listen('OrderPlaced', function () {
-      _this.$refs.alarm.play();
+      document.getElementById('alarm').play();
 
       _this.getTodayOrders();
     }).listen('ReservationComplete', function () {
@@ -4505,7 +4505,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     alarmTest: function alarmTest() {
-      this.$refs.alarm.play();
+      document.getElementById('alarm').play();
     },
     toggleEnable: function toggleEnable() {
       var _this2 = this;
@@ -62801,8 +62801,11 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("audio", {
-      ref: "alarm",
-      attrs: { src: "/sound/jingle-bells-sms.ogg", preload: "auto" }
+      attrs: {
+        id: "alarm",
+        src: "/sound/jingle-bells-sms.ogg",
+        preload: "auto"
+      }
     })
   ])
 }
@@ -85131,7 +85134,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })
