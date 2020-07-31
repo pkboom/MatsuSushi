@@ -10,6 +10,22 @@
     </div>
     <div class="mb-4">
       <menu-item
+        name="Reservations"
+        url="admin/reservations*"
+        :link="$route('admin.reservations')"
+        icon="calendar"
+      />
+    </div>
+    <div class="mb-4">
+      <menu-item
+        name="Transactions"
+        url="admin/transactions*"
+        :link="$route('admin.transactions')"
+        icon="credit"
+      />
+    </div>
+    <div class="mb-4">
+      <menu-item
         name="Categories"
         url="admin/categories*"
         :link="$route('admin.categories')"
@@ -30,22 +46,6 @@
         url="admin/images*"
         :link="$route('admin.images')"
         icon="document"
-      />
-    </div>
-    <div class="mb-4">
-      <menu-item
-        name="Transactions"
-        url="admin/transactions*"
-        :link="$route('admin.transactions')"
-        icon="credit"
-      />
-    </div>
-    <div class="mb-4">
-      <menu-item
-        name="Reservations"
-        url="admin/reservations*"
-        :link="$route('admin.reservations')"
-        icon="calendar"
       />
     </div>
   </div>

@@ -56307,6 +56307,38 @@ var render = function() {
       [
         _c("menu-item", {
           attrs: {
+            name: "Reservations",
+            url: "admin/reservations*",
+            link: _vm.$route("admin.reservations"),
+            icon: "calendar"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "mb-4" },
+      [
+        _c("menu-item", {
+          attrs: {
+            name: "Transactions",
+            url: "admin/transactions*",
+            link: _vm.$route("admin.transactions"),
+            icon: "credit"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "mb-4" },
+      [
+        _c("menu-item", {
+          attrs: {
             name: "Categories",
             url: "admin/categories*",
             link: _vm.$route("admin.categories"),
@@ -56343,38 +56375,6 @@ var render = function() {
             url: "admin/images*",
             link: _vm.$route("admin.images"),
             icon: "document"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "mb-4" },
-      [
-        _c("menu-item", {
-          attrs: {
-            name: "Transactions",
-            url: "admin/transactions*",
-            link: _vm.$route("admin.transactions"),
-            icon: "credit"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "mb-4" },
-      [
-        _c("menu-item", {
-          attrs: {
-            name: "Reservations",
-            url: "admin/reservations*",
-            link: _vm.$route("admin.reservations"),
-            icon: "calendar"
           }
         })
       ],
