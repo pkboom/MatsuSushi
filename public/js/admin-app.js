@@ -4143,6 +4143,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   remember: 'form',
   data: function data() {
@@ -4177,6 +4178,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -62244,7 +62246,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "pr-6 pb-8 w-full" },
+                { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
                 [
                   _c("div", { staticClass: "flex justify-between" }, [
                     _c(
@@ -62265,7 +62267,8 @@ var render = function() {
                   _c("text-input", {
                     attrs: {
                       id: "priority",
-                      error: _vm.$page.errors.first("priority")
+                      error: _vm.$page.errors.first("priority"),
+                      type: "number"
                     },
                     model: {
                       value: _vm.form.priority,
@@ -62381,7 +62384,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "pr-6 pb-8 w-full" },
+                { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
                 [
                   _c("div", { staticClass: "flex justify-between" }, [
                     _c(
@@ -62402,7 +62405,8 @@ var render = function() {
                   _c("text-input", {
                     attrs: {
                       id: "priority",
-                      error: _vm.$page.errors.first("priority")
+                      error: _vm.$page.errors.first("priority"),
+                      type: "number"
                     },
                     model: {
                       value: _vm.form.priority,

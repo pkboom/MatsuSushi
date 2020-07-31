@@ -17,7 +17,7 @@
               label="Name"
             />
           </div>
-          <div class="pr-6 pb-8 w-full">
+          <div class="pr-6 pb-8 w-full lg:w-1/2">
             <div class="flex justify-between">
               <label class="form-label" for="priority">Priority:</label>
               <div class="text-gray-600 text-sm">
@@ -31,6 +31,7 @@
               id="priority"
               v-model="form.priority"
               :error="$page.errors.first('priority')"
+              type="number"
             />
           </div>
         </div>
