@@ -30,6 +30,20 @@ class Item extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function lineItem()
+    {
+        return [
+            'price_data' => [
+                'currency' => 'cad',
+                'product_data' => [
+                    'name' => $this->name.' - '.$this->description,
+                ],
+                'unit_amount' => $this->price * 100,
+            ],
+            'quantity' => 1,
+        ];
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {

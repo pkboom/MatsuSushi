@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
@@ -41,19 +42,18 @@ class StartYourOrderController extends Controller
 
         Stripe::setApiKey(config('services.stripe.secret'));
 
+        $lineItmes = collect(Request::input('items'))
+            ->map(fn ($item) => Item::find($item))
+            ->map->lineItem()
+            ->push($this->tax($order))
+            ->when($order['tip_percentage'] !== '0', fn ($collection) => $collection->push($this->tip($order)))
+            ->when($order['type'] === Transaction::TYPE['Delivery'], fn ($collection) => $collection->push($this->delivery()))
+            ->toArray();
+
         $session = Session::create([
             'payment_method_types' => ['card'],
             'customer_email' => Request::input('email'),
-            'line_items' => [[
-                'price_data' => [
-                    'currency' => 'cad',
-                    'product_data' => [
-                        'name' => 'Order',
-                    ],
-                    'unit_amount' => Transaction::formattedTotal($order),
-                ],
-                'quantity' => 1,
-            ]],
+            'line_items' => $lineItmes,
             'mode' => 'payment',
             'success_url' => URL::route('thankyou', $transaction->id),
             'cancel_url' => URL::previous(),
@@ -70,5 +70,47 @@ class StartYourOrderController extends Controller
             'session' => $session->id,
             'key' => config('services.stripe.key'),
         ]);
+    }
+
+    public function tax($order)
+    {
+        return [
+            'price_data' => [
+                'currency' => 'cad',
+                'product_data' => [
+                    'name' => 'GST/HST',
+                ],
+                'unit_amount' => Transaction::tax(Transaction::subtotal($order)) * 100,
+            ],
+            'quantity' => 1,
+        ];
+    }
+
+    public function tip($order)
+    {
+        return [
+            'price_data' => [
+                'currency' => 'cad',
+                'product_data' => [
+                    'name' => 'Tip',
+                ],
+                'unit_amount' => Transaction::tip(Transaction::subtotal($order), $order['tip_percentage']) * 100,
+            ],
+            'quantity' => 1,
+        ];
+    }
+
+    public function delivery()
+    {
+        return [
+            'price_data' => [
+                'currency' => 'cad',
+                'product_data' => [
+                    'name' => 'Delivery fee',
+                ],
+                'unit_amount' => Transaction::DELIVERY_FEE * 100,
+            ],
+            'quantity' => 1,
+        ];
     }
 }
