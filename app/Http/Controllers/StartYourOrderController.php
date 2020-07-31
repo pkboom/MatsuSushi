@@ -47,7 +47,7 @@ class StartYourOrderController extends Controller
             ->map->lineItem()
             ->push($this->tax($order))
             ->when($order['tip_percentage'] !== '0', fn ($collection) => $collection->push($this->tip($order)))
-            ->when($order['type'] === Transaction::TYPE['Delivery'], fn ($collection) => $collection->push($this->delivery()))
+            ->when($order['type'] === Transaction::TYPE['Delivery'], fn ($collection) => $collection->push($this->deliveryFee()))
             ->toArray();
 
         $session = Session::create([
@@ -100,7 +100,7 @@ class StartYourOrderController extends Controller
         ];
     }
 
-    public function delivery()
+    public function deliveryFee()
     {
         return [
             'price_data' => [
