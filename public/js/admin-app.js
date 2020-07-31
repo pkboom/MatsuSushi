@@ -4134,6 +4134,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   remember: 'form',
   data: function data() {
@@ -4168,6 +4177,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -62228,10 +62246,26 @@ var render = function() {
                 "div",
                 { staticClass: "pr-6 pb-8 w-full" },
                 [
+                  _c("div", { staticClass: "flex justify-between" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "priority" } },
+                      [_vm._v("Priority:")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "text-gray-600 text-sm" }, [
+                      _c("span", [_vm._v("Highest: 9")]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v("\n                Lowest: 1\n              ")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("text-input", {
                     attrs: {
-                      error: _vm.$page.errors.first("priority"),
-                      label: "Priority"
+                      id: "priority",
+                      error: _vm.$page.errors.first("priority")
                     },
                     model: {
                       value: _vm.form.priority,
@@ -62349,10 +62383,26 @@ var render = function() {
                 "div",
                 { staticClass: "pr-6 pb-8 w-full" },
                 [
+                  _c("div", { staticClass: "flex justify-between" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "priority" } },
+                      [_vm._v("Priority:")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "text-gray-600 text-sm" }, [
+                      _c("span", [_vm._v("Highest: 9")]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "ml-2" }, [
+                        _vm._v("\n                Lowest: 1\n              ")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _c("text-input", {
                     attrs: {
-                      error: _vm.$page.errors.first("priority"),
-                      label: "Priority"
+                      id: "priority",
+                      error: _vm.$page.errors.first("priority")
                     },
                     model: {
                       value: _vm.form.priority,
@@ -62603,7 +62653,7 @@ var render = function() {
                     "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap",
                   attrs: { colspan: "2" }
                 },
-                [_vm._v("\n          Priority(9-1)\n        ")]
+                [_vm._v("\n          Priority\n        ")]
               )
             ]),
             _vm._v(" "),

@@ -25,7 +25,7 @@
             class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
             colspan="2"
           >
-            Priority(9-1)
+            Priority
           </th>
         </tr>
         <tr

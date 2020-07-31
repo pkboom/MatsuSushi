@@ -18,10 +18,19 @@
             />
           </div>
           <div class="pr-6 pb-8 w-full">
+            <div class="flex justify-between">
+              <label class="form-label" for="priority">Priority:</label>
+              <div class="text-gray-600 text-sm">
+                <span>Highest: 9</span>
+                <span class="ml-2">
+                  Lowest: 1
+                </span>
+              </div>
+            </div>
             <text-input
+              id="priority"
               v-model="form.priority"
               :error="$page.errors.first('priority')"
-              label="Priority"
             />
           </div>
         </div>
