@@ -2260,6 +2260,10 @@ input:focus,
   margin-right: 0.25rem;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -2837,6 +2841,12 @@ input:focus,
   --text-opacity: 1;
   color: #233876;
   color: rgba(35, 56, 118, var(--text-opacity));
+}
+
+.text-pink-500 {
+  --text-opacity: 1;
+  color: #e74694;
+  color: rgba(231, 70, 148, var(--text-opacity));
 }
 
 .group:hover .group-hover\:text-white {

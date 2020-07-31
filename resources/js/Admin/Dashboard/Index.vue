@@ -2,23 +2,36 @@
   <admin-layout title="Dashboard">
     <!-- <a href="/admin/kakao/login" class="btn">Log into kakao</a> -->
     <!-- <a href="/admin/kakao/send" class="btn">Send message</a> -->
-    <div class="space-y-4">
-      <div
-        class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
-      >
-        <button class="btn" @click="alarmTest">Alarm Test</button>
-        <button class="btn" @click="toggleEnable">
-          {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
-        </button>
-      </div>
-      <div class="flex font-bold items-center py-2 text-xl">
-        Today's orders
-        <span
-          v-if="newReservation"
-          class="bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
+    <div>
+      <div class="flex justify-between items-end mb-4">
+        <div>
+          <div class="flex font-bold items-center py-2 text-xl">
+            Today's orders
+            <span
+              v-if="newReservation"
+              class="bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
+            >
+              New Reservation
+            </span>
+          </div>
+          <div class="flex font-medium items-center text-md text-pink-500">
+            (Don't refresh the page. If status is
+            <span
+              class="bg-green-100 font-bold ml-1 px-4 py-1 rounded-full text-green-600 text-xs"
+            >
+              new
+            </span>
+            , you may serve.)
+          </div>
+        </div>
+        <div
+          class="flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
         >
-          NEW RESERVATION
-        </span>
+          <button class="btn" @click="alarmTest">Alarm Test</button>
+          <button class="btn" @click="toggleEnable">
+            {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
+          </button>
+        </div>
       </div>
       <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
         <div

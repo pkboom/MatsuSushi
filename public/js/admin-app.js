@@ -4475,6 +4475,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -62608,46 +62621,77 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("admin-layout", { attrs: { title: "Dashboard" } }, [
-    _c("div", { staticClass: "space-y-4" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
-        },
-        [
-          _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
-            _vm._v("Alarm Test")
-          ]),
+    _c("div", [
+      _c("div", { staticClass: "flex justify-between items-end mb-4" }, [
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "flex font-bold items-center py-2 text-xl" },
+            [
+              _vm._v("\n          Today's orders\n          "),
+              _vm.newReservation
+                ? _c(
+                    "span",
+                    {
+                      staticClass:
+                        "bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
+                    },
+                    [_vm._v("\n            New Reservation\n          ")]
+                  )
+                : _vm._e()
+            ]
+          ),
           _vm._v(" "),
           _c(
-            "button",
-            { staticClass: "btn", on: { click: _vm.toggleEnable } },
+            "div",
+            {
+              staticClass: "flex font-medium items-center text-md text-pink-500"
+            },
             [
               _vm._v(
-                "\n        " +
-                  _vm._s(
-                    _vm.enabled ? "Disable Online Order" : "Enable Online Order"
-                  ) +
-                  "\n      "
-              )
+                "\n          (Don't refresh the page. If status is\n          "
+              ),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "bg-green-100 font-bold ml-1 px-4 py-1 rounded-full text-green-600 text-xs"
+                },
+                [_vm._v("\n            new\n          ")]
+              ),
+              _vm._v("\n          , you may serve.)\n        ")
             ]
           )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex font-bold items-center py-2 text-xl" }, [
-        _vm._v("\n      Today's orders\n      "),
-        _vm.newReservation
-          ? _c(
-              "span",
-              {
-                staticClass:
-                  "bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
-              },
-              [_vm._v("\n        NEW RESERVATION\n      ")]
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "flex flex-col space-y-2 md:space-y-0 space-x-0 md:flex-row md:space-x-2"
+          },
+          [
+            _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
+              _vm._v("Alarm Test")
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn", on: { click: _vm.toggleEnable } },
+              [
+                _vm._v(
+                  "\n          " +
+                    _vm._s(
+                      _vm.enabled
+                        ? "Disable Online Order"
+                        : "Enable Online Order"
+                    ) +
+                    "\n        "
+                )
+              ]
             )
-          : _vm._e()
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(
