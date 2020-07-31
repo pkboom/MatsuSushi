@@ -17,6 +17,13 @@
               label="Name"
             />
           </div>
+          <div class="pr-6 pb-8 w-full">
+            <text-input
+              v-model="form.priority"
+              :error="$page.errors.first('priority')"
+              label="Priority"
+            />
+          </div>
         </div>
         <div
           class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
@@ -38,6 +45,7 @@ export default {
       sending: false,
       form: {
         name: null,
+        priority: null,
       },
     }
   },

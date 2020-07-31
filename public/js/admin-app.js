@@ -4127,13 +4127,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   remember: 'form',
   data: function data() {
     return {
       sending: false,
       form: {
-        name: null
+        name: null,
+        priority: null
       }
     };
   },
@@ -4243,6 +4251,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     category: Object
@@ -4252,7 +4267,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       sending: false,
       form: {
-        name: this.category.name
+        name: this.category.name,
+        priority: this.category.priority
       }
     };
   },
@@ -4284,6 +4300,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -62200,6 +62222,27 @@ var render = function() {
                   })
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "pr-6 pb-8 w-full" },
+                [
+                  _c("text-input", {
+                    attrs: {
+                      error: _vm.$page.errors.first("priority"),
+                      label: "Priority"
+                    },
+                    model: {
+                      value: _vm.form.priority,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "priority", $$v)
+                      },
+                      expression: "form.priority"
+                    }
+                  })
+                ],
+                1
               )
             ]),
             _vm._v(" "),
@@ -62296,6 +62339,27 @@ var render = function() {
                         _vm.$set(_vm.form, "name", $$v)
                       },
                       expression: "form.name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "pr-6 pb-8 w-full" },
+                [
+                  _c("text-input", {
+                    attrs: {
+                      error: _vm.$page.errors.first("priority"),
+                      label: "Priority"
+                    },
+                    model: {
+                      value: _vm.form.priority,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "priority", $$v)
+                      },
+                      expression: "form.priority"
                     }
                   })
                 ],
@@ -62527,10 +62591,19 @@ var render = function() {
                 "th",
                 {
                   staticClass:
+                    "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+                },
+                [_vm._v("\n          Name\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticClass:
                     "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap",
                   attrs: { colspan: "2" }
                 },
-                [_vm._v("\n          Name\n        ")]
+                [_vm._v("\n          Priority\n        ")]
               )
             ]),
             _vm._v(" "),
@@ -62562,6 +62635,18 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "td",
+                    { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                    [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(category.priority) +
+                          "\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
                     { staticClass: "border-t px-4 align-middle w-min" },
                     [
                       _c("icon", {
@@ -62581,7 +62666,7 @@ var render = function() {
                     "td",
                     {
                       staticClass: "border-t px-6 py-4",
-                      attrs: { colspan: "2" }
+                      attrs: { colspan: "3" }
                     },
                     [_vm._v("No categories found.")]
                   )

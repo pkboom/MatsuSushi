@@ -18,11 +18,14 @@
     <div class="bg-white rounded shadow overflow-x-auto">
       <table class="w-full">
         <tr>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Name
+          </th>
           <th
             class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
             colspan="2"
           >
-            Name
+            Priority
           </th>
         </tr>
         <tr
@@ -34,12 +37,15 @@
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ category.name }}
           </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ category.priority }}
+          </td>
           <td class="border-t px-4 align-middle w-min">
             <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
           </td>
         </tr>
         <tr v-if="categories.data.length === 0">
-          <td class="border-t px-6 py-4" colspan="2">No categories found.</td>
+          <td class="border-t px-6 py-4" colspan="3">No categories found.</td>
         </tr>
       </table>
     </div>

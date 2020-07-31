@@ -31,6 +31,7 @@ class CategoryController extends Controller
         $category = Category::create(
             Request::validate([
                 'name' => ['required', 'max:100', Rule::unique('categories')],
+                'priority' => ['nullable', 'integer', 'between:1,9'],
             ])
         );
 
@@ -49,6 +50,7 @@ class CategoryController extends Controller
         $category->update(
             Request::validate([
                 'name' => ['required', 'max:100', Rule::unique('categories')->ignore($category->id)],
+                'priority' => ['nullable', 'integer', 'between:1,9'],
             ])
         );
 
