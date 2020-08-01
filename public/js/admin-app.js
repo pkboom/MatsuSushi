@@ -62919,7 +62919,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", [
               _c("span", { staticClass: "text-gray-500" }, [
-                _vm._v("Order Number:")
+                _vm._v("Order number:")
               ]),
               _vm._v("\n        " + _vm._s(transaction.id) + "\n      ")
             ]),
@@ -65286,7 +65286,7 @@ var render = function() {
         _c("div", { staticClass: "p-8 rounded space-y-4" }, [
           _c("div", { staticClass: "flex items-center" }, [
             _c("span", { staticClass: "text-gray-500" }, [
-              _vm._v("Order Number:")
+              _vm._v("Order number:")
             ]),
             _vm._v("\n        " + _vm._s(_vm.transaction.id) + "\n        "),
             _vm.transaction.new
@@ -69358,7 +69358,7 @@ var render = function() {
         _c("div", { staticClass: "space-y-4" }, [
           _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [
-              _vm._v("Order Number:")
+              _vm._v("Order number:")
             ]),
             _vm._v("\n        " + _vm._s(_vm.transaction.id) + "\n      ")
           ]),

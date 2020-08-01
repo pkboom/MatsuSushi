@@ -14,7 +14,7 @@
       <div>You will receive an email for an order receipt.</div>
       <div class="space-y-4">
         <div>
-          <span class="text-gray-500">Order Number:</span>
+          <span class="text-gray-500">Order number:</span>
           {{ transaction.id }}
         </div>
         <div>

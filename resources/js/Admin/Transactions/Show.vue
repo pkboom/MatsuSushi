@@ -10,7 +10,7 @@
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
       <div class="p-8 rounded space-y-4">
         <div class="flex items-center">
-          <span class="text-gray-500">Order Number:</span>
+          <span class="text-gray-500">Order number:</span>
           {{ transaction.id }}
           <span
             v-if="transaction.new"

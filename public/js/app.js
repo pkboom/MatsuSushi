@@ -59833,7 +59833,7 @@ var render = function() {
         _c("div", { staticClass: "space-y-4" }, [
           _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [
-              _vm._v("Order Number:")
+              _vm._v("Order number:")
             ]),
             _vm._v("\n        " + _vm._s(_vm.transaction.id) + "\n      ")
           ]),
