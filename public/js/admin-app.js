@@ -4302,7 +4302,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     destroy: function destroy() {
-      if (confirm('Are you sure you want to delete this category?')) {
+      if (confirm('Are you sure you want to delete this category?\nItems of this category will be deleted, too.')) {
         this.$inertia["delete"](this.$route('admin.categories.destroy', this.category.id));
       }
     }
