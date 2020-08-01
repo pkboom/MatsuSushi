@@ -68422,7 +68422,11 @@ var render = function() {
                         _c(
                           "div",
                           { staticClass: "flex items-center justify-between" },
-                          [_c("div", [_vm._v(_vm._s(option.name))])]
+                          [
+                            _c("div", { staticClass: "uppercase" }, [
+                              _vm._v(_vm._s(option.name))
+                            ])
+                          ]
                         )
                       ]
                     }
@@ -68442,7 +68446,7 @@ var render = function() {
                       "div",
                       { staticClass: "flex items-center justify-between" },
                       [
-                        _c("div", { staticClass: "truncate" }, [
+                        _c("div", { staticClass: "truncate uppercase" }, [
                           _vm._v(_vm._s(_vm.searchCategory.name))
                         ])
                       ]
@@ -68488,7 +68492,7 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass: "cursor-pointer",
+                      staticClass: "cursor-pointer uppercase",
                       class:
                         _vm.currentCategory.id === category.id
                           ? "underline"

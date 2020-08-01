@@ -14,11 +14,11 @@
           class="block md:hidden"
         >
           <div v-if="searchCategory" class="flex items-center justify-between">
-            <div class="truncate">{{ searchCategory.name }}</div>
+            <div class="truncate uppercase">{{ searchCategory.name }}</div>
           </div>
           <template v-slot:option="{ option }">
             <div class="flex items-center justify-between">
-              <div>{{ option.name }}</div>
+              <div class="uppercase">{{ option.name }}</div>
             </div>
           </template>
         </search-input>
@@ -38,7 +38,7 @@
           class="hidden md:block"
         >
           <div
-            class="cursor-pointer"
+            class="cursor-pointer uppercase"
             :class="currentCategory.id === category.id ? 'underline' : null"
             @click="select(category.id)"
           >
