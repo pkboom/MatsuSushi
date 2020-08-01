@@ -59821,9 +59821,9 @@ var render = function() {
             "a",
             {
               staticClass: "underline text-blue-600 font-bold",
-              attrs: { href: "tel:6477384740" }
+              attrs: { href: "tel:7057609484" }
             },
-            [_vm._v("\n        647-738-4740\n      ")]
+            [_vm._v("\n        705-760-9484\n      ")]
           ),
           _vm._v("\n      to confirm your order.\n    ")
         ]),

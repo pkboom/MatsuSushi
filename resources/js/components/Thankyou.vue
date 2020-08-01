@@ -6,8 +6,8 @@
       </div>
       <div>
         Please, give us a call at
-        <a href="tel:6477384740" class="underline text-blue-600 font-bold">
-          647-738-4740
+        <a href="tel:7057609484" class="underline text-blue-600 font-bold">
+          705-760-9484
         </a>
         to confirm your order.
       </div>
