@@ -129,6 +129,7 @@ import Fuse from 'fuse.js'
 export default {
   props: {
     categories: Array,
+    popular_menu: String,
   },
   data() {
     return {
@@ -136,7 +137,10 @@ export default {
       searchCategory: null,
       search: '',
       searchResult: null,
-      menu: this.categories.map(category => category.items).flat(),
+      menu: this.categories
+        .filter(category => category.name !== this.popular_menu)
+        .map(category => category.items)
+        .flat(),
     }
   },
   watch: {

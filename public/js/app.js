@@ -4136,15 +4136,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    categories: Array
+    categories: Array,
+    popular_menu: String
   },
   data: function data() {
+    var _this = this;
+
     return {
       currentCategory: this.categories[0],
       searchCategory: null,
       search: '',
       searchResult: null,
-      menu: this.categories.map(function (category) {
+      menu: this.categories.filter(function (category) {
+        return category.name !== _this.popular_menu;
+      }).map(function (category) {
         return category.items;
       }).flat()
     };

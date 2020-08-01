@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    const POPULAR_MENU = 'popular menu';
+
     protected $guarded = [];
 
     public function getPerPage()
