@@ -49,28 +49,27 @@ class ReservationController extends Controller
 
         $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
 
-        if ($reserved_at->dayOfWeek === (int) Cache::get('closed_days')) {
+        if (Reservation::onClosedDays($reserved_at)) {
             fail_validation('date', 'Sorry, we are closed on Tuesdays.');
         }
 
-        collect(Cache::get('closed_dates'))->each(function ($date) use ($reserved_at) {
-            if ($reserved_at->isSameday($date)) {
-                fail_validation('date', 'Reservation is not available.');
-            }
-        });
+        if (Reservation::onClosedDates($reserved_at)) {
+            fail_validation('date', 'Reservation is not available.');
+        }
 
         if (Reservation::isDuplicate(Request::input('phone'), $reserved_at)) {
             fail_validation('date', "Your reservation on {$reserved_at->format('F j')} is already confirmed.");
         }
 
-        if ($reserved_at->subDays(Reservation::VALID_DAYS)->isFuture()) {
+        if (Reservation::isFuture($reserved_at)) {
             fail_validation('date', 'Reservation is available within 2 weeks.');
         }
 
         Reservation::create(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
                 'reserved_at' => $reserved_at,
-        ]);
+            ]
+        );
 
         event(new ReservationComplete());
 

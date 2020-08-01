@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Reservation extends Model
 {
@@ -25,12 +26,29 @@ class Reservation extends Model
         return $this->first_name.' '.$this->last_name;
     }
 
-    public static function isDuplicate($phone, $reservationDate)
+    public static function onClosedDays($reserved_at)
+    {
+        return $reserved_at->dayOfWeek === (int) Cache::get('closed_days');
+    }
+
+    public static function onClosedDates($reserved_at)
+    {
+        return collect(Cache::get('closed_dates'))->contains(function ($date) use ($reserved_at) {
+            return $reserved_at->isSameday($date);
+        });
+    }
+
+    public static function isDuplicate($phone, $reserved_at)
     {
         return Reservation::query()
-            ->date('reserved_at', $reservationDate)
+            ->date('reserved_at', $reserved_at)
             ->wherePhone($phone)
             ->count();
+    }
+
+    public static function isFuture($reserved_at)
+    {
+        return $reserved_at->subDays(static::VALID_DAYS)->isFuture();
     }
 
     public function scopeFilter($query, array $filters)

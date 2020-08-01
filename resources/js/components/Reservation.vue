@@ -7,6 +7,7 @@
       <div v-if="reservation_enabled" class="bg-white overflow-hidden w-full">
         <form @submit.prevent="submit">
           <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+            <input v-model="form.matsu_honeypot" type="text" class="hidden" />
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.first_name"
