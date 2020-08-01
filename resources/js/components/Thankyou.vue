@@ -5,9 +5,13 @@
         Thank you!
       </div>
       <div>
-        Your order has been placed. Please check your email for an order
-        receipt.
+        Please, give us a call at
+        <a href="tel:6477384740" class="underline text-blue-600 font-bold">
+          647-738-4740
+        </a>
+        to confirm your order.
       </div>
+      <div>You will receive an email for an order receipt.</div>
       <div class="space-y-4">
         <div>
           <span class="text-gray-500">Order Number:</span>

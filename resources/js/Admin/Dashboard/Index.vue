@@ -60,6 +60,10 @@
           </span>
         </div>
         <div>
+          <span class="text-gray-500">Order Number:</span>
+          {{ transaction.id }}
+        </div>
+        <div>
           <span class="text-gray-500">Name:</span>
           {{ transaction.name }}
         </div>

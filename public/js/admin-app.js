@@ -4529,6 +4529,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -8434,6 +8438,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -62910,6 +62918,13 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", [
+              _c("span", { staticClass: "text-gray-500" }, [
+                _vm._v("Order Number:")
+              ]),
+              _vm._v("\n        " + _vm._s(transaction.id) + "\n      ")
+            ]),
+            _vm._v(" "),
+            _c("div", [
               _c("span", { staticClass: "text-gray-500" }, [_vm._v("Name:")]),
               _vm._v("\n        " + _vm._s(transaction.name) + "\n      ")
             ]),
@@ -69326,10 +69341,19 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", [
-          _vm._v(
-            "\n      Your order has been placed. Please check your email for an order\n      receipt.\n    "
-          )
+          _vm._v("\n      Please, give us a call at\n      "),
+          _c(
+            "a",
+            {
+              staticClass: "underline text-blue-600 font-bold",
+              attrs: { href: "tel:6477384740" }
+            },
+            [_vm._v("\n        647-738-4740\n      ")]
+          ),
+          _vm._v("\n      to confirm your order.\n    ")
         ]),
+        _vm._v(" "),
+        _c("div", [_vm._v("You will receive an email for an order receipt.")]),
         _vm._v(" "),
         _c("div", { staticClass: "space-y-4" }, [
           _c("div", [
