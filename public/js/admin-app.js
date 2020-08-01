@@ -8008,6 +8008,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -8016,6 +8039,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       currentCategory: this.categories[0],
+      searchCategory: null,
       search: '',
       searchResult: null,
       menu: this.categories.map(function (category) {
@@ -68404,21 +68428,21 @@ var render = function() {
                   }
                 ]),
                 model: {
-                  value: _vm.currentCategory,
+                  value: _vm.searchCategory,
                   callback: function($$v) {
-                    _vm.currentCategory = $$v
+                    _vm.searchCategory = $$v
                   },
-                  expression: "currentCategory"
+                  expression: "searchCategory"
                 }
               },
               [
-                _vm.currentCategory
+                _vm.searchCategory
                   ? _c(
                       "div",
                       { staticClass: "flex items-center justify-between" },
                       [
                         _c("div", { staticClass: "truncate" }, [
-                          _vm._v(_vm._s(_vm.currentCategory.name))
+                          _vm._v(_vm._s(_vm.searchCategory.name))
                         ])
                       ]
                     )
@@ -68527,6 +68551,73 @@ var render = function() {
                         {
                           staticClass:
                             "text-gray-700 text-xl text-center uppercase tracking-wide"
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(item.name) +
+                              "\n          "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-gray-400 text-md text-center leading-snug"
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(item.description) +
+                              "\n          "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "font-sans self-end text-center text-gray-600 text-md"
+                        },
+                        [
+                          _vm._v(
+                            "\n            $ " +
+                              _vm._s(item.price) +
+                              "\n          "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            : _vm.searchCategory
+            ? _c(
+                "div",
+                { staticClass: "gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4" },
+                _vm._l(_vm.searchCategory.items, function(item) {
+                  return _c(
+                    "div",
+                    {
+                      key: item.id,
+                      staticClass:
+                        "grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md",
+                      on: {
+                        click: function($event) {
+                          return _vm.place(item)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-gray-700 text-lg md:text-xl text-center uppercase tracking-wide"
                         },
                         [
                           _vm._v(

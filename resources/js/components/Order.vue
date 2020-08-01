@@ -7,14 +7,14 @@
         class="leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
       >
         <search-input
-          v-model="currentCategory"
+          v-model="searchCategory"
           :data="categories"
           track-by="id"
           :search-by="['name']"
           class="block md:hidden"
         >
-          <div v-if="currentCategory" class="flex items-center justify-between">
-            <div class="truncate">{{ currentCategory.name }}</div>
+          <div v-if="searchCategory" class="flex items-center justify-between">
+            <div class="truncate">{{ searchCategory.name }}</div>
           </div>
           <template v-slot:option="{ option }">
             <div class="flex items-center justify-between">
@@ -75,6 +75,29 @@
             </div>
           </div>
         </div>
+        <div
+          v-else-if="searchCategory"
+          class="gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4"
+        >
+          <div
+            v-for="item in searchCategory.items"
+            :key="item.id"
+            class="grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
+            @click="place(item)"
+          >
+            <div
+              class="text-gray-700 text-lg md:text-xl text-center uppercase tracking-wide"
+            >
+              {{ item.name }}
+            </div>
+            <div class="text-gray-400 text-md text-center leading-snug">
+              {{ item.description }}
+            </div>
+            <div class="font-sans self-end text-center text-gray-600 text-md">
+              $ {{ item.price }}
+            </div>
+          </div>
+        </div>
         <div v-else class="gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4">
           <div
             v-for="item in currentCategory.items"
@@ -110,6 +133,7 @@ export default {
   data() {
     return {
       currentCategory: this.categories[0],
+      searchCategory: null,
       search: '',
       searchResult: null,
       menu: this.categories.map(category => category.items).flat(),
