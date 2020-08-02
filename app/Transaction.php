@@ -2,12 +2,13 @@
 
 namespace App;
 
-use App\Events\OrderPlaced;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Stripe\PaymentIntent;
+use Stripe\Stripe;
 
 class Transaction extends Model
 {
@@ -31,6 +32,8 @@ class Transaction extends Model
     const DELIVERY_FEE = 5;
 
     const TIME_TO_LIVE = 3;
+
+    const UPDATE_INTERVAL = 10;
 
     protected $guarded = [];
 
@@ -187,6 +190,8 @@ class Transaction extends Model
 
     public function confirm()
     {
+        Stripe::setApiKey(config('services.stripe.secret'));
+
         try {
             $paymentIntent = PaymentIntent::retrieve($this->stripe_id);
         } catch (Exception $e) {
@@ -206,7 +211,7 @@ class Transaction extends Model
             'status' => Transaction::TRANSACTION_SUCCEEDED,
         ]);
 
-        event(new OrderPlaced());
+        Cache::put('new_order', true, CarbonInterval::seconds(static::UPDATE_INTERVAL * 2));
     }
 
     public function failed($message)

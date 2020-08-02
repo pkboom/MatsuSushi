@@ -4323,7 +4323,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.errors.reset();
 
-        flash(response.data.message, 'success', 20);
+        flash(response.data.message, 'success', 30);
         localStorage.setItem('first_name', _this.form.first_name);
         localStorage.setItem('last_name', _this.form.last_name);
         localStorage.setItem('phone', _this.form.phone);
@@ -4353,6 +4353,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Errors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Utils/Errors */ "./resources/js/Utils/Errors.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4536,6 +4546,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -59766,7 +59779,35 @@ var render = function() {
                     )
                   ],
                   1
-                )
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "leading-tight px-8 text-gray-600" }, [
+                  _vm._v(
+                    "\n          If you have any trouble ordering, give us a call at\n          "
+                  ),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "inline-flex",
+                      attrs: { href: "tel:7057609484" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "inline-block underline text-blue-600 font-bold"
+                        },
+                        [_vm._v("\n              705-760-9484\n            ")]
+                      ),
+                      _vm._v("\n            .\n          ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v("We will help you with your order. Thank you.")
+                  ])
+                ])
               ]
             )
           ])
@@ -59820,7 +59861,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "underline text-blue-600 font-bold",
+              staticClass: "inline-block underline text-blue-600 font-bold",
               attrs: { href: "tel:7057609484" }
             },
             [_vm._v("\n        705-760-9484\n      ")]

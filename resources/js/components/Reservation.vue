@@ -114,7 +114,7 @@ export default {
 
           this.errors.reset()
 
-          flash(response.data.message, 'success', 20)
+          flash(response.data.message, 'success', 30)
 
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)

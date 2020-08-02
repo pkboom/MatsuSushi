@@ -6,15 +6,18 @@
       <div>
         <div class="flex font-bold items-center text-xl pb-1">
           Today's orders
+          <span class="font-normal text-xs text-gray-400 ml-1">
+            ({{ currentTime }})
+          </span>
           <span
-            v-if="newReservation"
+            v-if="new_reservation"
             class="bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
           >
             New Reservation
           </span>
         </div>
         <div class="flex font-medium items-center text-md text-pink-500">
-          (Don't refresh the page. If status is
+          (If status is
           <span
             class="bg-green-100 font-bold ml-1 px-4 py-1 rounded-full text-green-600 text-xs"
           >
@@ -28,7 +31,11 @@
       >
         <button class="btn" @click="alarmTest">Alarm Test</button>
         <button class="btn" @click="toggleEnable">
-          {{ enabled ? 'Disable Online Order' : 'Enable Online Order' }}
+          {{
+            online_order_enabled
+              ? 'Disable Online Order'
+              : 'Enable Online Order'
+          }}
         </button>
       </div>
     </div>
@@ -114,35 +121,25 @@ import moment from 'moment'
 
 export default {
   props: {
+    transactions: Array,
     online_order_enabled: Number,
+    new_order: Boolean,
+    new_reservation: Boolean,
+    update_interval: Number,
   },
-  data() {
-    return {
-      transactions: null,
-      enabled: this.online_order_enabled,
-      newReservation: false,
-    }
+  computed: {
+    currentTime() {
+      return moment().format('MM-DD hh:mm a')
+    },
   },
   mounted() {
-    this.getTodayOrders()
+    if (this.new_order) {
+      document.getElementById('alarm').play()
+    }
 
-    Echo.channel('matsusushi')
-      .listen('OrderPlaced', () => {
-        document.getElementById('alarm').play()
-
-        this.getTodayOrders()
-      })
-      .listen('ReservationComplete', () => {
-        this.newReservation = true
-      })
-
-    this.getTodayOrdersIntervalId = setInterval(
-      this.getTodayOrders,
-      moment.duration('3', 'minutes')
-    )
-  },
-  beforeDestroy() {
-    clearInterval(this.getTodayOrdersIntervalId)
+    setTimeout(function() {
+      location.reload()
+    }, this.update_interval * 1000)
   },
   methods: {
     alarmTest() {
@@ -150,16 +147,7 @@ export default {
     },
     toggleEnable() {
       axios.get('/admin/toggle/online/order').then(response => {
-        this.enabled = response.data.online_order_enabled
-
-        this.$page.flash.success =
-          'Online order ' +
-          (response.data.online_order_enabled ? 'enabled' : 'disabled')
-      })
-    },
-    getTodayOrders() {
-      axios.get(this.$route('admin.dashboard')).then(response => {
-        this.transactions = response.data
+        location.reload()
       })
     },
     isNew(createdAt) {

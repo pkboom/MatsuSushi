@@ -4533,51 +4533,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    online_order_enabled: Number
+    transactions: Array,
+    online_order_enabled: Number,
+    new_order: Boolean,
+    new_reservation: Boolean,
+    update_interval: Number
   },
-  data: function data() {
-    return {
-      transactions: null,
-      enabled: this.online_order_enabled,
-      newReservation: false
-    };
+  computed: {
+    currentTime: function currentTime() {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()().format('MM-DD hh:mm a');
+    }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    this.getTodayOrders();
-    Echo.channel('matsusushi').listen('OrderPlaced', function () {
+    if (this.new_order) {
       document.getElementById('alarm').play();
+    }
 
-      _this.getTodayOrders();
-    }).listen('ReservationComplete', function () {
-      _this.newReservation = true;
-    });
-    this.getTodayOrdersIntervalId = setInterval(this.getTodayOrders, moment__WEBPACK_IMPORTED_MODULE_0___default.a.duration('3', 'minutes'));
-  },
-  beforeDestroy: function beforeDestroy() {
-    clearInterval(this.getTodayOrdersIntervalId);
+    setTimeout(function () {
+      location.reload();
+    }, this.update_interval * 1000);
   },
   methods: {
     alarmTest: function alarmTest() {
       document.getElementById('alarm').play();
     },
     toggleEnable: function toggleEnable() {
-      var _this2 = this;
-
       axios.get('/admin/toggle/online/order').then(function (response) {
-        _this2.enabled = response.data.online_order_enabled;
-        _this2.$page.flash.success = 'Online order ' + (response.data.online_order_enabled ? 'enabled' : 'disabled');
-      });
-    },
-    getTodayOrders: function getTodayOrders() {
-      var _this3 = this;
-
-      axios.get(this.$route('admin.dashboard')).then(function (response) {
-        _this3.transactions = response.data;
+        location.reload();
       });
     },
     isNew: function isNew(createdAt) {
@@ -8225,7 +8217,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.errors.reset();
 
-        flash(response.data.message, 'success', 20);
+        flash(response.data.message, 'success', 30);
         localStorage.setItem('first_name', _this.form.first_name);
         localStorage.setItem('last_name', _this.form.last_name);
         localStorage.setItem('phone', _this.form.phone);
@@ -8255,6 +8247,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Errors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Utils/Errors */ "./resources/js/Utils/Errors.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8438,6 +8440,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -62809,7 +62814,13 @@ var render = function() {
       _c("div", [
         _c("div", { staticClass: "flex font-bold items-center text-xl pb-1" }, [
           _vm._v("\n        Today's orders\n        "),
-          _vm.newReservation
+          _c(
+            "span",
+            { staticClass: "font-normal text-xs text-gray-400 ml-1" },
+            [_vm._v("\n          (" + _vm._s(_vm.currentTime) + ")\n        ")]
+          ),
+          _vm._v(" "),
+          _vm.new_reservation
             ? _c(
                 "span",
                 {
@@ -62827,7 +62838,7 @@ var render = function() {
             staticClass: "flex font-medium items-center text-md text-pink-500"
           },
           [
-            _vm._v("\n        (Don't refresh the page. If status is\n        "),
+            _vm._v("\n        (If status is\n        "),
             _c(
               "span",
               {
@@ -62859,7 +62870,9 @@ var render = function() {
               _vm._v(
                 "\n        " +
                   _vm._s(
-                    _vm.enabled ? "Disable Online Order" : "Enable Online Order"
+                    _vm.online_order_enabled
+                      ? "Disable Online Order"
+                      : "Enable Online Order"
                   ) +
                   "\n      "
               )
@@ -69291,7 +69304,35 @@ var render = function() {
                     )
                   ],
                   1
-                )
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "leading-tight px-8 text-gray-600" }, [
+                  _vm._v(
+                    "\n          If you have any trouble ordering, give us a call at\n          "
+                  ),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "inline-flex",
+                      attrs: { href: "tel:7057609484" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "inline-block underline text-blue-600 font-bold"
+                        },
+                        [_vm._v("\n              705-760-9484\n            ")]
+                      ),
+                      _vm._v("\n            .\n          ")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v("We will help you with your order. Thank you.")
+                  ])
+                ])
               ]
             )
           ])
@@ -69345,7 +69386,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "underline text-blue-600 font-bold",
+              staticClass: "inline-block underline text-blue-600 font-bold",
               attrs: { href: "tel:7057609484" }
             },
             [_vm._v("\n        705-760-9484\n      ")]

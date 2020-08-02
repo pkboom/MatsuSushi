@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\ReservationComplete;
 use App\Reservation;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterval;
 use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
@@ -71,7 +71,7 @@ class ReservationController extends Controller
             ]
         );
 
-        event(new ReservationComplete());
+        Cache::put('new_reservation', true, CarbonInterval::hours(12));
 
         return Response::json([
             'message' => "Thank you! Your reservation on {$reserved_at->format('F j')} has been confirmed!",

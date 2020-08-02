@@ -6,18 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
-use Stripe\Stripe;
 
 class DashboardController extends Controller
 {
     public function __invoke()
     {
-        if (Request::wantsJson()) {
-            Stripe::setApiKey(config('services.stripe.secret'));
-
-            return Transaction::with('items')
+        return Inertia::render('Dashboard/Index', [
+            'transactions' => Transaction::with('items')
                 ->date('created_at', Carbon::today())
                 ->where('status', '<>', Transaction::TRANSACTION_FAILED)
                 ->latest()
@@ -29,11 +25,11 @@ class DashboardController extends Controller
                     }
 
                     return $transaction;
-                });
-        }
-
-        return Inertia::render('Dashboard/Index', [
+                }),
             'online_order_enabled' => Cache::get('online_order_enabled', Transaction::ONLINE_ORDER_DISABLED),
+            'new_order' => Cache::get('new_order'),
+            'new_reservation' => Cache::get('new_reservation'),
+            'update_interval' => Transaction::UPDATE_INTERVAL,
         ]);
     }
 }

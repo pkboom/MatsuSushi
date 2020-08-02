@@ -44,7 +44,7 @@ class StartYourOrderController extends Controller
 
         $lineItmes = collect(Request::input('items'))
             ->map(fn ($item) => Item::find($item))
-            ->map->lineItem()
+            ->map(fn ($item) => $this->lineItemFormat($item->name, $item->price, $item->description))
             ->push($this->tax($order))
             ->when($order['tip_percentage'] !== '0', fn ($collection) => $collection->push($this->tip($order)))
             ->when($order['type'] === Transaction::TYPE['Delivery'], fn ($collection) => $collection->push($this->deliveryFee()))
@@ -74,41 +74,28 @@ class StartYourOrderController extends Controller
 
     public function tax($order)
     {
-        return [
-            'price_data' => [
-                'currency' => 'cad',
-                'product_data' => [
-                    'name' => 'GST/HST',
-                ],
-                'unit_amount' => Transaction::tax(Transaction::subtotal($order)) * 100,
-            ],
-            'quantity' => 1,
-        ];
+        return $this->lineItemFormat('GST/HST', Transaction::tax(Transaction::subtotal($order)));
     }
 
     public function tip($order)
     {
-        return [
-            'price_data' => [
-                'currency' => 'cad',
-                'product_data' => [
-                    'name' => 'Tip',
-                ],
-                'unit_amount' => Transaction::tip(Transaction::subtotal($order), $order['tip_percentage']) * 100,
-            ],
-            'quantity' => 1,
-        ];
+        return $this->lineItemFormat('Tip', Transaction::tip(Transaction::subtotal($order), $order['tip_percentage']));
     }
 
     public function deliveryFee()
+    {
+        return $this->lineItemFormat('Delivery fee', Transaction::DELIVERY_FEE);
+    }
+
+    public function lineItemFormat($name, $unit_amount, $description = null)
     {
         return [
             'price_data' => [
                 'currency' => 'cad',
                 'product_data' => [
-                    'name' => 'Delivery fee',
+                    'name' => $description ? $name.'-'.$description : $name,
                 ],
-                'unit_amount' => Transaction::DELIVERY_FEE * 100,
+                'unit_amount' => $unit_amount * 100,
             ],
             'quantity' => 1,
         ];
