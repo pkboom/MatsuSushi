@@ -4549,6 +4549,11 @@ __webpack_require__.r(__webpack_exports__);
     new_reservation: Boolean,
     update_interval: Number
   },
+  data: function data() {
+    return {
+      timeoutId: null
+    };
+  },
   computed: {
     currentTime: function currentTime() {
       return moment__WEBPACK_IMPORTED_MODULE_0___default()().format('MM-DD hh:mm a');
@@ -4559,9 +4564,12 @@ __webpack_require__.r(__webpack_exports__);
       document.getElementById('alarm').play();
     }
 
-    setTimeout(function () {
+    this.timeoutId = setTimeout(function () {
       location.reload();
     }, this.update_interval * 1000);
+  },
+  beforeDestroy: function beforeDestroy() {
+    clearTimeout(this.timeoutId);
   },
   methods: {
     alarmTest: function alarmTest() {

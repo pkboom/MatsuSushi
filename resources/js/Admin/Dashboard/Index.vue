@@ -127,6 +127,11 @@ export default {
     new_reservation: Boolean,
     update_interval: Number,
   },
+  data() {
+    return {
+      timeoutId: null,
+    }
+  },
   computed: {
     currentTime() {
       return moment().format('MM-DD hh:mm a')
@@ -137,9 +142,12 @@ export default {
       document.getElementById('alarm').play()
     }
 
-    setTimeout(function() {
+    this.timeoutId = setTimeout(() => {
       location.reload()
     }, this.update_interval * 1000)
+  },
+  beforeDestroy() {
+    clearTimeout(this.timeoutId)
   },
   methods: {
     alarmTest() {
