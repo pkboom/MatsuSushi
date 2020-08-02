@@ -134,7 +134,7 @@ export default {
   },
   computed: {
     currentTime() {
-      return moment().format('MM-DD hh:mm a')
+      return moment().format('hh:mm a')
     },
   },
   mounted() {

@@ -4556,7 +4556,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     currentTime: function currentTime() {
-      return moment__WEBPACK_IMPORTED_MODULE_0___default()().format('MM-DD hh:mm a');
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()().format('hh:mm a');
     }
   },
   mounted: function mounted() {
