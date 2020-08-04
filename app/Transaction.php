@@ -29,7 +29,7 @@ class Transaction extends Model
 
     const TRANSACTION_FAILED = 'failed';
 
-    const DELIVERY_FEE = 5;
+    const DELIVERY_FEE = 6;
 
     const TIME_TO_LIVE = 3;
 
