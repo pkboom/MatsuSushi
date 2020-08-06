@@ -2832,8 +2832,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       count: 0,
-      open: false,
-      lgWidth: 768
+      open: false
     };
   },
   mounted: function mounted() {
@@ -2846,17 +2845,11 @@ __webpack_require__.r(__webpack_exports__);
       document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
     },
     fetchImage: function fetchImage() {
-      var _this = this;
-
       var bottom = document.getElementById('bottom');
       var imageObserver = new IntersectionObserver(function (entries, observer) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            if (window.innerWidth >= _this.lgWidth) {
-              bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
-            } else {
-              bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom-half.jpg\')';
-            }
+            bottom.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')';
           }
         });
       });
