@@ -54,11 +54,11 @@ class Transaction extends Model
 
     public function getTotalAttribute()
     {
-        $total = round($this->subtotal + $this->tax + $this->tip, 2);
+        $total = $this->subtotal + $this->tax + $this->tip;
 
-        return $this->type === static::TYPE['Delivery'] ?
+        return round($this->type === static::TYPE['Delivery'] ?
             $total + static::DELIVERY_FEE :
-            $total;
+            $total, 2);
     }
 
     public function getTaxAttribute()
@@ -73,23 +73,16 @@ class Transaction extends Model
 
     public static function formattedTotal($order)
     {
-        return  $order ?
-            static::total(static::subtotal($order), $order) * 100 :
-            0;
+        return  $order ? static::total(static::subtotal($order), $order) * 100 : 0;
     }
 
     public static function total($subtotal, $order)
     {
-        $total = round(
-            $subtotal +
-            static::tax($subtotal) +
-            static::tip($subtotal, $order['tip_percentage']),
-            2
-        );
+        $total = $subtotal + static::tax($subtotal) + static::tip($subtotal, $order['tip_percentage']);
 
-        return $order['type'] === static::TYPE['Delivery'] ?
+        return round($order['type'] === static::TYPE['Delivery'] ?
             $total + static::DELIVERY_FEE :
-            $total;
+            $total, 2);
     }
 
     public static function subtotal($order)
@@ -100,9 +93,7 @@ class Transaction extends Model
 
         $subtotal = collect($order['items'])->map(function ($item) use ($items) {
             return $items->firstWhere('id', $item);
-        })
-        ->map->price
-        ->sum();
+        })->map->price->sum();
 
         return round($subtotal, 2);
     }

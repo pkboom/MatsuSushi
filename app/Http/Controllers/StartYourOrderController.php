@@ -64,7 +64,7 @@ class StartYourOrderController extends Controller
             'stripe_id' => $session->payment_intent,
         ]);
 
-        $transaction->items()->sync($order['items']);
+        $transaction->items()->attach($order['items']);
 
         return Response::json([
             'session' => $session->id,
