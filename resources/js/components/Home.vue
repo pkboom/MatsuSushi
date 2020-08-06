@@ -1,6 +1,9 @@
 <template>
   <front-layout>
-    <div id="top" class="-mt-16 flex items-center justify-center">
+    <div
+      id="top"
+      class="flex items-center justify-center bg-center bg-cover h-screen"
+    >
       <div
         class="font-bold font-serif text-3xl md:text-5xl text-white tracking-widest"
       >
@@ -28,15 +31,6 @@
 #top {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url('/images/top-half.png');
-  background-size: cover;
-  height: 100vh;
-  background-position: center;
-  margin-top: -4.2rem;
-}
-@media (min-width: 768px) {
-  #top {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-      url('/images/top.png');
-  }
+  margin-top: -3.5rem;
 }
 </style>

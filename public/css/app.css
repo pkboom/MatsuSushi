@@ -1960,6 +1960,14 @@ input:focus,
   background-color: rgba(35, 56, 118, var(--bg-opacity));
 }
 
+.bg-center {
+  background-position: center;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
 .border-white {
   --border-opacity: 1;
   border-color: #ffffff;
@@ -2136,10 +2144,6 @@ input:focus,
   font-weight: 200;
 }
 
-.font-normal {
-  font-weight: 400;
-}
-
 .font-medium {
   font-weight: 500;
 }
@@ -2178,6 +2182,10 @@ input:focus,
 
 .h-full {
   height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .text-xs {
@@ -2264,10 +2272,6 @@ input:focus,
   margin-right: 0.25rem;
 }
 
-.ml-1 {
-  margin-left: 0.25rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -2350,10 +2354,6 @@ input:focus,
 
 .-mb-8 {
   margin-bottom: -2rem;
-}
-
-.-mt-16 {
-  margin-top: -4rem;
 }
 
 .max-w-md {
@@ -2845,12 +2845,6 @@ input:focus,
   --text-opacity: 1;
   color: #233876;
   color: rgba(35, 56, 118, var(--text-opacity));
-}
-
-.text-pink-500 {
-  --text-opacity: 1;
-  color: #e74694;
-  color: rgba(231, 70, 148, var(--text-opacity));
 }
 
 .group:hover .group-hover\:text-white {

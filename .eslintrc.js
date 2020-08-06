@@ -13,7 +13,7 @@ module.exports = {
     quotes: ['warn', 'single'],
     semi: ['warn', 'never'],
     'comma-dangle': ['warn', 'always-multiline'],
-    'vue/max-attributes-per-line': false,
+    'vue/max-attributes-per-line': 'off',
     'vue/require-default-prop': false,
     'vue/singleline-html-element-content-newline': false,
     'vue/html-self-closing': [

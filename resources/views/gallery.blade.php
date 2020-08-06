@@ -1,4 +1,4 @@
 @extends('front.app')
 @section('content')
-<gallery-images></gallery-images>
+<gallery-menu></gallery-menu>
 @endsection('content')
