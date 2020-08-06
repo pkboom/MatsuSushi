@@ -12,7 +12,9 @@ class GalleryController extends Controller
     {
         if (Request::wantsJson()) {
             return Response::json([
-                'images' => Image::latest()
+                'images' => Image::query()
+                    // ->latest()
+                    ->inRandomOrder()
                     ->paginate()
                     ->transform(function ($image) {
                         return [
