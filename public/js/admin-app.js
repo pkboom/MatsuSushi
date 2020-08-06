@@ -56787,25 +56787,36 @@ var render = function() {
   return _c("admin-layout", { attrs: { title: "Dashboard" } }, [
     _c("div", { staticClass: "flex justify-between items-end mb-4" }, [
       _c("div", [
-        _c("div", { staticClass: "flex font-bold items-center text-xl pb-1" }, [
-          _vm._v("\n        Today's orders\n        "),
-          _c(
-            "span",
-            { staticClass: "font-normal text-xs text-gray-400 px-1" },
-            [_vm._v("\n          (" + _vm._s(_vm.currentTime) + ")\n        ")]
-          ),
-          _vm._v(" "),
-          _vm.new_reservation
-            ? _c(
-                "span",
-                {
-                  staticClass:
-                    "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
-                },
-                [_vm._v("\n          New Reservation\n        ")]
-              )
-            : _vm._e()
-        ])
+        _c(
+          "div",
+          { staticClass: "flex font-bold items-baseline text-xl pb-1" },
+          [
+            _c("div", { staticClass: "whitespace-no-wrap" }, [
+              _vm._v("Today's orders")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "font-normal text-xs text-gray-400 px-1" },
+              [
+                _vm._v(
+                  "\n          (" + _vm._s(_vm.currentTime) + ")\n        "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm.new_reservation
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
+                  },
+                  [_vm._v("\n          New Reservation\n        ")]
+                )
+              : _vm._e()
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(

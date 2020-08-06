@@ -4,17 +4,17 @@
     <!-- <a href="/admin/kakao/send" class="btn">Send message</a> -->
     <div class="flex justify-between items-end mb-4">
       <div>
-        <div class="flex font-bold items-center text-xl pb-1">
-          Today's orders
-          <span class="font-normal text-xs text-gray-400 px-1">
+        <div class="flex font-bold items-baseline text-xl pb-1">
+          <div class="whitespace-no-wrap">Today's orders</div>
+          <div class="font-normal text-xs text-gray-400 px-1">
             ({{ currentTime }})
-          </span>
-          <span
+          </div>
+          <div
             v-if="new_reservation"
             class="bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
           >
             New Reservation
-          </span>
+          </div>
         </div>
       </div>
       <div
