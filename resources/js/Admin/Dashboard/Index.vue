@@ -6,24 +6,15 @@
       <div>
         <div class="flex font-bold items-center text-xl pb-1">
           Today's orders
-          <span class="font-normal text-xs text-gray-400 ml-1">
+          <span class="font-normal text-xs text-gray-400 px-1">
             ({{ currentTime }})
           </span>
           <span
             v-if="new_reservation"
-            class="bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
+            class="bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
           >
             New Reservation
           </span>
-        </div>
-        <div class="flex font-medium items-center text-md text-pink-500">
-          (If status is
-          <span
-            class="bg-green-100 font-bold ml-1 px-4 py-1 rounded-full text-green-600 text-xs"
-          >
-            new
-          </span>
-          , you may serve.)
         </div>
       </div>
       <div

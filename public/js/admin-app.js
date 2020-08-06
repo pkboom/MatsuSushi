@@ -4531,15 +4531,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -56800,7 +56791,7 @@ var render = function() {
           _vm._v("\n        Today's orders\n        "),
           _c(
             "span",
-            { staticClass: "font-normal text-xs text-gray-400 ml-1" },
+            { staticClass: "font-normal text-xs text-gray-400 px-1" },
             [_vm._v("\n          (" + _vm._s(_vm.currentTime) + ")\n        ")]
           ),
           _vm._v(" "),
@@ -56809,31 +56800,12 @@ var render = function() {
                 "span",
                 {
                   staticClass:
-                    "bg-orange-100 font-bold ml-4 px-4 py-1 rounded-full text-orange-600 text-xs"
+                    "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
                 },
                 [_vm._v("\n          New Reservation\n        ")]
               )
             : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "flex font-medium items-center text-md text-pink-500"
-          },
-          [
-            _vm._v("\n        (If status is\n        "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "bg-green-100 font-bold ml-1 px-4 py-1 rounded-full text-green-600 text-xs"
-              },
-              [_vm._v("\n          new\n        ")]
-            ),
-            _vm._v("\n        , you may serve.)\n      ")
-          ]
-        )
+        ])
       ]),
       _vm._v(" "),
       _c(
