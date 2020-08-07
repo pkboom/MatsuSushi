@@ -52733,41 +52733,39 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("front-layout", { attrs: { title: "Menu" } }, [
     _c("div", { staticClass: "max-w-5xl mx-auto min-h-screen" }, [
-      _c("img", { attrs: { src: "/images/menu/menu-v1-01.jpg" } }),
+      _c("img", { attrs: { src: "/images/menu/menu_01.svg" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu-v1-02.jpg" } }),
+      _c("img", { attrs: { src: "/images/menu/menu_02.svg" } }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-03.jpg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_03.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-04.jpg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_04.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-05.jpg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_05.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-06.jpg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_06.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-07.jpg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_07.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-08.jpg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_08.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-09.jpg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_09.svg" }
       }),
       _vm._v(" "),
-      _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu-v1-10.jpg" }
-      })
+      _c("img", { attrs: { loading: "lazy", src: "/images/menu/menu_10.svg" } })
     ])
   ])
 }
@@ -68259,8 +68257,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/y/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
