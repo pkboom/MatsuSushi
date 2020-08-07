@@ -14,7 +14,7 @@ module.exports = {
     semi: ['warn', 'never'],
     'comma-dangle': ['warn', 'always-multiline'],
     'vue/max-attributes-per-line': 'off',
-    'vue/require-default-prop': false,
+    'vue/require-default-prop': 'off',
     'vue/singleline-html-element-content-newline': false,
     'vue/html-self-closing': [
       'warn',
