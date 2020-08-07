@@ -211,8 +211,6 @@ class Transaction extends Model
             'status' => Transaction::TRANSACTION_FAILED,
             'message' => $message,
         ]);
-
-        $this->items()->detach();
     }
 
     public function scopeFilter($query, array $filters)

@@ -33,7 +33,6 @@
     "mockery/mockery": "~1.0",
     "nunomaduro/collision": "^4.1",
     "phpunit/phpunit": "^8.5",
-    "pkboom/laravel-query-on-vscode": "dev-master",
     "pkboom/laravel-tinker-on-vscode": "dev-master"
   },
   "autoload": {
