@@ -31,7 +31,7 @@ class Transaction extends Model
 
     const DELIVERY_FEE = 6;
 
-    const TIME_TO_LIVE = 3;
+    const TIME_TO_LIVE = 30;
 
     const UPDATE_INTERVAL = 10;
 
