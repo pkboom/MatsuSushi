@@ -4456,7 +4456,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53679,7 +53678,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "leading-tight px-8 text-gray-600" }, [
                   _vm._v(
-                    "\n          If you have any trouble ordering, give us a call at\n          "
+                    "\n          * If you have any trouble ordering, call us at\n          "
                   ),
                   _c(
                     "a",
@@ -53698,11 +53697,7 @@ var render = function() {
                       ),
                       _vm._v("\n            .\n          ")
                     ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v("We will help you with your order. Thank you.")
-                  ])
+                  )
                 ])
               ]
             )
@@ -53752,8 +53747,10 @@ var render = function() {
           _vm._v("\n      Thank you!\n    ")
         ]),
         _vm._v(" "),
+        _c("div", [_vm._v("You will receive an email receipt shortly.")]),
+        _vm._v(" "),
         _c("div", [
-          _vm._v("\n      Please, give us a call at\n      "),
+          _vm._v("\n      If you have any questions, call us at\n      "),
           _c(
             "a",
             {
@@ -53762,10 +53759,8 @@ var render = function() {
             },
             [_vm._v("\n        705-760-9484\n      ")]
           ),
-          _vm._v("\n      to confirm your order.\n    ")
+          _vm._v("\n      .\n    ")
         ]),
-        _vm._v(" "),
-        _c("div", [_vm._v("You will receive an email for an order receipt.")]),
         _vm._v(" "),
         _c("div", { staticClass: "space-y-4" }, [
           _c("div", [

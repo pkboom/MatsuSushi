@@ -4,17 +4,17 @@
       <div class="text-xl border-b-2 border-gray-400">
         Thank you!
       </div>
+      <div>You will receive an email receipt shortly.</div>
       <div>
-        Please, give us a call at
+        If you have any questions, call us at
         <a
           href="tel:7057609484"
           class="inline-block underline text-blue-600 font-bold"
         >
           705-760-9484
         </a>
-        to confirm your order.
+        .
       </div>
-      <div>You will receive an email for an order receipt.</div>
       <div class="space-y-4">
         <div>
           <span class="text-gray-500">Order number:</span>
