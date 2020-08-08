@@ -62249,39 +62249,41 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("front-layout", { attrs: { title: "Menu" } }, [
     _c("div", { staticClass: "max-w-5xl mx-auto min-h-screen" }, [
-      _c("img", { attrs: { src: "/images/menu/menu_01.svg" } }),
+      _c("img", { attrs: { src: "/images/menu/menu_2020_august_01.svg" } }),
       _vm._v(" "),
-      _c("img", { attrs: { src: "/images/menu/menu_02.svg" } }),
+      _c("img", { attrs: { src: "/images/menu/menu_2020_august_02.svg" } }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu_03.svg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_03.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu_04.svg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_04.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu_05.svg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_05.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu_06.svg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_06.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu_07.svg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_07.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu_08.svg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_08.svg" }
       }),
       _vm._v(" "),
       _c("img", {
-        attrs: { loading: "lazy", src: "/images/menu/menu_09.svg" }
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_09.svg" }
       }),
       _vm._v(" "),
-      _c("img", { attrs: { loading: "lazy", src: "/images/menu/menu_10.svg" } })
+      _c("img", {
+        attrs: { loading: "lazy", src: "/images/menu/menu_2020_august_10.svg" }
+      })
     ])
   ])
 }
@@ -79386,7 +79388,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })
