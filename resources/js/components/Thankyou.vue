@@ -68,7 +68,9 @@
             class="space-y-1"
           >
             <div>{{ item.name }}</div>
-            <div class="text-gray-400 text-sm">{{ item.description }}</div>
+            <div class="hidden sm:block text-gray-400 text-sm">
+              {{ item.description }}
+            </div>
           </div>
         </div>
       </div>

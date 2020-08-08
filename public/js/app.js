@@ -4616,6 +4616,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object
@@ -53862,9 +53864,17 @@ var render = function() {
                 [
                   _c("div", [_vm._v(_vm._s(item.name))]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "text-gray-400 text-sm" }, [
-                    _vm._v(_vm._s(item.description))
-                  ])
+                  _c(
+                    "div",
+                    { staticClass: "hidden sm:block text-gray-400 text-sm" },
+                    [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(item.description) +
+                          "\n          "
+                      )
+                    ]
+                  )
                 ]
               )
             }),
