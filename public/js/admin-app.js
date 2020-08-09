@@ -5373,6 +5373,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -5468,6 +5470,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     reservation: Object
@@ -5486,6 +5489,11 @@ __webpack_require__.r(__webpack_exports__);
         message: this.reservation.message
       }
     };
+  },
+  computed: {
+    reservationDate: function reservationDate() {
+      return this.form.date.slice(0, -5);
+    }
   },
   methods: {
     submit: function submit() {
@@ -58660,10 +58668,10 @@ var render = function() {
                       "\n            Reminder: Your table for " +
                         _vm._s(_vm.form.people) +
                         " at Matsu Sushi is\n            booked on " +
-                        _vm._s(_vm.form.date) +
+                        _vm._s(_vm.reservationDate) +
                         " " +
                         _vm._s(_vm.form.time) +
-                        ". Please respond '1' to\n            confirm or '9' to cancel. Thank you.\n          "
+                        ". Please respond\n            '1' to confirm or '9' to cancel. Thank you.\n          "
                     )
                   ])
                 ])

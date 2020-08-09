@@ -64,8 +64,8 @@
             <div class="form-label">SMS:</div>
             <div class="leading-tight">
               Reminder: Your table for {{ form.people }} at Matsu Sushi is
-              booked on {{ form.date }} {{ form.time }}. Please respond '1' to
-              confirm or '9' to cancel. Thank you.
+              booked on {{ reservationDate }} {{ form.time }}. Please respond
+              '1' to confirm or '9' to cancel. Thank you.
             </div>
           </div>
         </div>
@@ -94,6 +94,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: {
     reservation: Object,
@@ -112,6 +114,11 @@ export default {
         message: this.reservation.message,
       },
     }
+  },
+  computed: {
+    reservationDate() {
+      return this.form.date.slice(0, -5)
+    },
   },
   methods: {
     submit() {
