@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
+use Spatie\Honeypot\EncryptedTime;
+use Throwable;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -58,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerLengthAwarePaginator();
+        $this->registerRequestMacros();
     }
 
     protected function registerLengthAwarePaginator()
@@ -129,6 +132,22 @@ class AppServiceProvider extends ServiceProvider
                     ]);
                 }
             };
+        });
+    }
+
+    public function registerRequestMacros()
+    {
+        Request::macro('isSpam', function () {
+            try {
+                $time = new EncryptedTime($this->encrypted_time);
+            } catch (Throwable $e) {
+                $time = null;
+            }
+
+            return $this->missing('matsu_honeypot') ||
+                $this->filled('matsu_honeypot') ||
+                is_null($time) ||
+                $time->isFuture();
         });
     }
 }

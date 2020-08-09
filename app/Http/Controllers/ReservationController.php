@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Reservation;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
-use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
@@ -23,17 +22,7 @@ class ReservationController extends Controller
 
     public function store()
     {
-        if (!Request::has('matsu_honeypot')) {
-            return Response::json([], 400);
-        }
-
-        if (Request::input('matsu_honeypot') !== null) {
-            return Response::json([], 400);
-        }
-
-        try {
-            (new EncryptedTime(Request::input('encrypted_time')))->isFuture();
-        } catch (Exception $decryptException) {
+        if (Request::isSpam()) {
             return Response::json([], 400);
         }
 
@@ -47,7 +36,8 @@ class ReservationController extends Controller
             'message' => ['nullable', 'string'],
         ]);
 
-        $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
+        $reserved_at = CarbonImmutable::parse(Request::input('date'))
+            ->modify(Request::input('time'));
 
         if (Reservation::onClosedDays($reserved_at)) {
             fail_validation('date', 'Sorry, we are closed on Tuesdays.');
