@@ -32,7 +32,7 @@ class Item extends Model
 
     public static function cacheKey()
     {
-        return 'menu_items';
+        return 'cached_items';
     }
 
     public function scopeFilter($query, array $filters)
