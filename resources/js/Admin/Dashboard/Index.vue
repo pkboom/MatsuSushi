@@ -61,7 +61,7 @@
           <span class="text-gray-500">Order no.</span>
           {{ transaction.id }}
           <span class="text-gray-400 text-sm">
-            ({{ transaction.created_at }})
+            ({{ transaction.created_at.slice(11) }})
           </span>
         </div>
         <div>

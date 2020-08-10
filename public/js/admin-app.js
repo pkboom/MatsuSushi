@@ -56905,7 +56905,7 @@ var render = function() {
               _c("span", { staticClass: "text-gray-400 text-sm" }, [
                 _vm._v(
                   "\n          (" +
-                    _vm._s(transaction.created_at) +
+                    _vm._s(transaction.created_at.slice(11)) +
                     ")\n        "
                 )
               ])
