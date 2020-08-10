@@ -87,7 +87,7 @@ class Transaction extends Model
 
     public static function subtotal($order)
     {
-        $items = Cache::rememberForever('menu_items', function () {
+        $items = Cache::rememberForever(Item::cacheKey(), function () {
             return Item::all(['id', 'price']);
         });
 

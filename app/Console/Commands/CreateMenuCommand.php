@@ -21,7 +21,7 @@ class CreateMenuCommand extends Command
         DB::unprepared(file_get_contents(database_path('items.sql')));
         $this->comment('Menu created...');
 
-        Cache::put('menu_items', Item::all(['id', 'price']));
+        Cache::put(Item::cacheKey(), Item::all(['id', 'price']));
 
         return 0;
     }

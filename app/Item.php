@@ -12,11 +12,11 @@ class Item extends Model
     protected static function booted()
     {
         static::saved(function ($item) {
-            Cache::put('menu_items', Item::all(['id', 'price']));
+            Cache::put(Item::cacheKey(), Item::all(['id', 'price']));
         });
 
         static::deleted(function ($item) {
-            Cache::put('menu_items', Item::all(['id', 'price']));
+            Cache::put(Item::cacheKey(), Item::all(['id', 'price']));
         });
     }
 
@@ -28,6 +28,11 @@ class Item extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public static function cacheKey()
+    {
+        return 'menu_items';
     }
 
     public function scopeFilter($query, array $filters)

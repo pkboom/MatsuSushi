@@ -8082,10 +8082,10 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       items.push(order);
+      localStorage.setItem('items', JSON.stringify(items));
       events.$emit('order-items', {
         count: items.length
       });
-      localStorage.setItem('items', JSON.stringify(items));
       flash(order.name + ' added to cart');
     }
   }
@@ -79401,7 +79401,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })

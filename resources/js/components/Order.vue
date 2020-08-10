@@ -179,11 +179,11 @@ export default {
 
       items.push(order)
 
+      localStorage.setItem('items', JSON.stringify(items))
+
       events.$emit('order-items', {
         count: items.length,
       })
-
-      localStorage.setItem('items', JSON.stringify(items))
 
       flash(order.name + ' added to cart')
     },
