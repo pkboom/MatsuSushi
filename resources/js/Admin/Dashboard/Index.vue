@@ -58,10 +58,6 @@
           </span>
         </div>
         <div>
-          <span class="text-gray-500">Order number:</span>
-          {{ transaction.id }}
-        </div>
-        <div>
           <span class="text-gray-500">Name:</span>
           {{ transaction.name }}
         </div>
@@ -77,14 +73,6 @@
           <span class="text-gray-500">Address:</span>
           {{ transaction.address }}
         </div>
-        <div>
-          <span class="text-gray-500">Total:</span>
-          $ {{ transaction.total }}
-        </div>
-        <div>
-          <span class="text-gray-500">Created at:</span>
-          {{ transaction.created_at }}
-        </div>
         <div v-if="transaction.message">
           <span class="text-gray-500">Message:</span>
           {{ transaction.message }}
@@ -99,6 +87,17 @@
             <div>{{ item.name }}</div>
             <div class="text-gray-400 text-sm">{{ item.description }}</div>
           </div>
+        </div>
+        <div>
+          <span class="text-gray-500">Total:</span>
+          $ {{ transaction.total }}
+        </div>
+        <div>
+          <span class="text-gray-500">Order no.</span>
+          {{ transaction.id }}
+          <span class="text-gray-400 text-sm">
+            ({{ transaction.created_at }})
+          </span>
         </div>
       </div>
     </div>
