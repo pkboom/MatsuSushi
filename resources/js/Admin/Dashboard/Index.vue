@@ -58,6 +58,17 @@
           </span>
         </div>
         <div>
+          <span class="text-gray-500">Order no.</span>
+          {{ transaction.id }}
+          <span class="text-gray-400 text-sm">
+            ({{ transaction.created_at }})
+          </span>
+        </div>
+        <div>
+          <span class="text-gray-500">Total:</span>
+          $ {{ transaction.total }}
+        </div>
+        <div>
           <span class="text-gray-500">Name:</span>
           {{ transaction.name }}
         </div>
@@ -88,20 +99,8 @@
             <div class="text-gray-400 text-sm">{{ item.description }}</div>
           </div>
         </div>
-        <div>
-          <span class="text-gray-500">Total:</span>
-          $ {{ transaction.total }}
-        </div>
-        <div>
-          <span class="text-gray-500">Order no.</span>
-          {{ transaction.id }}
-          <span class="text-gray-400 text-sm">
-            ({{ transaction.created_at }})
-          </span>
-        </div>
       </div>
     </div>
-
     <audio id="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
   </admin-layout>
 </template>

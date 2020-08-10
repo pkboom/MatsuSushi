@@ -4529,7 +4529,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -56899,6 +56898,25 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", [
+              _c("span", { staticClass: "text-gray-500" }, [
+                _vm._v("Order no.")
+              ]),
+              _vm._v("\n        " + _vm._s(transaction.id) + "\n        "),
+              _c("span", { staticClass: "text-gray-400 text-sm" }, [
+                _vm._v(
+                  "\n          (" +
+                    _vm._s(transaction.created_at) +
+                    ")\n        "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),
+              _vm._v("\n        $ " + _vm._s(transaction.total) + "\n      ")
+            ]),
+            _vm._v(" "),
+            _c("div", [
               _c("span", { staticClass: "text-gray-500" }, [_vm._v("Name:")]),
               _vm._v("\n        " + _vm._s(transaction.name) + "\n      ")
             ]),
@@ -56962,26 +56980,7 @@ var render = function() {
                 )
               }),
               0
-            ),
-            _vm._v(" "),
-            _c("div", [
-              _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),
-              _vm._v("\n        $ " + _vm._s(transaction.total) + "\n      ")
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("span", { staticClass: "text-gray-500" }, [
-                _vm._v("Order no.")
-              ]),
-              _vm._v("\n        " + _vm._s(transaction.id) + "\n        "),
-              _c("span", { staticClass: "text-gray-400 text-sm" }, [
-                _vm._v(
-                  "\n          (" +
-                    _vm._s(transaction.created_at) +
-                    ")\n        "
-                )
-              ])
-            ])
+            )
           ]
         )
       }),
