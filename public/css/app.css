@@ -1828,6 +1828,12 @@ input:focus,
   background-color: rgba(244, 245, 247, var(--bg-opacity));
 }
 
+.bg-gray-200 {
+  --bg-opacity: 1;
+  background-color: #e5e7eb;
+  background-color: rgba(229, 231, 235, var(--bg-opacity));
+}
+
 .bg-gray-400 {
   --bg-opacity: 1;
   background-color: #9fa6b2;

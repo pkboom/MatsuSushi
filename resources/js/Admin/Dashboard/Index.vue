@@ -52,7 +52,7 @@
           </span>
           <span
             v-else
-            class="bg-gray-400 font-bold ml-2 px-4 py-1 rounded-full text-white text-xs"
+            class="bg-gray-200 font-bold ml-2 px-4 py-1 rounded-full text-gray-500 text-xs"
           >
             served
           </span>
