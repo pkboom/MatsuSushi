@@ -56812,7 +56812,7 @@ var render = function() {
                     staticClass:
                       "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
                   },
-                  [_vm._v("\n          New Reservation\n        ")]
+                  [_vm._v("\n          Reservation\n        ")]
                 )
               : _vm._e()
           ]
@@ -79399,7 +79399,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })

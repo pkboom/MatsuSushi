@@ -13,7 +13,7 @@
             v-if="new_reservation"
             class="bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
           >
-            New Reservation
+            Reservation
           </div>
         </div>
       </div>
