@@ -26,6 +26,11 @@ class Reservation extends Model
         return $this->first_name.' '.$this->last_name;
     }
 
+    public function getTimeAttribute()
+    {
+        return $this->reserved_at->format('h:i a');
+    }
+
     public static function onClosedDays($reserved_at)
     {
         return $reserved_at->dayOfWeek === (int) Cache::get('closed_days');

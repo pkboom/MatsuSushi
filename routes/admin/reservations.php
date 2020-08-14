@@ -7,6 +7,9 @@ Route::get('reservations', [ReservationController::class, 'index'])
     ->name('admin.reservations')
     ->middleware('remember');
 
+Route::get('reservations/show', [ReservationController::class, 'show'])
+    ->name('admin.reservations.show');
+
 Route::get('reservations/create', [ReservationController::class, 'create'])
     ->name('admin.reservations.create');
 

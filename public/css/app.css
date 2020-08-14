@@ -1762,12 +1762,6 @@ input:focus,
 
 /* Utilities */
 
-.space-x-0 > :not(template) ~ :not(template) {
-  --space-x-reverse: 0;
-  margin-right: calc(0px * var(--space-x-reverse));
-  margin-left: calc(0px * calc(1 - var(--space-x-reverse)));
-}
-
 .space-y-1 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--space-y-reverse)));
@@ -1778,6 +1772,12 @@ input:focus,
   --space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--space-y-reverse));
+}
+
+.space-x-2 > :not(template) ~ :not(template) {
+  --space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
 }
 
 .space-y-3 > :not(template) ~ :not(template) {
@@ -1996,6 +1996,12 @@ input:focus,
   --border-opacity: 1;
   border-color: #9fa6b2;
   border-color: rgba(159, 166, 178, var(--border-opacity));
+}
+
+.border-blue-400 {
+  --border-opacity: 1;
+  border-color: #76a9fa;
+  border-color: rgba(118, 169, 250, var(--border-opacity));
 }
 
 .focus\:border-white:focus {
@@ -2259,6 +2265,11 @@ input:focus,
   margin-bottom: 0.25rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -2272,6 +2283,11 @@ input:focus,
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.-my-1 {
+  margin-top: -0.25rem;
+  margin-bottom: -0.25rem;
 }
 
 .mt-1 {
@@ -2350,6 +2366,10 @@ input:focus,
   margin-left: auto;
 }
 
+.-mr-1 {
+  margin-right: -0.25rem;
+}
+
 .-mr-6 {
   margin-right: -1.5rem;
 }
@@ -2424,6 +2444,10 @@ input:focus,
 
 .scrolling-touch {
   -webkit-overflow-scrolling: touch;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .p-2 {
@@ -2996,6 +3020,10 @@ input:focus,
   width: 2rem;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .w-24 {
   width: 6rem;
 }
@@ -3045,6 +3073,10 @@ input:focus,
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-7 {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .transition {
@@ -3566,18 +3598,6 @@ input:focus,
     }
   }
 
-  .md\:space-y-0 > :not(template) ~ :not(template) {
-    --space-y-reverse: 0;
-    margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
-    margin-bottom: calc(0px * var(--space-y-reverse));
-  }
-
-  .md\:space-x-2 > :not(template) ~ :not(template) {
-    --space-x-reverse: 0;
-    margin-right: calc(0.5rem * var(--space-x-reverse));
-    margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
-  }
-
   .md\:space-y-4 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
     margin-top: calc(1rem * calc(1 - var(--space-y-reverse)));
@@ -3971,6 +3991,18 @@ input:focus,
 
   .lg\:inline {
     display: inline;
+  }
+
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:hidden {
+    display: none;
+  }
+
+  .lg\:p-4 {
+    padding: 1rem;
   }
 
   .lg\:w-1\/2 {

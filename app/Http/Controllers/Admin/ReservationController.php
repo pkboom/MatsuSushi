@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Reservation;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -30,6 +31,35 @@ class ReservationController extends Controller
                         'created_at' => $reservation->created_at->format('m-d'),
                     ];
                 }),
+        ]);
+    }
+
+    public function show()
+    {
+        $startOfWeek = CarbonImmutable::now()->startOfWeek(CarbonImmutable::SUNDAY);
+
+        $dates = [];
+
+        foreach ($startOfWeek->range($startOfWeek->addWeeks(4)->subDay(), CarbonInterval::day()) as $date) {
+            $dates[$date->format('n/j')] = null;
+        }
+
+        Reservation::query()
+            ->where('reserved_at', '>=', now()->startOfDay())
+            ->get()
+            ->map(function ($reservation) use (&$dates) {
+                $dates[$reservation->reserved_at->format('n/j')][] = [
+                    'id' => $reservation->id,
+                    'name' => $reservation->name,
+                    'phone' => $reservation->phone,
+                    'people' => $reservation->people,
+                    'time' => $reservation->time,
+                ];
+            });
+
+        return Inertia::render('Reservations/Show', [
+            'dates' => $dates,
+            'today' => now()->format('n/j'),
         ]);
     }
 
