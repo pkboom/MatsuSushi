@@ -61,7 +61,7 @@ class ReservationController extends Controller
             ]
         );
 
-        Cache::put('new_reservation', true, CarbonInterval::hours(2));
+        Cache::put('new_reservation', true, CarbonInterval::hours(1));
 
         return Response::json([
             'message' => "Thank you! Your reservation on {$reserved_at->format('F j')} has been confirmed!",
