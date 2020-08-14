@@ -59203,7 +59203,7 @@ var render = function() {
   return _c("div", { staticClass: "w-full h-full p-1 lg:p-4" }, [
     _c(
       "div",
-      { staticClass: "grid gap-2 grid-cols-7 mt-4" },
+      { staticClass: "grid gap-2 grid-cols-7 mt-4 text-sm" },
       [
         _vm._l(_vm.daysOfWeek, function(day) {
           return _c("div", { key: day, staticClass: "bg-white p-4 rounded" }, [
@@ -59223,7 +59223,9 @@ var render = function() {
                 ? _c("div", { staticClass: "text-red-500 font-bold" }, [
                     _vm._v("\n        " + _vm._s(date) + "\n      ")
                   ])
-                : _c("div", [_vm._v("\n        " + _vm._s(date) + "\n      ")]),
+                : _c("div", { staticClass: "text-gray-500" }, [
+                    _vm._v("\n        " + _vm._s(date) + "\n      ")
+                  ]),
               _vm._v(" "),
               _vm._l(reservations, function(reservation, index) {
                 return _c("div", { key: reservation.id }, [
@@ -59241,7 +59243,8 @@ var render = function() {
                       _c(
                         "inertia-link",
                         {
-                          staticClass: "block underline leading-tight",
+                          staticClass:
+                            "block underline leading-tight text-blue-800",
                           attrs: {
                             href: _vm.$route(
                               "admin.reservations.edit",
@@ -79779,7 +79782,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })

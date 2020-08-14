@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full p-1 lg:p-4">
-    <div class="grid gap-2 grid-cols-7 mt-4">
+    <div class="grid gap-2 grid-cols-7 mt-4 text-sm">
       <div v-for="day in daysOfWeek" :key="day" class="bg-white p-4 rounded">
         {{ day }}
       </div>
@@ -12,7 +12,7 @@
         <div v-if="today === date" class="text-red-500 font-bold">
           {{ date }}
         </div>
-        <div v-else>
+        <div v-else class="text-gray-500">
           {{ date }}
         </div>
         <div v-for="(reservation, index) in reservations" :key="reservation.id">
@@ -23,7 +23,7 @@
           <div class="rounded space-y-2 overflow-hidden">
             <inertia-link
               :href="$route('admin.reservations.edit', reservation.id)"
-              class="block underline leading-tight"
+              class="block underline leading-tight text-blue-800"
             >
               {{ reservation.name }}
             </inertia-link>

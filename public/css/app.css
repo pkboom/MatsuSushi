@@ -2880,6 +2880,12 @@ input:focus,
   color: rgba(28, 100, 242, var(--text-opacity));
 }
 
+.text-blue-800 {
+  --text-opacity: 1;
+  color: #1e429f;
+  color: rgba(30, 66, 159, var(--text-opacity));
+}
+
 .text-blue-900 {
   --text-opacity: 1;
   color: #233876;
