@@ -52,7 +52,7 @@ class ReservationController extends Controller
         }
 
         if (Reservation::isFuture($reserved_at)) {
-            fail_validation('date', 'Reservation is available within 2 weeks.');
+            fail_validation('date', 'Reservation is available within 3 weeks.');
         }
 
         Reservation::create(

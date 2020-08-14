@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Reservation extends Model
 {
-    const VALID_DAYS = 14;
+    const VALID_DAYS = 21;
 
     protected $guarded = [];
 
