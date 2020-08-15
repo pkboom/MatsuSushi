@@ -24,11 +24,10 @@
         </search-input>
         <div class="hidden md:block">
           <input
-            ref="input"
-            v-model="search"
+            v-model="searchItem"
             class="form-input"
             type="text"
-            placeholder="Search…"
+            placeholder="Search menu..."
             spellcheck="false"
           />
         </div>
@@ -50,12 +49,12 @@
         <div class="hidden md:flex flex-col items-center">
           <div class="text-3xl text-gray-800 space-y-2">
             <div class="px-8 uppercase">
-              {{ search ? 'Result' : currentCategory.name }}
+              {{ searchItem ? 'Result' : currentCategory.name }}
             </div>
             <hr class="border-b border-gray-400 border-t py-2px" />
           </div>
         </div>
-        <div v-if="search" class="grid grid-cols-1 gap-8 p-8">
+        <div v-if="searchItem" class="grid grid-cols-1 gap-8 p-8">
           <div
             v-for="item in searchResult"
             :key="item.id"
@@ -135,7 +134,7 @@ export default {
     return {
       currentCategory: this.categories[0],
       searchCategory: null,
-      search: '',
+      searchItem: null,
       searchResult: null,
       menu: this.categories
         .filter(category => category.name !== this.popular_menu)
@@ -144,8 +143,8 @@ export default {
     }
   },
   watch: {
-    search() {
-      if (this.search) {
+    searchItem() {
+      if (this.searchItem) {
         var fuse = new Fuse(this.menu, {
           keys: ['name'],
           includeScore: true,
@@ -153,21 +152,18 @@ export default {
         })
 
         this.searchResult = fuse
-          .search(this.search)
+          .search(this.searchItem)
           .filter(result => result.score < 0.5)
           .map(result => result.item)
       }
     },
   },
-  mounted() {
-    this.$refs.input.focus()
-  },
   methods: {
-    select(selected) {
-      this.search = null
+    select(categoryId) {
+      this.searchItem = ''
 
       this.currentCategory = this.categories.find(
-        category => category.id === selected
+        category => category.id === categoryId
       )
     },
     place(order) {

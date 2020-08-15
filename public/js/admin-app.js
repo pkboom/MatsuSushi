@@ -8125,7 +8125,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -8138,7 +8137,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       currentCategory: this.categories[0],
       searchCategory: null,
-      search: '',
+      searchItem: null,
       searchResult: null,
       menu: this.categories.filter(function (category) {
         return category.name !== _this.popular_menu;
@@ -8148,14 +8147,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {
-    search: function search() {
-      if (this.search) {
+    searchItem: function searchItem() {
+      if (this.searchItem) {
         var fuse = new fuse_js__WEBPACK_IMPORTED_MODULE_0__["default"](this.menu, {
           keys: ['name'],
           includeScore: true,
           tokenize: true
         });
-        this.searchResult = fuse.search(this.search).filter(function (result) {
+        this.searchResult = fuse.search(this.searchItem).filter(function (result) {
           return result.score < 0.5;
         }).map(function (result) {
           return result.item;
@@ -8163,14 +8162,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  mounted: function mounted() {
-    this.$refs.input.focus();
-  },
   methods: {
-    select: function select(selected) {
-      this.search = null;
+    select: function select(categoryId) {
+      this.searchItem = '';
       this.currentCategory = this.categories.find(function (category) {
-        return category.id === selected;
+        return category.id === categoryId;
       });
     },
     place: function place(order) {
@@ -62701,24 +62697,23 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
+                    value: _vm.searchItem,
+                    expression: "searchItem"
                   }
                 ],
-                ref: "input",
                 staticClass: "form-input",
                 attrs: {
                   type: "text",
-                  placeholder: "Search…",
+                  placeholder: "Search menu...",
                   spellcheck: "false"
                 },
-                domProps: { value: _vm.search },
+                domProps: { value: _vm.searchItem },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.search = $event.target.value
+                    _vm.searchItem = $event.target.value
                   }
                 }
               })
@@ -62762,7 +62757,9 @@ var render = function() {
               _c("div", { staticClass: "px-8 uppercase" }, [
                 _vm._v(
                   "\n            " +
-                    _vm._s(_vm.search ? "Result" : _vm.currentCategory.name) +
+                    _vm._s(
+                      _vm.searchItem ? "Result" : _vm.currentCategory.name
+                    ) +
                     "\n          "
                 )
               ]),
@@ -62773,7 +62770,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm.search
+          _vm.searchItem
             ? _c(
                 "div",
                 { staticClass: "grid grid-cols-1 gap-8 p-8" },
@@ -79782,7 +79779,7 @@ function route(name, params, absolute, customZiggy) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/keunbae/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
+module.exports = __webpack_require__(/*! /home/y/code/matsusushi/resources/js/admin-app.js */"./resources/js/admin-app.js");
 
 
 /***/ })
