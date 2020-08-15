@@ -15,7 +15,7 @@ Vue.prototype.$route = (...args) => Route(...args).url()
 Vue.prototype._ = _
 
 const app = document.getElementById('app')
-const pages = require.context('./', true, /\.vue$/i)
+const pages = require.context('./Admin', true, /\.vue$/i)
 const shared = require.context('./Shared', true, /\.vue$/i)
 shared.keys().map(key =>
   Vue.component(
@@ -32,7 +32,7 @@ new Vue({
     h(InertiaApp, {
       props: {
         initialPage: JSON.parse(app.dataset.page),
-        resolveComponent: page => pages(`./Admin/${page}.vue`).default,
+        resolveComponent: page => pages(`./${page}.vue`).default,
         transformProps: props => {
           return {
             ...props,

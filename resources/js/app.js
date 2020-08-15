@@ -18,14 +18,14 @@ window.flash = function(message, level = 'success', ttl = 5) {
   })
 }
 
-const files = require.context('./components', true, /\.vue$/i)
-files.keys().map(key =>
+const components = require.context('./components', true, /\.vue$/i)
+components.keys().map(key =>
   Vue.component(
     key
       .split('/')
       .pop()
       .split('.')[0],
-    files(key).default
+    components(key).default
   )
 )
 

@@ -27,7 +27,7 @@
             v-model="searchItem"
             class="form-input"
             type="text"
-            placeholder="Search menu..."
+            placeholder="Search menu"
             spellcheck="false"
           />
         </div>
@@ -49,7 +49,7 @@
         <div class="hidden md:flex flex-col items-center">
           <div class="text-3xl text-gray-800 space-y-2">
             <div class="px-8 uppercase">
-              {{ searchItem ? 'Result' : currentCategory.name }}
+              {{ searchItem ? 'Results' : currentCategory.name }}
             </div>
             <hr class="border-b border-gray-400 border-t py-2px" />
           </div>

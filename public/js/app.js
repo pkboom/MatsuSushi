@@ -52869,7 +52869,7 @@ var render = function() {
                 staticClass: "form-input",
                 attrs: {
                   type: "text",
-                  placeholder: "Search menu...",
+                  placeholder: "Search menu",
                   spellcheck: "false"
                 },
                 domProps: { value: _vm.searchItem },
@@ -52923,7 +52923,7 @@ var render = function() {
                 _vm._v(
                   "\n            " +
                     _vm._s(
-                      _vm.searchItem ? "Result" : _vm.currentCategory.name
+                      _vm.searchItem ? "Results" : _vm.currentCategory.name
                     ) +
                     "\n          "
                 )
@@ -67639,10 +67639,10 @@ window.flash = function (message) {
   });
 };
 
-var files = __webpack_require__("./resources/js/components sync recursive \\.vue$/");
+var components = __webpack_require__("./resources/js/components sync recursive \\.vue$/");
 
-files.keys().map(function (key) {
-  return vue__WEBPACK_IMPORTED_MODULE_0__["default"].component(key.split('/').pop().split('.')[0], files(key)["default"]);
+components.keys().map(function (key) {
+  return vue__WEBPACK_IMPORTED_MODULE_0__["default"].component(key.split('/').pop().split('.')[0], components(key)["default"]);
 });
 
 var shared = __webpack_require__("./resources/js/Shared sync recursive \\.vue$/");
