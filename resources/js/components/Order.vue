@@ -27,7 +27,7 @@
             v-model="searchItem"
             class="form-input"
             type="text"
-            placeholder="Search menu"
+            placeholder="Search in menu"
             spellcheck="false"
           />
         </div>

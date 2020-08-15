@@ -52869,7 +52869,7 @@ var render = function() {
                 staticClass: "form-input",
                 attrs: {
                   type: "text",
-                  placeholder: "Search menu",
+                  placeholder: "Search in menu",
                   spellcheck: "false"
                 },
                 domProps: { value: _vm.searchItem },
