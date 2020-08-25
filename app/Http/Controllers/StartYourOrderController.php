@@ -93,7 +93,8 @@ class StartYourOrderController extends Controller
             'price_data' => [
                 'currency' => 'cad',
                 'product_data' => [
-                    'name' => $description ? $name.'-'.$description : $name,
+                    'name' => $name,
+                    'description' => $description,
                 ],
                 'unit_amount' => $unit_amount * 100,
             ],
