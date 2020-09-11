@@ -94,7 +94,7 @@ class StartYourOrderController extends Controller
                 'currency' => 'cad',
                 'product_data' => [
                     'name' => $name,
-                    'description' => $description,
+                    'description' => empty(trim($description)) ? null : $description,
                 ],
                 'unit_amount' => $unit_amount * 100,
             ],
