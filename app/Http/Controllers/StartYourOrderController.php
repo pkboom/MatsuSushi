@@ -38,6 +38,10 @@ class StartYourOrderController extends Controller
             'items.required' => 'Cart is empty.',
         ]);
 
+        if (now()->addMinutes(30)->isAfter(now()->modify(Request::input('takeout_time')))) {
+            fail_validation('takeout_time', 'Please, give us at least 30 min.');
+        }
+
         $transaction = Transaction::create(Transaction::format($order));
 
         Stripe::setApiKey(config('services.stripe.secret'));
