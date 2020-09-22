@@ -27,20 +27,20 @@ class ScheduleController extends Controller
     {
         Request::validate([
             'online_order_available' => ['required', 'boolean'],
-            'days' => ['nullable', 'max:50'],
-            'dates' => ['nullable', 'array'],
-            'dates.*' => ['nullable', 'date'],
+            'closed_days' => ['nullable', 'max:50'],
+            'closed_dates' => ['nullable', 'array'],
+            'closed_dates.*' => ['nullable', 'date'],
             'opening_hours_from' => ['required', 'date_format:g:ia'],
             'opening_hours_to' => ['required', 'date_format:g:ia'],
         ]);
 
-        $closed_dates = collect(Request::input('dates'))
+        $closed_dates = collect(Request::input('closed_dates'))
             ->filter()
             ->values()
             ->toArray();
 
         Cache::put('online_order_available', Request::input('online_order_available'));
-        Cache::put('closed_days', Request::input('days'));
+        Cache::put('closed_days', Request::input('closed_days'));
         Cache::put('closed_dates', $closed_dates);
         Cache::put('opening_hours_from', Request::input('opening_hours_from'));
         Cache::put('opening_hours_to', Request::input('opening_hours_to'));

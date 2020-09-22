@@ -24,7 +24,7 @@
               <div class="flex items-center">
                 <input
                   id="sundays"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -35,7 +35,7 @@
               <div class="flex items-center">
                 <input
                   id="mondays"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -46,7 +46,7 @@
               <div class="flex items-center">
                 <input
                   id="tuesdays"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -57,7 +57,7 @@
               <div class="flex items-center">
                 <input
                   id="wendesdays"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -68,7 +68,7 @@
               <div class="flex items-center">
                 <input
                   id="thursdays"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -79,7 +79,7 @@
               <div class="flex items-center">
                 <input
                   id="fridays"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -90,7 +90,7 @@
               <div class="flex items-center">
                 <input
                   id="saturdays"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -101,7 +101,7 @@
               <div class="flex items-center">
                 <input
                   id="everyday"
-                  v-model="form.days"
+                  v-model="form.closed_days"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -109,8 +109,8 @@
                 />
                 <label for="everyday" class="ml-2">We work everyday</label>
               </div>
-              <div v-if="$page.errors.first('days')" class="form-error">
-                {{ $page.errors.first('days') }}
+              <div v-if="$page.errors.first('closed_days')" class="form-error">
+                {{ $page.errors.first('closed_days') }}
               </div>
             </div>
           </div>
@@ -130,29 +130,29 @@
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
-              v-model="form.dates[0]"
-              :error="$page.errors.first('dates.0')"
+              v-model="form.closed_dates[0]"
+              :error="$page.errors.first('closed_dates.0')"
               label="No reservation date"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
-              v-model="form.dates[1]"
-              :error="$page.errors.first('dates.1')"
+              v-model="form.closed_dates[1]"
+              :error="$page.errors.first('closed_dates.1')"
               label="No reservation date"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
-              v-model="form.dates[2]"
-              :error="$page.errors.first('dates.2')"
+              v-model="form.closed_dates[2]"
+              :error="$page.errors.first('closed_dates.2')"
               label="No reservation date"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
-              v-model="form.dates[3]"
-              :error="$page.errors.first('dates.3')"
+              v-model="form.closed_dates[3]"
+              :error="$page.errors.first('closed_dates.3')"
               label="No reservation date"
             />
           </div>
@@ -178,13 +178,7 @@ export default {
   data() {
     return {
       sending: false,
-      form: {
-        online_order_available: this.schedule.online_order_available,
-        days: this.schedule.closed_days,
-        dates: this.schedule.closed_dates,
-        opening_hours_from: this.schedule.opening_hours_from,
-        opening_hours_to: this.schedule.opening_hours_to,
-      },
+      form: this.schedule,
     }
   },
   methods: {

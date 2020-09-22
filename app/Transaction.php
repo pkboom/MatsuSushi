@@ -12,8 +12,6 @@ use Stripe\Stripe;
 
 class Transaction extends Model
 {
-    const ONLINE_ORDER_AVAILABLE = false;
-
     const TAX = 0.13;
 
     const TYPE = [
