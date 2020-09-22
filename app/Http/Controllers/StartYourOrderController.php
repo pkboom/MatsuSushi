@@ -15,9 +15,15 @@ class StartYourOrderController extends Controller
 {
     public function create()
     {
+        $onlineOrderAvailable = Cache::get('online_order_available', false);
+
+        if (now()->isClosed()) {
+            $onlineOrderAvailable = false;
+        }
+
         return view('start-your-order', [
             'online_order' => [
-                'available' => Cache::get('online_order_available', false),
+                'available' => $onlineOrderAvailable,
             ],
         ]);
     }

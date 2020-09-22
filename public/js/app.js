@@ -67911,7 +67911,6 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].config.productionTip = false;
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(v_click_outside__WEBPACK_IMPORTED_MODULE_1___default.a);
 window.events = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]();
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.csrfToken = window.App.csrfToken;
 
 window.flash = function (message) {
   var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'success';

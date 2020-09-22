@@ -15,7 +15,7 @@ class ScheduleController extends Controller
         return Inertia::render('Schedule/Index', [
             'schedule' => [
                 'online_order_available' => Cache::get('online_order_available'),
-                'closed_days' => Cache::get('closed_days'),
+                'closed_day' => Cache::get('closed_day'),
                 'closed_dates' => Cache::get('closed_dates', []),
                 'opening_hours_from' => Cache::get('opening_hours_from'),
                 'opening_hours_to' => Cache::get('opening_hours_to'),
@@ -27,7 +27,7 @@ class ScheduleController extends Controller
     {
         Request::validate([
             'online_order_available' => ['required', 'boolean'],
-            'closed_days' => ['nullable', 'max:50'],
+            'closed_day' => ['nullable', 'max:50'],
             'closed_dates' => ['nullable', 'array'],
             'closed_dates.*' => ['nullable', 'date'],
             'opening_hours_from' => ['required', 'date_format:g:ia'],
@@ -40,7 +40,7 @@ class ScheduleController extends Controller
             ->toArray();
 
         Cache::put('online_order_available', Request::input('online_order_available'));
-        Cache::put('closed_days', Request::input('closed_days'));
+        Cache::put('closed_day', Request::input('closed_day'));
         Cache::put('closed_dates', $closed_dates);
         Cache::put('opening_hours_from', Request::input('opening_hours_from'));
         Cache::put('opening_hours_to', Request::input('opening_hours_to'));

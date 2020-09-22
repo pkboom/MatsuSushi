@@ -24,7 +24,7 @@
               <div class="flex items-center">
                 <input
                   id="sundays"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -35,7 +35,7 @@
               <div class="flex items-center">
                 <input
                   id="mondays"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -46,7 +46,7 @@
               <div class="flex items-center">
                 <input
                   id="tuesdays"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -57,7 +57,7 @@
               <div class="flex items-center">
                 <input
                   id="wendesdays"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -68,7 +68,7 @@
               <div class="flex items-center">
                 <input
                   id="thursdays"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -79,7 +79,7 @@
               <div class="flex items-center">
                 <input
                   id="fridays"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -90,7 +90,7 @@
               <div class="flex items-center">
                 <input
                   id="saturdays"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -101,7 +101,7 @@
               <div class="flex items-center">
                 <input
                   id="everyday"
-                  v-model="form.closed_days"
+                  v-model="form.closed_day"
                   type="radio"
                   class="form-radio"
                   name="option"
@@ -109,8 +109,8 @@
                 />
                 <label for="everyday" class="ml-2">We work everyday</label>
               </div>
-              <div v-if="$page.errors.first('closed_days')" class="form-error">
-                {{ $page.errors.first('closed_days') }}
+              <div v-if="$page.errors.first('closed_day')" class="form-error">
+                {{ $page.errors.first('closed_day') }}
               </div>
             </div>
           </div>

@@ -31,11 +31,6 @@ class Reservation extends Model
         return $this->reserved_at->format('h:i a');
     }
 
-    public static function onClosedDays($reserved_at)
-    {
-        return $reserved_at->dayOfWeek === (int) Cache::get('closed_days');
-    }
-
     public static function onClosedDates($reserved_at)
     {
         return collect(Cache::get('closed_dates'))->contains(function ($date) use ($reserved_at) {

@@ -58002,8 +58002,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
@@ -58013,10 +58013,10 @@ var render = function() {
                         name: "option",
                         value: "0"
                       },
-                      domProps: { checked: _vm._q(_vm.form.closed_days, "0") },
+                      domProps: { checked: _vm._q(_vm.form.closed_day, "0") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", "0")
+                          return _vm.$set(_vm.form, "closed_day", "0")
                         }
                       }
                     }),
@@ -58034,8 +58034,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
@@ -58045,10 +58045,10 @@ var render = function() {
                         name: "option",
                         value: "1"
                       },
-                      domProps: { checked: _vm._q(_vm.form.closed_days, "1") },
+                      domProps: { checked: _vm._q(_vm.form.closed_day, "1") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", "1")
+                          return _vm.$set(_vm.form, "closed_day", "1")
                         }
                       }
                     }),
@@ -58066,8 +58066,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
@@ -58077,10 +58077,10 @@ var render = function() {
                         name: "option",
                         value: "2"
                       },
-                      domProps: { checked: _vm._q(_vm.form.closed_days, "2") },
+                      domProps: { checked: _vm._q(_vm.form.closed_day, "2") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", "2")
+                          return _vm.$set(_vm.form, "closed_day", "2")
                         }
                       }
                     }),
@@ -58098,8 +58098,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
@@ -58109,10 +58109,10 @@ var render = function() {
                         name: "option",
                         value: "3"
                       },
-                      domProps: { checked: _vm._q(_vm.form.closed_days, "3") },
+                      domProps: { checked: _vm._q(_vm.form.closed_day, "3") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", "3")
+                          return _vm.$set(_vm.form, "closed_day", "3")
                         }
                       }
                     }),
@@ -58130,8 +58130,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
@@ -58141,10 +58141,10 @@ var render = function() {
                         name: "option",
                         value: "4"
                       },
-                      domProps: { checked: _vm._q(_vm.form.closed_days, "4") },
+                      domProps: { checked: _vm._q(_vm.form.closed_day, "4") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", "4")
+                          return _vm.$set(_vm.form, "closed_day", "4")
                         }
                       }
                     }),
@@ -58162,8 +58162,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
@@ -58173,10 +58173,10 @@ var render = function() {
                         name: "option",
                         value: "5"
                       },
-                      domProps: { checked: _vm._q(_vm.form.closed_days, "5") },
+                      domProps: { checked: _vm._q(_vm.form.closed_day, "5") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", "5")
+                          return _vm.$set(_vm.form, "closed_day", "5")
                         }
                       }
                     }),
@@ -58194,8 +58194,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
@@ -58205,10 +58205,10 @@ var render = function() {
                         name: "option",
                         value: "6"
                       },
-                      domProps: { checked: _vm._q(_vm.form.closed_days, "6") },
+                      domProps: { checked: _vm._q(_vm.form.closed_day, "6") },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", "6")
+                          return _vm.$set(_vm.form, "closed_day", "6")
                         }
                       }
                     }),
@@ -58226,19 +58226,19 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.closed_days,
-                          expression: "form.closed_days"
+                          value: _vm.form.closed_day,
+                          expression: "form.closed_day"
                         }
                       ],
                       staticClass: "form-radio",
                       attrs: { id: "everyday", type: "radio", name: "option" },
                       domProps: {
                         value: null,
-                        checked: _vm._q(_vm.form.closed_days, null)
+                        checked: _vm._q(_vm.form.closed_day, null)
                       },
                       on: {
                         change: function($event) {
-                          return _vm.$set(_vm.form, "closed_days", null)
+                          return _vm.$set(_vm.form, "closed_day", null)
                         }
                       }
                     }),
@@ -58250,11 +58250,11 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm.$page.errors.first("closed_days")
+                  _vm.$page.errors.first("closed_day")
                     ? _c("div", { staticClass: "form-error" }, [
                         _vm._v(
                           "\n              " +
-                            _vm._s(_vm.$page.errors.first("closed_days")) +
+                            _vm._s(_vm.$page.errors.first("closed_day")) +
                             "\n            "
                         )
                       ])

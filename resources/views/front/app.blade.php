@@ -22,12 +22,6 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default" defer></script>
 
-    <script>
-        window.App = {!! json_encode([
-			'csrfToken' => csrf_token(),
-		]) !!};
-    </script>
-    
 	@yield('header')
 
 </head>

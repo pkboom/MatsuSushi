@@ -3,7 +3,7 @@
 ## Cache keys
 
 Item::cacheKey()
-closed_days
+closed_day
 closed_dates
 new_order
 new_reservation

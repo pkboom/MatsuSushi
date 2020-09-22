@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\UrlWindow;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Request;
@@ -21,18 +22,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Date::use(CarbonImmutable::class);
-        CarbonImmutable::setWeekStartsAt(CarbonImmutable::SUNDAY);
-        CarbonImmutable::setWeekEndsAt(CarbonImmutable::SATURDAY);
+        CarbonImmutable::setLocale('en_US');
 
         Inertia::version(function () {
             return md5_file(public_path('mix-manifest.json'));
         });
 
         Inertia::share('app.name', Config::get('app.name'));
-
-        Inertia::share('csrfToken', function () {
-            return csrf_token();
-        });
 
         Inertia::share('errors', function () {
             return Session::get('errors') ? Session::get('errors')->getBag('default')->getMessages() : (object) [];
@@ -61,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerLengthAwarePaginator();
         $this->registerRequestMacros();
+        $this->registerCarbonMacros();
     }
 
     protected function registerLengthAwarePaginator()
@@ -148,6 +145,13 @@ class AppServiceProvider extends ServiceProvider
                 $this->filled('matsu_honeypot') ||
                 is_null($time) ||
                 $time->isFuture();
+        });
+    }
+
+    public function registerCarbonMacros()
+    {
+        CarbonImmutable::macro('isClosed', function () {
+            return (string) $this->dayOfWeek === Cache::get('closed_day');
         });
     }
 }

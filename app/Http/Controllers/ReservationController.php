@@ -39,7 +39,7 @@ class ReservationController extends Controller
         $reserved_at = CarbonImmutable::parse(Request::input('date'))
             ->modify(Request::input('time'));
 
-        if (Reservation::onClosedDays($reserved_at)) {
+        if ($reserved_at->isClosed()) {
             fail_validation('date', 'Sorry, we are closed on '.$reserved_at->format('l').'s.');
         }
 
