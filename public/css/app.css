@@ -1774,12 +1774,6 @@ input:focus,
   margin-bottom: calc(0.5rem * var(--space-y-reverse));
 }
 
-.space-x-2 > :not(template) ~ :not(template) {
-  --space-x-reverse: 0;
-  margin-right: calc(0.5rem * var(--space-x-reverse));
-  margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
-}
-
 .space-y-3 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--space-y-reverse)));
@@ -2291,11 +2285,6 @@ input:focus,
   margin-right: auto;
 }
 
-.-my-1 {
-  margin-top: -0.25rem;
-  margin-bottom: -0.25rem;
-}
-
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -2370,10 +2359,6 @@ input:focus,
 
 .ml-auto {
   margin-left: auto;
-}
-
-.-mr-1 {
-  margin-right: -0.25rem;
 }
 
 .-mr-6 {
@@ -2905,6 +2890,12 @@ input:focus,
   --text-opacity: 1;
   color: #233876;
   color: rgba(35, 56, 118, var(--text-opacity));
+}
+
+.text-indigo-500 {
+  --text-opacity: 1;
+  color: #6875f5;
+  color: rgba(104, 117, 245, var(--text-opacity));
 }
 
 .group:hover .group-hover\:text-white {
@@ -4078,14 +4069,6 @@ input:focus,
 
   .lg\:inline {
     display: inline;
-  }
-
-  .lg\:flex {
-    display: flex;
-  }
-
-  .lg\:hidden {
-    display: none;
   }
 
   .lg\:p-4 {

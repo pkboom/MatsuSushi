@@ -5492,6 +5492,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     dates: Object,
@@ -57793,103 +57799,119 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full h-full p-1 lg:p-4" }, [
-    _c(
-      "div",
-      { staticClass: "grid gap-2 grid-cols-7 mt-4 text-sm" },
-      [
-        _vm._l(_vm.daysOfWeek, function(day) {
-          return _c("div", { key: day, staticClass: "bg-white p-4 rounded" }, [
-            _vm._v("\n      " + _vm._s(day) + "\n    ")
-          ])
-        }),
-        _vm._v(" "),
-        _vm._l(_vm.dates, function(reservations, date) {
-          return _c(
-            "div",
-            {
-              key: date,
-              staticClass: "relative bg-white p-4 rounded space-y-2"
-            },
-            [
-              _vm.today === date
-                ? _c("div", { staticClass: "text-red-500 font-bold" }, [
-                    _vm._v("\n        " + _vm._s(date) + "\n      ")
-                  ])
-                : _c("div", { staticClass: "text-gray-500" }, [
-                    _vm._v("\n        " + _vm._s(date) + "\n      ")
-                  ]),
-              _vm._v(" "),
-              _vm._l(reservations, function(reservation, index) {
-                return _c("div", { key: reservation.id }, [
-                  index > 0
-                    ? _c("hr", {
-                        staticClass:
-                          "my-2 border-2 border-blue-400 rounded w-10"
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "rounded space-y-2 overflow-hidden" },
-                    [
-                      _c(
-                        "inertia-link",
-                        {
+  return _c(
+    "div",
+    { staticClass: "w-full h-full p-1 lg:p-4" },
+    [
+      _c(
+        "inertia-link",
+        {
+          staticClass: "text-indigo-500 text-xs underline",
+          attrs: { href: _vm.$route("admin.dashboard") }
+        },
+        [_vm._v("\n    Go to dashboard\n  ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "grid gap-2 grid-cols-7 mt-4 text-sm" },
+        [
+          _vm._l(_vm.daysOfWeek, function(day) {
+            return _c(
+              "div",
+              { key: day, staticClass: "bg-white p-4 rounded" },
+              [_vm._v("\n      " + _vm._s(day) + "\n    ")]
+            )
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.dates, function(reservations, date) {
+            return _c(
+              "div",
+              {
+                key: date,
+                staticClass: "relative bg-white p-4 rounded space-y-2"
+              },
+              [
+                _vm.today === date
+                  ? _c("div", { staticClass: "text-red-500 font-bold" }, [
+                      _vm._v("\n        " + _vm._s(date) + "\n      ")
+                    ])
+                  : _c("div", { staticClass: "text-gray-500" }, [
+                      _vm._v("\n        " + _vm._s(date) + "\n      ")
+                    ]),
+                _vm._v(" "),
+                _vm._l(reservations, function(reservation, index) {
+                  return _c("div", { key: reservation.id }, [
+                    index > 0
+                      ? _c("hr", {
                           staticClass:
-                            "block underline leading-tight text-blue-800",
-                          attrs: {
-                            href: _vm.$route(
-                              "admin.reservations.edit",
-                              reservation.id
+                            "my-2 border-2 border-blue-400 rounded w-10"
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "rounded space-y-2 overflow-hidden" },
+                      [
+                        _c(
+                          "inertia-link",
+                          {
+                            staticClass:
+                              "block underline leading-tight text-blue-800",
+                            attrs: {
+                              href: _vm.$route(
+                                "admin.reservations.edit",
+                                reservation.id
+                              )
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(reservation.name) +
+                                "\n          "
                             )
-                          }
-                        },
-                        [
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", {}, [
                           _vm._v(
                             "\n            " +
-                              _vm._s(reservation.name) +
+                              _vm._s(reservation.people) +
                               "\n          "
                           )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", {}, [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(reservation.people) +
-                            "\n          "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {}, [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(reservation.time) +
-                            "\n          "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {}, [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(reservation.phone) +
-                            "\n          "
-                        )
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              })
-            ],
-            2
-          )
-        })
-      ],
-      2
-    )
-  ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {}, [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(reservation.time) +
+                              "\n          "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {}, [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(reservation.phone) +
+                              "\n          "
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                })
+              ],
+              2
+            )
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
