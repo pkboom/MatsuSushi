@@ -17,32 +17,6 @@
           </div>
         </div>
       </div>
-      <div class="hidden lg:flex space-x-2">
-        <button class="btn" @click="showReservations">Reservations</button>
-        <button class="btn" @click="alarmTest">Alarm Test</button>
-      </div>
-      <dropdown class="lg:hidden btn" placement="bottom-end">
-        <div class="flex items-center cursor-pointer select-none">
-          <div>
-            <span>Actions</span>
-          </div>
-          <icon class="-mr-1 -my-1 5 fill-white h-5 w-5" name="cheveron-down" />
-        </div>
-        <template v-slot:dropdown>
-          <div class="mt-2 py-2 shadow-lg bg-white rounded border text-sm">
-            <div class="py-3 hover:bg-gray-200">
-              <button class="px-2" @click="showReservations">
-                Reservations
-              </button>
-            </div>
-            <div class="py-3 hover:bg-gray-200">
-              <button class="px-2" @click="alarmTest">
-                Alarm Test
-              </button>
-            </div>
-          </div>
-        </template>
-      </dropdown>
     </div>
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
       <div
@@ -152,9 +126,6 @@ export default {
     clearTimeout(this.timeoutId)
   },
   methods: {
-    alarmTest() {
-      document.getElementById('alarm').play()
-    },
     isNew(createdAt) {
       if (
         moment(createdAt, 'YYYY-MM-DD hh:mm a').isAfter(
@@ -163,9 +134,6 @@ export default {
       ) {
         return true
       }
-    },
-    showReservations() {
-      this.$inertia.visit(this.$route('admin.reservations.show'))
     },
   },
 }

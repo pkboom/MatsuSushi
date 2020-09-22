@@ -1,7 +1,12 @@
 <template>
   <admin-layout title="Schedule">
-    <div class="mb-8">
-      <breadcrumb name="Schedule" />
+    <div class="flex justify-between items-center">
+      <div class="mb-8">
+        <breadcrumb name="Schedule" />
+      </div>
+      <div class="mb-6 flex justify-end items-center max-w-2xl">
+        <button class="btn" @click="alarmTest">Alarm Test</button>
+      </div>
     </div>
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
       <form @submit.prevent="submit">
@@ -161,6 +166,7 @@
         </div>
       </form>
     </div>
+    <audio id="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
   </admin-layout>
 </template>
 
@@ -187,6 +193,9 @@ export default {
       this.$inertia
         .post(this.$route('admin.schedule.store'), this.form)
         .then(() => (this.sending = false))
+    },
+    alarmTest() {
+      document.getElementById('alarm').play()
     },
   },
 }

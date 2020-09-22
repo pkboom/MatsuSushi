@@ -4517,32 +4517,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -4574,16 +4548,10 @@ __webpack_require__.r(__webpack_exports__);
     clearTimeout(this.timeoutId);
   },
   methods: {
-    alarmTest: function alarmTest() {
-      document.getElementById('alarm').play();
-    },
     isNew: function isNew(createdAt) {
       if (moment__WEBPACK_IMPORTED_MODULE_0___default()(createdAt, 'YYYY-MM-DD hh:mm a').isAfter(moment__WEBPACK_IMPORTED_MODULE_0___default()().subtract(1, 'hours'))) {
         return true;
       }
-    },
-    showReservations: function showReservations() {
-      this.$inertia.visit(this.$route('admin.reservations.show'));
     }
   }
 });
@@ -5430,9 +5398,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5716,6 +5681,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     schedule: Object
@@ -5740,6 +5711,9 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.post(this.$route('admin.schedule.store'), this.form).then(function () {
         return _this.sending = false;
       });
+    },
+    alarmTest: function alarmTest() {
+      document.getElementById('alarm').play();
     }
   }
 });
@@ -56091,124 +56065,40 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("admin-layout", { attrs: { title: "Dashboard" } }, [
-    _c(
-      "div",
-      { staticClass: "flex justify-between items-end mb-4" },
-      [
-        _c("div", [
-          _c(
-            "div",
-            { staticClass: "flex font-bold items-baseline text-xl pb-1" },
-            [
-              _c("div", { staticClass: "whitespace-no-wrap" }, [
-                _vm._v("Today's orders")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "font-normal text-xs text-gray-400 px-1" },
-                [
-                  _vm._v(
-                    "\n          (" + _vm._s(_vm.currentTime) + ")\n        "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _vm.new_reservation
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
-                    },
-                    [_vm._v("\n          Reservation\n        ")]
-                  )
-                : _vm._e()
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "hidden lg:flex space-x-2" }, [
-          _c(
-            "button",
-            { staticClass: "btn", on: { click: _vm.showReservations } },
-            [_vm._v("Reservations")]
-          ),
-          _vm._v(" "),
-          _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
-            _vm._v("Alarm Test")
-          ])
-        ]),
-        _vm._v(" "),
+    _c("div", { staticClass: "flex justify-between items-end mb-4" }, [
+      _c("div", [
         _c(
-          "dropdown",
-          {
-            staticClass: "lg:hidden btn",
-            attrs: { placement: "bottom-end" },
-            scopedSlots: _vm._u([
-              {
-                key: "dropdown",
-                fn: function() {
-                  return [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "mt-2 py-2 shadow-lg bg-white rounded border text-sm"
-                      },
-                      [
-                        _c("div", { staticClass: "py-3 hover:bg-gray-200" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "px-2",
-                              on: { click: _vm.showReservations }
-                            },
-                            [
-                              _vm._v(
-                                "\n              Reservations\n            "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "py-3 hover:bg-gray-200" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "px-2",
-                              on: { click: _vm.alarmTest }
-                            },
-                            [_vm._v("\n              Alarm Test\n            ")]
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                },
-                proxy: true
-              }
-            ])
-          },
+          "div",
+          { staticClass: "flex font-bold items-baseline text-xl pb-1" },
           [
+            _c("div", { staticClass: "whitespace-no-wrap" }, [
+              _vm._v("Today's orders")
+            ]),
+            _vm._v(" "),
             _c(
               "div",
-              { staticClass: "flex items-center cursor-pointer select-none" },
+              { staticClass: "font-normal text-xs text-gray-400 px-1" },
               [
-                _c("div", [_c("span", [_vm._v("Actions")])]),
-                _vm._v(" "),
-                _c("icon", {
-                  staticClass: "-mr-1 -my-1 5 fill-white h-5 w-5",
-                  attrs: { name: "cheveron-down" }
-                })
-              ],
-              1
-            )
+                _vm._v(
+                  "\n          (" + _vm._s(_vm.currentTime) + ")\n        "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm.new_reservation
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
+                  },
+                  [_vm._v("\n          Reservation\n        ")]
+                )
+              : _vm._e()
           ]
         )
-      ],
-      1
-    ),
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -57678,47 +57568,38 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "mb-6 flex justify-between items-center" },
-        [
-          _c("search-filter", {
-            staticClass: "w-full max-w-lg mr-4",
-            attrs: { "filter-show": false },
-            on: { reset: _vm.reset },
-            model: {
-              value: _vm.form.search,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "search", $$v)
+      _c("div", { staticClass: "mb-6 flex justify-end items-center" }, [
+        _c(
+          "div",
+          { staticClass: "flex" },
+          [
+            _c(
+              "inertia-link",
+              {
+                staticClass: "btn",
+                attrs: { href: _vm.$route("admin.reservations.show") }
               },
-              expression: "form.search"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex" },
-            [
-              _c(
-                "inertia-link",
-                {
-                  staticClass: "btn ml-2",
-                  attrs: { href: _vm.$route("admin.reservations.create") }
-                },
-                [
-                  _c("span", [_vm._v("Create")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "hidden lg:inline" }, [
-                    _vm._v("Reservation")
-                  ])
-                ]
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
+              [_c("span", [_vm._v("Calendar")])]
+            ),
+            _vm._v(" "),
+            _c(
+              "inertia-link",
+              {
+                staticClass: "btn ml-2",
+                attrs: { href: _vm.$route("admin.reservations.create") }
+              },
+              [
+                _c("span", [_vm._v("Create")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "hidden lg:inline" }, [
+                  _vm._v("Reservation")
+                ])
+              ]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "bg-white rounded shadow overflow-x-auto" }, [
         _c(
@@ -58039,12 +57920,24 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("admin-layout", { attrs: { title: "Schedule" } }, [
-    _c(
-      "div",
-      { staticClass: "mb-8" },
-      [_c("breadcrumb", { attrs: { name: "Schedule" } })],
-      1
-    ),
+    _c("div", { staticClass: "flex justify-between items-center" }, [
+      _c(
+        "div",
+        { staticClass: "mb-8" },
+        [_c("breadcrumb", { attrs: { name: "Schedule" } })],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mb-6 flex justify-end items-center max-w-2xl" },
+        [
+          _c("button", { staticClass: "btn", on: { click: _vm.alarmTest } }, [
+            _vm._v("Alarm Test")
+          ])
+        ]
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -58501,7 +58394,15 @@ var render = function() {
           ]
         )
       ]
-    )
+    ),
+    _vm._v(" "),
+    _c("audio", {
+      attrs: {
+        id: "alarm",
+        src: "/sound/jingle-bells-sms.ogg",
+        preload: "auto"
+      }
+    })
   ])
 }
 var staticRenderFns = []

@@ -3,14 +3,11 @@
     <div class="mb-8">
       <breadcrumb name="Reservations" />
     </div>
-    <div class="mb-6 flex justify-between items-center">
-      <search-filter
-        v-model="form.search"
-        class="w-full max-w-lg mr-4"
-        :filter-show="false"
-        @reset="reset"
-      />
+    <div class="mb-6 flex justify-end items-center">
       <div class="flex">
+        <inertia-link class="btn" :href="$route('admin.reservations.show')">
+          <span>Calendar</span>
+        </inertia-link>
         <inertia-link
           class="btn ml-2"
           :href="$route('admin.reservations.create')"
