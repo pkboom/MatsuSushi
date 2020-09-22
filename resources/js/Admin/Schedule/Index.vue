@@ -1,15 +1,18 @@
 <template>
-  <admin-layout title="Disable Reservation">
+  <admin-layout title="Schedule">
     <div class="mb-8">
-      <breadcrumb
-        :previous-url="$route('admin.reservations')"
-        previous-name="Reservations"
-        name="Disable"
-      />
+      <breadcrumb name="Schedule" />
     </div>
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
       <form @submit.prevent="submit">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+          <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <radio-input
+              v-model="form.online_order_available"
+              :error="$page.errors.first('online_order_available')"
+              label="Enable online order"
+            />
+          </div>
           <div class="pr-6 pb-8 w-full">
             <div class="flex flex-col space-y-3">
               <div>We are closed on</div>
@@ -107,6 +110,20 @@
             </div>
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <time-input
+              v-model="form.opening_hours_from"
+              :error="$page.errors.first('opening_hours_from')"
+              label="Opening hours(from)"
+            />
+          </div>
+          <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <time-input
+              v-model="form.opening_hours_to"
+              :error="$page.errors.first('opening_hours_to')"
+              label="Opening hours(to)"
+            />
+          </div>
+          <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
               v-model="form.dates[0]"
               :error="$page.errors.first('dates.0')"
@@ -139,7 +156,7 @@
           class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
         >
           <loading-button :loading="sending" class="btn" type="submit">
-            Complete Setup
+            Update Opening Hours
           </loading-button>
         </div>
       </form>
@@ -150,16 +167,17 @@
 <script>
 export default {
   props: {
-    closed_days: String,
-    closed_dates: Array,
+    schedule: Object,
   },
-  remember: 'form',
   data() {
     return {
       sending: false,
       form: {
-        days: this.closed_days,
-        dates: this.closed_dates,
+        online_order_available: this.schedule.online_order_available,
+        days: this.schedule.closed_days,
+        dates: this.schedule.closed_dates,
+        opening_hours_from: this.schedule.opening_hours_from,
+        opening_hours_to: this.schedule.opening_hours_to,
       },
     }
   },
@@ -167,7 +185,7 @@ export default {
     submit() {
       this.sending = true
       this.$inertia
-        .post(this.$route('admin.reservations.disable.store'), this.form)
+        .post(this.$route('admin.schedule.store'), this.form)
         .then(() => (this.sending = false))
     },
   },

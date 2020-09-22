@@ -48,6 +48,14 @@
         icon="document"
       />
     </div>
+    <div class="mb-4">
+      <menu-item
+        name="Schedule"
+        url="admin/schedule"
+        :link="$route('admin.schedule')"
+        icon="add"
+      />
+    </div>
   </div>
 </template>
 

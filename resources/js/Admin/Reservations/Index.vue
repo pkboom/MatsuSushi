@@ -12,13 +12,6 @@
       />
       <div class="flex">
         <inertia-link
-          class="btn"
-          :href="$route('admin.reservations.disable.create')"
-        >
-          <span>Disable</span>
-          <span class="hidden lg:inline">Reservation</span>
-        </inertia-link>
-        <inertia-link
           class="btn ml-2"
           :href="$route('admin.reservations.create')"
         >

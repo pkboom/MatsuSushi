@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        return Inertia::render('Dashboard/Index', [
+        return Inertia::render('Dashboard', [
             'transactions' => Transaction::with('items')
                 ->date('created_at', Carbon::today())
                 ->where('status', '<>', Transaction::TRANSACTION_FAILED)
@@ -26,7 +26,6 @@ class DashboardController extends Controller
 
                     return $transaction;
                 }),
-            'online_order_enabled' => Cache::get('online_order_enabled', Transaction::ONLINE_ORDER_DISABLED),
             'new_order' => Cache::get('new_order'),
             'new_reservation' => Cache::get('new_reservation'),
             'update_interval' => Transaction::UPDATE_INTERVAL,

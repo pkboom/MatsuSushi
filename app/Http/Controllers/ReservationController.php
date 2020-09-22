@@ -40,7 +40,7 @@ class ReservationController extends Controller
             ->modify(Request::input('time'));
 
         if (Reservation::onClosedDays($reserved_at)) {
-            fail_validation('date', 'Sorry, we are closed on Tuesdays.');
+            fail_validation('date', 'Sorry, we are closed on '.$reserved_at->format('l').'s.');
         }
 
         if (Reservation::onClosedDates($reserved_at)) {

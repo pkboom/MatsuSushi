@@ -20,13 +20,6 @@
       <div class="hidden lg:flex space-x-2">
         <button class="btn" @click="showReservations">Reservations</button>
         <button class="btn" @click="alarmTest">Alarm Test</button>
-        <button class="btn" @click="toggleEnable">
-          {{
-            online_order_enabled
-              ? 'Disable Online Order'
-              : 'Enable Online Order'
-          }}
-        </button>
       </div>
       <dropdown class="lg:hidden btn" placement="bottom-end">
         <div class="flex items-center cursor-pointer select-none">
@@ -45,15 +38,6 @@
             <div class="py-3 hover:bg-gray-200">
               <button class="px-2" @click="alarmTest">
                 Alarm Test
-              </button>
-            </div>
-            <div class="py-3 hover:bg-gray-200">
-              <button class="px-2" @click="toggleEnable">
-                {{
-                  online_order_enabled
-                    ? 'Disable Online Order'
-                    : 'Enable Online Order'
-                }}
               </button>
             </div>
           </div>
@@ -141,7 +125,6 @@ import moment from 'moment'
 export default {
   props: {
     transactions: Array,
-    online_order_enabled: Number,
     new_order: Boolean,
     new_reservation: Boolean,
     update_interval: Number,
@@ -171,11 +154,6 @@ export default {
   methods: {
     alarmTest() {
       document.getElementById('alarm').play()
-    },
-    toggleEnable() {
-      axios.get('/admin/toggle/online/order').then(response => {
-        location.reload()
-      })
     },
     isNew(createdAt) {
       if (
