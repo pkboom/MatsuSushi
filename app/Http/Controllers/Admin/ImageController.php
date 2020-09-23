@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Image;
+use App\Support\Tinify;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
@@ -38,14 +39,26 @@ class ImageController extends Controller
     public function store()
     {
         Request::validate([
-            'file' => ['required', 'image', 'max:5000'],
+            'url' => ['nullable', 'required_if:file,'.null, 'string'],
+            'file' => ['nullable', 'required_if:url,'.null, 'image', 'max:5000'],
         ]);
 
-        Image::create([
-            'filename' => Request::file('file')->store(null, 'public'),
-        ]);
+        if (Request::input('url')) {
+            $image = Tinify::createFromUrl(Request::input('url'));
+        } else {
+            $image = Tinify::createFromPath(Request::file('file')->getRealPath());
+        }
 
-        return response('File uploaded.');
+        $path = $image->resize([
+                'method' => 'fit',
+                'width' => 1280,
+                'height' => 1280,
+            ])
+            ->store(storage_path('app/public/'.hrtime(true).'.png'));
+
+        Image::create(['filename' => $path]);
+
+        return response('Image uploaded.');
     }
 
     public function destroy(Image $image)

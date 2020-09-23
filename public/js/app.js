@@ -2554,6 +2554,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   inheritAttrs: false,
   props: {
@@ -2562,6 +2566,10 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return "file-input-".concat(this._uid);
       }
+    },
+    lable: {
+      type: String,
+      "default": 'Upload'
     },
     error: String
   },
@@ -50736,6 +50744,10 @@ var render = function() {
         "div",
         { staticClass: "relative" },
         [
+          _c("span", { staticClass: "form-label" }, [
+            _vm._v(_vm._s(_vm.lable) + ":")
+          ]),
+          _vm._v(" "),
           _c(
             "input",
             _vm._b(

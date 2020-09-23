@@ -25,7 +25,7 @@
               >
                 <div class="truncate">{{ form.category.name }}</div>
               </div>
-              <template v-slot:option="{ option, selected }">
+              <template v-slot:option="{ option }">
                 <div class="flex items-center justify-between">
                   <div>{{ option.name }}</div>
                 </div>

@@ -157,9 +157,6 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        // resize of image
-        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*

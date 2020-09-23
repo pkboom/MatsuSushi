@@ -10,9 +10,17 @@
     <div class="bg-white rounded shadow overflow-hidden max-w-xl">
       <form @submit.prevent="submit">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+          <div class="pr-6 pb-8 w-full">
+            <text-input
+              v-model="url"
+              :error="$page.errors.first('url')"
+              label="Url"
+            />
+          </div>
           <div class="pb-8 pr-6 w-full">
             <file-input
               :error="$page.errors.first('file')"
+              lable="Upload"
               @input="file = $event"
             />
           </div>
@@ -26,7 +34,7 @@
           class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
         >
           <loading-button :loading="sending" class="btn" type="submit">
-            Upload File
+            Upload Image
           </loading-button>
         </div>
       </form>
@@ -43,6 +51,7 @@ export default {
       sending: false,
       file: null,
       uploadPercentage: 0,
+      url: null,
     }
   },
   watch: {
@@ -58,6 +67,7 @@ export default {
       this.sending = true
 
       let formData = new FormData()
+      formData.append('url', this.url || '')
       formData.append('file', this.file || '')
 
       axios
@@ -73,7 +83,7 @@ export default {
         })
         .then(response => {
           this.$inertia
-            .replace(this.$route('admin.images'))
+            .visit(this.$route('admin.images'))
             .then(() => (this.$page.flash.success = response.data))
         })
         .catch(error => {

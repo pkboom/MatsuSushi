@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="relative">
+      <span v-if="label" class="form-label">{{ lable }}:</span>
       <input
         :id="id"
         type="file"
@@ -11,7 +12,10 @@
       <slot>
         <label :for="id" class="flex justify-center">
           <div v-if="!file" class="py-16 w-full bg-gray-400">
-            <icon name="drag-and-drop" class="flex-shrink-0 w-8 h-8 fill-white mb-4 mx-auto" />
+            <icon
+              name="drag-and-drop"
+              class="flex-shrink-0 w-8 h-8 fill-white mb-4 mx-auto"
+            />
             <div class="text-gray-900 mx-auto text-center">
               <span class="font-bold">Choose a file</span>
               or drag it here.
@@ -45,6 +49,10 @@ export default {
       default() {
         return `file-input-${this._uid}`
       },
+    },
+    lable: {
+      type: String,
+      default: null,
     },
     error: String,
   },

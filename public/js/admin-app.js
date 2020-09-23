@@ -4604,13 +4604,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       sending: false,
       file: null,
-      uploadPercentage: 0
+      uploadPercentage: 0,
+      url: null
     };
   },
   watch: {
@@ -4628,6 +4637,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.sending = true;
       var formData = new FormData();
+      formData.append('url', this.url || '');
       formData.append('file', this.file || '');
       axios.post(this.$route('admin.images.store'), formData, {
         headers: {
@@ -4637,7 +4647,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
         }
       }).then(function (response) {
-        _this2.$inertia.replace(_this2.$route('admin.images')).then(function () {
+        _this2.$inertia.visit(_this2.$route('admin.images')).then(function () {
           return _this2.$page.flash.success = response.data;
         });
       })["catch"](function (error) {
@@ -6517,6 +6527,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   inheritAttrs: false,
   props: {
@@ -6525,6 +6539,10 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return "file-input-".concat(this._uid);
       }
+    },
+    lable: {
+      type: String,
+      "default": 'Upload'
     },
     error: String
   },
@@ -56303,10 +56321,34 @@ var render = function() {
             _c("div", { staticClass: "p-8 -mr-6 -mb-8 flex flex-wrap" }, [
               _c(
                 "div",
+                { staticClass: "pr-6 pb-8 w-full" },
+                [
+                  _c("text-input", {
+                    attrs: {
+                      error: _vm.$page.errors.first("url"),
+                      label: "Url"
+                    },
+                    model: {
+                      value: _vm.url,
+                      callback: function($$v) {
+                        _vm.url = $$v
+                      },
+                      expression: "url"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
                 { staticClass: "pb-8 pr-6 w-full" },
                 [
                   _c("file-input", {
-                    attrs: { error: _vm.$page.errors.first("file") },
+                    attrs: {
+                      error: _vm.$page.errors.first("file"),
+                      lable: "Upload"
+                    },
                     on: {
                       input: function($event) {
                         _vm.file = $event
@@ -56342,7 +56384,7 @@ var render = function() {
                     staticClass: "btn",
                     attrs: { loading: _vm.sending, type: "submit" }
                   },
-                  [_vm._v("\n          Upload File\n        ")]
+                  [_vm._v("\n          Upload Image\n        ")]
                 )
               ],
               1
@@ -56483,7 +56525,6 @@ var render = function() {
                           key: "option",
                           fn: function(ref) {
                             var option = ref.option
-                            var selected = ref.selected
                             return [
                               _c(
                                 "div",
@@ -59587,6 +59628,10 @@ var render = function() {
         "div",
         { staticClass: "relative" },
         [
+          _c("span", { staticClass: "form-label" }, [
+            _vm._v(_vm._s(_vm.lable) + ":")
+          ]),
+          _vm._v(" "),
           _c(
             "input",
             _vm._b(
