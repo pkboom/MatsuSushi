@@ -6542,7 +6542,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     lable: {
       type: String,
-      "default": 'Upload'
+      "default": null
     },
     error: String
   },
@@ -59628,9 +59628,11 @@ var render = function() {
         "div",
         { staticClass: "relative" },
         [
-          _c("span", { staticClass: "form-label" }, [
-            _vm._v(_vm._s(_vm.lable) + ":")
-          ]),
+          _vm.label
+            ? _c("span", { staticClass: "form-label" }, [
+                _vm._v(_vm._s(_vm.lable) + ":")
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "input",

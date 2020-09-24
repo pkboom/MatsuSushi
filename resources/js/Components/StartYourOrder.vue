@@ -1,9 +1,7 @@
 <template>
   <front-layout title="Start Your Order">
     <div class="p-8 max-w-3xl mx-auto">
-      <div class="font-semibold text-xl py-4 border-b">
-        Start Your Order
-      </div>
+      <div class="font-semibold text-xl py-4 border-b">Start Your Order</div>
       <div
         v-if="online_order.available"
         class="bg-white overflow-hidden w-full"
@@ -124,10 +122,10 @@ export default {
       sending: false,
       from: moment().isAfter(moment('11:00am', 'h:mma'))
         ? moment()
-            .add(30, 'minutes')
+            .add(25, 'minutes')
             .format('h:mma')
         : '11:00am',
-      to: '9:30pm',
+      to: '9:35pm',
       form: {
         type: 'delivery',
         first_name: localStorage.getItem('first_name'),

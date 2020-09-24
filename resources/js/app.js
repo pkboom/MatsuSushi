@@ -16,7 +16,7 @@ window.flash = function(message, level = 'success', ttl = 5) {
   })
 }
 
-const components = require.context('./components', true, /\.vue$/i)
+const components = require.context('./Components', true, /\.vue$/i)
 components.keys().map(key =>
   Vue.component(
     key

@@ -46,8 +46,8 @@ class StartYourOrderController extends Controller
             'items.required' => 'Cart is empty.',
         ]);
 
-        if (Request::input('takeout_time') && now()->addMinutes(30)->isAfter(now()->modify(Request::input('takeout_time')))) {
-            fail_validation('takeout_time', 'Please, give us at least 30 min.');
+        if (Request::input('takeout_time') && now()->addMinutes(25)->isAfter(now()->modify(Request::input('takeout_time')))) {
+            fail_validation('takeout_time', 'Please, give us at least 25 min.');
         }
 
         $transaction = Transaction::create(Transaction::format($order));
