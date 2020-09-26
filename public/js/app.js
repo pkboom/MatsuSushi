@@ -2635,7 +2635,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2643,12 +2642,14 @@ __webpack_require__.r(__webpack_exports__);
     online_order: Object
   },
   data: function data() {
+    var _localStorage$getItem;
+
     return {
       sending: false,
       from: moment__WEBPACK_IMPORTED_MODULE_1___default()().isAfter(moment__WEBPACK_IMPORTED_MODULE_1___default()('11:00am', 'h:mma')) ? moment__WEBPACK_IMPORTED_MODULE_1___default()().add(25, 'minutes').format('h:mma') : '11:00am',
       to: '9:35pm',
       form: {
-        type: 'delivery',
+        type: (_localStorage$getItem = localStorage.getItem('type')) !== null && _localStorage$getItem !== void 0 ? _localStorage$getItem : 'delivery',
         first_name: localStorage.getItem('first_name'),
         last_name: localStorage.getItem('last_name'),
         email: localStorage.getItem('email'),
@@ -2683,6 +2684,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/start/your/order', this.form).then(function (response) {
         var _this$form$address;
 
+        localStorage.setItem('type', _this.form.type);
         localStorage.setItem('first_name', _this.form.first_name);
         localStorage.setItem('last_name', _this.form.last_name);
         localStorage.setItem('email', _this.form.email);
@@ -51036,11 +51038,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-radio",
-                            attrs: {
-                              type: "radio",
-                              name: "option",
-                              value: "delivery"
-                            },
+                            attrs: { type: "radio", value: "delivery" },
                             domProps: {
                               checked: _vm._q(_vm.form.type, "delivery")
                             },

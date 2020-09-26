@@ -12,10 +12,19 @@ module.exports = {
     indent: ['error', 2],
     quotes: ['warn', 'single'],
     semi: ['warn', 'never'],
-    'comma-dangle': ['warn', 'always-multiline'],
-    'vue/max-attributes-per-line': 'off',
-    'vue/require-default-prop': 'off',
-    'vue/singleline-html-element-content-newline': 'off',
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'never',
+      },
+    ],
+    'vue/max-attributes-per-line': 0,
+    'vue/require-default-prop': 0,
+    'vue/singleline-html-element-content-newline': 0,
     'vue/html-self-closing': [
       'warn',
       {

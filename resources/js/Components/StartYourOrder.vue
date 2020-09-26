@@ -16,7 +16,6 @@
                     v-model="form.type"
                     type="radio"
                     class="form-radio"
-                    name="option"
                     value="delivery"
                   />
                   <span class="ml-2">Delivery</span>
@@ -127,7 +126,7 @@ export default {
         : '11:00am',
       to: '9:35pm',
       form: {
-        type: 'delivery',
+        type: localStorage.getItem('type') ?? 'delivery',
         first_name: localStorage.getItem('first_name'),
         last_name: localStorage.getItem('last_name'),
         email: localStorage.getItem('email'),
@@ -163,6 +162,7 @@ export default {
       axios
         .post('/start/your/order', this.form)
         .then(response => {
+          localStorage.setItem('type', this.form.type)
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)
           localStorage.setItem('email', this.form.email)
