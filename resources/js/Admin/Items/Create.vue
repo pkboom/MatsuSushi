@@ -96,11 +96,7 @@ export default {
           price: this.form.price,
           description: this.form.description,
         },
-        {
-          onFinish: () => {
-            this.sending = false
-          },
-        }
+        { onFinish: () => (this.sending = false) }
       )
     },
   },

@@ -3929,7 +3929,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.post(this.$route('password.email'), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     }
@@ -4017,7 +4017,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.post(this.$route('login.attempt'), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     }
@@ -4110,7 +4110,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.post(this.$route('password.update'), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     }
@@ -4195,7 +4195,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.post(this.$route('admin.categories.store'), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     }
@@ -4334,7 +4334,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.put(this.$route('admin.categories.update', this.category.id), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     },
@@ -4848,7 +4848,7 @@ __webpack_require__.r(__webpack_exports__);
         description: this.form.description
       }, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     }
@@ -4963,7 +4963,7 @@ __webpack_require__.r(__webpack_exports__);
         description: this.form.description
       }, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     },
@@ -5207,7 +5207,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.post(this.$route('admin.reservations.store'), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     }
@@ -5354,7 +5354,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.put(this.$route('admin.reservations.update', this.reservation.id), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     },
@@ -5776,7 +5776,7 @@ __webpack_require__.r(__webpack_exports__);
       this.sending = true;
       this.$inertia.post(this.$route('admin.schedule.store'), this.form, {
         onFinish: function onFinish() {
-          _this.sending = false;
+          return _this.sending = false;
         }
       });
     },

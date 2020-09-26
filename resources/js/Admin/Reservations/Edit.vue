@@ -126,11 +126,7 @@ export default {
       this.$inertia.put(
         this.$route('admin.reservations.update', this.reservation.id),
         this.form,
-        {
-          onFinish: () => {
-            this.sending = false
-          },
-        }
+        { onFinish: () => (this.sending = false) }
       )
     },
     destroy() {

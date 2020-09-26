@@ -119,11 +119,7 @@ export default {
       this.$inertia.put(
         this.$route('admin.categories.update', this.category.id),
         this.form,
-        {
-          onFinish: () => {
-            this.sending = false
-          },
-        }
+        { onFinish: () => (this.sending = false) }
       )
     },
     destroy() {
