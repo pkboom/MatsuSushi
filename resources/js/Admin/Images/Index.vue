@@ -17,9 +17,9 @@
 export default {
   methods: {
     destroy(image) {
-      if (confirm('Are you sure you want to delete this image?')) {
-        this.$inertia.delete(this.$route('admin.images.destroy', image.id))
-      }
+      this.$inertia.delete(this.$route('admin.images.destroy', image.id), {
+        onStart: () => confirm('Are you sure you want to delete this image?'),
+      })
     },
   },
 }

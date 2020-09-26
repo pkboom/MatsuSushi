@@ -65,9 +65,11 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia
-        .post(this.$route('login.attempt'), this.form)
-        .then(() => (this.sending = false))
+      this.$inertia.post(this.$route('login.attempt'), this.form, {
+        onFinish: () => {
+          this.sending = false
+        },
+      })
     },
   },
 }

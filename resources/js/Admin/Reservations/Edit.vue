@@ -123,19 +123,24 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia
-        .put(
-          this.$route('admin.reservations.update', this.reservation.id),
-          this.form
-        )
-        .then(() => (this.sending = false))
+      this.$inertia.put(
+        this.$route('admin.reservations.update', this.reservation.id),
+        this.form,
+        {
+          onFinish: () => {
+            this.sending = false
+          },
+        }
+      )
     },
     destroy() {
-      if (confirm('Are you sure you want to delete this reservation?')) {
-        this.$inertia.delete(
-          this.$route('admin.reservations.destroy', this.reservation.id)
-        )
-      }
+      this.$inertia.delete(
+        this.$route('admin.reservations.destroy', this.reservation.id),
+        {
+          onStart: () =>
+            confirm('Are you sure you want to delete this reservation?'),
+        }
+      )
     },
   },
 }

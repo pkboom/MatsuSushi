@@ -184,9 +184,11 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia
-        .post(this.$route('admin.schedule.store'), this.form)
-        .then(() => (this.sending = false))
+      this.$inertia.post(this.$route('admin.schedule.store'), this.form, {
+        onFinish: () => {
+          this.sending = false
+        },
+      })
     },
     alarmTest() {
       document.getElementById('alarm').play()

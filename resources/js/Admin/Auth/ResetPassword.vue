@@ -70,9 +70,11 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia
-        .post(this.$route('password.update'), this.form)
-        .then(() => (this.sending = false))
+      this.$inertia.post(this.$route('password.update'), this.form, {
+        onFinish: () => {
+          this.sending = false
+        },
+      })
     },
   },
 }

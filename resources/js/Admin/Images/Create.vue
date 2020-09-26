@@ -82,9 +82,12 @@ export default {
           },
         })
         .then(response => {
-          this.$inertia
-            .visit(this.$route('admin.images'))
-            .then(() => (this.$page.flash.success = response.data))
+          this.$inertia.visit(this.$route('admin.images'), {
+            onFinish: () => {
+              this.$page.flash.success = response.data
+              this.sending = false
+            },
+          })
         })
         .catch(error => {
           this.sending = false

@@ -87,19 +87,25 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia
-        .put(this.$route('admin.items.update', this.item.id), {
+      this.$inertia.put(
+        this.$route('admin.items.update', this.item.id),
+        {
           category_id: this.form.category ? this.form.category.id : null,
           name: this.form.name,
           price: this.form.price,
           description: this.form.description,
-        })
-        .then(() => (this.sending = false))
+        },
+        {
+          onFinish: () => {
+            this.sending = false
+          },
+        }
+      )
     },
     destroy() {
-      if (confirm('Are you sure you want to delete this item?')) {
-        this.$inertia.delete(this.$route('admin.items.destroy', this.item.id))
-      }
+      this.$inertia.delete(this.$route('admin.items.destroy', this.item.id), {
+        onStart: () => confirm('Are you sure you want to delete this item?'),
+      })
     },
   },
 }

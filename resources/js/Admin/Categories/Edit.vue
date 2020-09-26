@@ -116,23 +116,26 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia
-        .put(
-          this.$route('admin.categories.update', this.category.id),
-          this.form
-        )
-        .then(() => (this.sending = false))
+      this.$inertia.put(
+        this.$route('admin.categories.update', this.category.id),
+        this.form,
+        {
+          onFinish: () => {
+            this.sending = false
+          },
+        }
+      )
     },
     destroy() {
-      if (
-        confirm(
-          'Are you sure you want to delete this category?\nItems of this category will be deleted, too.'
-        )
-      ) {
-        this.$inertia.delete(
-          this.$route('admin.categories.destroy', this.category.id)
-        )
-      }
+      this.$inertia.delete(
+        this.$route('admin.categories.destroy', this.category.id),
+        {
+          onStart: () =>
+            confirm(
+              'Are you sure you want to delete this category?\nItems of this category will be deleted, too.'
+            ),
+        }
+      )
     },
   },
 }
