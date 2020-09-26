@@ -161,7 +161,7 @@
           class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
         >
           <loading-button :loading="sending" class="btn" type="submit">
-            Update Opening Hours
+            Update Schedule
           </loading-button>
         </div>
       </form>

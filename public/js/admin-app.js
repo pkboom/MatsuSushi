@@ -58443,7 +58443,7 @@ var render = function() {
                     staticClass: "btn",
                     attrs: { loading: _vm.sending, type: "submit" }
                   },
-                  [_vm._v("\n          Update Opening Hours\n        ")]
+                  [_vm._v("\n          Update Schedule\n        ")]
                 )
               ],
               1
