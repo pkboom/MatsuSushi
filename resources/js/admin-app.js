@@ -1,5 +1,6 @@
 import Errors from '@/Utils/Errors'
 import { InertiaApp } from '@inertiajs/inertia-vue'
+import { InertiaProgress } from '@inertiajs/progress'
 import PortalVue from 'portal-vue'
 import Route from '../../vendor/tightenco/ziggy/src/js/route.js'
 import vClickOutside from 'v-click-outside'
@@ -7,6 +8,8 @@ import Vue from 'vue'
 import './bootstrap'
 
 Vue.config.productionTip = false
+
+InertiaProgress.init()
 
 Vue.use(InertiaApp)
 Vue.use(PortalVue)

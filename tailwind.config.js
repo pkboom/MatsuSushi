@@ -37,9 +37,6 @@ module.exports = {
       './resources/**/*.php',
       './resources/**/*.vue',
     ],
-    options: {
-      whitelistPatterns: [/nprogress/],
-    },
   },
   plugins: [require('@tailwindcss/ui')],
 }
