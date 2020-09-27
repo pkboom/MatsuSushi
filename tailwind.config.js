@@ -33,9 +33,9 @@ module.exports = {
   purge: {
     enabled: true,
     content: [
-      './resources/**/*.js',
-      './resources/**/*.php',
-      './resources/**/*.vue',
+      './storage/framework/views/*.php',
+      './resources/views/**/*.blade.php',
+      './resources/js/**/*.vue',
     ],
   },
   plugins: [require('@tailwindcss/ui')],
