@@ -2760,46 +2760,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object
@@ -51685,84 +51645,6 @@ var render = function() {
             ]),
             _vm._v("\n        " + _vm._s(_vm.transaction.id) + "\n      ")
           ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Name:")]),
-            _vm._v("\n        " + _vm._s(_vm.transaction.name) + "\n      ")
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Phone:")]),
-            _vm._v("\n        " + _vm._s(_vm.transaction.phone) + "\n      ")
-          ]),
-          _vm._v(" "),
-          _vm.transaction.takeout_time
-            ? _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Takeout time:")
-                ]),
-                _vm._v(
-                  "\n        " +
-                    _vm._s(_vm.transaction.takeout_time) +
-                    "\n      "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.transaction.address
-            ? _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Address:")
-                ]),
-                _vm._v(
-                  "\n        " + _vm._s(_vm.transaction.address) + "\n      "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Subtotal:")]),
-            _vm._v(
-              "\n        $ " + _vm._s(_vm.transaction.subtotal) + "\n      "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tax:")]),
-            _vm._v("\n        $ " + _vm._s(_vm.transaction.tax) + "\n      ")
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tip:")]),
-            _vm._v("\n        $ " + _vm._s(_vm.transaction.tip) + "\n      ")
-          ]),
-          _vm._v(" "),
-          _vm.transaction.type === "delivery"
-            ? _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Delivery fee:")
-                ]),
-                _vm._v(
-                  "\n        $ " + _vm._s(_vm.transaction.fee) + "\n      "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", [
-            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),
-            _vm._v("\n        $ " + _vm._s(_vm.transaction.total) + "\n      ")
-          ]),
-          _vm._v(" "),
-          _vm.transaction.message
-            ? _c("div", [
-                _c("span", { staticClass: "text-gray-500" }, [
-                  _vm._v("Message:")
-                ]),
-                _vm._v(
-                  "\n        " + _vm._s(_vm.transaction.message) + "\n      "
-                )
-              ])
-            : _vm._e(),
           _vm._v(" "),
           _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [_vm._v("Items:")])
