@@ -145,6 +145,7 @@ class Transaction extends Model
             'stripe_id' => $this->stripe_id,
             'type' => $this->type,
             'name' => $this->name,
+            'email' => $this->email,
             'phone' => $this->phone,
             'address' => $this->address,
             'takeout_time' => $this->takeout_time,
