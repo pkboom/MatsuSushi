@@ -3,6 +3,14 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   theme: {
     extend: {
+      colors: {
+        'matsu-blue': {
+          '50': '#f6f9fc',
+          '400': '#5469d4',
+          '600': '#666ee8',
+          '700': '#5469d4',
+        },
+      },
       fontFamily: {
         serif: ['Playfair Display', ...defaultTheme.fontFamily.sans],
       },
