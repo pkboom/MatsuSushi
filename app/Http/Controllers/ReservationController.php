@@ -16,7 +16,7 @@ class ReservationController extends Controller
     public function create()
     {
         return Inertia::render('Reservations/Create', [
-            'encrypted_time' => EncryptedTime::create(now()->addSecond())->encryptedTime(),
+            'encrypted_time' => (string) EncryptedTime::create(now()->addSecond()),
         ]);
     }
 
