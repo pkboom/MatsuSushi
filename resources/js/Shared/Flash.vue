@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-show="show && level === 'success'"
+      v-if="$page.flash.success && show"
       class="fixed bottom-6 right-6 rounded-md bg-green-50 p-4"
     >
       <div class="flex">
@@ -20,13 +20,13 @@
         </div>
         <div class="ml-3">
           <p class="text-sm leading-5 font-medium text-green-800">
-            {{ body }}
+            {{ $page.flash.success }}
           </p>
         </div>
       </div>
     </div>
     <div
-      v-show="show && level === 'error'"
+      v-else-if="$page.flash.error && show"
       class="fixed bottom-6 right-6 rounded-md bg-red-50 p-4"
     >
       <div class="flex">
@@ -45,7 +45,7 @@
         </div>
         <div class="ml-3">
           <p class="text-sm leading-5 font-medium text-red-800">
-            {{ body }}
+            {{ $page.flash.error }}
           </p>
         </div>
       </div>
@@ -55,40 +55,27 @@
 
 <script>
 export default {
-  props: {
-    message: String,
-    ttl: {
-      type: Number,
-      default: 5,
-    },
-  },
   data() {
     return {
-      body: this.message,
-      level: 'success',
-      show: false,
       timeout: null,
-      messageTtl: this.ttl,
+      ttl: 5,
+      show: true,
     }
   },
-  created() {
-    if (this.message) {
-      this.flash()
-    }
+  watch: {
+    '$page.flash': {
+      handler() {
+        this.show = true
 
-    events.$on('flash', data => this.flash(data))
+        this.flash()
+      },
+      deep: true,
+    },
   },
   methods: {
-    flash(data) {
-      if (!data.message) return
-
-      this.body = data.message
-      this.level = data.level
-      this.messageTtl = data.ttl
-
-      this.show = true
-
+    flash() {
       clearTimeout(this.timeout)
+
       this.timeout = null
 
       this.hide()
@@ -96,7 +83,7 @@ export default {
     hide() {
       this.timeout = setTimeout(() => {
         this.show = false
-      }, this.messageTtl * 1000)
+      }, this.ttl * 1000)
     },
   },
 }

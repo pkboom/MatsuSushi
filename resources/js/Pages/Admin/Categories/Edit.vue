@@ -21,7 +21,7 @@
             <div class="flex justify-between">
               <label class="form-label" for="priority">Priority:</label>
               <div class="text-gray-600 text-sm">
-                <span>Highest: 9</span>
+                <span>Highest: 999</span>
                 <span class="ml-2">
                   Lowest: 1
                 </span>
@@ -119,7 +119,7 @@ export default {
       this.$inertia.put(
         this.$route('admin.categories.update', this.category.id),
         this.form,
-        { onFinish: () => (this.sending = false) }
+        { onFinish: () => (this.sending = false) },
       )
     },
     destroy() {
@@ -128,9 +128,9 @@ export default {
         {
           onStart: () =>
             confirm(
-              'Are you sure you want to delete this category?\nItems of this category will be deleted, too.'
+              'Are you sure you want to delete this category?\nItems of this category will be deleted, too.',
             ),
-        }
+        },
       )
     },
   },

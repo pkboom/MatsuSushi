@@ -44,6 +44,7 @@
 
 <script>
 import Errors from '@/Utils/Errors'
+import Http from '@/Utils/Http'
 
 export default {
   data() {
@@ -70,17 +71,16 @@ export default {
       formData.append('url', this.url || '')
       formData.append('file', this.file || '')
 
-      axios
-        .post(this.$route('admin.images.store'), formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-          onUploadProgress: progressEvent => {
-            this.uploadPercentage = parseInt(
-              Math.round((progressEvent.loaded * 100) / progressEvent.total)
-            )
-          },
-        })
+      Http.post(this.$route('admin.images.store'), formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        onUploadProgress: progressEvent => {
+          this.uploadPercentage = parseInt(
+            Math.round((progressEvent.loaded * 100) / progressEvent.total),
+          )
+        },
+      })
         .then(response => {
           this.$inertia.visit(this.$route('admin.images'), {
             onFinish: () => {

@@ -16,6 +16,7 @@
             type="email"
             autofocus
             autocapitalize="off"
+            autocomplete="username"
           />
           <text-input
             v-model="form.password"
@@ -23,6 +24,7 @@
             class="mt-6"
             label="Password"
             type="password"
+            autocomplete="current-password"
           />
           <label class="mt-6 select-none flex" for="remember">
             <input

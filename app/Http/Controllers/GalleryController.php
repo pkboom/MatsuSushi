@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Image;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use Inertia\Inertia;
 
 class GalleryController extends Controller
 {
@@ -24,6 +25,6 @@ class GalleryController extends Controller
             ]);
         }
 
-        return view('gallery');
+        return Inertia::render('Gallery');
     }
 }

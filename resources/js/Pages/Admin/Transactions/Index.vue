@@ -60,7 +60,7 @@
             {{ transaction.status }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ transaction.created_at }}
+            {{ transaction.formattedCreatedAt }}
           </td>
           <td class="border-t px-4 align-middle w-min">
             <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
@@ -95,7 +95,7 @@ export default {
 
         let url = this.$route(
           'admin.transactions',
-          Object.keys(query).length ? query : { remember: 'forget' }
+          Object.keys(query).length ? query : { remember: 'forget' },
         )
         this.$inertia.replace(url)
       }, 300),

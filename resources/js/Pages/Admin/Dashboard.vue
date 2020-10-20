@@ -33,7 +33,7 @@
             {{ transaction.status }}
           </span>
           <span
-            v-else-if="isNew(transaction.created_at)"
+            v-else-if="isNew(transaction.formattedCreatedAt)"
             class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
           >
             new
@@ -49,7 +49,7 @@
           <span class="text-gray-500">Order no.</span>
           {{ transaction.id }}
           <span class="text-gray-400 text-sm">
-            ({{ transaction.created_at.slice(11) }})
+            ({{ transaction.formattedCreatedAt.slice(11) }})
           </span>
         </div>
         <div>
@@ -129,7 +129,7 @@ export default {
     isNew(createdAt) {
       if (
         moment(createdAt, 'YYYY-MM-DD hh:mm a').isAfter(
-          moment().subtract(1, 'hours')
+          moment().subtract(1, 'hours'),
         )
       ) {
         return true

@@ -13,7 +13,7 @@ class ItemController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Items/Index', [
+        return Inertia::render('Admin/Items/Index', [
             'filters' => Request::all('search', 'category'),
             'categories' => Category::latest()->get(),
             'items' => Item::latest()
@@ -24,7 +24,7 @@ class ItemController extends Controller
 
     public function create()
     {
-        return Inertia::render('Items/Create', [
+        return Inertia::render('Admin/Items/Create', [
             'categories' => Category::latest()->get(),
         ]);
     }
@@ -45,7 +45,7 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-        return Inertia::render('Items/Edit', [
+        return Inertia::render('Admin/Items/Edit', [
             'item' => $item->load('category'),
         ]);
     }

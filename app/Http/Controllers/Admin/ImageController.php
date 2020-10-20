@@ -26,14 +26,14 @@ class ImageController extends Controller
             ]);
         }
 
-        return Inertia::render('Images/Index', [
+        return Inertia::render('Admin/Images/Index', [
             'url' => route('admin.images'),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Images/Create');
+        return Inertia::render('Admin/Images/Create');
     }
 
     public function store()

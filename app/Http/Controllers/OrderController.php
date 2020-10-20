@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Inertia\Inertia;
 
 class OrderController extends Controller
 {
     public function __invoke()
     {
-        return view('order', [
-            'popular_menu' => Category::POPULAR_MENU,
+        return Inertia::render('Order', [
+            'popularMenu' => Category::POPULAR_MENU,
             'categories' => Category::with('items')
-                ->orderBy('priority', 'desc')
+                ->orderByRaw('priority is null, priority asc')
                 ->get(),
         ]);
     }

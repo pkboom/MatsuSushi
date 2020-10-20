@@ -13,7 +13,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Categories/Index', [
+        return Inertia::render('Admin/Categories/Index', [
             'filters' => Request::all('search'),
             'categories' => Category::latest()
                 ->filter(Request::only('search'))
@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return Inertia::render('Categories/Create');
+        return Inertia::render('Admin/Categories/Create');
     }
 
     public function store()
@@ -31,7 +31,7 @@ class CategoryController extends Controller
         $category = Category::create(
             Request::validate([
                 'name' => ['required', 'max:100', Rule::unique('categories')],
-                'priority' => ['nullable', 'integer', 'between:1,9'],
+                'priority' => ['nullable', 'integer', 'between:1,999'],
             ])
         );
 
@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return Inertia::render('Categories/Edit', [
+        return Inertia::render('Admin/Categories/Edit', [
             'category' => $category->load('items'),
         ]);
     }
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $category->update(
             Request::validate([
                 'name' => ['required', 'max:100', Rule::unique('categories')->ignore($category->id)],
-                'priority' => ['nullable', 'integer', 'between:1,9'],
+                'priority' => ['nullable', 'integer', 'between:1,999'],
             ])
         );
 

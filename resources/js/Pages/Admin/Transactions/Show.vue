@@ -44,24 +44,12 @@
           $ {{ transaction.subtotal }}
         </div>
         <div>
-          <span class="text-gray-500">Tax:</span>
-          $ {{ transaction.tax }}
-        </div>
-        <div>
-          <span class="text-gray-500">Tip:</span>
-          $ {{ transaction.tip }}
-        </div>
-        <div v-if="transaction.type === 'delivery'">
-          <span class="text-gray-500">Delivery fee:</span>
-          $ {{ transaction.fee }}
-        </div>
-        <div>
           <span class="text-gray-500">Total:</span>
           $ {{ transaction.total }}
         </div>
         <div>
           <span class="text-gray-500">Created at:</span>
-          {{ transaction.created_at }}
+          {{ transaction.formattedCreatedAt }}
         </div>
         <div>
           <span class="text-gray-500">Message:</span>

@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
                 'error' => Session::get('error'),
             ];
         });
+
         Inertia::share('auth', function () {
             if (Auth::user()) {
                 return [

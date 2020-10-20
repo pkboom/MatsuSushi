@@ -4,42 +4,42 @@
       <div class="font-semibold text-xl py-4 border-b">
         Reservation
       </div>
-      <div v-if="reservation_enabled" class="bg-white overflow-hidden w-full">
+      <div class="bg-white overflow-hidden w-full">
         <form @submit.prevent="submit">
           <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
             <input v-model="form.matsu_honeypot" type="text" class="hidden" />
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.first_name"
-                :error="errors.first('first_name')"
+                :error="$page.errors.first('first_name')"
                 label="First name"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.last_name"
-                :error="errors.first('last_name')"
+                :error="$page.errors.first('last_name')"
                 label="Last name"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.phone"
-                :error="errors.first('phone')"
+                :error="$page.errors.first('phone')"
                 label="Phone"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <date-input
                 v-model="form.date"
-                :error="errors.first('date')"
+                :error="$page.errors.first('date')"
                 label="Date"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <time-input
                 v-model="form.time"
-                :error="errors.first('time')"
+                :error="$page.errors.first('time')"
                 label="Time"
                 :from="from"
                 :to="to"
@@ -49,14 +49,14 @@
               <text-input
                 v-model="form.people"
                 type="number"
-                :error="errors.first('people')"
+                :error="$page.errors.first('people')"
                 label="People"
               />
             </div>
             <div class="pr-6 pb-8 w-full">
               <textarea-input
                 v-model="form.message"
-                :error="errors.first('message')"
+                :error="$page.errors.first('message')"
                 label="Message"
               />
             </div>
@@ -70,19 +70,13 @@
           </div>
         </form>
       </div>
-      <div v-else class="bg-white overflow-hidden pt-2 text-lg w-full">
-        Sorry, Reservation is temporarily unavailable.
-      </div>
     </div>
   </front-layout>
 </template>
 
 <script>
-import Errors from '@/Utils/Errors'
-
 export default {
   props: {
-    reservation_enabled: Number,
     encrypted_time: String,
   },
   data() {
@@ -101,34 +95,20 @@ export default {
         people: 2,
         message: null,
       },
-      errors: new Errors(),
     }
   },
   methods: {
     submit() {
       this.sending = true
-      axios
-        .post('/reservation', this.form)
-        .then(response => {
-          this.sending = false
 
-          this.errors.reset()
-
-          flash(response.data.message, 'success', 30)
-
+      this.$inertia.post(this.$route('reservations.store'), this.form, {
+        onSuccess: page => {
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)
           localStorage.setItem('phone', this.form.phone)
-        })
-        .catch(error => {
-          this.sending = false
-
-          if (error.response.status === 400) {
-            // spam
-          } else if (error.response) {
-            this.errors.record(error.response.data.errors)
-          }
-        })
+        },
+        onFinish: () => (this.sending = false),
+      })
     },
   },
 }

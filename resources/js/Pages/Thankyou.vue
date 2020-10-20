@@ -1,19 +1,10 @@
 <template>
   <front-layout title="Thank you">
-    <div class="mt-8 p-8 max-w-2xl mx-auto space-y-4 rounded bg-gray-100">
-      <div class="text-xl border-b-2 border-gray-400">
+    <div
+      class="my-8 p-8 max-w-2xl w-full mx-auto space-y-4 rounded bg-matsu-blue-50 shadow-lg"
+    >
+      <div class="text-xl border-b-2 border-gray-400 py-2">
         Thank you!
-      </div>
-      <div>You will receive an email receipt shortly.</div>
-      <div>
-        If you have any questions, call us at
-        <a
-          href="tel:7057609484"
-          class="inline-block underline text-blue-600 font-bold"
-        >
-          705-760-9484
-        </a>
-        .
       </div>
       <div class="space-y-4">
         <div>
@@ -21,17 +12,30 @@
           {{ transaction.id }}
         </div>
         <div><span class="text-gray-500">Items:</span></div>
-        <div class="space-y-3">
+        <div class="space-y-4">
           <div
             v-for="(item, key) in transaction.items"
             :key="'item' + key"
-            class="space-y-1"
+            class="space-y-2"
           >
             <div>{{ item.name }}</div>
             <div class="hidden sm:block text-gray-400 text-sm">
               {{ item.description }}
             </div>
           </div>
+        </div>
+      </div>
+      <div class="space-y-4 border-t-2">
+        <div class="pt-4">You will receive an email receipt shortly.</div>
+        <div>
+          If you have any questions, call us at
+          <a
+            href="tel:7057609484"
+            class="inline-block underline text-matsu-blue-600 font-bold"
+          >
+            705-760-9484
+          </a>
+          .
         </div>
       </div>
     </div>
@@ -42,11 +46,6 @@
 export default {
   props: {
     transaction: Object,
-  },
-  data() {
-    return {
-      sending: false,
-    }
   },
   mounted() {
     localStorage.removeItem('total')

@@ -11,21 +11,18 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Transactions/Index', [
+        return Inertia::render('Admin/Transactions/Index', [
             'filters' => Request::all('search'),
             'transactions' => Transaction::latest()
                 ->filter(Request::only('search'))
-                ->paginate()
-                ->transform(function ($transaction) {
-                    return $transaction->attributesToArray();
-                }),
+                ->paginate(),
         ]);
     }
 
     public function show(Transaction $transaction)
     {
-        return Inertia::render('Transactions/Show', [
-            'transaction' => $transaction->toArray(),
+        return Inertia::render('Admin/Transactions/Show', [
+            'transaction' => $transaction,
         ]);
     }
 }

@@ -1,9 +1,9 @@
 <template>
   <front-layout title="Start Your Order">
-    <div class="p-8 max-w-3xl mx-auto">
+    <div class="p-8 max-w-3xl mx-auto w-full">
       <div class="font-semibold text-xl py-4 border-b">Start Your Order</div>
       <div
-        v-if="online_order.available"
+        v-if="online_order_available"
         class="bg-white overflow-hidden w-full"
       >
         <form @submit.prevent="submit">
@@ -16,7 +16,7 @@
                     v-model="form.type"
                     type="radio"
                     class="form-radio"
-                    value="delivery"
+                    :value="type.delivery"
                   />
                   <span class="ml-2">Delivery</span>
                 </label>
@@ -25,7 +25,7 @@
                     v-model="form.type"
                     type="radio"
                     class="form-radio"
-                    value="takeout"
+                    :value="type.takeout"
                   />
                   <span class="ml-2">Takeout</span>
                 </label>
@@ -50,6 +50,8 @@
                 v-model="form.email"
                 :error="errors.first('email')"
                 label="Email"
+                type="email"
+                autocomplete="username"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
@@ -59,14 +61,17 @@
                 label="Phone"
               />
             </div>
-            <div v-if="form.type === 'delivery'" class="pr-6 pb-8 w-full">
+            <div v-if="form.type === type.delivery" class="pr-6 pb-8 w-full">
               <text-input
                 v-model="form.address"
                 :error="errors.first('address')"
                 label="Address"
               />
             </div>
-            <div v-else class="pr-6 pb-8 w-full lg:w-1/2">
+            <div
+              v-else-if="form.type === type.takeout"
+              class="pr-6 pb-8 w-full lg:w-1/2"
+            >
               <time-input
                 v-model="form.takeout_time"
                 :error="errors.first('takeout_time')"
@@ -111,10 +116,13 @@
 <script>
 import Errors from '@/Utils/Errors'
 import moment from 'moment'
+import Http from '@/Utils/Http'
+import '@/Utils/Stripe'
 
 export default {
   props: {
-    online_order: Object,
+    online_order_available: Boolean,
+    type: Object,
   },
   data() {
     return {
@@ -126,7 +134,7 @@ export default {
         : '11:00am',
       to: '9:35pm',
       form: {
-        type: localStorage.getItem('type') ?? 'delivery',
+        type: this.type.delivery,
         first_name: localStorage.getItem('first_name'),
         last_name: localStorage.getItem('last_name'),
         email: localStorage.getItem('email'),
@@ -142,7 +150,7 @@ export default {
   },
   watch: {
     'form.type'() {
-      this.form.type === 'takeout'
+      this.form.type === this.type.takeout
         ? (this.form.address = null)
         : (this.form.address = localStorage.getItem('address'))
 
@@ -152,17 +160,15 @@ export default {
   mounted() {
     if (localStorage.getItem('items')) {
       this.form.items = JSON.parse(localStorage.getItem('items')).map(
-        item => item.id
+        item => item.id,
       )
     }
   },
   methods: {
     submit() {
       this.sending = true
-      axios
-        .post('/start/your/order', this.form)
+      Http.post(this.$route('start-your-order.store'), this.form)
         .then(response => {
-          localStorage.setItem('type', this.form.type)
           localStorage.setItem('first_name', this.form.first_name)
           localStorage.setItem('last_name', this.form.last_name)
           localStorage.setItem('email', this.form.email)
@@ -176,7 +182,9 @@ export default {
             .then(result => {
               this.sending = false
 
-              flash(result.error.message, 'error')
+              this.$page.flash = {
+                error: result.error.message,
+              }
             })
         })
         .catch(error => {
@@ -186,7 +194,9 @@ export default {
             this.errors.record(error.response.data.errors)
           }
 
-          flash(this.errors.first('items*'), 'error')
+          this.$page.flash = {
+            error: this.errors.first('items*'),
+          }
         })
     },
   },

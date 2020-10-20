@@ -71,4 +71,9 @@ class Reservation extends Model
             $date->endOfDay()->toDateTimeString(),
         ]);
     }
+
+    public function name()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
 }

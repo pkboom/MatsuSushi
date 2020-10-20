@@ -11,7 +11,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default" defer></script>
-    <script src="{{ mix('/js/admin-app.js') }}" defer></script>
+    <script src="{{ mix('/js/app.js') }}" defer></script>
     @routes
 </head>
 

@@ -127,8 +127,8 @@ import Fuse from 'fuse.js'
 
 export default {
   props: {
+    popularMenu: String,
     categories: Array,
-    popular_menu: String,
   },
   data() {
     return {
@@ -137,7 +137,7 @@ export default {
       searchItem: null,
       searchResult: null,
       menu: this.categories
-        .filter(category => category.name !== this.popular_menu)
+        .filter(category => category.name !== this.popularMenu)
         .map(category => category.items)
         .flat(),
     }
@@ -163,7 +163,7 @@ export default {
       this.searchItem = ''
 
       this.currentCategory = this.categories.find(
-        category => category.id === categoryId
+        category => category.id === categoryId,
       )
     },
     place(order) {
@@ -181,7 +181,9 @@ export default {
         count: items.length,
       })
 
-      flash(order.name + ' added to cart')
+      this.$page.flash = {
+        success: order.name,
+      }
     },
   },
 }

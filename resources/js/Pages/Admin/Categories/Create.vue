@@ -21,7 +21,7 @@
             <div class="flex justify-between">
               <label class="form-label" for="priority">Priority:</label>
               <div class="text-gray-600 text-sm">
-                <span>Highest: 9</span>
+                <span>Highest: 999</span>
                 <span class="ml-2">
                   Lowest: 1
                 </span>

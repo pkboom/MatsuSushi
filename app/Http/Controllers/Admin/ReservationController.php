@@ -14,7 +14,7 @@ class ReservationController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Reservations/Index', [
+        return Inertia::render('Admin/Reservations/Index', [
             'filters' => Request::all('search'),
             'reservations' => Reservation::query()
                 ->whereDate('reserved_at', '>=', now()->startOfDay())
@@ -57,7 +57,7 @@ class ReservationController extends Controller
                 ];
             });
 
-        return Inertia::render('Reservations/Show', [
+        return Inertia::render('Admin/Reservations/Show', [
             'dates' => $dates,
             'today' => now()->format('n/j'),
         ]);
@@ -65,7 +65,7 @@ class ReservationController extends Controller
 
     public function create()
     {
-        return Inertia::render('Reservations/Create');
+        return Inertia::render('Admin/Reservations/Create');
     }
 
     public function store()
@@ -92,7 +92,7 @@ class ReservationController extends Controller
 
     public function edit(Reservation $reservation)
     {
-        return Inertia::render('Reservations/Edit', [
+        return Inertia::render('Admin/Reservations/Edit', [
             'reservation' => [
                 'id' => $reservation->id,
                 'first_name' => $reservation->first_name,

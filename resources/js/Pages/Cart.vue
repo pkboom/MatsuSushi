@@ -11,7 +11,7 @@
               <div class="whitespace-no-wrap">
                 {{ order.name }}
                 <button
-                  class="underline text-blue-600 text-xs ml-2"
+                  class="underline text-matsu-blue-600 text-xs ml-2"
                   @click="destroy(key)"
                 >
                   delete
@@ -75,7 +75,7 @@
 <script>
 export default {
   props: {
-    fee: String,
+    fee: Number,
   },
   data() {
     return {
@@ -99,7 +99,7 @@ export default {
 
     if (localStorage.getItem('items')) {
       this.items = JSON.parse(localStorage.getItem('items')).sort(
-        (a, b) => a.id - b.id
+        (a, b) => a.id - b.id,
       )
     }
 
@@ -139,7 +139,7 @@ export default {
     },
     confirm() {
       if (this.subtotal >= 1) {
-        location.href = '/start/your/order'
+        this.$inertia.get(this.$route('start-your-order.create'))
       }
     },
   },

@@ -16,29 +16,30 @@
             type="email"
             autofocus
             autocapitalize="off"
+            autocomplete="username"
           />
-          <text-input
-            v-model="form.password"
-            :error="$page.errors.first('password')"
-            type="password"
-            autocomplete="new-password"
-            label="Password"
-            class="mt-6"
-          />
-          <text-input
-            v-model="form.password_confirmation"
-            :error="$page.errors.first('password_confirmation')"
-            type="password"
-            autocomplete="new-password"
-            label="Confirm password"
-            class="mt-6"
-          />
+          <div
+            v-if="success"
+            class="mt-8 flex items-center bg-green-500 rounded max-w-xl"
+          >
+            <icon
+              name="checkmark"
+              class="ml-4 flex-shrink-0 w-4 h-4 fill-white mr-2"
+            />
+            <div class="py-4 text-white text-sm font-medium">{{ success }}</div>
+          </div>
         </div>
         <div
-          class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+          class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center"
         >
+          <inertia-link
+            class="text-gray-700 hover:underline"
+            :href="$route('login')"
+          >
+            Cancel
+          </inertia-link>
           <loading-button :loading="sending" class="btn" type="submit">
-            Reset Password
+            Send Password Reset Link
           </loading-button>
         </div>
       </form>
@@ -49,18 +50,16 @@
 <script>
 export default {
   props: {
-    token: String,
-    email: String,
+    success: String,
   },
   remember: 'form',
   data() {
     return {
       sending: false,
       form: {
-        token: this.token,
-        email: this.email,
-        password: this.password,
-        password_confirmation: this.password_confirmation,
+        email: null,
+        password: null,
+        remember: null,
       },
     }
   },
@@ -70,7 +69,7 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia.post(this.$route('password.update'), this.form, {
+      this.$inertia.post(this.$route('password.email'), this.form, {
         onFinish: () => (this.sending = false),
       })
     },

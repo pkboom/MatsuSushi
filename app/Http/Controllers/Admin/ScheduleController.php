@@ -12,7 +12,7 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Schedule/Index', [
+        return Inertia::render('Admin/Schedule/Index', [
             'schedule' => [
                 'online_order_available' => Cache::get('online_order_available'),
                 'closed_day' => Cache::get('closed_day'),

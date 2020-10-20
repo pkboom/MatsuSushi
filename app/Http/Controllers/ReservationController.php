@@ -6,24 +6,24 @@ use App\Reservation;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Response;
+use Inertia\Inertia;
 use Spatie\Honeypot\EncryptedTime;
 
 class ReservationController extends Controller
 {
     public function create()
     {
-        return view('reservation', [
-            'reservation_enabled' => 1,
-            'encrypted_time' => EncryptedTime::create(now()->addSecond()),
+        return Inertia::render('Reservations/Create', [
+            'encrypted_time' => EncryptedTime::create(now()->addSecond())->encryptedTime(),
         ]);
     }
 
     public function store()
     {
         if (Request::isSpam()) {
-            return Response::json([], 400);
+            return Redirect::back();
         }
 
         Request::validate([
@@ -55,7 +55,7 @@ class ReservationController extends Controller
             fail_validation('date', 'Reservation is available within 3 weeks.');
         }
 
-        Reservation::create(
+        $reservation = Reservation::create(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
                 'reserved_at' => $reserved_at,
             ]
@@ -63,8 +63,18 @@ class ReservationController extends Controller
 
         Cache::put('new_reservation', true, CarbonInterval::hours(1));
 
-        return Response::json([
-            'message' => "Thank you! Your reservation on {$reserved_at->format('F j')} has been confirmed!",
+        return Redirect::route('reservations.show', $reservation);
+    }
+
+    public function show(Reservation $reservation)
+    {
+        return Inertia::render('Reservations/Show', [
+            'reservation' => [
+                'name' => $reservation->name(),
+                'phone' => $reservation->phone,
+                'people' => $reservation->people,
+                'reserved_at' => $reservation->reserved_at->format('F j, h:i a'),
+            ],
         ]);
     }
 }

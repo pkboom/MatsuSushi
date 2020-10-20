@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\URL;
+use Inertia\Inertia;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
@@ -22,9 +23,11 @@ class StartYourOrderController extends Controller
             $onlineOrderAvailable = false;
         }
 
-        return view('start-your-order', [
-            'online_order' => [
-                'available' => $onlineOrderAvailable,
+        return Inertia::render('StartYourOrder', [
+            'online_order_available' => $onlineOrderAvailable,
+            'type' => [
+                'delivery' => Transaction::DELIVERY,
+                'takeout' => Transaction::TAKEOUT,
             ],
         ]);
     }
@@ -32,13 +35,13 @@ class StartYourOrderController extends Controller
     public function store()
     {
         $order = Request::validate([
-            'type' => ['required', 'in:'.implode(',', Transaction::TYPE)],
-            'first_name' => ['required', 'max:50'],
-            'last_name' => ['required', 'max:50'],
+            'type' => ['required', 'in:'.implode(',', [Transaction::DELIVERY, Transaction::TAKEOUT])],
+            'first_name' => ['required', 'string', 'max:50'],
+            'last_name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'email', 'max:50'],
-            'phone' => ['required', 'max:50'],
-            'address' => ['nullable', 'required_if:type,delivery', 'max:100'],
-            'takeout_time' => ['nullable', 'required_if:type,takeout', 'date_format:g:ia'],
+            'phone' => ['required', 'string', 'max:50'],
+            'address' => ['nullable', 'required_if:type,'.Transaction::DELIVERY, 'max:100'],
+            'takeout_time' => ['nullable', 'required_if:type,'.Transaction::TAKEOUT, 'date_format:g:ia'],
             'message' => ['nullable', 'string'],
             'items' => ['required', 'array'],
             'items.*' => ['required', 'exists:items,id'],
@@ -64,7 +67,7 @@ class StartYourOrderController extends Controller
             ->map(fn ($item) => $this->lineItemFormat($item->name, $item->price, $item->description))
             ->push($this->tax($order))
             ->when($order['tip_percentage'] !== '0', fn ($collection) => $collection->push($this->tip($order)))
-            ->when($order['type'] === Transaction::TYPE['Delivery'], fn ($collection) => $collection->push($this->deliveryFee()))
+            ->when($order['type'] === Transaction::DELIVERY, fn ($collection) => $collection->push($this->deliveryFee()))
             ->toArray();
 
         $session = Session::create([

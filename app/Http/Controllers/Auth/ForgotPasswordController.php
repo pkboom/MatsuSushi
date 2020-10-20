@@ -13,7 +13,7 @@ class ForgotPasswordController extends Controller
 
     public function showLinkRequestForm()
     {
-        return Inertia::render('Auth/ForgotPassword', [
+        return Inertia::render('Admin/Auth/ForgotPassword', [
             'success' => Session::get('status'),
         ]);
     }

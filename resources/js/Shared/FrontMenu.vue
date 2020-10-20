@@ -4,37 +4,41 @@
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/">Home</a>
+      <inertia-link :href="$route('home')">Home</inertia-link>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('menu') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/menu">Menu</a>
+      <inertia-link :href="$route('menu')">Menu</inertia-link>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('gallery') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/gallery">Gallery</a>
+      <inertia-link :href="$route('gallery')">Gallery</inertia-link>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
-      :class="isUrl('reservation') ? 'border-b-2 pb-1' : null"
+      :class="isUrl('reservations*') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/reservation">Reservation</a>
+      <inertia-link :href="$route('reservations.create')">
+        Reservation
+      </inertia-link>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('order') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/order">Order</a>
+      <inertia-link :href="$route('order')">
+        Order
+      </inertia-link>
     </div>
     <div
       class="text-md group hover:text-gray-400 font-medium"
       :class="isUrl('cart') ? 'border-b-2 pb-1' : null"
     >
-      <a href="/cart" class="flex items-center">
+      <inertia-link :href="$route('cart')" class="flex items-center">
         <span class="mr-1">Cart</span>
         <div class="relative">
           <icon
@@ -50,7 +54,7 @@
             <span v-else>+</span>
           </span>
         </div>
-      </a>
+      </inertia-link>
     </div>
   </div>
 </template>

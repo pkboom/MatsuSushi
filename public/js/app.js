@@ -7208,15 +7208,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      sending: false,
       table: null
     };
   },
   mounted: function mounted() {
-    if (JSON.parse(localStorage.getItem(this.tableStorageKey()))) {
-      this.table = JSON.parse(localStorage.getItem(this.tableStorageKey()));
-    }
-
+    this.table = JSON.parse(localStorage.getItem(this.tableStorageKey()));
     localStorage.removeItem('total');
     localStorage.removeItem('tip');
     localStorage.removeItem('subtotal');
@@ -81170,6 +81166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tableStorageKey", function() { return tableStorageKey; });
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+
 function isUrl() {
   for (var _len = arguments.length, urls = new Array(_len), _key = 0; _key < _len; _key++) {
     urls[_key] = arguments[_key];
@@ -81186,7 +81183,6 @@ function isUrl() {
 function isNotUrl() {
   return !isUrl.apply(void 0, arguments);
 }
-
 function tableStorageKey() {
   var startTime;
 

@@ -7,12 +7,12 @@
             class="bg-gray-900 flex items-center justify-between md:flex-shrink-0 md:w-56 px-6"
           >
             <div class="md:w-full flex justify-center">
-              <a
-                href="/"
+              <inertia-link
+                :href="$route('home')"
                 class="font-semibold font-serif py-2 text-white text-xl tracking-wide"
               >
                 Matsu Sushi
-              </a>
+              </inertia-link>
             </div>
             <div
               class="hamburger hamburger--squeeze inline-block md:hidden"
@@ -108,6 +108,7 @@
         </div>
       </div>
     </div>
+    <flash />
   </div>
 </template>
 

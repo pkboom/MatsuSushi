@@ -14,11 +14,9 @@ class Transaction extends Model
 {
     const TAX = 0.13;
 
-    const TYPE = [
-        'Delivery' => 'delivery',
-        'Takeout' => 'takeout',
-    ];
+    const DELIVERY = 'delivery';
 
+    const TAKEOUT = 'takeout';
     const TRANSACTION_SUCCEEDED = 'succeeded';
 
     const TRANSACTION_INPROCESS = 'in process';
@@ -32,6 +30,12 @@ class Transaction extends Model
     const UPDATE_INTERVAL = 10;
 
     protected $guarded = [];
+
+    protected $appends = [
+        'name',
+        'total',
+        'formattedCreatedAt',
+    ];
 
     public function getPerPage()
     {
@@ -52,7 +56,7 @@ class Transaction extends Model
     {
         $total = $this->subtotal + $this->tax + $this->tip;
 
-        return round($this->type === static::TYPE['Delivery'] ?
+        return round($this->type === static::DELIVERY ?
             $total + static::DELIVERY_FEE :
             $total, 2);
     }
@@ -76,7 +80,7 @@ class Transaction extends Model
     {
         $total = $subtotal + static::tax($subtotal) + static::tip($subtotal, $order['tip_percentage']);
 
-        return round($order['type'] === static::TYPE['Delivery'] ?
+        return round($order['type'] === static::DELIVERY ?
             $total + static::DELIVERY_FEE :
             $total, 2);
     }
@@ -117,46 +121,6 @@ class Transaction extends Model
             'message' => $order['message'],
             'tip_percentage' => $order['tip_percentage'],
             'subtotal' => static::subtotal($order),
-        ];
-    }
-
-    public function attributesToArray()
-    {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'phone' => $this->phone,
-            'address' => $this->address,
-            'takeout_time' => $this->takeout_time,
-            'subtotal' => $this->subtotal,
-            'tax' => $this->tax,
-            'tip' => $this->tip,
-            'total' => $this->total,
-            'message' => $this->message,
-            'created_at' => $this->created_at->format('Y-m-d h:i a'),
-            'status' => $this->status,
-        ];
-    }
-
-    public function toArray()
-    {
-        return [
-            'id' => $this->id,
-            'stripe_id' => $this->stripe_id,
-            'type' => $this->type,
-            'name' => $this->name,
-            'phone' => $this->phone,
-            'address' => $this->address,
-            'takeout_time' => $this->takeout_time,
-            'subtotal' => $this->subtotal,
-            'tax' => $this->tax,
-            'tip' => $this->tip,
-            'total' => $this->total,
-            'message' => $this->message,
-            'created_at' => $this->created_at->format('Y-m-d h:i a'),
-            'items' => $this->items,
-            'status' => $this->status,
-            'fee' => static::DELIVERY_FEE,
         ];
     }
 
@@ -228,5 +192,10 @@ class Transaction extends Model
             $date->startOfDay()->toDateTimeString(),
             $date->endOfDay()->toDateTimeString(),
         ]);
+    }
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->format('Y-m-d h:i a');
     }
 }
