@@ -1202,8 +1202,8 @@ input:focus,
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   --bg-opacity: 1;
-  background-color: #1e429f;
-  background-color: rgba(30, 66, 159, var(--bg-opacity));
+  background-color: #666ee8;
+  background-color: rgba(102, 110, 232, var(--bg-opacity));
   --text-opacity: 1;
   color: #ffffff;
   color: rgba(255, 255, 255, var(--text-opacity));
@@ -1215,8 +1215,8 @@ input:focus,
 .btn:hover,
   .btn:focus {
   --bg-opacity: 1;
-  background-color: #233876;
-  background-color: rgba(35, 56, 118, var(--bg-opacity));
+  background-color: #5469d4;
+  background-color: rgba(84, 105, 212, var(--bg-opacity));
 }
 
 .form-label {
@@ -1786,6 +1786,12 @@ input:focus,
   margin-bottom: calc(1rem * var(--space-y-reverse));
 }
 
+.space-x-4 > :not(template) ~ :not(template) {
+  --space-x-reverse: 0;
+  margin-right: calc(1rem * var(--space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--space-x-reverse)));
+}
+
 .space-x-6 > :not(template) ~ :not(template) {
   --space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--space-x-reverse));
@@ -1946,6 +1952,12 @@ input:focus,
   background-color: rgba(231, 70, 148, var(--bg-opacity));
 }
 
+.bg-matsu-blue-50 {
+  --bg-opacity: 1;
+  background-color: #f6f9fc;
+  background-color: rgba(246, 249, 252, var(--bg-opacity));
+}
+
 .hover\:bg-white:hover {
   --bg-opacity: 1;
   background-color: #ffffff;
@@ -2076,6 +2088,10 @@ input:focus,
 
 .border {
   border-width: 1px;
+}
+
+.border-t-2 {
+  border-top-width: 2px;
 }
 
 .border-b-2 {
@@ -2542,7 +2558,8 @@ input:focus,
 }
 
 .focus\:outline-none:focus {
-  outline: 0;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .overflow-auto {
@@ -3080,6 +3097,12 @@ input:focus,
   color: rgba(231, 70, 148, var(--text-opacity));
 }
 
+.text-matsu-blue-600 {
+  --text-opacity: 1;
+  color: #666ee8;
+  color: rgba(102, 110, 232, var(--text-opacity));
+}
+
 .group:hover .group-hover\:text-white {
   --text-opacity: 1;
   color: #ffffff;
@@ -3114,12 +3137,6 @@ input:focus,
   --text-opacity: 1;
   color: #374151;
   color: rgba(55, 65, 81, var(--text-opacity));
-}
-
-.hover\:text-blue-700:hover {
-  --text-opacity: 1;
-  color: #1a56db;
-  color: rgba(26, 86, 219, var(--text-opacity));
 }
 
 .hover\:text-indigo-900:hover {
