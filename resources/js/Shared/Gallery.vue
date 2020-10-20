@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import Http from '@/Utils/Http'
+
 export default {
   props: {
     url: String,
@@ -23,7 +25,7 @@ export default {
 
         entries.forEach(entry => {
           if (entry.isIntersecting && fetchUrl !== null) {
-            axios.get(fetchUrl).then(response => {
+            Http.get(fetchUrl).then(response => {
               response.data.images.data.forEach(image => {
                 let div = document.createElement('div')
 

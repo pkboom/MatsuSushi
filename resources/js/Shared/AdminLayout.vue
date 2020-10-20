@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-gray-100">
     <portal-target name="dropdown" slim />
     <div class="flex flex-col">
       <div class="min-h-screen flex flex-col">

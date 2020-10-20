@@ -51,7 +51,7 @@
               'cart',
               'start/your/order',
               'checkout',
-              'thankyou*'
+              'thankyou*',
             )
           "
           id="bottom"
@@ -124,6 +124,11 @@ export default {
       open: false,
     }
   },
+  watch: {
+    title(title) {
+      this.updatePageTitle(title)
+    },
+  },
   mounted() {
     this.updatePageTitle(this.title)
 
@@ -141,7 +146,7 @@ export default {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             bottom.style.backgroundImage =
-              'linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url(\'/images/bottom.jpg\')'
+              "linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url('/images/bottom.jpg')"
           }
         })
       })
@@ -152,7 +157,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 #bottom {
   height: 800px;
   background-size: cover;

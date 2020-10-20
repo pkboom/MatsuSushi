@@ -2,20 +2,20 @@
   <h1 v-if="previousUrl" class="font-heaidng font-bold text-xl">
     <inertia-link
       v-if="previousUrl"
-      class="text-blue-600 hover:text-blue-700"
+      class="text-matsu-blue-600"
       :href="previousUrl"
     >
       {{ previousName }}
     </inertia-link>
-    <span class="text-blue-600 font-medium">/</span>
+    <span class="text-matsu-blue-600 font-medium">/</span>
     <inertia-link
       v-if="middleUrl"
-      class="text-blue-600 hover:text-blue-700"
+      class="text-matsu-blue-600"
       :href="middleUrl"
     >
       {{ middleName }}
     </inertia-link>
-    <span v-if="middleUrl" class="text-blue-600 font-medium">/</span>
+    <span v-if="middleUrl" class="text-matsu-blue-600 font-medium">/</span>
     {{ name }}
   </h1>
   <h1 v-else class="font-heaidng font-bold text-xl">

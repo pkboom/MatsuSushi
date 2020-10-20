@@ -58,16 +58,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { isUrl } from '@/Utils/Helpers'
-
-export default {
-  data() {
-    return {}
-  },
-  methods: {
-    isUrl,
-  },
-}
-</script>
