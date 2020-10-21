@@ -61323,48 +61323,6 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
-                          error: _vm.errors.first("first_name"),
-                          label: "First name"
-                        },
-                        model: {
-                          value: _vm.form.first_name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "first_name", $$v)
-                          },
-                          expression: "form.first_name"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
-                    [
-                      _c("text-input", {
-                        attrs: {
-                          error: _vm.errors.first("last_name"),
-                          label: "Last name"
-                        },
-                        model: {
-                          value: _vm.form.last_name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "last_name", $$v)
-                          },
-                          expression: "form.last_name"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
-                    [
-                      _c("text-input", {
-                        attrs: {
                           error: _vm.errors.first("email"),
                           label: "Email",
                           type: "email",
@@ -61397,6 +61355,48 @@ var render = function() {
                             _vm.$set(_vm.form, "phone", $$v)
                           },
                           expression: "form.phone"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
+                    [
+                      _c("text-input", {
+                        attrs: {
+                          error: _vm.errors.first("first_name"),
+                          label: "First name"
+                        },
+                        model: {
+                          value: _vm.form.first_name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "first_name", $$v)
+                          },
+                          expression: "form.first_name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "pr-6 pb-8 w-full lg:w-1/2" },
+                    [
+                      _c("text-input", {
+                        attrs: {
+                          error: _vm.errors.first("last_name"),
+                          label: "Last name"
+                        },
+                        model: {
+                          value: _vm.form.last_name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "last_name", $$v)
+                          },
+                          expression: "form.last_name"
                         }
                       })
                     ],

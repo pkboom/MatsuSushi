@@ -33,20 +33,6 @@
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
-                v-model="form.first_name"
-                :error="errors.first('first_name')"
-                label="First name"
-              />
-            </div>
-            <div class="pr-6 pb-8 w-full lg:w-1/2">
-              <text-input
-                v-model="form.last_name"
-                :error="errors.first('last_name')"
-                label="Last name"
-              />
-            </div>
-            <div class="pr-6 pb-8 w-full lg:w-1/2">
-              <text-input
                 v-model="form.email"
                 :error="errors.first('email')"
                 label="Email"
@@ -59,6 +45,20 @@
                 v-model="form.phone"
                 :error="errors.first('phone')"
                 label="Phone"
+              />
+            </div>
+            <div class="pr-6 pb-8 w-full lg:w-1/2">
+              <text-input
+                v-model="form.first_name"
+                :error="errors.first('first_name')"
+                label="First name"
+              />
+            </div>
+            <div class="pr-6 pb-8 w-full lg:w-1/2">
+              <text-input
+                v-model="form.last_name"
+                :error="errors.first('last_name')"
+                label="Last name"
               />
             </div>
             <div v-if="form.type === type.delivery" class="pr-6 pb-8 w-full">
