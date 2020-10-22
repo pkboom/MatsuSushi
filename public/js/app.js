@@ -7665,7 +7665,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     isNotUrl: _Utils_Helpers__WEBPACK_IMPORTED_MODULE_0__["isNotUrl"],
     updatePageTitle: function updatePageTitle(title) {
-      document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi';
+      document.title = title ? "".concat(title, " | Matsu Sushi") : 'Matsu Sushi (East City)';
     },
     fetchImage: function fetchImage() {
       var bottom = document.getElementById('bottom');
