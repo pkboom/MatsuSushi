@@ -17,6 +17,7 @@ class Transaction extends Model
     const DELIVERY = 'delivery';
 
     const TAKEOUT = 'takeout';
+
     const TRANSACTION_SUCCEEDED = 'succeeded';
 
     const TRANSACTION_INPROCESS = 'in process';
@@ -34,6 +35,7 @@ class Transaction extends Model
     protected $appends = [
         'name',
         'total',
+        'tip',
         'formattedCreatedAt',
     ];
 

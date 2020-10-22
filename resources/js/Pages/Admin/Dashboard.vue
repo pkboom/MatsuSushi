@@ -53,6 +53,10 @@
           </span>
         </div>
         <div>
+          <span class="text-gray-500">Tip:</span>
+          $ {{ transaction.tip }}
+        </div>
+        <div>
           <span class="text-gray-500">Total:</span>
           $ {{ transaction.total }}
         </div>

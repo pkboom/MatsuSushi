@@ -4573,6 +4573,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5938,6 +5942,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -57453,6 +57461,11 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", [
+              _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tip:")]),
+              _vm._v("\n        $ " + _vm._s(transaction.tip) + "\n      ")
+            ]),
+            _vm._v(" "),
+            _c("div", [
               _c("span", { staticClass: "text-gray-500" }, [_vm._v("Total:")]),
               _vm._v("\n        $ " + _vm._s(transaction.total) + "\n      ")
             ]),
@@ -60078,6 +60091,11 @@ var render = function() {
             _vm._v(
               "\n        $ " + _vm._s(_vm.transaction.subtotal) + "\n      "
             )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tip:")]),
+            _vm._v("\n        $ " + _vm._s(_vm.transaction.tip) + "\n      ")
           ]),
           _vm._v(" "),
           _c("div", [
