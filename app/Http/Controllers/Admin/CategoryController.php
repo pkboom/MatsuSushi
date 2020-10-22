@@ -15,8 +15,9 @@ class CategoryController extends Controller
     {
         return Inertia::render('Admin/Categories/Index', [
             'filters' => Request::all('search'),
-            'categories' => Category::latest()
+            'categories' => Category::query()
                 ->filter(Request::only('search'))
+                ->orderByRaw('priority is null, priority asc')
                 ->paginate(),
         ]);
     }
