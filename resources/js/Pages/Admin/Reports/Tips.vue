@@ -25,11 +25,9 @@
         <div v-else class="text-gray-500">
           {{ date }}
         </div>
-        <div class="">
-          {{ tips.tip }}
-        </div>
-        <div class="">
-          {{ tips.afternoonTip }}
+        <div v-if="tips.tip" class="space-y-2">
+          <div class="">All Day: ${{ tips.tip }}</div>
+          <div class="">5-10PM: ${{ tips.afternoonTip }}</div>
         </div>
       </div>
     </div>

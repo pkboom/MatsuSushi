@@ -5190,8 +5190,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     dates: Object,
@@ -58569,13 +58567,15 @@ var render = function() {
                       _vm._v("\n        " + _vm._s(date) + "\n      ")
                     ]),
                 _vm._v(" "),
-                _c("div", {}, [
-                  _vm._v("\n        " + _vm._s(tips.tip) + "\n      ")
-                ]),
-                _vm._v(" "),
-                _c("div", {}, [
-                  _vm._v("\n        " + _vm._s(tips.afternoonTip) + "\n      ")
-                ])
+                tips.tip
+                  ? _c("div", { staticClass: "space-y-2" }, [
+                      _c("div", {}, [_vm._v("All Day: $" + _vm._s(tips.tip))]),
+                      _vm._v(" "),
+                      _c("div", {}, [
+                        _vm._v("5-10PM: $" + _vm._s(tips.afternoonTip))
+                      ])
+                    ])
+                  : _vm._e()
               ]
             )
           })
