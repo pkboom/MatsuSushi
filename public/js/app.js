@@ -6120,9 +6120,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    transaction: Object
+    transaction: Object,
+    status: Object
   },
   methods: {
     refund: function refund() {
@@ -60377,26 +60379,28 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
-          },
-          [
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "text-red-500 hover:underline",
-                  attrs: { tabindex: "-1", type: "button" },
-                  on: { click: _vm.refund }
-                },
-                [_vm._v("\n          Refund\n        ")]
-              )
-            ])
-          ]
-        )
+        _vm.transaction.status === _vm.status.succeeded
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+              },
+              [
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "text-red-500 hover:underline",
+                      attrs: { tabindex: "-1", type: "button" },
+                      on: { click: _vm.refund }
+                    },
+                    [_vm._v("\n          Refund\n        ")]
+                  )
+                ])
+              ]
+            )
+          : _vm._e()
       ]
     )
   ])

@@ -24,6 +24,9 @@ class TransactionController extends Controller
     {
         return Inertia::render('Admin/Transactions/Show', [
             'transaction' => $transaction,
+            'status' => [
+                'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
+            ],
         ]);
     }
 
