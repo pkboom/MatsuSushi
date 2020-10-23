@@ -15,7 +15,7 @@
         {{ day }}
       </div>
       <div
-        v-for="(reservations, date) in dates"
+        v-for="(tips, date) in dates"
         :key="date"
         class="relative bg-matsu-blue-50 p-4 rounded space-y-2"
       >
@@ -25,28 +25,11 @@
         <div v-else class="text-gray-500">
           {{ date }}
         </div>
-        <div v-for="(reservation, index) in reservations" :key="reservation.id">
-          <hr
-            v-if="index > 0"
-            class="my-2 border-2 border-blue-400 rounded w-10"
-          />
-          <div class="rounded space-y-2 overflow-hidden">
-            <inertia-link
-              :href="$route('admin.reservations.edit', reservation.id)"
-              class="block underline leading-tight text-blue-800"
-            >
-              {{ reservation.name }}
-            </inertia-link>
-            <div class="">
-              {{ reservation.people }}
-            </div>
-            <div class="">
-              {{ reservation.time }}
-            </div>
-            <div class="">
-              {{ reservation.phone }}
-            </div>
-          </div>
+        <div class="">
+          {{ tips.tip }}
+        </div>
+        <div class="">
+          {{ tips.afternoonTip }}
         </div>
       </div>
     </div>

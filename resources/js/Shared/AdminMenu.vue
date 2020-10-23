@@ -56,5 +56,13 @@
         icon="add"
       />
     </div>
+    <div class="mb-4">
+      <menu-item
+        name="Reports"
+        url="admin/reports"
+        :link="$route('admin.reports')"
+        icon="quiz"
+      />
+    </div>
   </div>
 </template>
