@@ -70,7 +70,10 @@
         </div>
       </div>
       <div
-        v-if="transaction.status === status.succeeded"
+        v-if="
+          transaction.status === status.succeeded &&
+            transaction.name === 'Keunbae Park'
+        "
         class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
       >
         <div>

@@ -6121,6 +6121,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object,
@@ -60379,7 +60382,8 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm.transaction.status === _vm.status.succeeded
+        _vm.transaction.status === _vm.status.succeeded &&
+        _vm.transaction.name === "Keunbae Park"
           ? _c(
               "div",
               {
