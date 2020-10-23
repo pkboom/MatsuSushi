@@ -9,15 +9,13 @@
     </div>
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
       <div class="p-8 rounded space-y-4">
-        <div class="flex items-center">
+        <div>
+          <span class="text-gray-500">Status:</span>
+          {{ transaction.status }}
+        </div>
+        <div>
           <span class="text-gray-500">Order number:</span>
           {{ transaction.id }}
-          <span
-            v-if="transaction.new"
-            class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
-          >
-            New
-          </span>
         </div>
         <div>
           <span class="text-gray-500">Stripe Id:</span>
@@ -71,6 +69,20 @@
           </div>
         </div>
       </div>
+      <div
+        class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+      >
+        <div>
+          <button
+            class="text-red-500 hover:underline"
+            tabindex="-1"
+            type="button"
+            @click="refund"
+          >
+            Refund
+          </button>
+        </div>
+      </div>
     </div>
   </admin-layout>
 </template>
@@ -79,6 +91,19 @@
 export default {
   props: {
     transaction: Object,
+  },
+  methods: {
+    refund() {
+      this.$inertia.put(
+        this.$route('admin.transactions.update', this.transaction.id),
+        {
+          onStart: () =>
+            confirm(
+              'This will only change the status to refund. You have to go to Stripe to actually refund.',
+            ),
+        },
+      )
+    },
   },
 }
 </script>

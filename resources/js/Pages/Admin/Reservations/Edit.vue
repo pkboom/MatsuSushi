@@ -126,7 +126,7 @@ export default {
       this.$inertia.put(
         this.$route('admin.reservations.update', this.reservation.id),
         this.form,
-        { onFinish: () => (this.sending = false) }
+        { onFinish: () => (this.sending = false) },
       )
     },
     destroy() {
@@ -135,7 +135,7 @@ export default {
         {
           onStart: () =>
             confirm('Are you sure you want to delete this reservation?'),
-        }
+        },
       )
     },
   },

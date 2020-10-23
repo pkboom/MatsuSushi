@@ -6108,9 +6108,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object
+  },
+  methods: {
+    refund: function refund() {
+      this.$inertia.put(this.$route('admin.transactions.update', this.transaction.id), {
+        onStart: function onStart() {
+          return confirm('This will only change the status to refund. You have to go to Stripe to actually refund.');
+        }
+      });
+    }
   }
 });
 
@@ -60244,21 +60265,16 @@ var render = function() {
       { staticClass: "bg-white max-w-2xl overflow-hidden rounded shadow" },
       [
         _c("div", { staticClass: "p-8 rounded space-y-4" }, [
-          _c("div", { staticClass: "flex items-center" }, [
+          _c("div", [
+            _c("span", { staticClass: "text-gray-500" }, [_vm._v("Status:")]),
+            _vm._v("\n        " + _vm._s(_vm.transaction.status) + "\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", [
             _c("span", { staticClass: "text-gray-500" }, [
               _vm._v("Order number:")
             ]),
-            _vm._v("\n        " + _vm._s(_vm.transaction.id) + "\n        "),
-            _vm.transaction.new
-              ? _c(
-                  "span",
-                  {
-                    staticClass:
-                      "bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
-                  },
-                  [_vm._v("\n          New\n        ")]
-                )
-              : _vm._e()
+            _vm._v("\n        " + _vm._s(_vm.transaction.id) + "\n      ")
           ]),
           _vm._v(" "),
           _c("div", [
@@ -60359,7 +60375,28 @@ var render = function() {
             }),
             0
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+          },
+          [
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "text-red-500 hover:underline",
+                  attrs: { tabindex: "-1", type: "button" },
+                  on: { click: _vm.refund }
+                },
+                [_vm._v("\n          Refund\n        ")]
+              )
+            ])
+          ]
+        )
       ]
     )
   ])

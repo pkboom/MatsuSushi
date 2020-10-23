@@ -8,4 +8,9 @@ Route::get('transactions', [TransactionController::class, 'index'])
     ->middleware('remember');
 
 Route::get('transactions/{transaction}', [TransactionController::class, 'show'])
-    ->name('admin.transactions.show');
+    ->name('admin.transactions.show')
+    ->where('transaction', '[0-9]+');
+
+Route::put('transactions/{transaction}', [TransactionController::class, 'update'])
+    ->name('admin.transactions.update')
+    ->where('transaction', '[0-9]+');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Transaction;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -24,5 +25,14 @@ class TransactionController extends Controller
         return Inertia::render('Admin/Transactions/Show', [
             'transaction' => $transaction,
         ]);
+    }
+
+    public function update(Transaction $transaction)
+    {
+        $transaction->update([
+            'status' => Transaction::TRANSACTION_REFUND,
+        ]);
+
+        return Redirect::back()->with('success', 'Status changed to refund.');
     }
 }
