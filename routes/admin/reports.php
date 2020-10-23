@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ReportController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Reports\TipController;
 use Illuminate\Support\Facades\Route;
 

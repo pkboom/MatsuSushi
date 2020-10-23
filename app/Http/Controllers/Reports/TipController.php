@@ -21,7 +21,7 @@ class TipController extends Controller
         }
 
         Transaction::query()
-            ->where('created_at', '>=', now()->startOfDay())
+            ->where('created_at', '>=', $startOfWeek)
             ->whereStatus(Transaction::TRANSACTION_SUCCEEDED)
             ->get()
             ->filter()
@@ -34,8 +34,8 @@ class TipController extends Controller
 
         return Inertia::render('Admin/Reports/Tips', [
             'dates' => collect($dates)->map(fn ($date) => [
-                    'tip' => collect($date)->sum('tip'),
-                    'afternoonTip' => collect($date)->sum('afternoonTip'),
+                    'tip' => round(collect($date)->sum('tip'), 2),
+                    'afternoonTip' => round(collect($date)->sum('afternoonTip'), 2),
                 ]
             ),
             'today' => now()->format('n/j'),

@@ -75,7 +75,7 @@ class Transaction extends Model
 
     public function getAfternoonTipAttribute()
     {
-        return $this->created_at->betweenIncluded(Carbon::parse('5PM'), Carbon::parse('10PM'))
+        return $this->created_at->betweenIncluded($this->created_at->modify('5PM'), $this->created_at->modify('10PM'))
             ? round($this->subtotal * $this->tip_percentage, 2)
             : 0;
     }
