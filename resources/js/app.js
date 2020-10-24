@@ -16,8 +16,6 @@ Vue.use(PortalVue)
 Vue.use(vClickOutside)
 Vue.prototype.$route = (...args) => Route(...args).url()
 
-window.events = new Vue()
-
 const app = document.getElementById('app')
 const pages = require.context('./Pages', true, /\.vue$/i)
 const shared = require.context('./Shared', true, /\.vue$/i)

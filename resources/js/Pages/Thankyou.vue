@@ -50,9 +50,7 @@ export default {
   mounted() {
     localStorage.removeItem('items')
 
-    events.$emit('order-items', {
-      count: 0,
-    })
+    this.$page.countInCart = 0
   },
 }
 </script>

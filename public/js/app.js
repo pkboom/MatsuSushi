@@ -6302,9 +6302,7 @@ __webpack_require__.r(__webpack_exports__);
         return key !== selected;
       });
       localStorage.setItem('items', JSON.stringify(this.items));
-      events.$emit('order-items', {
-        count: this.items.length
-      });
+      this.$page.countInCart = this.items.length;
       this.calculate();
     },
     confirm: function confirm() {
@@ -6549,9 +6547,7 @@ __webpack_require__.r(__webpack_exports__);
 
       items.push(order);
       localStorage.setItem('items', JSON.stringify(items));
-      events.$emit('order-items', {
-        count: items.length
-      });
+      this.$page.countInCart = items.length;
       this.$page.flash = {
         success: "'".concat(order.name, "' added(").concat(items.length, ")<br /><a href=\"/cart\" class=\"underline\">Go to Cart</a>"),
         ttl: 13
@@ -7025,9 +7021,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     localStorage.removeItem('items');
-    events.$emit('order-items', {
-      count: 0
-    });
+    this.$page.countInCart = 0;
   }
 });
 
@@ -7912,24 +7906,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {},
   data: function data() {
     return {
       count: 0
     };
   },
+  watch: {
+    '$page.countInCart': function $pageCountInCart() {
+      this.count = this.$page.countInCart;
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
-
     var items = localStorage.getItem('items');
 
     if (items) {
       this.count = JSON.parse(items).length;
     }
-
-    events.$on('order-items', function (data) {
-      return _this.cart(data);
-    });
   },
   methods: {
     isUrl: _Utils_Helpers__WEBPACK_IMPORTED_MODULE_0__["isUrl"],
@@ -80637,7 +80629,6 @@ vue__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.$route = function () {
   return _vendor_tightenco_ziggy_src_js_route_js__WEBPACK_IMPORTED_MODULE_4__["default"].apply(void 0, arguments).url();
 };
 
-window.events = new vue__WEBPACK_IMPORTED_MODULE_6__["default"]();
 var app = document.getElementById('app');
 
 var pages = __webpack_require__("./resources/js/Pages sync recursive \\.vue$/");

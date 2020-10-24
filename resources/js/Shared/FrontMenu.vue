@@ -63,12 +63,15 @@
 import { isUrl } from '@/Utils/Helpers'
 
 export default {
-  props: {},
-
   data() {
     return {
       count: 0,
     }
+  },
+  watch: {
+    '$page.countInCart'() {
+      this.count = this.$page.countInCart
+    },
   },
   mounted() {
     let items = localStorage.getItem('items')
@@ -76,8 +79,6 @@ export default {
     if (items) {
       this.count = JSON.parse(items).length
     }
-
-    events.$on('order-items', data => this.cart(data))
   },
   methods: {
     isUrl,

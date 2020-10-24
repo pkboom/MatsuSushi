@@ -41,6 +41,8 @@ class AppServiceProvider extends ServiceProvider
             ];
         });
 
+        Inertia::share('countInCart', null);
+
         Inertia::share('auth', function () {
             if (Auth::user()) {
                 return [

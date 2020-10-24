@@ -177,9 +177,7 @@ export default {
 
       localStorage.setItem('items', JSON.stringify(items))
 
-      events.$emit('order-items', {
-        count: items.length,
-      })
+      this.$page.countInCart = items.length
 
       this.$page.flash = {
         success: `'${order.name}' added(${items.length})<br /><a href="/cart" class="underline">Go to Cart</a>`,

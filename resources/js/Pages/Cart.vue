@@ -132,9 +132,7 @@ export default {
 
       localStorage.setItem('items', JSON.stringify(this.items))
 
-      events.$emit('order-items', {
-        count: this.items.length,
-      })
+      this.$page.countInCart = this.items.length
 
       this.calculate()
     },
