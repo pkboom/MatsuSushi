@@ -6528,7 +6528,7 @@ __webpack_require__.r(__webpack_exports__);
         count: items.length
       });
       this.$page.flash = {
-        success: "'".concat(order.name, "' added(").concat(items.length, ").<br /><a href=\"/cart\" class=\"underline\">Go to Cart</a>"),
+        success: "'".concat(order.name, "' added(").concat(items.length, ")<br /><a href=\"/cart\" class=\"underline\">Go to Cart</a>"),
         ttl: 13
       };
     }

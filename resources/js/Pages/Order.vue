@@ -182,7 +182,7 @@ export default {
       })
 
       this.$page.flash = {
-        success: `'${order.name}' added(${items.length}).<br /><a href="/cart" class="underline">Go to Cart</a>`,
+        success: `'${order.name}' added(${items.length})<br /><a href="/cart" class="underline">Go to Cart</a>`,
         ttl: 13,
       }
     },
