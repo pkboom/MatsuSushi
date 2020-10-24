@@ -4571,10 +4571,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -57572,11 +57568,6 @@ var render = function() {
                     ")\n        "
                 )
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("span", { staticClass: "text-gray-500" }, [_vm._v("Tip:")]),
-              _vm._v("\n        $ " + _vm._s(transaction.tip) + "\n      ")
             ]),
             _vm._v(" "),
             _c("div", [
