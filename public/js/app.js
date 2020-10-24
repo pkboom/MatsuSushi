@@ -6127,37 +6127,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object,
     status: Object
   },
   methods: {
-    refund: function refund() {
+    update: function update(status) {
       this.$inertia.put(this.$route('admin.transactions.update', this.transaction.id), {
-        onStart: function onStart() {
-          return confirm('This will only change the status to refund. You have to go to Stripe to actually refund.');
-        }
-      });
-    },
-    destroy: function destroy() {
-      this.$inertia["delete"](this.$route('admin.transactions.destroy', this.transaction.id), {
-        onStart: function onStart() {
-          return confirm('Are you sure you want to delete this transaction?');
-        }
+        status: status
       });
     }
   }
@@ -60405,7 +60383,6 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm.transaction.status === _vm.status.succeeded &&
         _vm.transaction.name === "Keunbae Park"
           ? _c(
               "div",
@@ -60418,33 +60395,29 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "text-red-500 hover:underline",
+                      staticClass: "text-blue-600 underline mr-4",
                       attrs: { tabindex: "-1", type: "button" },
-                      on: { click: _vm.refund }
+                      on: {
+                        click: function($event) {
+                          return _vm.update(_vm.status.refunded)
+                        }
+                      }
                     },
                     [_vm._v("\n          Refund\n        ")]
-                  )
-                ])
-              ]
-            )
-          : _vm.transaction.status === _vm.status.inprocess &&
-            _vm.transaction.name === "Keunbae Park"
-          ? _c(
-              "div",
-              {
-                staticClass:
-                  "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
-              },
-              [
-                _c("div", [
+                  ),
+                  _vm._v(" "),
                   _c(
                     "button",
                     {
-                      staticClass: "text-red-500 hover:underline",
+                      staticClass: "text-red-500 underline",
                       attrs: { tabindex: "-1", type: "button" },
-                      on: { click: _vm.destroy }
+                      on: {
+                        click: function($event) {
+                          return _vm.update(_vm.status.failed)
+                        }
+                      }
                     },
-                    [_vm._v("\n          Delete Transaction\n        ")]
+                    [_vm._v("\n          Fail\n        ")]
                   )
                 ])
               ]

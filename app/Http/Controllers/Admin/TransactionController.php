@@ -27,23 +27,20 @@ class TransactionController extends Controller
             'status' => [
                 'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
                 'inprocess' => Transaction::TRANSACTION_INPROCESS,
+                'refunded' => Transaction::TRANSACTION_REFUNDED,
+                'failed' => Transaction::TRANSACTION_FAILED,
             ],
         ]);
     }
 
     public function update(Transaction $transaction)
     {
-        $transaction->update([
-            'status' => Transaction::TRANSACTION_REFUNDED,
-        ]);
+        $transaction->update(
+            Request::validate([
+                'status' => ['required', 'in:'.implode(',', [Transaction::TRANSACTION_FAILED, Transaction::TRANSACTION_REFUNDED])],
+            ]
+        ));
 
-        return Redirect::back()->with('success', 'Status changed to refund.');
-    }
-
-    public function destroy(Transaction $transaction)
-    {
-        $transaction->delete();
-
-        return Redirect::route('admin.transactions')->with('success', 'Transaction deleted.');
+        return Redirect::route('admin.transactions')->with('success', 'Transaction status changed.');
     }
 }

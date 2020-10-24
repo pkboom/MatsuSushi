@@ -70,38 +70,25 @@
         </div>
       </div>
       <div
-        v-if="
-          transaction.status === status.succeeded &&
-            transaction.name === 'Keunbae Park'
-        "
+        v-if="transaction.name === 'Keunbae Park'"
         class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
       >
         <div>
           <button
-            class="text-red-500 hover:underline"
+            class="text-blue-600 underline mr-4"
             tabindex="-1"
             type="button"
-            @click="refund"
+            @click="update(status.refunded)"
           >
             Refund
           </button>
-        </div>
-      </div>
-      <div
-        v-else-if="
-          transaction.status === status.inprocess &&
-            transaction.name === 'Keunbae Park'
-        "
-        class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
-      >
-        <div>
           <button
-            class="text-red-500 hover:underline"
+            class="text-red-500 underline"
             tabindex="-1"
             type="button"
-            @click="destroy"
+            @click="update(status.failed)"
           >
-            Delete Transaction
+            Fail
           </button>
         </div>
       </div>
@@ -116,24 +103,10 @@ export default {
     status: Object,
   },
   methods: {
-    refund() {
+    update(status) {
       this.$inertia.put(
         this.$route('admin.transactions.update', this.transaction.id),
-        {
-          onStart: () =>
-            confirm(
-              'This will only change the status to refund. You have to go to Stripe to actually refund.',
-            ),
-        },
-      )
-    },
-    destroy() {
-      this.$inertia.delete(
-        this.$route('admin.transactions.destroy', this.transaction.id),
-        {
-          onStart: () =>
-            confirm('Are you sure you want to delete this transaction?'),
-        },
+        { status },
       )
     },
   },
