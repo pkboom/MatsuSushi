@@ -75,20 +75,12 @@
       >
         <div>
           <button
-            class="text-blue-600 underline mr-4"
+            class="text-blue-600 underline"
             tabindex="-1"
             type="button"
-            @click="update(status.refunded)"
+            @click="destroy()"
           >
-            Refund
-          </button>
-          <button
-            class="text-red-500 underline"
-            tabindex="-1"
-            type="button"
-            @click="update(status.failed)"
-          >
-            Fail
+            Delete Transaction
           </button>
         </div>
       </div>
@@ -103,10 +95,9 @@ export default {
     status: Object,
   },
   methods: {
-    update(status) {
-      this.$inertia.put(
-        this.$route('admin.transactions.update', this.transaction.id),
-        { status },
+    destroy() {
+      this.$inertia.delete(
+        this.$route('admin.transactions.destroy', this.transaction.id),
       )
     },
   },

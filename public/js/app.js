@@ -6127,24 +6127,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object,
     status: Object
   },
   methods: {
-    update: function update(status) {
-      this.$inertia.put(this.$route('admin.transactions.update', this.transaction.id), {
-        status: status
-      });
+    destroy: function destroy() {
+      this.$inertia["delete"](this.$route('admin.transactions.destroy', this.transaction.id));
     }
   }
 });
@@ -60428,29 +60418,15 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "text-blue-600 underline mr-4",
+                      staticClass: "text-blue-600 underline",
                       attrs: { tabindex: "-1", type: "button" },
                       on: {
                         click: function($event) {
-                          return _vm.update(_vm.status.refunded)
+                          return _vm.destroy()
                         }
                       }
                     },
-                    [_vm._v("\n          Refund\n        ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "text-red-500 underline",
-                      attrs: { tabindex: "-1", type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.update(_vm.status.failed)
-                        }
-                      }
-                    },
-                    [_vm._v("\n          Fail\n        ")]
+                    [_vm._v("\n          Delete Transaction\n        ")]
                   )
                 ])
               ]

@@ -36,14 +36,10 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function update(Transaction $transaction)
+    public function destroy(Transaction $transaction)
     {
-        $transaction->update(
-            Request::validate([
-                'status' => ['required', 'in:'.implode(',', [Transaction::TRANSACTION_FAILED, Transaction::TRANSACTION_REFUNDED])],
-            ]
-        ));
+        $transaction->delete();
 
-        return Redirect::route('admin.transactions')->with('success', 'Transaction status changed.');
+        return Redirect::route('admin.transactions')->with('success', 'Transaction deleted.');
     }
 }
