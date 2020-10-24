@@ -16,6 +16,7 @@ class DashboardController extends Controller
             'transactions' => Transaction::with('items')
                 ->date('created_at', Carbon::today())
                 ->where('status', '<>', Transaction::TRANSACTION_FAILED)
+                ->where('status', '<>', Transaction::TRANSACTION_REFUNDED)
                 ->latest()
                 ->take(30)
                 ->get()
