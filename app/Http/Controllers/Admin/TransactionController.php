@@ -17,6 +17,9 @@ class TransactionController extends Controller
             'transactions' => Transaction::latest()
                 ->filter(Request::only('search'))
                 ->paginate(),
+            'status' => [
+                'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
+            ],
         ]);
     }
 

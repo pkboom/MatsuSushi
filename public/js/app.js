@@ -5984,10 +5984,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     filters: Object,
-    transactions: Object
+    transactions: Object,
+    status: Object
   },
   data: function data() {
     return {
@@ -60093,6 +60101,15 @@ var render = function() {
                   staticClass:
                     "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
                 },
+                [_vm._v("\n          Tip\n        ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  staticClass:
+                    "text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
+                },
                 [_vm._v("\n          Status\n        ")]
               ),
               _vm._v(" "),
@@ -60162,6 +60179,22 @@ var render = function() {
                       _vm._v(
                         "\n          $ " +
                           _vm._s(transaction.total) +
+                          "\n        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "border-t px-6 py-4 whitespace-no-wrap" },
+                    [
+                      _vm._v(
+                        "\n          $\n          " +
+                          _vm._s(
+                            transaction.status === _vm.status.succeeded
+                              ? transaction.tip
+                              : 0
+                          ) +
                           "\n        "
                       )
                     ]
