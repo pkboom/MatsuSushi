@@ -6528,7 +6528,8 @@ __webpack_require__.r(__webpack_exports__);
         count: items.length
       });
       this.$page.flash = {
-        success: order.name
+        success: "'".concat(order.name, "' added(").concat(items.length, ").<br /><a href=\"/cart\" class=\"underline\">Go to Cart</a>"),
+        ttl: 13
       };
     }
   }
@@ -7609,6 +7610,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7620,7 +7622,10 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     '$page.flash': {
       handler: function handler() {
+        var _this$$page$flash$ttl;
+
         this.show = true;
+        this.ttl = (_this$$page$flash$ttl = this.$page.flash.ttl) !== null && _this$$page$flash$ttl !== void 0 ? _this$$page$flash$ttl : this.ttl;
         this.flash();
       },
       deep: true
@@ -62836,19 +62841,10 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "ml-3" }, [
-                _c(
-                  "p",
-                  {
-                    staticClass: "text-sm leading-5 font-medium text-green-800"
-                  },
-                  [
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(_vm.$page.flash.success) +
-                        "\n        "
-                    )
-                  ]
-                )
+                _c("p", {
+                  staticClass: "text-sm leading-5 font-medium text-green-800",
+                  domProps: { innerHTML: _vm._s(_vm.$page.flash.success) }
+                })
               ])
             ])
           ]

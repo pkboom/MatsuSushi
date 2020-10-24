@@ -19,9 +19,10 @@
           </svg>
         </div>
         <div class="ml-3">
-          <p class="text-sm leading-5 font-medium text-green-800">
-            {{ $page.flash.success }}
-          </p>
+          <p
+            class="text-sm leading-5 font-medium text-green-800"
+            v-html="$page.flash.success"
+          />
         </div>
       </div>
     </div>
@@ -66,6 +67,8 @@ export default {
     '$page.flash': {
       handler() {
         this.show = true
+
+        this.ttl = this.$page.flash.ttl ?? this.ttl
 
         this.flash()
       },
