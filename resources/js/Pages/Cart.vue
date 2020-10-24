@@ -89,13 +89,13 @@ export default {
   },
   watch: {
     tip_percentage() {
-      localStorage.setItem('tip_percentage', this.tip_percentage)
+      this.storeTipPercentageInLocalStorage()
 
       this.calculate()
     },
   },
   mounted() {
-    localStorage.setItem('tip_percentage', this.tip_percentage)
+    this.storeTipPercentageInLocalStorage()
 
     if (localStorage.getItem('items')) {
       this.items = JSON.parse(localStorage.getItem('items')).sort(
@@ -103,11 +103,12 @@ export default {
       )
     }
 
-    this.tip_percentage = localStorage.getItem('tip_percentage')
-
     this.calculate()
   },
   methods: {
+    storeTipPercentageInLocalStorage() {
+      localStorage.setItem('tip_percentage', this.tip_percentage)
+    },
     calculate() {
       this.subtotal = this.items
         ? this.items

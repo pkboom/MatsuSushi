@@ -48,10 +48,6 @@ export default {
     transaction: Object,
   },
   mounted() {
-    localStorage.removeItem('total')
-    localStorage.removeItem('tip')
-    localStorage.removeItem('subtotal')
-    localStorage.removeItem('tax')
     localStorage.removeItem('items')
 
     events.$emit('order-items', {

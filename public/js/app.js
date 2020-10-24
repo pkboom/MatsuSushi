@@ -6243,12 +6243,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     tip_percentage: function tip_percentage() {
-      localStorage.setItem('tip_percentage', this.tip_percentage);
+      this.storeTipPercentageInLocalStorage();
       this.calculate();
     }
   },
   mounted: function mounted() {
-    localStorage.setItem('tip_percentage', this.tip_percentage);
+    this.storeTipPercentageInLocalStorage();
 
     if (localStorage.getItem('items')) {
       this.items = JSON.parse(localStorage.getItem('items')).sort(function (a, b) {
@@ -6256,10 +6256,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
 
-    this.tip_percentage = localStorage.getItem('tip_percentage');
     this.calculate();
   },
   methods: {
+    storeTipPercentageInLocalStorage: function storeTipPercentageInLocalStorage() {
+      localStorage.setItem('tip_percentage', this.tip_percentage);
+    },
     calculate: function calculate() {
       this.subtotal = this.items ? this.items.map(function (order) {
         return Number(order.price);
@@ -6619,6 +6621,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     encrypted_time: String
@@ -6631,9 +6639,9 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         matsu_honeypot: null,
         encrypted_time: this.encrypted_time,
-        first_name: localStorage.getItem('first_name'),
-        last_name: localStorage.getItem('last_name'),
-        phone: localStorage.getItem('phone'),
+        first_name: null,
+        last_name: null,
+        phone: null,
         date: null,
         time: null,
         people: 2,
@@ -6647,11 +6655,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.sending = true;
       this.$inertia.post(this.$route('reservations.store'), this.form, {
-        onSuccess: function onSuccess(page) {
-          localStorage.setItem('first_name', _this.form.first_name);
-          localStorage.setItem('last_name', _this.form.last_name);
-          localStorage.setItem('phone', _this.form.phone);
-        },
         onFinish: function onFinish() {
           return _this.sending = false;
         }
@@ -6853,6 +6856,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6863,28 +6875,30 @@ __webpack_require__.r(__webpack_exports__);
     type: Object
   },
   data: function data() {
+    var _localStorage$getItem;
+
     return {
       sending: false,
       from: moment__WEBPACK_IMPORTED_MODULE_1___default()().isAfter(moment__WEBPACK_IMPORTED_MODULE_1___default()('11:00am', 'h:mma')) ? moment__WEBPACK_IMPORTED_MODULE_1___default()().add(25, 'minutes').format('h:mma') : '11:00am',
       to: '9:35pm',
       form: {
         type: this.type.delivery,
-        first_name: localStorage.getItem('first_name'),
-        last_name: localStorage.getItem('last_name'),
-        email: localStorage.getItem('email'),
-        phone: localStorage.getItem('phone'),
-        address: localStorage.getItem('address'),
+        first_name: null,
+        last_name: null,
+        email: null,
+        phone: null,
+        address: null,
         takeout_time: null,
         message: null,
         items: [],
-        tip_percentage: localStorage.getItem('tip_percentage')
+        tip_percentage: (_localStorage$getItem = localStorage.getItem('tip_percentage')) !== null && _localStorage$getItem !== void 0 ? _localStorage$getItem : 0
       },
       errors: new _Utils_Errors__WEBPACK_IMPORTED_MODULE_0__["default"]()
     };
   },
   watch: {
     'form.type': function formType() {
-      this.form.type === this.type.takeout ? this.form.address = null : this.form.address = localStorage.getItem('address');
+      this.form.address = null;
       this.form.takeout_time = null;
     }
   },
@@ -6901,13 +6915,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.sending = true;
       _Utils_Http__WEBPACK_IMPORTED_MODULE_2__["default"].post(this.$route('start-your-order.store'), this.form).then(function (response) {
-        var _this$form$address;
-
-        localStorage.setItem('first_name', _this.form.first_name);
-        localStorage.setItem('last_name', _this.form.last_name);
-        localStorage.setItem('email', _this.form.email);
-        localStorage.setItem('phone', _this.form.phone);
-        localStorage.setItem('address', (_this$form$address = _this.form.address) !== null && _this$form$address !== void 0 ? _this$form$address : '');
         Stripe(response.data.key).redirectToCheckout({
           sessionId: response.data.session
         }).then(function (result) {
@@ -6991,10 +6998,6 @@ __webpack_require__.r(__webpack_exports__);
     transaction: Object
   },
   mounted: function mounted() {
-    localStorage.removeItem('total');
-    localStorage.removeItem('tip');
-    localStorage.removeItem('subtotal');
-    localStorage.removeItem('tax');
     localStorage.removeItem('items');
     events.$emit('order-items', {
       count: 0
@@ -61213,8 +61216,10 @@ var render = function() {
                 [
                   _c("text-input", {
                     attrs: {
+                      name: "given-name",
                       error: _vm.$page.errors.first("first_name"),
-                      label: "First name"
+                      label: "First name",
+                      autocomplete: "given-name"
                     },
                     model: {
                       value: _vm.form.first_name,
@@ -61234,8 +61239,10 @@ var render = function() {
                 [
                   _c("text-input", {
                     attrs: {
+                      name: "family-name",
                       error: _vm.$page.errors.first("last_name"),
-                      label: "Last name"
+                      label: "Last name",
+                      autocomplete: "family-name"
                     },
                     model: {
                       value: _vm.form.last_name,
@@ -61255,8 +61262,10 @@ var render = function() {
                 [
                   _c("text-input", {
                     attrs: {
+                      name: "tel",
                       error: _vm.$page.errors.first("phone"),
-                      label: "Phone"
+                      label: "Phone",
+                      autocomplete: "tel"
                     },
                     model: {
                       value: _vm.form.phone,
@@ -61604,10 +61613,11 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
+                          name: "email",
                           error: _vm.errors.first("email"),
                           label: "Email",
                           type: "email",
-                          autocomplete: "username"
+                          autocomplete: "email"
                         },
                         model: {
                           value: _vm.form.email,
@@ -61627,8 +61637,10 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
+                          name: "tel",
                           error: _vm.errors.first("phone"),
-                          label: "Phone"
+                          label: "Phone",
+                          autocomplete: "tel"
                         },
                         model: {
                           value: _vm.form.phone,
@@ -61648,8 +61660,10 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
+                          name: "given-name",
                           error: _vm.errors.first("first_name"),
-                          label: "First name"
+                          label: "First name",
+                          autocomplete: "given-name"
                         },
                         model: {
                           value: _vm.form.first_name,
@@ -61669,8 +61683,10 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
+                          name: "family-name",
                           error: _vm.errors.first("last_name"),
-                          label: "Last name"
+                          label: "Last name",
+                          autocomplete: "family-name"
                         },
                         model: {
                           value: _vm.form.last_name,
@@ -61691,8 +61707,10 @@ var render = function() {
                         [
                           _c("text-input", {
                             attrs: {
+                              name: "address",
                               error: _vm.errors.first("address"),
-                              label: "Address"
+                              label: "Address",
+                              autocomplete: "street-address"
                             },
                             model: {
                               value: _vm.form.address,

@@ -34,38 +34,47 @@
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.email"
+                name="email"
                 :error="errors.first('email')"
                 label="Email"
                 type="email"
-                autocomplete="username"
+                autocomplete="email"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.phone"
+                name="tel"
                 :error="errors.first('phone')"
                 label="Phone"
+                autocomplete="tel"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.first_name"
+                name="given-name"
                 :error="errors.first('first_name')"
                 label="First name"
+                autocomplete="given-name"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.last_name"
+                name="family-name"
                 :error="errors.first('last_name')"
                 label="Last name"
+                autocomplete="family-name"
               />
             </div>
             <div v-if="form.type === type.delivery" class="pr-6 pb-8 w-full">
               <text-input
                 v-model="form.address"
+                name="address"
                 :error="errors.first('address')"
                 label="Address"
+                autocomplete="street-address"
               />
             </div>
             <div
@@ -135,25 +144,22 @@ export default {
       to: '9:35pm',
       form: {
         type: this.type.delivery,
-        first_name: localStorage.getItem('first_name'),
-        last_name: localStorage.getItem('last_name'),
-        email: localStorage.getItem('email'),
-        phone: localStorage.getItem('phone'),
-        address: localStorage.getItem('address'),
+        first_name: null,
+        last_name: null,
+        email: null,
+        phone: null,
+        address: null,
         takeout_time: null,
         message: null,
         items: [],
-        tip_percentage: localStorage.getItem('tip_percentage'),
+        tip_percentage: localStorage.getItem('tip_percentage') ?? 0,
       },
       errors: new Errors(),
     }
   },
   watch: {
     'form.type'() {
-      this.form.type === this.type.takeout
-        ? (this.form.address = null)
-        : (this.form.address = localStorage.getItem('address'))
-
+      this.form.address = null
       this.form.takeout_time = null
     },
   },
@@ -169,12 +175,6 @@ export default {
       this.sending = true
       Http.post(this.$route('start-your-order.store'), this.form)
         .then(response => {
-          localStorage.setItem('first_name', this.form.first_name)
-          localStorage.setItem('last_name', this.form.last_name)
-          localStorage.setItem('email', this.form.email)
-          localStorage.setItem('phone', this.form.phone)
-          localStorage.setItem('address', this.form.address ?? '')
-
           Stripe(response.data.key)
             .redirectToCheckout({
               sessionId: response.data.session,

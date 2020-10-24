@@ -11,22 +11,28 @@
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.first_name"
+                name="given-name"
                 :error="$page.errors.first('first_name')"
                 label="First name"
+                autocomplete="given-name"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.last_name"
+                name="family-name"
                 :error="$page.errors.first('last_name')"
                 label="Last name"
+                autocomplete="family-name"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.phone"
+                name="tel"
                 :error="$page.errors.first('phone')"
                 label="Phone"
+                autocomplete="tel"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
@@ -87,9 +93,9 @@ export default {
       form: {
         matsu_honeypot: null,
         encrypted_time: this.encrypted_time,
-        first_name: localStorage.getItem('first_name'),
-        last_name: localStorage.getItem('last_name'),
-        phone: localStorage.getItem('phone'),
+        first_name: null,
+        last_name: null,
+        phone: null,
         date: null,
         time: null,
         people: 2,
@@ -102,11 +108,6 @@ export default {
       this.sending = true
 
       this.$inertia.post(this.$route('reservations.store'), this.form, {
-        onSuccess: page => {
-          localStorage.setItem('first_name', this.form.first_name)
-          localStorage.setItem('last_name', this.form.last_name)
-          localStorage.setItem('phone', this.form.phone)
-        },
         onFinish: () => (this.sending = false),
       })
     },
