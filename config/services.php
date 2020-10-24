@@ -11,11 +11,6 @@ return [
         ],
     ],
 
-    'kakao' => [
-        'client_id' => env('KAKAO_CLIENT_ID'),
-        'redirect_uri' => env('KAKAO_REDIRECT_URI'),
-    ],
-
     'tinify' => [
         'api_key' => env('TINIFY_API_KEY'),
     ],

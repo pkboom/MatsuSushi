@@ -1,7 +1,5 @@
 <template>
   <admin-layout title="Dashboard">
-    <!-- <a href="/admin/kakao/login" class="btn">Log into kakao</a> -->
-    <!-- <a href="/admin/kakao/send" class="btn">Send message</a> -->
     <div class="flex justify-between items-end mb-4">
       <div>
         <div class="flex font-bold items-baseline text-xl pb-1">
