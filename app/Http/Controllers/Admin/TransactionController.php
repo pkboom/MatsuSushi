@@ -34,7 +34,7 @@ class TransactionController extends Controller
     public function update(Transaction $transaction)
     {
         $transaction->update([
-            'status' => Transaction::TRANSACTION_REFUND,
+            'status' => Transaction::TRANSACTION_REFUNDED,
         ]);
 
         return Redirect::back()->with('success', 'Status changed to refund.');

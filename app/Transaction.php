@@ -24,7 +24,7 @@ class Transaction extends Model
 
     const TRANSACTION_FAILED = 'failed';
 
-    const TRANSACTION_REFUND = 'refund';
+    const TRANSACTION_REFUNDED = 'refunded';
 
     const DELIVERY_FEE = 6;
 
