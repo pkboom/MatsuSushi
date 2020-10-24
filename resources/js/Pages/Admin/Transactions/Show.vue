@@ -87,6 +87,24 @@
           </button>
         </div>
       </div>
+      <div
+        v-else-if="
+          transaction.status === status.inprocess &&
+            transaction.name === 'Keunbae Park'
+        "
+        class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+      >
+        <div>
+          <button
+            class="text-red-500 hover:underline"
+            tabindex="-1"
+            type="button"
+            @click="destroy"
+          >
+            Delete Transaction
+          </button>
+        </div>
+      </div>
     </div>
   </admin-layout>
 </template>
@@ -106,6 +124,15 @@ export default {
             confirm(
               'This will only change the status to refund. You have to go to Stripe to actually refund.',
             ),
+        },
+      )
+    },
+    destroy() {
+      this.$inertia.delete(
+        this.$route('admin.transactions.destroy', this.transaction.id),
+        {
+          onStart: () =>
+            confirm('Are you sure you want to delete this transaction?'),
         },
       )
     },

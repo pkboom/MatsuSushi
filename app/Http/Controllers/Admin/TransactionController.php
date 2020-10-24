@@ -26,6 +26,7 @@ class TransactionController extends Controller
             'transaction' => $transaction,
             'status' => [
                 'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
+                'inprocess' => Transaction::TRANSACTION_INPROCESS,
             ],
         ]);
     }
@@ -37,5 +38,12 @@ class TransactionController extends Controller
         ]);
 
         return Redirect::back()->with('success', 'Status changed to refund.');
+    }
+
+    public function destroy(Transaction $transaction)
+    {
+        $transaction->delete();
+
+        return Redirect::route('admin.transactions')->with('success', 'Transaction deleted.');
     }
 }

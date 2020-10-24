@@ -6124,6 +6124,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object,
@@ -6134,6 +6152,13 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.put(this.$route('admin.transactions.update', this.transaction.id), {
         onStart: function onStart() {
           return confirm('This will only change the status to refund. You have to go to Stripe to actually refund.');
+        }
+      });
+    },
+    destroy: function destroy() {
+      this.$inertia["delete"](this.$route('admin.transactions.destroy', this.transaction.id), {
+        onStart: function onStart() {
+          return confirm('Are you sure you want to delete this transaction?');
         }
       });
     }
@@ -60408,6 +60433,28 @@ var render = function() {
                       on: { click: _vm.refund }
                     },
                     [_vm._v("\n          Refund\n        ")]
+                  )
+                ])
+              ]
+            )
+          : _vm.transaction.status === _vm.status.inprocess &&
+            _vm.transaction.name === "Keunbae Park"
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+              },
+              [
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "text-red-500 hover:underline",
+                      attrs: { tabindex: "-1", type: "button" },
+                      on: { click: _vm.destroy }
+                    },
+                    [_vm._v("\n          Delete Transaction\n        ")]
                   )
                 ])
               ]
