@@ -40,12 +40,12 @@ class ReservationController extends Controller
 
         $dates = [];
 
-        foreach ($startOfWeek->range($startOfWeek->addWeeks(4)->subDay(), CarbonInterval::day()) as $date) {
+        foreach ($startOfWeek->range(now()->addDays(Reservation::VALID_DAYS), CarbonInterval::day()) as $date) {
             $dates[$date->format('n/j')] = null;
         }
 
         Reservation::query()
-            ->where('reserved_at', '>=', now()->startOfDay())
+            ->where('reserved_at', '>=', $startOfWeek)
             ->get()
             ->map(function ($reservation) use (&$dates) {
                 $dates[$reservation->reserved_at->format('n/j')][] = [

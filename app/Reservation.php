@@ -46,7 +46,7 @@ class Reservation extends Model
             ->count();
     }
 
-    public static function isFuture($reserved_at)
+    public static function isFarFuture($reserved_at)
     {
         return $reserved_at->subDays(static::VALID_DAYS)->isFuture();
     }
