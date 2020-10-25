@@ -6134,12 +6134,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     transaction: Object,
     status: Object
   },
   methods: {
+    update: function update(status) {
+      this.$inertia.put(this.$route('admin.transactions.update', this.transaction.id), {
+        status: status
+      });
+    },
     destroy: function destroy() {
       this.$inertia["delete"](this.$route('admin.transactions.destroy', this.transaction.id));
     }
@@ -60416,9 +60451,57 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+                  "px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center space-x-6"
               },
               [
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "text-blue-600 underline",
+                      attrs: { tabindex: "-1", type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.update(_vm.status.succeeded)
+                        }
+                      }
+                    },
+                    [_vm._v("\n          Succeeded\n        ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "text-blue-600 underline",
+                      attrs: { tabindex: "-1", type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.update(_vm.status.inprocess)
+                        }
+                      }
+                    },
+                    [_vm._v("\n          In Process\n        ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "text-blue-600 underline",
+                      attrs: { tabindex: "-1", type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.update(_vm.status.failed)
+                        }
+                      }
+                    },
+                    [_vm._v("\n          Failed\n        ")]
+                  )
+                ]),
+                _vm._v(" "),
                 _c("div", [
                   _c(
                     "button",
@@ -60431,7 +60514,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("\n          Delete Transaction\n        ")]
+                    [_vm._v("\n          Delete\n        ")]
                   )
                 ])
               ]

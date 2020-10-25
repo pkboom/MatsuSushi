@@ -71,8 +71,38 @@
       </div>
       <div
         v-if="transaction.name === 'Keunbae Park'"
-        class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
+        class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center space-x-6"
       >
+        <div>
+          <button
+            class="text-blue-600 underline"
+            tabindex="-1"
+            type="button"
+            @click="update(status.succeeded)"
+          >
+            Succeeded
+          </button>
+        </div>
+        <div>
+          <button
+            class="text-blue-600 underline"
+            tabindex="-1"
+            type="button"
+            @click="update(status.inprocess)"
+          >
+            In Process
+          </button>
+        </div>
+        <div>
+          <button
+            class="text-blue-600 underline"
+            tabindex="-1"
+            type="button"
+            @click="update(status.failed)"
+          >
+            Failed
+          </button>
+        </div>
         <div>
           <button
             class="text-blue-600 underline"
@@ -80,7 +110,7 @@
             type="button"
             @click="destroy()"
           >
-            Delete Transaction
+            Delete
           </button>
         </div>
       </div>
@@ -95,6 +125,12 @@ export default {
     status: Object,
   },
   methods: {
+    update(status) {
+      this.$inertia.put(
+        this.$route('admin.transactions.update', this.transaction.id),
+        { status },
+      )
+    },
     destroy() {
       this.$inertia.delete(
         this.$route('admin.transactions.destroy', this.transaction.id),
