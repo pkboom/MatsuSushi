@@ -30,6 +30,7 @@
                 v-model="form.phone"
                 :error="$page.errors.first('phone')"
                 label="Phone"
+                type="tel"
                 autocomplete="tel"
               />
             </div>

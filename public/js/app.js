@@ -6617,6 +6617,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     encrypted_time: String
@@ -6731,6 +6732,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Utils/Http */ "./resources/js/Utils/Http.js");
 /* harmony import */ var _Utils_Stripe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Utils/Stripe */ "./resources/js/Utils/Stripe.js");
 /* harmony import */ var _Utils_Stripe__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Utils_Stripe__WEBPACK_IMPORTED_MODULE_3__);
+//
 //
 //
 //
@@ -61268,6 +61270,7 @@ var render = function() {
                     attrs: {
                       error: _vm.$page.errors.first("phone"),
                       label: "Phone",
+                      type: "tel",
                       autocomplete: "tel"
                     },
                     model: {
@@ -61642,6 +61645,7 @@ var render = function() {
                         attrs: {
                           error: _vm.errors.first("phone"),
                           label: "Phone",
+                          type: "tel",
                           autocomplete: "tel"
                         },
                         model: {

@@ -46,6 +46,7 @@
                 v-model="form.phone"
                 :error="errors.first('phone')"
                 label="Phone"
+                type="tel"
                 autocomplete="tel"
               />
             </div>
