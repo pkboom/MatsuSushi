@@ -54,7 +54,10 @@
             <hr class="border-b border-gray-400 border-t py-2px" />
           </div>
         </div>
-        <div v-if="searchItem" class="grid grid-cols-1 gap-8 p-8">
+        <div
+          v-if="searchItem"
+          class="gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4"
+        >
           <div
             v-for="item in searchResult"
             :key="item.id"

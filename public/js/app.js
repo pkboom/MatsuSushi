@@ -6510,6 +6510,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -61118,7 +61121,7 @@ var render = function() {
           _vm.searchItem
             ? _c(
                 "div",
-                { staticClass: "grid grid-cols-1 gap-8 p-8" },
+                { staticClass: "gap-4 grid grid-cols-1 md:gap-8 md:p-8 p-4" },
                 _vm._l(_vm.searchResult, function(item) {
                   return _c(
                     "div",
