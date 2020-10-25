@@ -6508,6 +6508,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -6519,7 +6520,7 @@ __webpack_require__.r(__webpack_exports__);
 
     return {
       currentCategory: this.categories[0],
-      category_id: this.categories[0].id,
+      category_id: null,
       searchCategory: null,
       searchItem: null,
       searchResult: null,
@@ -61003,18 +61004,22 @@ var render = function() {
                   expression: "category_id"
                 }
               },
-              _vm._l(_vm.categories, function(category) {
-                return _c(
-                  "option",
-                  { key: category.id, domProps: { value: category.id } },
-                  [
-                    _vm._v(
-                      "\n          " + _vm._s(category.name) + "\n        "
-                    )
-                  ]
-                )
-              }),
-              0
+              [
+                _c("option", { domProps: { value: null } }),
+                _vm._v(" "),
+                _vm._l(_vm.categories, function(category) {
+                  return _c(
+                    "option",
+                    { key: category.id, domProps: { value: category.id } },
+                    [
+                      _vm._v(
+                        "\n          " + _vm._s(category.name) + "\n        "
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
             ),
             _vm._v(" "),
             _c("div", { staticClass: "hidden md:block" }, [

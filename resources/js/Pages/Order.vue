@@ -11,6 +11,7 @@
           :error="$page.errors.first('category')"
           class="block md:hidden"
         >
+          <option :value="null" />
           <option
             v-for="category in categories"
             :key="category.id"
@@ -131,7 +132,7 @@ export default {
   data() {
     return {
       currentCategory: this.categories[0],
-      category_id: this.categories[0].id,
+      category_id: null,
       searchCategory: null,
       searchItem: null,
       searchResult: null,
