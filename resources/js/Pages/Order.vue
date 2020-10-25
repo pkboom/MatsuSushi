@@ -6,22 +6,20 @@
       <div
         class="leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
       >
-        <search-input
-          v-model="searchCategory"
-          :data="categories"
-          track-by="id"
-          :search-by="['name']"
+        <select-input
+          v-model="category_id"
+          :error="$page.errors.first('category')"
           class="block md:hidden"
         >
-          <div v-if="searchCategory" class="flex items-center justify-between">
-            <div class="truncate uppercase">{{ searchCategory.name }}</div>
-          </div>
-          <template v-slot:option="{ option }">
-            <div class="flex items-center justify-between">
-              <div class="uppercase">{{ option.name }}</div>
-            </div>
-          </template>
-        </search-input>
+          <option
+            v-for="category in categories"
+            :key="category.id"
+            :value="category.id"
+          >
+            {{ category.name }}
+          </option>
+        </select-input>
+
         <div class="hidden md:block">
           <input
             v-model="searchItem"
@@ -133,6 +131,7 @@ export default {
   data() {
     return {
       currentCategory: this.categories[0],
+      category_id: this.categories[0].id,
       searchCategory: null,
       searchItem: null,
       searchResult: null,
@@ -156,6 +155,11 @@ export default {
           .filter(result => result.score < 0.5)
           .map(result => result.item)
       }
+    },
+    category_id() {
+      this.searchCategory = this.categories.find(
+        category => category.id === this.category_id,
+      )
     },
   },
   methods: {
