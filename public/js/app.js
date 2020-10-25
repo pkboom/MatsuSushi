@@ -6618,6 +6618,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     encrypted_time: String
@@ -6732,6 +6734,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Utils/Http */ "./resources/js/Utils/Http.js");
 /* harmony import */ var _Utils_Stripe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Utils/Stripe */ "./resources/js/Utils/Stripe.js");
 /* harmony import */ var _Utils_Stripe__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Utils_Stripe__WEBPACK_IMPORTED_MODULE_3__);
+//
 //
 //
 //
@@ -61292,7 +61295,8 @@ var render = function() {
                   _c("date-input", {
                     attrs: {
                       error: _vm.$page.errors.first("date"),
-                      label: "Date"
+                      label: "Date",
+                      inputmode: "none"
                     },
                     model: {
                       value: _vm.form.date,
@@ -61315,7 +61319,8 @@ var render = function() {
                       error: _vm.$page.errors.first("time"),
                       label: "Time",
                       from: _vm.from,
-                      to: _vm.to
+                      to: _vm.to,
+                      inputmode: "none"
                     },
                     model: {
                       value: _vm.form.time,
@@ -61736,7 +61741,8 @@ var render = function() {
                               error: _vm.errors.first("takeout_time"),
                               label: "Takeout time",
                               from: _vm.from,
-                              to: _vm.to
+                              to: _vm.to,
+                              inputmode: "none"
                             },
                             model: {
                               value: _vm.form.takeout_time,

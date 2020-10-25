@@ -39,6 +39,7 @@
                 v-model="form.date"
                 :error="$page.errors.first('date')"
                 label="Date"
+                inputmode="none"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
@@ -48,6 +49,7 @@
                 label="Time"
                 :from="from"
                 :to="to"
+                inputmode="none"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">

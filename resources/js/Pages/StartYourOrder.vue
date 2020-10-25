@@ -84,6 +84,7 @@
                 label="Takeout time"
                 :from="from"
                 :to="to"
+                inputmode="none"
               />
             </div>
             <div class="pr-6 pb-8 w-full">
