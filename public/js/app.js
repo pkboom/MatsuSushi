@@ -6277,7 +6277,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     confirm: function confirm() {
       if (this.subtotal >= 1) {
-        this.$inertia.get(this.$route('start-your-order.create'));
+        location.href = this.$route('start-your-order.create');
       }
     }
   }
@@ -7807,10 +7807,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Utils/Helpers */ "./resources/js/Utils/Helpers.js");
-//
-//
-//
-//
 //
 //
 //
@@ -63210,13 +63206,10 @@ var render = function() {
         class: _vm.isUrl("reservations*") ? "border-b-2 pb-1" : null
       },
       [
-        _c(
-          "inertia-link",
-          { attrs: { href: _vm.$route("reservations.create") } },
-          [_vm._v("\n      Reservation\n    ")]
-        )
-      ],
-      1
+        _c("a", { attrs: { href: _vm.$route("reservations.create") } }, [
+          _vm._v("Reservation")
+        ])
+      ]
     ),
     _vm._v(" "),
     _c(
@@ -63227,7 +63220,7 @@ var render = function() {
       },
       [
         _c("inertia-link", { attrs: { href: _vm.$route("order") } }, [
-          _vm._v("\n      Order\n    ")
+          _vm._v("Order")
         ])
       ],
       1

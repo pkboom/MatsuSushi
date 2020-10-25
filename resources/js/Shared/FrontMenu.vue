@@ -22,17 +22,13 @@
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('reservations*') ? 'border-b-2 pb-1' : null"
     >
-      <inertia-link :href="$route('reservations.create')">
-        Reservation
-      </inertia-link>
+      <a :href="$route('reservations.create')">Reservation</a>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('order') ? 'border-b-2 pb-1' : null"
     >
-      <inertia-link :href="$route('order')">
-        Order
-      </inertia-link>
+      <inertia-link :href="$route('order')">Order</inertia-link>
     </div>
     <div
       class="text-md group hover:text-gray-400 font-medium"

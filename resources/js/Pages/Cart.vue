@@ -138,7 +138,7 @@ export default {
     },
     confirm() {
       if (this.subtotal >= 1) {
-        this.$inertia.get(this.$route('start-your-order.create'))
+        location.href = this.$route('start-your-order.create')
       }
     },
   },
