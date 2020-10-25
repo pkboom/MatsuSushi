@@ -41,6 +41,13 @@ class Transaction extends Model
         'formattedCreatedAt',
     ];
 
+    protected static function booted()
+    {
+        static::saved(function ($transaction) {
+            Cache::forget('transactions');
+        });
+    }
+
     public function getPerPage()
     {
         return 10;

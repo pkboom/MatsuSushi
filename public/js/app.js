@@ -4571,6 +4571,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -4581,7 +4587,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      timeoutId: null
+      timeoutId: null,
+      showReload: false
     };
   },
   computed: {
@@ -4590,8 +4597,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
     if (this.new_order) {
-      document.getElementById('alarm').play();
+      document.getElementById('alarm').play()["catch"](function (error) {
+        return _this.showReload = true;
+      });
     }
 
     this.timeoutId = setTimeout(function () {
@@ -57470,36 +57481,44 @@ var render = function() {
   return _c("admin-layout", { attrs: { title: "Dashboard" } }, [
     _c("div", { staticClass: "flex justify-between items-end mb-4" }, [
       _c("div", [
-        _c(
-          "div",
-          { staticClass: "flex font-bold items-baseline text-xl pb-1" },
-          [
-            _c("div", { staticClass: "whitespace-no-wrap" }, [
-              _vm._v("Today's orders")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "font-normal text-xs text-gray-400 px-1" },
-              [
-                _vm._v(
-                  "\n          (" + _vm._s(_vm.currentTime) + ")\n        "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _vm.new_reservation
-              ? _c(
-                  "div",
+        _c("div", { staticClass: "flex items-baseline text-xl pb-1" }, [
+          _c("div", { staticClass: "font-bold whitespace-no-wrap" }, [
+            _vm._v("Today's orders")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-xs text-gray-400 px-1" }, [
+            _vm._v("(" + _vm._s(_vm.currentTime) + ")")
+          ]),
+          _vm._v(" "),
+          _vm.new_reservation
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
+                },
+                [_vm._v("\n          Reservation\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.showReload
+            ? _c("div", { staticClass: "ml-2" }, [
+                _c(
+                  "button",
                   {
                     staticClass:
-                      "bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
+                      "bg-matsu-blue-600 font-bold rounded text-white text-sm px-4 py-1 hover:cursor-pointer",
+                    on: {
+                      click: function($event) {
+                        _vm.showReload = false
+                      }
+                    }
                   },
-                  [_vm._v("\n          Reservation\n        ")]
+                  [_vm._v("\n            Reload orders\n          ")]
                 )
-              : _vm._e()
-          ]
-        )
+              ])
+            : _vm._e()
+        ])
       ])
     ]),
     _vm._v(" "),

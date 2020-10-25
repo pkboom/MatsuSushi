@@ -1952,6 +1952,12 @@ input:focus,
   background-color: rgba(246, 249, 252, var(--bg-opacity));
 }
 
+.bg-matsu-blue-600 {
+  --bg-opacity: 1;
+  background-color: #666ee8;
+  background-color: rgba(102, 110, 232, var(--bg-opacity));
+}
+
 .hover\:bg-white:hover {
   --bg-opacity: 1;
   background-color: #ffffff;

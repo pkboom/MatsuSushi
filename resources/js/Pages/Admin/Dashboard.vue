@@ -2,16 +2,22 @@
   <admin-layout title="Dashboard">
     <div class="flex justify-between items-end mb-4">
       <div>
-        <div class="flex font-bold items-baseline text-xl pb-1">
-          <div class="whitespace-no-wrap">Today's orders</div>
-          <div class="font-normal text-xs text-gray-400 px-1">
-            ({{ currentTime }})
-          </div>
+        <div class="flex items-baseline text-xl pb-1">
+          <div class="font-bold whitespace-no-wrap">Today's orders</div>
+          <div class="text-xs text-gray-400 px-1">({{ currentTime }})</div>
           <div
             v-if="new_reservation"
             class="bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
           >
             Reservation
+          </div>
+          <div v-if="showReload" class="ml-2">
+            <button
+              class="bg-matsu-blue-600 font-bold rounded text-white text-sm px-4 py-1 hover:cursor-pointer"
+              @click="showReload = false"
+            >
+              Reload orders
+            </button>
           </div>
         </div>
       </div>
@@ -104,6 +110,7 @@ export default {
   data() {
     return {
       timeoutId: null,
+      showReload: false,
     }
   },
   computed: {
@@ -113,7 +120,10 @@ export default {
   },
   mounted() {
     if (this.new_order) {
-      document.getElementById('alarm').play()
+      document
+        .getElementById('alarm')
+        .play()
+        .catch(error => (this.showReload = true))
     }
 
     this.timeoutId = setTimeout(() => {
