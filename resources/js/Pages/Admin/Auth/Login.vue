@@ -16,7 +16,7 @@
             type="email"
             autofocus
             autocapitalize="off"
-            autocomplete="username"
+            autocomplete="email"
           />
           <text-input
             v-model="form.password"

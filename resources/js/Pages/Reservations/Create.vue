@@ -11,16 +11,15 @@
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.first_name"
-                name="given-name"
                 :error="$page.errors.first('first_name')"
                 label="First name"
+                autofocus
                 autocomplete="given-name"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.last_name"
-                name="family-name"
                 :error="$page.errors.first('last_name')"
                 label="Last name"
                 autocomplete="family-name"
@@ -29,7 +28,6 @@
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.phone"
-                name="tel"
                 :error="$page.errors.first('phone')"
                 label="Phone"
                 autocomplete="tel"

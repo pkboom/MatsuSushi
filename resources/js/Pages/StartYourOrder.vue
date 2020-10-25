@@ -34,17 +34,16 @@
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.email"
-                name="email"
                 :error="errors.first('email')"
                 label="Email"
                 type="email"
+                autofocus
                 autocomplete="email"
               />
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.phone"
-                name="tel"
                 :error="errors.first('phone')"
                 label="Phone"
                 autocomplete="tel"
@@ -53,7 +52,6 @@
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.first_name"
-                name="given-name"
                 :error="errors.first('first_name')"
                 label="First name"
                 autocomplete="given-name"
@@ -62,7 +60,6 @@
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.last_name"
-                name="family-name"
                 :error="errors.first('last_name')"
                 label="Last name"
                 autocomplete="family-name"
@@ -71,7 +68,6 @@
             <div v-if="form.type === type.delivery" class="pr-6 pb-8 w-full">
               <text-input
                 v-model="form.address"
-                name="address"
                 :error="errors.first('address')"
                 label="Address"
                 autocomplete="street-address"

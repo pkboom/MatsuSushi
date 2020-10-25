@@ -16,7 +16,7 @@
             type="email"
             autofocus
             autocapitalize="off"
-            autocomplete="username"
+            autocomplete="email"
           />
           <div
             v-if="success"

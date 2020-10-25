@@ -6617,8 +6617,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     encrypted_time: String
@@ -6733,10 +6731,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Utils_Http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Utils/Http */ "./resources/js/Utils/Http.js");
 /* harmony import */ var _Utils_Stripe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Utils/Stripe */ "./resources/js/Utils/Stripe.js");
 /* harmony import */ var _Utils_Stripe__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Utils_Stripe__WEBPACK_IMPORTED_MODULE_3__);
-//
-//
-//
-//
 //
 //
 //
@@ -56506,7 +56500,7 @@ var render = function() {
                     type: "email",
                     autofocus: "",
                     autocapitalize: "off",
-                    autocomplete: "username"
+                    autocomplete: "email"
                   },
                   model: {
                     value: _vm.form.email,
@@ -56638,7 +56632,7 @@ var render = function() {
                     type: "email",
                     autofocus: "",
                     autocapitalize: "off",
-                    autocomplete: "username"
+                    autocomplete: "email"
                   },
                   model: {
                     value: _vm.form.email,
@@ -56811,7 +56805,7 @@ var render = function() {
                     type: "email",
                     autofocus: "",
                     autocapitalize: "off",
-                    autocomplete: "username"
+                    autocomplete: "email"
                   },
                   model: {
                     value: _vm.form.email,
@@ -61231,9 +61225,9 @@ var render = function() {
                 [
                   _c("text-input", {
                     attrs: {
-                      name: "given-name",
                       error: _vm.$page.errors.first("first_name"),
                       label: "First name",
+                      autofocus: "",
                       autocomplete: "given-name"
                     },
                     model: {
@@ -61254,7 +61248,6 @@ var render = function() {
                 [
                   _c("text-input", {
                     attrs: {
-                      name: "family-name",
                       error: _vm.$page.errors.first("last_name"),
                       label: "Last name",
                       autocomplete: "family-name"
@@ -61277,7 +61270,6 @@ var render = function() {
                 [
                   _c("text-input", {
                     attrs: {
-                      name: "tel",
                       error: _vm.$page.errors.first("phone"),
                       label: "Phone",
                       autocomplete: "tel"
@@ -61628,10 +61620,10 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
-                          name: "email",
                           error: _vm.errors.first("email"),
                           label: "Email",
                           type: "email",
+                          autofocus: "",
                           autocomplete: "email"
                         },
                         model: {
@@ -61652,7 +61644,6 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
-                          name: "tel",
                           error: _vm.errors.first("phone"),
                           label: "Phone",
                           autocomplete: "tel"
@@ -61675,7 +61666,6 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
-                          name: "given-name",
                           error: _vm.errors.first("first_name"),
                           label: "First name",
                           autocomplete: "given-name"
@@ -61698,7 +61688,6 @@ var render = function() {
                     [
                       _c("text-input", {
                         attrs: {
-                          name: "family-name",
                           error: _vm.errors.first("last_name"),
                           label: "Last name",
                           autocomplete: "family-name"
@@ -61722,7 +61711,6 @@ var render = function() {
                         [
                           _c("text-input", {
                             attrs: {
-                              name: "address",
                               error: _vm.errors.first("address"),
                               label: "Address",
                               autocomplete: "street-address"
