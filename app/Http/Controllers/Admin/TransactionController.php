@@ -44,6 +44,10 @@ class TransactionController extends Controller
             ])
         );
 
+        if ($transaction->status === Transaction::TRANSACTION_SUCCEEDED) {
+            $transaction->succeeded();
+        }
+
         return Redirect::route('admin.transactions')->with('success', 'Transaction updated.');
     }
 
