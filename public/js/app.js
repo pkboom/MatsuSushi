@@ -6509,6 +6509,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -6544,22 +6545,26 @@ __webpack_require__.r(__webpack_exports__);
         }).map(function (result) {
           return result.item;
         });
+        this.category_id = null;
       }
     },
     category_id: function category_id() {
       var _this2 = this;
 
-      this.searchCategory = this.categories.find(function (category) {
-        return category.id === _this2.category_id;
-      });
+      if (this.category_id) {
+        this.searchCategory = this.categories.find(function (category) {
+          return category.id === _this2.category_id;
+        });
+        this.searchItem = null;
+      }
     }
   },
   methods: {
     select: function select(categoryId) {
-      this.searchItem = '';
       this.currentCategory = this.categories.find(function (category) {
         return category.id === categoryId;
       });
+      this.searchItem = null;
     },
     place: function place(order) {
       var items = [];
@@ -60991,63 +60996,72 @@ var render = function() {
               "leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
           },
           [
-            _c(
-              "select-input",
-              {
-                staticClass: "block md:hidden",
-                attrs: { error: _vm.$page.errors.first("category") },
-                model: {
-                  value: _vm.category_id,
-                  callback: function($$v) {
-                    _vm.category_id = $$v
-                  },
-                  expression: "category_id"
-                }
-              },
-              [
-                _c("option", { domProps: { value: null } }),
-                _vm._v(" "),
-                _vm._l(_vm.categories, function(category) {
-                  return _c(
-                    "option",
-                    { key: category.id, domProps: { value: category.id } },
+            _c("div", { staticClass: "flex space-x-2 md:space-x-0" }, [
+              _c(
+                "div",
+                { staticClass: "block md:hidden w-1/3" },
+                [
+                  _c(
+                    "select-input",
+                    {
+                      attrs: { error: _vm.$page.errors.first("category") },
+                      model: {
+                        value: _vm.category_id,
+                        callback: function($$v) {
+                          _vm.category_id = $$v
+                        },
+                        expression: "category_id"
+                      }
+                    },
                     [
-                      _vm._v(
-                        "\n          " + _vm._s(category.name) + "\n        "
-                      )
-                    ]
+                      _c("option", { domProps: { value: null } }),
+                      _vm._v(" "),
+                      _vm._l(_vm.categories, function(category) {
+                        return _c(
+                          "option",
+                          {
+                            key: category.id,
+                            domProps: { value: category.id }
+                          },
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(category.name) +
+                                "\n            "
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   )
-                })
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "hidden md:block" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.searchItem,
-                    expression: "searchItem"
-                  }
                 ],
-                staticClass: "form-input",
-                attrs: {
-                  type: "text",
-                  placeholder: "Search in menu",
-                  spellcheck: "false"
-                },
-                domProps: { value: _vm.searchItem },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "w-2/3 md:w-full " }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.searchItem,
+                      expression: "searchItem"
                     }
-                    _vm.searchItem = $event.target.value
+                  ],
+                  staticClass: "form-input",
+                  attrs: { type: "text", placeholder: "Search in menu" },
+                  domProps: { value: _vm.searchItem },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.searchItem = $event.target.value
+                    }
                   }
-                }
-              })
+                })
+              ])
             ]),
             _vm._v(" "),
             _vm._l(_vm.categories, function(category) {

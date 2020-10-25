@@ -6,29 +6,30 @@
       <div
         class="leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
       >
-        <select-input
-          v-model="category_id"
-          :error="$page.errors.first('category')"
-          class="block md:hidden"
-        >
-          <option :value="null" />
-          <option
-            v-for="category in categories"
-            :key="category.id"
-            :value="category.id"
-          >
-            {{ category.name }}
-          </option>
-        </select-input>
-
-        <div class="hidden md:block">
-          <input
-            v-model="searchItem"
-            class="form-input"
-            type="text"
-            placeholder="Search in menu"
-            spellcheck="false"
-          />
+        <div class="flex space-x-2 md:space-x-0">
+          <div class="block md:hidden w-1/3">
+            <select-input
+              v-model="category_id"
+              :error="$page.errors.first('category')"
+            >
+              <option :value="null" />
+              <option
+                v-for="category in categories"
+                :key="category.id"
+                :value="category.id"
+              >
+                {{ category.name }}
+              </option>
+            </select-input>
+          </div>
+          <div class="w-2/3 md:w-full ">
+            <input
+              v-model="searchItem"
+              type="text"
+              placeholder="Search in menu"
+              class="form-input"
+            />
+          </div>
         </div>
         <div
           v-for="category in categories"
@@ -155,21 +156,27 @@ export default {
           .search(this.searchItem)
           .filter(result => result.score < 0.5)
           .map(result => result.item)
+
+        this.category_id = null
       }
     },
     category_id() {
-      this.searchCategory = this.categories.find(
-        category => category.id === this.category_id,
-      )
+      if (this.category_id) {
+        this.searchCategory = this.categories.find(
+          category => category.id === this.category_id,
+        )
+
+        this.searchItem = null
+      }
     },
   },
   methods: {
     select(categoryId) {
-      this.searchItem = ''
-
       this.currentCategory = this.categories.find(
         category => category.id === categoryId,
       )
+
+      this.searchItem = null
     },
     place(order) {
       let items = []

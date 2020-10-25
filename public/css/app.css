@@ -1774,6 +1774,12 @@ input:focus,
   margin-bottom: calc(0.5rem * var(--space-y-reverse));
 }
 
+.space-x-2 > :not(template) ~ :not(template) {
+  --space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--space-x-reverse)));
+}
+
 .space-y-3 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--space-y-reverse)));
@@ -3281,6 +3287,14 @@ input:focus,
   width: auto;
 }
 
+.w-1\/3 {
+  width: 33.333333%;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
 .w-5\/6 {
   width: 83.333333%;
 }
@@ -3992,6 +4006,12 @@ input:focus,
     .md\:container {
       max-width: 1280px;
     }
+  }
+
+  .md\:space-x-0 > :not(template) ~ :not(template) {
+    --space-x-reverse: 0;
+    margin-right: calc(0px * var(--space-x-reverse));
+    margin-left: calc(0px * calc(1 - var(--space-x-reverse)));
   }
 
   .md\:space-y-4 > :not(template) ~ :not(template) {
