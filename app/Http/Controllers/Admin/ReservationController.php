@@ -40,7 +40,7 @@ class ReservationController extends Controller
 
         $dates = [];
 
-        foreach ($startOfWeek->range(now()->addDays(Reservation::VALID_DAYS), CarbonInterval::day()) as $date) {
+        foreach ($startOfWeek->range(now()->addDays(Reservation::VALID_DAYS)->endOfWeek(CarbonImmutable::SATURDAY), CarbonInterval::day()) as $date) {
             $dates[$date->format('n/j')] = null;
         }
 
