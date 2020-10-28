@@ -7,7 +7,7 @@
         class="leading-tight md:px-8 md:w-1/3 px-4 space-y-7 text-sm tracking-wide w-full"
       >
         <div class="flex space-x-2 md:space-x-0">
-          <div class="block md:hidden w-1/3">
+          <div class="block md:hidden w-1/2">
             <select-input
               v-model="category_id"
               :error="$page.errors.first('category')"
@@ -22,7 +22,7 @@
               </option>
             </select-input>
           </div>
-          <div class="w-2/3 md:w-full ">
+          <div class="w-1/2 md:w-full ">
             <input
               v-model="searchItem"
               type="text"

@@ -61002,7 +61002,7 @@ var render = function() {
             _c("div", { staticClass: "flex space-x-2 md:space-x-0" }, [
               _c(
                 "div",
-                { staticClass: "block md:hidden w-1/3" },
+                { staticClass: "block md:hidden w-1/2" },
                 [
                   _c(
                     "select-input",
@@ -61042,7 +61042,7 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "w-2/3 md:w-full " }, [
+              _c("div", { staticClass: "w-1/2 md:w-full " }, [
                 _c("input", {
                   directives: [
                     {
