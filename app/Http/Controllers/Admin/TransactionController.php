@@ -26,7 +26,7 @@ class TransactionController extends Controller
     public function show(Transaction $transaction)
     {
         return Inertia::render('Admin/Transactions/Show', [
-            'transaction' => $transaction,
+            'transaction' => $transaction->load('items'),
             'status' => [
                 'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
                 'inprocess' => Transaction::TRANSACTION_INPROCESS,
