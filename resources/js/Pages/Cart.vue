@@ -64,6 +64,11 @@
           <span class="text-gray-500">(Delivery fee:</span>
           $ {{ fee }}.00)
         </div>
+        <div>
+          *
+          <span class="underline">Additional fee</span>
+          may be added depending on the delivery address.
+        </div>
       </div>
       <div class="flex justify-end mt-2">
         <button class="btn" @click="confirm">Confirm Order</button>

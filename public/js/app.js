@@ -6266,6 +6266,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     fee: Number
@@ -60754,6 +60759,14 @@ var render = function() {
             _vm._v("(Delivery fee:")
           ]),
           _vm._v("\n        $ " + _vm._s(_vm.fee) + ".00)\n      ")
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _vm._v("\n        *\n        "),
+          _c("span", { staticClass: "underline" }, [_vm._v("Additional fee")]),
+          _vm._v(
+            "\n        may be added depending on the delivery address.\n      "
+          )
         ])
       ]),
       _vm._v(" "),
