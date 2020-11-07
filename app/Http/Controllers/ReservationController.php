@@ -40,19 +40,19 @@ class ReservationController extends Controller
             ->modify(Request::input('time'));
 
         if ($reserved_at->isClosed()) {
-            fail_validation('date', 'Sorry, we are closed on '.$reserved_at->format('l').'s.');
+            validation_fails('date', 'Sorry, we are closed on '.$reserved_at->format('l').'s.');
         }
 
         if (Reservation::onClosedDates($reserved_at)) {
-            fail_validation('date', 'Reservation is not available.');
+            validation_fails('date', 'Reservation is not available.');
         }
 
         if (Reservation::isDuplicate(Request::input('phone'), $reserved_at)) {
-            fail_validation('date', "Your reservation on {$reserved_at->format('F j')} is already confirmed.");
+            validation_fails('date', "Your reservation on {$reserved_at->format('F j')} is already confirmed.");
         }
 
         if (Reservation::isFarFuture($reserved_at)) {
-            fail_validation('date', 'Reservation is available until '.now()->addDays(Reservation::VALID_DAYS)->format('Y-m-d').'.');
+            validation_fails('date', 'Reservation is available until '.now()->addDays(Reservation::VALID_DAYS)->format('Y-m-d').'.');
         }
 
         $reservation = Reservation::create(
