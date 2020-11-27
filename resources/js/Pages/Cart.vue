@@ -59,7 +59,7 @@
           <span class="text-gray-500">(Delivery fee:</span>
           $ {{ fee }})
         </div>
-        <div>
+        <div class="leading-5">
           *
           <span class="underline">Additional fee</span>
           may be added depending on the delivery address.
