@@ -95,8 +95,6 @@ export default {
     },
   },
   mounted() {
-    this.storeTipPercentageInLocalStorage()
-
     if (localStorage.getItem('items')) {
       this.items = JSON.parse(localStorage.getItem('items')).sort(
         (a, b) => a.id - b.id,
@@ -138,7 +136,7 @@ export default {
     },
     confirm() {
       if (this.subtotal >= 1) {
-        location.href = this.$route('start-your-order.create')
+        this.$inertia.get(this.$route('start-your-order.create'))
       }
     },
   },
