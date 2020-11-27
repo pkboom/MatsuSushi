@@ -21,23 +21,8 @@ class DashboardController extends Controller
             ->each->confirm();
 
         return Inertia::render('Admin/Dashboard', [
-            // 'transactions' => Cache::remember('transactions', CarbonInterval::minutes(Transaction::UPDATE_INTERVAL), function () {
-            //     return Transaction::with('items')
-            //         ->date('created_at', Carbon::today())
-            //         ->where('status', '<>', Transaction::TRANSACTION_FAILED)
-            //         ->where('status', '<>', Transaction::TRANSACTION_REFUNDED)
-            //         ->latest()
-            //         ->take(30)
-            //         ->get()
-            //         ->map(function ($transaction) {
-            //             if ($transaction->needsConfirmation()) {
-            //                 $transaction->confirm();
-            //             }
-
-            //             return $transaction;
-            //         });
-            // }),
-            'transactions' => Transaction::with('items')
+            'transactions' => Cache::remember('transactions', CarbonInterval::minutes(Transaction::UPDATE_INTERVAL), function () {
+                return Transaction::with('items')
                     ->date('created_at', Carbon::today())
                     ->where('status', '<>', Transaction::TRANSACTION_FAILED)
                     ->where('status', '<>', Transaction::TRANSACTION_REFUNDED)
@@ -52,8 +37,10 @@ class DashboardController extends Controller
                                 'description' => $group->first()->description,
                             ]);
 
-                        return $transaction->setAttribute('groupByItems', $groupByItems);
-                    }),
+                        return $transaction->setAttribute('groupByItems', $groupByItems)
+                            ->unsetRelation('items');
+                    });
+            }),
             'new_order' => Cache::get('new_order'),
             'new_reservation' => Cache::get('new_reservation'),
             'update_interval' => Transaction::UPDATE_INTERVAL,
