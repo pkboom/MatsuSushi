@@ -47,7 +47,7 @@ class Transaction extends Model
             Cache::forget('transactions');
         });
 
-        static::deleted(function ($transaction) {
+        static::saved(function ($transaction) {
             Cache::forget('transactions');
         });
     }
