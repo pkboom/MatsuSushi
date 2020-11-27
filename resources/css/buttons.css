@@ -1,8 +1,8 @@
 .btn {
-  @apply px-6 py-3 bg-matsu-blue-600 text-white text-sm font-bold whitespace-no-wrap;
+  @apply px-6 py-3 bg-matsu-blue-700 text-white text-sm font-bold whitespace-no-wrap;
 
   &:hover,
   &:focus {
-    @apply bg-matsu-blue-700;
+    @apply bg-matsu-blue-800;
   }
 }

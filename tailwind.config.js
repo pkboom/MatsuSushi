@@ -6,9 +6,9 @@ module.exports = {
       colors: {
         'matsu-blue': {
           '50': '#f6f9fc',
-          '400': '#5469d4',
           '600': '#666ee8',
           '700': '#5469d4',
+          '800': '#3c52c2',
         },
       },
       fontFamily: {
@@ -39,7 +39,6 @@ module.exports = {
     'last',
   ],
   purge: {
-    enabled: true,
     content: [
       './storage/framework/views/*.php',
       './resources/views/**/*.blade.php',

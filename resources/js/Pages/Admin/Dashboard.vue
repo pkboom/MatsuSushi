@@ -13,7 +13,7 @@
           </div>
           <div v-if="showReload" class="ml-2">
             <button
-              class="bg-matsu-blue-600 font-bold rounded text-white text-sm px-4 py-1 hover:cursor-pointer"
+              class="bg-matsu-blue-700 font-bold rounded text-white text-sm px-4 py-1 hover:cursor-pointer"
               @click="showReload = false"
             >
               Reload orders
@@ -83,11 +83,16 @@
         <div><span class="text-gray-500">Items:</span></div>
         <div class="space-y-3">
           <div
-            v-for="(item, key) in transaction.items"
-            :key="'item' + key"
+            v-for="(item, key) in transaction.groupByItems"
+            :key="key"
             class="space-y-1"
           >
-            <div>{{ item.name }}</div>
+            <div>
+              {{ item.name }}
+              <span v-if="item.count > 1" class="ml-2">
+                &times; {{ item.count }}
+              </span>
+            </div>
             <div class="text-gray-400 text-sm">{{ item.description }}</div>
           </div>
         </div>
