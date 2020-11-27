@@ -60,7 +60,7 @@
           $ {{ fee }})
         </div>
         <div class="leading-5">
-          *
+          &#10003;
           <span class="underline">Additional fee</span>
           may be added depending on the delivery address.
         </div>
@@ -80,6 +80,7 @@ export default {
   data() {
     return {
       items: null,
+      itemsWithCount: null,
       subtotal: null,
       tax: null,
       tip_percentage: localStorage.getItem('tip_percentage') ?? 0,
