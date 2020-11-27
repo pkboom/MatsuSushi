@@ -43,7 +43,11 @@ class Transaction extends Model
 
     protected static function booted()
     {
-        static::saved(function ($transaction) {
+        static::deleted(function ($transaction) {
+            Cache::forget('transactions');
+        });
+
+        static::deleted(function ($transaction) {
             Cache::forget('transactions');
         });
     }
