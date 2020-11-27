@@ -27,12 +27,16 @@
           </tr>
         </table>
       </div>
-      <div class="flex justify-end pt-4">
-        <div class="flex items-center">
-          <span class="italic mr-2 whitespace-no-wrap">
-            Tip percentage:
+      <div class="flex flex-col items-end py-4 space-y-4">
+        <div>
+          <span class="text-gray-500">Subtotal:</span>
+          $ {{ subtotal }}
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="italic whitespace-no-wrap">
+            Tip:
           </span>
-          <select v-model="tip_percentage" class="w-full form-select py-1 pr-7">
+          <select v-model="tip_percentage" class="w-full form-select py-0.5">
             <option value="0" />
             <option value="0.05">5%</option>
             <option value="0.10">10%</option>
@@ -41,20 +45,11 @@
             <option value="0.25">25%</option>
             <option value="0.30">30%</option>
           </select>
-        </div>
-      </div>
-      <div class="flex flex-col items-end py-4 space-y-4">
-        <div>
-          <span class="text-gray-500">Subtotal:</span>
-          $ {{ subtotal }}
+          <span class="whitespace-no-wrap">$ {{ tip }}</span>
         </div>
         <div>
           <span class="text-gray-500">GST/HST:</span>
           $ {{ tax }}
-        </div>
-        <div>
-          <span class="text-gray-500">Tip:</span>
-          $ {{ tip }}
         </div>
         <div>
           <span class="text-gray-500">Total:</span>
@@ -62,7 +57,7 @@
         </div>
         <div>
           <span class="text-gray-500">(Delivery fee:</span>
-          $ {{ fee }}.00)
+          $ {{ fee }})
         </div>
         <div>
           *
