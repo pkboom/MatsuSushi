@@ -73,6 +73,7 @@ class ReservationController extends Controller
                 'name' => $reservation->name(),
                 'phone' => $reservation->phone,
                 'people' => $reservation->people,
+                'message' => $reservation->message,
                 'reserved_at' => $reservation->reserved_at->format('F j, h:i a'),
             ],
         ]);

@@ -95,23 +95,25 @@
               />
             </div>
           </div>
-          <div
-            class="px-8 py-4 border-t border-gray-100 flex justify-end items-center"
-          >
+          <div class="px-8 py-4 border-gray-100 flex justify-end items-center">
             <loading-button :loading="sending" class="btn" type="submit">
               Proceed to checkout
             </loading-button>
           </div>
-          <div class="leading-5 px-8 text-gray-600">
-            &#10003; If you have any trouble ordering, call us at
-            <a href="tel:7057609484" class="inline-flex">
-              <span
-                class="whitespace-no-wrap underline text-matsu-blue-600 font-bold"
-              >
-                705-760-9484
-              </span>
-              .
-            </a>
+          <div class="px-8">
+            <div class="border-t-2">
+              <div class="pt-4 text-gray-600 leading-5">
+                &#10003; If you have any trouble ordering, call us at
+                <a href="tel:7057609484" class="inline-flex">
+                  <span
+                    class="whitespace-no-wrap underline text-matsu-blue-600 font-bold"
+                  >
+                    705-760-9484
+                  </span>
+                  .
+                </a>
+              </div>
+            </div>
           </div>
         </form>
       </div>

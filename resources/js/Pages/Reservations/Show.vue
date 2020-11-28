@@ -24,10 +24,12 @@
           {{ reservation.reserved_at }}
         </div>
         <div v-if="reservation.message">
-          <span class="text-gray-500">Message:</span>
+          <span class="text-gray-500 leading-5">Message:</span>
           {{ reservation.message }}
         </div>
-        <div class="leading-5 text-gray-600">
+      </div>
+      <div class="border-t-2">
+        <div class="pt-4 leading-5 text-gray-600">
           &#10003; If you have any questions, call us at
           <a href="tel:7057609484" class="inline-flex">
             <span
