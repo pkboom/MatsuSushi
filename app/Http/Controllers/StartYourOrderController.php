@@ -64,7 +64,14 @@ class StartYourOrderController extends Controller
 
         $lineItmes = collect(Request::input('items'))
             ->map(fn ($item) => Item::find($item))
-            ->map(fn ($item) => $this->lineItemFormat($item->name, $item->price))
+            ->groupBy(fn ($item) => $item->name.$item->description)
+            ->values()
+            ->map(fn ($group) => [
+                'count' => $group->count(),
+                'name' => $group->first()->name,
+                'price' => $group->first()->price,
+            ])
+            ->map(fn ($item) => $this->lineItemFormat($item['name'], $item['price'], $item['count']))
             ->push($this->tax($order))
             ->when($order['tip_percentage'] !== '0', fn ($collection) => $collection->push($this->tip($order)))
             ->when($order['type'] === Transaction::DELIVERY, fn ($collection) => $collection->push($this->deliveryFee()))
@@ -107,7 +114,7 @@ class StartYourOrderController extends Controller
         return $this->lineItemFormat('Delivery fee', Transaction::DELIVERY_FEE);
     }
 
-    public function lineItemFormat($name, $unit_amount)
+    public function lineItemFormat($name, $unit_amount, $count = 1)
     {
         return [
             'price_data' => [
@@ -117,7 +124,7 @@ class StartYourOrderController extends Controller
                 ],
                 'unit_amount' => $unit_amount * 100,
             ],
-            'quantity' => 1,
+            'quantity' => $count,
         ];
     }
 }
