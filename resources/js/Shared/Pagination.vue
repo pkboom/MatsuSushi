@@ -5,7 +5,6 @@
         v-if="link.url === null"
         :key="key"
         class="mr-1 px-4 py-3 text-sm border rounded text-gray-400"
-        :class="{ 'ml-auto': link.label === 'Next' }"
       >
         {{ link.label }}
       </div>
@@ -13,7 +12,7 @@
         v-else
         :key="key"
         class="mr-1 px-4 py-3 text-sm border rounded hover:bg-white"
-        :class="{ 'bg-white': link.active, 'ml-auto': link.label === 'Next' }"
+        :class="{ 'bg-white': link.active }"
         :href="link.url"
         replace
       >
