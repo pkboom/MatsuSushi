@@ -7,7 +7,6 @@ use App\Transaction;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -27,19 +26,7 @@ class DashboardController extends Controller
                     ->where('status', '<>', Transaction::TRANSACTION_FAILED)
                     ->where('status', '<>', Transaction::TRANSACTION_REFUNDED)
                     ->latest()
-                    ->get()
-                    ->map(function ($transaction) {
-                        $groupByItems = $transaction->items->groupBy(
-                                fn ($item) => Str::limit($item->name.$item->description, 30, '')
-                            )->map(fn ($group) => [
-                                'count' => $group->count(),
-                                'name' => $group->first()->name,
-                                'description' => $group->first()->description,
-                            ]);
-
-                        return $transaction->setAttribute('groupByItems', $groupByItems)
-                            ->unsetRelation('items');
-                    });
+                    ->get();
             }),
             'new_order' => Cache::get('new_order'),
             'new_reservation' => Cache::get('new_reservation'),

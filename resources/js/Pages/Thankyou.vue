@@ -13,11 +13,7 @@
         </div>
         <div><span class="text-gray-500">Items:</span></div>
         <div class="space-y-4">
-          <div
-            v-for="(item, key) in itemsWithCount"
-            :key="key"
-            class="space-y-2"
-          >
+          <div v-for="(item, key) in groupItems()" :key="key" class="space-y-2">
             <div>
               {{ item.item.name }}
               <span v-if="item.count > 1" class="ml-2">
@@ -52,17 +48,10 @@ export default {
   props: {
     transaction: Object,
   },
-  data() {
-    return {
-      itemsWithCount: [],
-    }
-  },
   mounted() {
     localStorage.removeItem('items')
 
     this.$page.countInCart = 0
-
-    this.itemsWithCount = this.groupItems()
   },
   methods: {
     groupItems() {

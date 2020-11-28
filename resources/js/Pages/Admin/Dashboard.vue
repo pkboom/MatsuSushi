@@ -83,17 +83,17 @@
         <div><span class="text-gray-500">Items:</span></div>
         <div class="space-y-3">
           <div
-            v-for="(item, key) in transaction.groupByItems"
+            v-for="(item, key) in groupItems(transaction.items)"
             :key="key"
             class="space-y-1"
           >
             <div>
-              {{ item.name }}
+              {{ item.item.name }}
               <span v-if="item.count > 1" class="ml-2">
                 &times; {{ item.count }}
               </span>
             </div>
-            <div class="text-gray-400 text-sm">{{ item.description }}</div>
+            <div class="text-gray-400 text-sm">{{ item.item.description }}</div>
           </div>
         </div>
       </div>
@@ -147,6 +147,16 @@ export default {
       ) {
         return true
       }
+    },
+    groupItems(items) {
+      return Object.values(
+        _.groupBy(items, item => item.name + item.description),
+      )
+        .map(group => ({
+          count: group.length,
+          item: group[0],
+        }))
+        .sort((a, b) => a.item.name.localeCompare(b.item.name))
     },
   },
 }
