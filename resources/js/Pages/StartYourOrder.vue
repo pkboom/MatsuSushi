@@ -102,10 +102,12 @@
               Proceed to checkout
             </loading-button>
           </div>
-          <div class="leading-tight px-8 text-gray-600">
+          <div class="leading-5 px-8 text-gray-600">
             &#10003; If you have any trouble ordering, call us at
             <a href="tel:7057609484" class="inline-flex">
-              <span class="inline-block underline text-blue-600 font-bold">
+              <span
+                class="whitespace-no-wrap underline text-matsu-blue-600 font-bold"
+              >
                 705-760-9484
               </span>
               .

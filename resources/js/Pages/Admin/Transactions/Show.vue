@@ -75,7 +75,7 @@
       >
         <div>
           <button
-            class="text-blue-600 underline"
+            class="text-matsu-blue-600 underline"
             tabindex="-1"
             type="button"
             @click="update(status.succeeded)"
@@ -85,7 +85,7 @@
         </div>
         <div>
           <button
-            class="text-blue-600 underline"
+            class="text-matsu-blue-600 underline"
             tabindex="-1"
             type="button"
             @click="update(status.inprocess)"
@@ -95,7 +95,7 @@
         </div>
         <div>
           <button
-            class="text-blue-600 underline"
+            class="text-matsu-blue-600 underline"
             tabindex="-1"
             type="button"
             @click="update(status.failed)"
@@ -105,7 +105,7 @@
         </div>
         <div>
           <button
-            class="text-blue-600 underline"
+            class="text-matsu-blue-600 underline"
             tabindex="-1"
             type="button"
             @click="destroy()"

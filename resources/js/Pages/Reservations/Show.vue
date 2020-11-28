@@ -27,15 +27,16 @@
           <span class="text-gray-500">Message:</span>
           {{ reservation.message }}
         </div>
-        <div>
-          If you have any questions, call us at
-          <a
-            href="tel:7057609484"
-            class="inline-block underline text-matsu-blue-600 font-bold"
-          >
-            705-760-9484
+        <div class="leading-5 text-gray-600">
+          &#10003; If you have any questions, call us at
+          <a href="tel:7057609484" class="inline-flex">
+            <span
+              class="whitespace-no-wrap underline text-matsu-blue-600 font-bold"
+            >
+              705-760-9484
+            </span>
+            .
           </a>
-          .
         </div>
       </div>
     </div>

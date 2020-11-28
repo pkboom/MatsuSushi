@@ -26,17 +26,18 @@
           </div>
         </div>
       </div>
-      <div class="space-y-4 border-t-2">
-        <div class="pt-4 leading-5">
+      <div class="border-t-2">
+        <div class="pt-4 leading-5 text-gray-600">
           &#10003; You will receive an email receipt shortly. If you have any
           questions, call us at
-          <a
-            href="tel:7057609484"
-            class="whitespace-no-wrap underline text-matsu-blue-600 font-bold"
-          >
-            705-760-9484
+          <a href="tel:7057609484" class="inline-flex">
+            <span
+              class="whitespace-no-wrap underline text-matsu-blue-600 font-bold"
+            >
+              705-760-9484
+            </span>
+            .
           </a>
-          .
         </div>
       </div>
     </div>
