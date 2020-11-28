@@ -6,23 +6,26 @@
       </div>
       <div class="bg-white rounded overflow-x-auto border-b">
         <table class="w-full">
-          <tr v-for="(order, key) in items" :key="key">
+          <tr v-for="(item, key) in itemsWithCount" :key="key">
             <td class="py-4">
               <div class="whitespace-no-wrap">
-                {{ order.name }}
+                {{ item.item.name }}
+                <span v-if="item.count > 1" class="ml-2">
+                  &times; {{ item.count }}
+                </span>
                 <button
                   class="underline text-matsu-blue-600 text-xs ml-2"
-                  @click="destroy(key)"
+                  @click="destroy(item.item)"
                 >
                   delete
                 </button>
               </div>
               <div class="text-xs text-gray-400 mt-2">
-                {{ order.description }}
+                {{ item.item.description }}
               </div>
             </td>
             <td class="py-4 whitespace-no-wrap text-right">
-              $ {{ order.price }}
+              $ {{ itemSubTotal(item) }}
             </td>
           </tr>
         </table>
@@ -108,13 +111,13 @@ export default {
     storeTipPercentageInLocalStorage() {
       localStorage.setItem('tip_percentage', this.tip_percentage)
     },
+    itemSubTotal(item) {
+      return (Number(item.item.price) * item.count).toFixed(2)
+    },
     calculate() {
-      this.subtotal = this.items
-        ? this.items
-            .map(order => Number(order.price))
-            .reduce((total, price) => total + price, 0)
-            .toFixed(2)
-        : '0.00'
+      this.itemsWithCount = this.groupItems()
+
+      this.subtotal = this.getSubtotal()
 
       this.tax = (Number(this.subtotal) * 0.13).toFixed(2)
 
@@ -126,8 +129,27 @@ export default {
         Number(this.tax)
       ).toFixed(2)
     },
-    destroy(selected) {
-      this.items = this.items.filter((order, key) => key !== selected)
+    groupItems() {
+      return Object.values(
+        _.groupBy(this.items, item => item.name + item.description),
+      ).map(group => ({
+        count: group.length,
+        item: group[0],
+      }))
+    },
+    getSubtotal() {
+      return this.items && this.items.length > 0
+        ? this.items
+            .map(order => Number(order.price))
+            .reduce((total, price) => total + price, 0)
+            .toFixed(2)
+        : '0.00'
+    },
+    destroy(item) {
+      this.items.splice(
+        this.items.findIndex(value => value.id === item.id),
+        1,
+      )
 
       localStorage.setItem('items', JSON.stringify(this.items))
 
