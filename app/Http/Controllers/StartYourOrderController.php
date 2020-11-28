@@ -64,7 +64,7 @@ class StartYourOrderController extends Controller
 
         $lineItmes = collect(Request::input('items'))
             ->map(fn ($item) => Item::find($item))
-            ->map(fn ($item) => $this->lineItemFormat($item->name, $item->price, $item->description))
+            ->map(fn ($item) => $this->lineItemFormat($item->name, $item->price))
             ->push($this->tax($order))
             ->when($order['tip_percentage'] !== '0', fn ($collection) => $collection->push($this->tip($order)))
             ->when($order['type'] === Transaction::DELIVERY, fn ($collection) => $collection->push($this->deliveryFee()))
@@ -107,14 +107,13 @@ class StartYourOrderController extends Controller
         return $this->lineItemFormat('Delivery fee', Transaction::DELIVERY_FEE);
     }
 
-    public function lineItemFormat($name, $unit_amount, $description = null)
+    public function lineItemFormat($name, $unit_amount)
     {
         return [
             'price_data' => [
                 'currency' => 'cad',
                 'product_data' => [
                     'name' => $name,
-                    'description' => empty(trim($description)) ? null : $description,
                 ],
                 'unit_amount' => $unit_amount * 100,
             ],
