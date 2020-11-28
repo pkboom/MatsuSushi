@@ -100,9 +100,7 @@ export default {
   },
   mounted() {
     if (localStorage.getItem('items')) {
-      this.items = JSON.parse(localStorage.getItem('items')).sort(
-        (a, b) => a.id - b.id,
-      )
+      this.items = JSON.parse(localStorage.getItem('items'))
     }
 
     this.calculate()
@@ -132,10 +130,12 @@ export default {
     groupItems() {
       return Object.values(
         _.groupBy(this.items, item => item.name + item.description),
-      ).map(group => ({
-        count: group.length,
-        item: group[0],
-      }))
+      )
+        .map(group => ({
+          count: group.length,
+          item: group[0],
+        }))
+        .sort((a, b) => a.item.name.localeCompare(b.item.name))
     },
     getSubtotal() {
       return this.items && this.items.length > 0
