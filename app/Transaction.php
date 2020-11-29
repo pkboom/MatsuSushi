@@ -146,29 +146,10 @@ class Transaction extends Model
         ];
     }
 
-    public function needsConfirmation()
+    public function scopeOldAndStillInProcess($query)
     {
-        return $this->isPast(static::TIME_TO_LIVE) && $this->isInProcess();
-    }
-
-    public function scopeIsPast($query)
-    {
-        $query->where('created_at', '<', now()->subMinutes(static::TIME_TO_LIVE));
-    }
-
-    public function scopeIsInProcess($query)
-    {
-        $query->where('status', static::TRANSACTION_INPROCESS);
-    }
-
-    public function isPast($minutes)
-    {
-        return $this->created_at->addMinutes($minutes)->isPast();
-    }
-
-    public function isInProcess()
-    {
-        return $this->status === static::TRANSACTION_INPROCESS;
+        $query->where('created_at', '<', now()->subMinutes(static::TIME_TO_LIVE))
+            ->where('status', static::TRANSACTION_INPROCESS);
     }
 
     public function confirm()

@@ -13,12 +13,6 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        Transaction::query()
-            ->isPast()
-            ->isInProcess()
-            ->get()
-            ->each->confirm();
-
         return Inertia::render('Admin/Dashboard', [
             'transactions' => Cache::remember('transactions', CarbonInterval::minutes(Transaction::UPDATE_INTERVAL), function () {
                 return Transaction::with('items')
