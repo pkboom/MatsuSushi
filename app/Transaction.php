@@ -158,14 +158,12 @@ class Transaction extends Model
 
         try {
             $paymentIntent = PaymentIntent::retrieve($this->stripe_id);
+
+            $paymentIntent->status === Transaction::TRANSACTION_SUCCEEDED
+                ? $this->succeeded()
+                : $this->failed($paymentIntent->status);
         } catch (Exception $e) {
             $this->failed($e->getMessage());
-        }
-
-        if ($paymentIntent->status === Transaction::TRANSACTION_SUCCEEDED) {
-            $this->succeeded();
-        } else {
-            $this->failed('Too long in process');
         }
     }
 

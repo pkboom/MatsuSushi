@@ -15,9 +15,11 @@ class ConfirmOldTransactions extends Command
         Transaction::query()
             ->oldAndStillInProcess()
             ->get()
-            ->each->confirm();
-
-        Log::info('hey');
+            ->each->confirm()
+            ->whenNotEmpty(
+                fn ($transactions) => Log::info('Transaction confirmed: '.$transactions->pluck('id')->implode(', ')
+            )
+        );
 
         return 0;
     }
