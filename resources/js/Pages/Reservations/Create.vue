@@ -68,9 +68,7 @@
               />
             </div>
           </div>
-          <div
-            class="px-8 py-4 border-t border-gray-100 flex justify-end items-center"
-          >
+          <div class="px-8 py-4 flex justify-end items-center">
             <loading-button :loading="sending" class="btn" type="submit">
               Create Reservation
             </loading-button>
