@@ -26,7 +26,7 @@ class Transaction extends Model
 
     const TRANSACTION_REFUNDED = 'refunded';
 
-    const DELIVERY_FEE = 6;
+    const DELIVERY_FEE = 0;
 
     const TIME_TO_LIVE = 30;
 
