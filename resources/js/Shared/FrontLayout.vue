@@ -68,7 +68,7 @@
             </div>
           </div>
           <a
-            href="https://g.page/matsu-sushi-on-hunter"
+            href="https://g.page/matsusushionhunter"
             target="_blank"
             class="-mt-7 bg-white focus:bg-blue-900 focus:text-white hover:bg-blue-900 hover:text-white mx-auto px-12 py-4 text-blue-900 text-lg uppercase"
           >
