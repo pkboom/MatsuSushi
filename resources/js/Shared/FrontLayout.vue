@@ -68,7 +68,7 @@
             </div>
           </div>
           <a
-            href="https://www.google.com/maps/place/Matsu+Sushi+(East+City)+Japanese+and+Korean+Restaurant/@44.3066026,-78.3089279,17z/data=!4m13!1m7!3m6!1s0x89d58cb8987bc695:0x9a6cf675fb1aec67!2s102+Hunter+St+E,+Peterborough,+ON+K9H+1G7!3b1!8m2!3d44.3067303!4d-78.3093375!3m4!1s0x0:0xaeb3dad2b256e13c!8m2!3d44.3064712!4d-78.3088705"
+            href="https://g.page/matsu-sushi-on-hunter"
             target="_blank"
             class="-mt-7 bg-white focus:bg-blue-900 focus:text-white hover:bg-blue-900 hover:text-white mx-auto px-12 py-4 text-blue-900 text-lg uppercase"
           >
