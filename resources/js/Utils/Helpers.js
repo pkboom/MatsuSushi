@@ -11,3 +11,7 @@ export function isUrl(...urls) {
 export function isNotUrl(...urls) {
   return !isUrl(...urls)
 }
+
+export function getFromUrl(key) {
+  return new URLSearchParams(window.location.search).get(key)
+}

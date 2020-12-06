@@ -56,7 +56,15 @@
         </div>
       </form>
     </div>
-    <h2 class="mt-12 text-lg">Items</h2>
+    <div class="flex justify-between items-end mt-12 ">
+      <h2 class="text-lg">Items</h2>
+      <inertia-link
+        :href="$route('admin.items.create', { category: category.id })"
+        class="btn"
+      >
+        Create Item
+      </inertia-link>
+    </div>
     <div class="mt-6 bg-white rounded shadow overflow-x-auto">
       <table class="w-full">
         <tr>

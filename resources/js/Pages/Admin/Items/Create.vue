@@ -69,6 +69,8 @@
 </template>
 
 <script>
+import { getFromUrl } from '@/Utils/Helpers'
+
 export default {
   props: {
     categories: Array,
@@ -78,7 +80,9 @@ export default {
     return {
       sending: false,
       form: {
-        category: null,
+        category: this.categories.find(
+          category => category.id === Number(this.getFromUrl('category')),
+        ),
         name: null,
         price: null,
         description: null,
@@ -86,6 +90,7 @@ export default {
     }
   },
   methods: {
+    getFromUrl,
     submit() {
       this.sending = true
       this.$inertia.post(
@@ -96,7 +101,7 @@ export default {
           price: this.form.price,
           description: this.form.description,
         },
-        { onFinish: () => (this.sending = false) }
+        { onFinish: () => (this.sending = false) },
       )
     },
   },

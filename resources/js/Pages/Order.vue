@@ -141,7 +141,10 @@ export default {
       searchItem: null,
       searchResult: null,
       menu: this.categories
-        .filter(category => category.name !== this.popularMenu)
+        .filter(
+          category =>
+            category.name.toLowerCase() !== this.popularMenu.toLowerCase(),
+        )
         .map(category => category.items)
         .flat(),
     }
