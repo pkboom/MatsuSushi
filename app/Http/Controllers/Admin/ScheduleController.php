@@ -45,6 +45,6 @@ class ScheduleController extends Controller
         Cache::put('opening_hours_from', Request::input('opening_hours_from'));
         Cache::put('opening_hours_to', Request::input('opening_hours_to'));
 
-        return Redirect::back()->with('success', 'Schedule updated.');
+        return Redirect::back()->with('success', 'Schedule saved.');
     }
 }

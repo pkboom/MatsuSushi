@@ -84,7 +84,7 @@ export default {
           category => category.id === Number(this.getFromUrl('category')),
         ),
         name: null,
-        price: null,
+        price: 0,
         description: null,
       },
     }
