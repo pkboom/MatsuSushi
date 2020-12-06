@@ -8,6 +8,8 @@ class Category extends Model
 {
     const POPULAR_MENU = 'popular menu';
 
+    const PROMOTION = 'promotion';
+
     protected $guarded = [];
 
     public function getPerPage()

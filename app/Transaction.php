@@ -32,6 +32,12 @@ class Transaction extends Model
 
     const UPDATE_INTERVAL = 10;
 
+    const PROMOTION_OVER_20 = 20;
+
+    const PROMOTION_OVER_50 = 50;
+
+    const PROMOTION_OVER_100 = 100;
+
     protected $guarded = [];
 
     protected $appends = [
@@ -208,5 +214,25 @@ class Transaction extends Model
     public function getFormattedCreatedAtAttribute()
     {
         return $this->created_at->format('Y-m-d h:i a');
+    }
+
+    public static function promotionOver20()
+    {
+        return static::promotionName(static::PROMOTION_OVER_20);
+    }
+
+    public static function promotionOver50()
+    {
+        return static::promotionName(static::PROMOTION_OVER_50);
+    }
+
+    public static function promotionOver100()
+    {
+        return static::promotionName(static::PROMOTION_OVER_100);
+    }
+
+    public static function promotionName($price)
+    {
+        return "promotion_over_{$price}";
     }
 }

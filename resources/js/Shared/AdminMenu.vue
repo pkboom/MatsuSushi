@@ -64,5 +64,13 @@
         icon="quiz"
       />
     </div>
+    <div class="mb-4">
+      <menu-item
+        name="Promotion"
+        url="admin/promotion"
+        :link="$route('admin.promotion')"
+        icon="book"
+      />
+    </div>
   </div>
 </template>

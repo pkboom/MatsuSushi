@@ -12,6 +12,7 @@ class OrderController extends Controller
         return Inertia::render('Order', [
             'popularMenu' => Category::POPULAR_MENU,
             'categories' => Category::query()
+                ->where('name', '<>', Category::PROMOTION)
                 ->with(['items' => fn ($query) => $query->orderBy('name')])
                 ->orderByRaw('priority is null, priority asc')
                 ->get(),
