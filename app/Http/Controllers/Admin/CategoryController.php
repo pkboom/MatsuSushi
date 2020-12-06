@@ -60,7 +60,9 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->items->each->delete();
+        if ($category->items->isNotEmpty()) {
+            return Redirect::back()->with('error', 'Category has items.');
+        }
 
         $category->delete();
 

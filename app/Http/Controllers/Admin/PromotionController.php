@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Item;
 use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
@@ -20,9 +21,10 @@ class PromotionController extends Controller
                 Transaction::promotionOver50() => Cache::get(Transaction::promotionOver50()),
                 Transaction::promotionOver100() => Cache::get(Transaction::promotionOver100()),
             ],
-            'items' => Category::where('name', Category::PROMOTION)
-                ->first()
-                ->items,
+            'items' => Item::query()
+                ->whereHas('category', function ($query) {
+                    $query->where('name', Category::PROMOTION);
+                })->get(),
         ]);
     }
 
