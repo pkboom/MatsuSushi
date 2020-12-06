@@ -91,15 +91,15 @@ class StartYourOrderController extends Controller
             'stripe_id' => $session->payment_intent,
         ]);
 
-        if ($transaction->subtotal > Transaction::PROMOTION_OVER_100) {
-            array_push($order['items'], Cache::get(Transaction::promotionOver100()));
-        } elseif ($transaction->subtotal > Transaction::PROMOTION_OVER_50) {
-            array_push($order['items'], Cache::get(Transaction::promotionOver50()));
-        } elseif ($transaction->subtotal > Transaction::PROMOTION_OVER_20) {
-            array_push($order['items'], Cache::get(Transaction::promotionOver20()));
-        }
+        // if ($transaction->subtotal > Transaction::PROMOTION_OVER_100) {
+        //     $order['items'][] = Cache::get(Transaction::promotionOver100());
+        // } elseif ($transaction->subtotal > Transaction::PROMOTION_OVER_50) {
+        //     $order['items'][] = Cache::get(Transaction::promotionOver50());
+        // } elseif ($transaction->subtotal > Transaction::PROMOTION_OVER_20) {
+        //     $order['items'][] = Cache::get(Transaction::promotionOver20());
+        // }
 
-        $transaction->items()->attach($order['items']);
+        $transaction->items()->attach(array_filter($order['items']));
 
         return Response::json([
             'session' => $session->id,
