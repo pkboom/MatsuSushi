@@ -102,7 +102,7 @@ export default {
 
     this.intervalId = setInterval(() => {
       this.count++
-    }, 10000)
+    }, 8000)
   },
   beforeDestroy() {
     clearInterval(this.intervalId)
