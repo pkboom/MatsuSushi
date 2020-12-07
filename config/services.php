@@ -14,4 +14,9 @@ return [
     'tinify' => [
         'api_key' => env('TINIFY_API_KEY'),
     ],
+
+    'googlemaps' => [
+        'api_key' => env('GOOGLEMAPS_API_KEY'),
+        'place_id' => env('GOOGLEMAPS_PLACE_ID'),
+    ],
 ];
