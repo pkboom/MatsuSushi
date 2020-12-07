@@ -25,7 +25,7 @@
       </div>
     </div>
     <div
-      class="flex flex-col md:flex-row h-80 my-8 md:my-12 overflow-y-auto overflow-x-hidden md:overflow-y-visible"
+      class="flex flex-col md:flex-row h-60 my-8 md:my-12 overflow-y-auto overflow-x-hidden md:overflow-y-visible"
     >
       <div
         class="w-full md:w-1/3 flex flex-col justify-center items-center space-y-2 md:space-y-4 md:-mr-10"
@@ -33,7 +33,7 @@
         <div
           class="text-lg md:text-3xl flex justify-center items-center space-x-1 md:space-x-2"
         >
-          <span class="font-bold">4.4</span>
+          <span class="font-bold">{{ reviews.rating }}</span>
           <img src="/images/star.png" class="w-4 md:w-5" />
           <img src="/images/star.png" class="w-4 md:w-5" />
           <img src="/images/star.png" class="w-4 md:w-5" />
@@ -41,13 +41,13 @@
           <img src="/images/half-star.png" class="w-4 md:w-5" />
         </div>
         <div class="text-lg md:text-2xl">
-          377 Google Reviews
+          {{ reviews.user_ratings_total }} Google Reviews
         </div>
       </div>
       <div class="w-full md:w-2/3 mt-4 md:mt-0">
         <div class="w-full relative flex">
           <div
-            v-for="(review, key) in reviews.reviews"
+            v-for="(review, key) in reviewData"
             :key="key"
             class="absolute w-full px-2 py-4 md:px-12 md:py-8 text-gray-900"
           >
@@ -94,6 +94,7 @@ export default {
     return {
       intervalId: null,
       count: 0,
+      reviewData: this.shuffle(this.reviews.reviews),
     }
   },
   mounted() {
@@ -105,6 +106,11 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.intervalId)
+  },
+  methods: {
+    shuffle(reviews) {
+      return reviews.sort(() => Math.random() - 0.5)
+    },
   },
 }
 </script>
