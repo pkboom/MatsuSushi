@@ -56,7 +56,7 @@
         </div>
         <div
           v-if="searchItem"
-          class="gap-4 grid grid-cols-1 md:grid-cols-2 md:p-8 p-4"
+          class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:p-8 p-4"
         >
           <div
             v-for="item in searchResult"
@@ -81,7 +81,7 @@
         </div>
         <div
           v-else-if="searchCategory"
-          class="gap-4 grid grid-cols-1 md:grid-cols-2 md:p-8 p-4"
+          class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:p-8 p-4"
         >
           <div
             v-for="item in searchCategory.items"
@@ -104,7 +104,7 @@
             </div>
           </div>
         </div>
-        <div v-else class="gap-4 grid grid-cols-1 md:grid-cols-2 md:p-8 p-4">
+        <div v-else class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:p-8 p-4">
           <div
             v-for="item in currentCategory.items"
             :key="item.id"
