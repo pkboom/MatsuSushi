@@ -204,7 +204,7 @@ export default {
       this.$page.countInCart = items.length
 
       this.$page.flash = {
-        success: `'${order.name}' added(${items.length})<br /><a href="/cart" class="underline">Go to Cart</a>`,
+        success: `<a href="/cart">'${order.name}' added(${items.length})<div class="underline">Go to Cart</div></a>`,
         ttl: 13,
       }
     },
