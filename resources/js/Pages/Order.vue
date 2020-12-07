@@ -61,7 +61,7 @@
           <div
             v-for="item in searchResult"
             :key="item.id"
-            class="grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
+            class="grid grid-cols-1 gap-2 border border-gray-400 rounded px-4 py-6 hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
           >
             <div
@@ -69,7 +69,9 @@
             >
               {{ item.name }}
             </div>
-            <div class="text-gray-400 text-md text-center leading-snug">
+            <div
+              class="text-gray-400 text-md text-center leading-snug font-serif"
+            >
               {{ item.description }}
             </div>
             <div class="font-sans self-end text-center text-gray-600 text-md">
@@ -84,7 +86,7 @@
           <div
             v-for="item in searchCategory.items"
             :key="item.id"
-            class="grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
+            class="grid grid-cols-1 gap-2 border border-gray-400 rounded px-4 py-6 hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
           >
             <div
@@ -92,7 +94,9 @@
             >
               {{ item.name }}
             </div>
-            <div class="text-gray-400 text-md text-center leading-snug">
+            <div
+              class="text-gray-400 text-md text-center leading-snug font-serif"
+            >
               {{ item.description }}
             </div>
             <div class="font-sans self-end text-center text-gray-600 text-md">
@@ -104,7 +108,7 @@
           <div
             v-for="item in currentCategory.items"
             :key="item.id"
-            class="grid grid-cols-1 gap-2 border border-gray-300 rounded px-4 py-6 font-serif hover:cursor-pointer hover:shadow-md"
+            class="grid grid-cols-1 gap-2 border border-gray-400 rounded px-4 py-6 hover:cursor-pointer hover:shadow-md"
             @click="place(item)"
           >
             <div
@@ -112,7 +116,9 @@
             >
               {{ item.name }}
             </div>
-            <div class="text-gray-400 text-md text-center leading-snug">
+            <div
+              class="text-gray-400 text-md text-center leading-snug font-serif"
+            >
               {{ item.description }}
             </div>
             <div class="font-sans self-end text-center text-gray-600 text-md">
