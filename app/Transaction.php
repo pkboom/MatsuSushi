@@ -179,7 +179,7 @@ class Transaction extends Model
             'status' => Transaction::TRANSACTION_SUCCEEDED,
         ]);
 
-        Cache::put('new_order', true, CarbonInterval::seconds(static::UPDATE_INTERVAL * 3));
+        Cache::put('new_order', true, CarbonInterval::seconds(static::UPDATE_INTERVAL * 2));
     }
 
     public function failed($message)
