@@ -20,7 +20,7 @@
             >
               <option :value="null" />
               <option v-for="item in items" :key="item.id" :value="item.id">
-                {{ item.name }} - ${{ item.price }}
+                {{ item.name }}
               </option>
             </select-input>
           </div>
