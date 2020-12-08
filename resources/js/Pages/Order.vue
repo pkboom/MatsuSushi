@@ -69,9 +69,7 @@
             >
               {{ item.name }}
             </div>
-            <div
-              class="text-gray-400 text-md text-center leading-snug font-serif"
-            >
+            <div class="text-gray-400 text-md text-center leading-5 font-serif">
               {{ item.description }}
             </div>
             <div class="font-sans self-end text-center text-gray-600 text-md">
@@ -94,9 +92,7 @@
             >
               {{ item.name }}
             </div>
-            <div
-              class="text-gray-400 text-md text-center leading-snug font-serif"
-            >
+            <div class="text-gray-400 text-md text-center leading-5 font-serif">
               {{ item.description }}
             </div>
             <div class="font-sans self-end text-center text-gray-600 text-md">
@@ -116,9 +112,7 @@
             >
               {{ item.name }}
             </div>
-            <div
-              class="text-gray-400 text-md text-center leading-snug font-serif"
-            >
+            <div class="text-gray-400 text-md text-center leading-5 font-serif">
               {{ item.description }}
             </div>
             <div class="font-sans self-end text-center text-gray-600 text-md">
