@@ -218,20 +218,35 @@ class Transaction extends Model
 
     public static function promotionOver20()
     {
-        return static::promotionName(static::PROMOTION_OVER_20);
+        return static::promotionCacheKey(static::PROMOTION_OVER_20);
+    }
+
+    public static function promotionNameOver20()
+    {
+        return static::promotionCacheKey(static::PROMOTION_OVER_20.'_name');
     }
 
     public static function promotionOver50()
     {
-        return static::promotionName(static::PROMOTION_OVER_50);
+        return static::promotionCacheKey(static::PROMOTION_OVER_50);
+    }
+
+    public static function promotionNameOver50()
+    {
+        return static::promotionCacheKey(static::PROMOTION_OVER_50.'_name');
     }
 
     public static function promotionOver100()
     {
-        return static::promotionName(static::PROMOTION_OVER_100);
+        return static::promotionCacheKey(static::PROMOTION_OVER_100);
     }
 
-    public static function promotionName($price)
+    public static function promotionNameOver100()
+    {
+        return static::promotionCacheKey(static::PROMOTION_OVER_100.'_name');
+    }
+
+    public static function promotionCacheKey($price)
     {
         return "promotion_over_{$price}";
     }

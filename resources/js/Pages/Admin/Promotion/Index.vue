@@ -15,7 +15,7 @@
           >
             <select-input
               v-model="form[key]"
-              :label="'Promotion over $' + key.split('_')[2]"
+              :label="'Promotion over $' + key.substr(4)"
               :error="$page.errors.first(key)"
             >
               <option :value="null" />

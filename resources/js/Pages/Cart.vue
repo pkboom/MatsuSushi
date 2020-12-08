@@ -28,6 +28,46 @@
               $ {{ itemSubTotal(item) }}
             </td>
           </tr>
+          <tr
+            v-if="subtotal > promotion.over100.value && promotion.over100.name"
+          >
+            <td class="py-4" colspan="2">
+              <div class="whitespace-no-wrap">
+                {{ promotion.over100.name }}
+              </div>
+              <div class="text-xs text-gray-400 mt-2">
+                Free item
+              </div>
+            </td>
+          </tr>
+          <tr
+            v-else-if="
+              subtotal > promotion.over50.value && promotion.over50.name
+            "
+          >
+            <td class="py-4" colspan="2">
+              <div class="whitespace-no-wrap">
+                {{ promotion.over50.name }}
+              </div>
+              <div class="text-xs text-gray-400 mt-2">
+                Free item
+              </div>
+            </td>
+          </tr>
+          <tr
+            v-else-if="
+              subtotal > promotion.over20.value && promotion.over20.name
+            "
+          >
+            <td class="py-4" colspan="2">
+              <div class="whitespace-no-wrap">
+                {{ promotion.over20.name }}
+              </div>
+              <div class="text-xs text-gray-400 mt-2">
+                Free item
+              </div>
+            </td>
+          </tr>
         </table>
       </div>
       <div class="flex flex-col items-end py-4 space-y-4">
@@ -79,6 +119,7 @@
 export default {
   props: {
     fee: Number,
+    promotion: Object,
   },
   data() {
     return {
