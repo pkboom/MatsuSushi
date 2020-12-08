@@ -91,11 +91,20 @@ class StartYourOrderController extends Controller
             'stripe_id' => $session->payment_intent,
         ]);
 
-        if ($transaction->subtotal > Transaction::PROMOTION_OVER_100) {
+        if (
+            $transaction->subtotal > Transaction::PROMOTION_OVER_100 &&
+            Cache::get(Transaction::promotionOver100())
+        ) {
             $order['items'][] = Cache::get(Transaction::promotionOver100());
-        } elseif ($transaction->subtotal > Transaction::PROMOTION_OVER_50) {
+        } elseif (
+            $transaction->subtotal > Transaction::PROMOTION_OVER_50 &&
+            Cache::get(Transaction::promotionOver50())
+        ) {
             $order['items'][] = Cache::get(Transaction::promotionOver50());
-        } elseif ($transaction->subtotal > Transaction::PROMOTION_OVER_20) {
+        } elseif (
+            $transaction->subtotal > Transaction::PROMOTION_OVER_20 &&
+            Cache::get(Transaction::promotionOver20())
+        ) {
             $order['items'][] = Cache::get(Transaction::promotionOver20());
         }
 
