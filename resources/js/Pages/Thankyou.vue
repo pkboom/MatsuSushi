@@ -16,7 +16,7 @@
           <div v-for="(item, key) in groupItems()" :key="key" class="space-y-2">
             <div>
               {{ item.item.name }}
-              <span v-if="item.count > 1" class="ml-2">
+              <span v-if="item.count > 1" class="ml-1">
                 &times; {{ item.count }}
               </span>
             </div>

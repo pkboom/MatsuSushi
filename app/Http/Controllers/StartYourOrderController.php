@@ -91,20 +91,11 @@ class StartYourOrderController extends Controller
             'stripe_id' => $session->payment_intent,
         ]);
 
-        if (
-            $transaction->subtotal > Transaction::PROMOTION_OVER_100 &&
-            Cache::get(Transaction::promotionOver100())
-        ) {
+        if ($this->isSubtotalOver100($transaction)) {
             $order['items'][] = Cache::get(Transaction::promotionOver100());
-        } elseif (
-            $transaction->subtotal > Transaction::PROMOTION_OVER_50 &&
-            Cache::get(Transaction::promotionOver50())
-        ) {
+        } elseif ($this->isSubtotalOver50($transaction)) {
             $order['items'][] = Cache::get(Transaction::promotionOver50());
-        } elseif (
-            $transaction->subtotal > Transaction::PROMOTION_OVER_20 &&
-            Cache::get(Transaction::promotionOver20())
-        ) {
+        } elseif ($this->isSubtotalOver20($transaction)) {
             $order['items'][] = Cache::get(Transaction::promotionOver20());
         }
 
@@ -143,5 +134,23 @@ class StartYourOrderController extends Controller
             ],
             'quantity' => $count,
         ];
+    }
+
+    public function isSubtotalOver100($transaction)
+    {
+        return $transaction->subtotal >= Transaction::PROMOTION_OVER_100 &&
+            Cache::get(Transaction::promotionOver100());
+    }
+
+    public function isSubtotalOver50($transaction)
+    {
+        return $transaction->subtotal >= Transaction::PROMOTION_OVER_50 &&
+            Cache::get(Transaction::promotionOver50());
+    }
+
+    public function isSubtotalOver20($transaction)
+    {
+        return $transaction->subtotal >= Transaction::PROMOTION_OVER_20 &&
+            Cache::get(Transaction::promotionOver20());
     }
 }

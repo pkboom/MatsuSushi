@@ -10,7 +10,7 @@
             <td class="py-4">
               <div class="whitespace-no-wrap">
                 {{ item.item.name }}
-                <span v-if="item.count > 1" class="ml-2">
+                <span v-if="item.count > 1" class="ml-1">
                   &times; {{ item.count }}
                 </span>
                 <button
@@ -29,7 +29,7 @@
             </td>
           </tr>
           <tr
-            v-if="subtotal > promotion.over100.value && promotion.over100.name"
+            v-if="subtotal >= promotion.over100.value && promotion.over100.name"
           >
             <td class="py-4" colspan="2">
               <div class="whitespace-no-wrap">
@@ -42,7 +42,7 @@
           </tr>
           <tr
             v-else-if="
-              subtotal > promotion.over50.value && promotion.over50.name
+              subtotal >= promotion.over50.value && promotion.over50.name
             "
           >
             <td class="py-4" colspan="2">
@@ -56,7 +56,7 @@
           </tr>
           <tr
             v-else-if="
-              subtotal > promotion.over20.value && promotion.over20.name
+              subtotal >= promotion.over20.value && promotion.over20.name
             "
           >
             <td class="py-4" colspan="2">

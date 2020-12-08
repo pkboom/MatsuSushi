@@ -138,9 +138,7 @@ export default {
   methods: {
     isNotUrl,
     updatePageTitle(title) {
-      document.title = title
-        ? `${title} | Matsu Sushi`
-        : 'Matsu Sushi (East City)'
+      document.title = title ? `${title} | Matsu Sushi` : 'Matsu Sushi'
     },
     fetchImage() {
       let bottom = document.getElementById('bottom')
