@@ -36,7 +36,7 @@
                 {{ promotion.over100.name }}
               </div>
               <div class="text-xs text-gray-400 mt-2">
-                Free item
+                free item
               </div>
             </td>
           </tr>
@@ -50,7 +50,7 @@
                 {{ promotion.over50.name }}
               </div>
               <div class="text-xs text-gray-400 mt-2">
-                Free item
+                free item
               </div>
             </td>
           </tr>
@@ -64,7 +64,7 @@
                 {{ promotion.over20.name }}
               </div>
               <div class="text-xs text-gray-400 mt-2">
-                Free item
+                free item
               </div>
             </td>
           </tr>
