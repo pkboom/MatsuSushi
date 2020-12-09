@@ -17,3 +17,5 @@ online_order_available
 opening_hours_from
 
 opening_hours_to
+
+promotions
