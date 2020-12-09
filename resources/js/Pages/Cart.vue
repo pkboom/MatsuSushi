@@ -28,7 +28,7 @@
               $ {{ itemSubTotal(item) }}
             </td>
           </tr>
-          <tr
+          <!-- <tr
             v-if="subtotal >= promotion.over100.value && promotion.over100.name"
           >
             <td class="py-4" colspan="2">
@@ -67,7 +67,7 @@
                 free item
               </div>
             </td>
-          </tr>
+          </tr> -->
         </table>
       </div>
       <div class="flex flex-col items-end py-4 space-y-4">
