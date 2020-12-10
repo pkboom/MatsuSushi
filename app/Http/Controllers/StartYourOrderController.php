@@ -46,7 +46,7 @@ class StartYourOrderController extends Controller
             'items' => ['required', 'array'],
             'items.*' => ['required', 'exists:items,id'],
             'tip_percentage' => ['required', 'in:0,0.05,0.10,0.15,0.20,0.25,0.30'],
-            'code' => ['nullable', 'in:'.Cache::get(Transaction::promotionCode())],
+            // 'code' => ['nullable', 'in:'.Cache::get(Transaction::promotionCode())],
         ], [
             'items.required' => 'Cart is empty.',
         ]);
