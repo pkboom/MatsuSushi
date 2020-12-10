@@ -46,6 +46,7 @@ class StartYourOrderController extends Controller
             'items' => ['required', 'array'],
             'items.*' => ['required', 'exists:items,id'],
             'tip_percentage' => ['required', 'in:0,0.05,0.10,0.15,0.20,0.25,0.30'],
+            'code' => ['nullable', 'in:'.Cache::get(Transaction::promotionCode())],
         ], [
             'items.required' => 'Cart is empty.',
         ]);
@@ -91,11 +92,11 @@ class StartYourOrderController extends Controller
             'stripe_id' => $session->payment_intent,
         ]);
 
-        // if ($this->isSubtotalOver100($transaction)) {
+        // if (Request::input('code') && $this->isSubtotalOver100($transaction)) {
         //     $order['items'][] = Cache::get(Transaction::promotionOver100());
-        // } elseif ($this->isSubtotalOver50($transaction)) {
+        // } elseif (Request::input('code') && $this->isSubtotalOver50($transaction)) {
         //     $order['items'][] = Cache::get(Transaction::promotionOver50());
-        // } elseif ($this->isSubtotalOver20($transaction)) {
+        // } elseif (Request::input('code') && $this->isSubtotalOver20($transaction)) {
         //     $order['items'][] = Cache::get(Transaction::promotionOver20());
         // }
 
@@ -138,19 +139,19 @@ class StartYourOrderController extends Controller
 
     public function isSubtotalOver100($transaction)
     {
-        return $transaction->subtotal >= Transaction::PROMOTION_OVER_100 &&
+        return $transaction->subtotal >= Transaction::PROMOTION_100 &&
             Cache::get(Transaction::promotionOver100());
     }
 
     public function isSubtotalOver50($transaction)
     {
-        return $transaction->subtotal >= Transaction::PROMOTION_OVER_50 &&
+        return $transaction->subtotal >= Transaction::PROMOTION_50 &&
             Cache::get(Transaction::promotionOver50());
     }
 
     public function isSubtotalOver20($transaction)
     {
-        return $transaction->subtotal >= Transaction::PROMOTION_OVER_20 &&
+        return $transaction->subtotal >= Transaction::PROMOTION_20 &&
             Cache::get(Transaction::promotionOver20());
     }
 }

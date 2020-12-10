@@ -14,15 +14,15 @@ class CartController extends Controller
             'fee' => Transaction::DELIVERY_FEE,
             'promotion' => [
                 'over20' => [
-                    'value' => Transaction::PROMOTION_OVER_20,
+                    'value' => Transaction::PROMOTION_20,
                     'name' => Cache::get(Transaction::promotionNameOver20()),
                 ],
                 'over50' => [
-                    'value' => Transaction::PROMOTION_OVER_50,
+                    'value' => Transaction::PROMOTION_50,
                     'name' => Cache::get(Transaction::promotionNameOver50()),
                 ],
                 'over100' => [
-                    'value' => Transaction::PROMOTION_OVER_100,
+                    'value' => Transaction::PROMOTION_100,
                     'name' => Cache::get(Transaction::promotionNameOver100()),
                 ],
             ],

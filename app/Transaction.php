@@ -32,11 +32,11 @@ class Transaction extends Model
 
     const UPDATE_INTERVAL = 10;
 
-    const PROMOTION_OVER_20 = 20;
+    const PROMOTION_20 = 20;
 
-    const PROMOTION_OVER_50 = 50;
+    const PROMOTION_50 = 50;
 
-    const PROMOTION_OVER_100 = 100;
+    const PROMOTION_100 = 100;
 
     protected $guarded = [];
 
@@ -101,7 +101,7 @@ class Transaction extends Model
 
     public static function formattedTotal($order)
     {
-        return  $order ? static::total(static::subtotal($order), $order) * 100 : 0;
+        return $order ? static::total(static::subtotal($order), $order) * 100 : 0;
     }
 
     public static function total($subtotal, $order)
@@ -216,38 +216,43 @@ class Transaction extends Model
         return $this->created_at->format('Y-m-d h:i a');
     }
 
+    public static function promotionCode()
+    {
+        return static::promotionCacheKey('code');
+    }
+
     public static function promotionOver20()
     {
-        return static::promotionCacheKey(static::PROMOTION_OVER_20);
+        return static::promotionCacheKey('over_'.static::PROMOTION_20);
     }
 
     public static function promotionNameOver20()
     {
-        return static::promotionCacheKey(static::PROMOTION_OVER_20.'_name');
+        return static::promotionCacheKey(static::PROMOTION_20.'_name');
     }
 
     public static function promotionOver50()
     {
-        return static::promotionCacheKey(static::PROMOTION_OVER_50);
+        return static::promotionCacheKey('over_'.static::PROMOTION_50);
     }
 
     public static function promotionNameOver50()
     {
-        return static::promotionCacheKey(static::PROMOTION_OVER_50.'_name');
+        return static::promotionCacheKey(static::PROMOTION_50.'_name');
     }
 
     public static function promotionOver100()
     {
-        return static::promotionCacheKey(static::PROMOTION_OVER_100);
+        return static::promotionCacheKey('over_'.static::PROMOTION_100);
     }
 
     public static function promotionNameOver100()
     {
-        return static::promotionCacheKey(static::PROMOTION_OVER_100.'_name');
+        return static::promotionCacheKey(static::PROMOTION_100.'_name');
     }
 
-    public static function promotionCacheKey($price)
+    public static function promotionCacheKey($value)
     {
-        return "promotion_over_{$price}";
+        return "promotion_{$value}";
     }
 }

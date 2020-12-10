@@ -8,6 +8,13 @@
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
       <form @submit.prevent="submit">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+          <div class="pr-6 pb-8 w-full">
+            <text-input
+              v-model="form.code"
+              :error="$page.errors.first('code')"
+              label="Code"
+            />
+          </div>
           <div
             v-for="(promotion, key) in promotions"
             :key="key"
@@ -40,13 +47,17 @@
 <script>
 export default {
   props: {
+    code: String,
     promotions: Object,
     items: Array,
   },
   data() {
     return {
       sending: false,
-      form: this.promotions,
+      form: {
+        code: this.code,
+        ...this.promotions,
+      },
     }
   },
   methods: {

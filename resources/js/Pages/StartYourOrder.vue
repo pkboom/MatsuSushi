@@ -94,6 +94,14 @@
                 label="Message"
               />
             </div>
+            <!-- <div class="pr-6 pb-8 w-full lg:w-1/2">
+              <text-input
+                v-model="form.code"
+                :error="errors.first('code')"
+                label="Promotion code"
+                type="text"
+              />
+            </div> -->
           </div>
           <div class="px-8 py-4 border-gray-100 flex justify-end items-center">
             <loading-button :loading="sending" class="btn" type="submit">
@@ -153,6 +161,7 @@ export default {
         address: null,
         takeout_time: null,
         message: null,
+        code: null,
         items: [],
         tip_percentage: localStorage.getItem('tip_percentage') ?? 0,
       },

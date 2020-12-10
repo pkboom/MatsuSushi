@@ -16,6 +16,7 @@ class PromotionController extends Controller
     public function index()
     {
         return Inertia::render('Admin/Promotion/Index', [
+            'code' => Cache::get(Transaction::promotionCode()),
             'promotions' => [
                 'over20' => Cache::get(Transaction::promotionOver20()),
                 'over50' => Cache::get(Transaction::promotionOver50()),
@@ -31,11 +32,13 @@ class PromotionController extends Controller
     public function store()
     {
         Request::validate([
+            'code' => ['required', 'max:100'],
             'over20' => ['nullable', 'exists:items,id'],
             'over50' => ['nullable', 'exists:items,id'],
             'over100' => ['nullable', 'exists:items,id'],
         ]);
 
+        Cache::put(Transaction::promotionCode(), Request::input('code'));
         Cache::put(Transaction::promotionOver20(), Request::input('over20'));
         Cache::put(Transaction::promotionNameOver20(), optional(Item::find(Request::input('over20')))->name);
         Cache::put(Transaction::promotionOver50(), Request::input('over50'));
