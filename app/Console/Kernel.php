@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\ConfirmOldTransactions;
+use App\Console\Commands\ConfirmStaleTransactions;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(ConfirmOldTransactions::class)
+        $schedule->command(ConfirmStaleTransactions::class)
             ->everyTenMinutes();
     }
 

@@ -29,7 +29,7 @@ class TransactionController extends Controller
             'transaction' => $transaction->load('items'),
             'status' => [
                 'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
-                'inprocess' => Transaction::TRANSACTION_INPROCESS,
+                'pending' => Transaction::TRANSACTION_PENDING,
                 'refunded' => Transaction::TRANSACTION_REFUNDED,
                 'failed' => Transaction::TRANSACTION_FAILED,
             ],
@@ -40,7 +40,7 @@ class TransactionController extends Controller
     {
         $transaction->update(
             Request::validate([
-                'status' => ['required', 'in:'.implode(',', [Transaction::TRANSACTION_SUCCEEDED, Transaction::TRANSACTION_FAILED, Transaction::TRANSACTION_INPROCESS])],
+                'status' => ['required', 'in:'.implode(',', [Transaction::TRANSACTION_SUCCEEDED, Transaction::TRANSACTION_FAILED, Transaction::TRANSACTION_PENDING])],
             ])
         );
 

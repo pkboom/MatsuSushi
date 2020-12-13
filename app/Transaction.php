@@ -20,7 +20,7 @@ class Transaction extends Model
 
     const TRANSACTION_SUCCEEDED = 'succeeded';
 
-    const TRANSACTION_INPROCESS = 'in process';
+    const TRANSACTION_PENDING = 'pending';
 
     const TRANSACTION_FAILED = 'failed';
 
@@ -152,10 +152,10 @@ class Transaction extends Model
         ];
     }
 
-    public function scopeOldAndStillInProcess($query)
+    public function scopeStaleAndPending($query)
     {
         $query->where('created_at', '<', now()->subMinutes(static::TIME_TO_LIVE))
-            ->where('status', static::TRANSACTION_INPROCESS);
+            ->where('status', static::TRANSACTION_PENDING);
     }
 
     public function confirm()

@@ -88,9 +88,9 @@
             class="text-matsu-blue-600 underline"
             tabindex="-1"
             type="button"
-            @click="update(status.inprocess)"
+            @click="update(status.pending)"
           >
-            In Process
+            Pending
           </button>
         </div>
         <div>

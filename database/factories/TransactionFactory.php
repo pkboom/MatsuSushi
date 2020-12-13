@@ -23,7 +23,7 @@ $factory->define(Transaction::class, function (Faker $faker) {
         'message' => $faker->paragraph,
         'status' => $faker->randomElement([
             Transaction::TRANSACTION_SUCCEEDED,
-            Transaction::TRANSACTION_INPROCESS,
+            Transaction::TRANSACTION_PENDING,
             Transaction::TRANSACTION_FAILED,
         ]),
      ] + $optional;

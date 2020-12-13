@@ -6,14 +6,14 @@ use App\Transaction;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class ConfirmOldTransactions extends Command
+class ConfirmStaleTransactions extends Command
 {
     protected $signature = 'confirm:transaction';
 
     public function handle()
     {
         Transaction::query()
-            ->oldAndStillInProcess()
+            ->staleAndPending()
             ->get()
             ->each->confirm()
             ->whenNotEmpty(
