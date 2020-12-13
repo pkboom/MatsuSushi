@@ -22,7 +22,9 @@
       class="text-md hover:text-gray-400 font-medium"
       :class="isUrl('reservations*') ? 'border-b-2 pb-1' : null"
     >
-      <a :href="$route('reservations.create')">Reservation</a>
+      <inertia-link :href="$route('reservations.create')">
+        Reservation
+      </inertia-link>
     </div>
     <div
       class="text-md hover:text-gray-400 font-medium"
