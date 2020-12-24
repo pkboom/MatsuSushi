@@ -36,12 +36,14 @@
           >
             {{ transaction.status }}
           </span>
-          <span
+          <button
             v-else-if="isNew(transaction.formattedCreatedAt)"
-            class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
+            type="button"
+            class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs hover:bg-green-200"
+            @click="endNotification"
           >
-            <button type="button" @click="endNotification">new</button>
-          </span>
+            new
+          </button>
           <span
             v-else
             class="bg-gray-200 font-bold ml-2 px-4 py-1 rounded-full text-gray-500 text-xs"
