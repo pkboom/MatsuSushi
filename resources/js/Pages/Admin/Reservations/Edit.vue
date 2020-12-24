@@ -25,10 +25,16 @@
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <div class="form-label flex items-end">
+              <span class="mr-1">Phone</span>
+              <button type="button" @click="copy('phone')">
+                <icon name="clipboard" class="block w-5 h-5 stroke-gray-500" />
+              </button>
+            </div>
             <text-input
+              ref="phone"
               v-model="form.phone"
               :error="$page.errors.first('phone')"
-              label="Phone"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
@@ -61,12 +67,13 @@
             />
           </div>
           <div class="pr-6 pb-8 w-full">
-            <div class="form-label">SMS:</div>
-            <div class="leading-tight">
-              Reminder: Your table for {{ form.people }} at Matsu Sushi is
-              booked on {{ reservationDate }} {{ form.time }}. Please respond
-              '1' to confirm or '9' to cancel. Thank you.
+            <div class="form-label flex items-end">
+              <span class="mr-1">SMS</span>
+              <button type="button" @click="copy('reminder')">
+                <icon name="clipboard" class="block w-5 h-5 stroke-gray-500" />
+              </button>
             </div>
+            <textarea-input ref="reminder" :value="reminder" />
           </div>
         </div>
         <div
@@ -82,7 +89,14 @@
               Delete Reservation
             </button>
           </div>
-          <div>
+          <div class="flex items-center space-x-2">
+            <a
+              href="https://www.textnow.com/login"
+              target="_blank"
+              class="hover:underline text-matsu-blue-600"
+            >
+              Text now
+            </a>
             <loading-button :loading="sending" class="btn ml-3" type="submit">
               Update Reservation
             </loading-button>
@@ -94,8 +108,6 @@
 </template>
 
 <script>
-import moment from 'moment'
-
 export default {
   props: {
     reservation: Object,
@@ -119,6 +131,9 @@ export default {
     reservationDate() {
       return this.form.date.slice(0, -5)
     },
+    reminder() {
+      return `Reminder: Your table for ${this.form.people} at Matsu Sushi is booked on ${this.reservationDate} ${this.form.time}. Please respond '1' to confirm or '9' to cancel. Thank you.`
+    },
   },
   methods: {
     submit() {
@@ -137,6 +152,16 @@ export default {
             confirm('Are you sure you want to delete this reservation?'),
         },
       )
+    },
+    copy(input) {
+      this.$refs[input].select()
+
+      document.execCommand('copy')
+
+      this.$page.flash.success = this.capitalizeFirstLetter(input) + ' copied.'
+    },
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1)
     },
   },
 }
