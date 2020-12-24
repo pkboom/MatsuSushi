@@ -4,11 +4,8 @@ namespace App;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use Stripe\PaymentIntent;
-use Stripe\Stripe;
 
 class Transaction extends Model
 {
@@ -156,21 +153,6 @@ class Transaction extends Model
     {
         $query->where('created_at', '<', now()->subMinutes(static::TIME_TO_LIVE))
             ->where('status', static::TRANSACTION_PENDING);
-    }
-
-    public function confirm()
-    {
-        Stripe::setApiKey(config('services.stripe.secret'));
-
-        try {
-            $paymentIntent = PaymentIntent::retrieve($this->stripe_id);
-
-            $paymentIntent->status === Transaction::TRANSACTION_SUCCEEDED
-                ? $this->succeeded()
-                : $this->failed($paymentIntent->status);
-        } catch (Exception $e) {
-            $this->failed($e->getMessage());
-        }
     }
 
     public function succeeded()
