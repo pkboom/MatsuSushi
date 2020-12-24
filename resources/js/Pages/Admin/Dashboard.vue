@@ -13,7 +13,7 @@
           </div>
           <div v-if="showReload" class="ml-2">
             <button
-              class="bg-matsu-blue-700 font-bold rounded text-white text-sm px-4 py-1 hover:cursor-pointer"
+              class="bg-red-600 font-bold rounded text-white text-sm px-4 py-1 hover:cursor-pointer hover:bg-red-700"
               @click="showReload = false"
             >
               Reload orders
@@ -40,7 +40,7 @@
             v-else-if="isNew(transaction.formattedCreatedAt)"
             class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
           >
-            new
+            <button type="button" @click="endNotification">new</button>
           </span>
           <span
             v-else
@@ -98,12 +98,13 @@
         </div>
       </div>
     </div>
-    <audio id="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
+    <audio id="notification" src="/sound/jingle-bells-sms.ogg" preload="auto" />
   </admin-layout>
 </template>
 
 <script>
 import moment from 'moment'
+import Http from '@/Utils/Http'
 
 export default {
   props: {
@@ -126,9 +127,9 @@ export default {
   mounted() {
     if (this.new_order) {
       document
-        .getElementById('alarm')
+        .getElementById('notification')
         .play()
-        .catch(error => (this.showReload = true))
+        .catch(() => (this.showReload = true))
     }
 
     this.timeoutId = setTimeout(() => {
@@ -157,6 +158,11 @@ export default {
           item: group[0],
         }))
         .sort((a, b) => a.item.name.localeCompare(b.item.name))
+    },
+    endNotification() {
+      Http.put(this.$route('admin.notification.end')).then(
+        () => (this.$page.flash.success = 'Notification stopped.'),
+      )
     },
   },
 }
