@@ -18,12 +18,11 @@ class ConfirmStaleTransactions extends Command
         Transaction::query()
             ->staleAndPending()
             ->get()
-            ->whenNotEmpty(function ($transactions) {
+            ->each(function ($transaction) {
                 Stripe::setApiKey(config('services.stripe.secret'));
 
-                Log::info('Transaction confirmed: '.$transactions->pluck('id')->implode(', '));
-            })
-            ->each(function ($transaction) {
+                Log::info('Transaction confirmed: '.$transaction->id);
+
                 try {
                     $paymentIntent = PaymentIntent::retrieve($transaction->stripe_id);
 
