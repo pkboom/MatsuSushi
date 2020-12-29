@@ -94,14 +94,14 @@
                 label="Message"
               />
             </div>
-            <!-- <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <div v-if="code" class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
                 v-model="form.code"
                 :error="errors.first('code')"
                 label="Promotion code"
                 type="text"
               />
-            </div> -->
+            </div>
           </div>
           <div class="px-8 py-4 border-gray-100 flex justify-end items-center">
             <loading-button :loading="sending" class="btn" type="submit">
@@ -141,6 +141,7 @@ import '@/Utils/Stripe'
 export default {
   props: {
     online_order_available: Boolean,
+    code: String,
     type: Object,
   },
   data() {

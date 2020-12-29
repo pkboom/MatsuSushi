@@ -32,7 +32,7 @@ class PromotionController extends Controller
     public function store()
     {
         Request::validate([
-            'code' => ['required', 'max:100'],
+            'code' => ['nullable', 'max:100'],
             'over20' => ['nullable', 'exists:items,id'],
             'over50' => ['nullable', 'exists:items,id'],
             'over100' => ['nullable', 'exists:items,id'],

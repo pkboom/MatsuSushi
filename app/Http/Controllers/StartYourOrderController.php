@@ -25,6 +25,7 @@ class StartYourOrderController extends Controller
 
         return Inertia::render('StartYourOrder', [
             'online_order_available' => $onlineOrderAvailable,
+            'code' => Cache::get(Transaction::promotionCode()),
             'type' => [
                 'delivery' => Transaction::DELIVERY,
                 'takeout' => Transaction::TAKEOUT,
@@ -46,7 +47,7 @@ class StartYourOrderController extends Controller
             'items' => ['required', 'array'],
             'items.*' => ['required', 'exists:items,id'],
             'tip_percentage' => ['required', 'in:0,0.05,0.10,0.15,0.20,0.25,0.30'],
-            // 'code' => ['nullable', 'in:'.Cache::get(Transaction::promotionCode())],
+            'code' => ['nullable', 'in:'.Cache::get(Transaction::promotionCode())],
         ], [
             'items.required' => 'Cart is empty.',
         ]);
@@ -92,13 +93,13 @@ class StartYourOrderController extends Controller
             'stripe_id' => $session->payment_intent,
         ]);
 
-        // if (Request::input('code') && $this->isSubtotalOver100($transaction)) {
-        //     $order['items'][] = Cache::get(Transaction::promotionOver100());
-        // } elseif (Request::input('code') && $this->isSubtotalOver50($transaction)) {
-        //     $order['items'][] = Cache::get(Transaction::promotionOver50());
-        // } elseif (Request::input('code') && $this->isSubtotalOver20($transaction)) {
-        //     $order['items'][] = Cache::get(Transaction::promotionOver20());
-        // }
+        if (Request::input('code') && $this->isSubtotalOver100($transaction)) {
+            $order['items'][] = Cache::get(Transaction::promotionOver100());
+        } elseif (Request::input('code') && $this->isSubtotalOver50($transaction)) {
+            $order['items'][] = Cache::get(Transaction::promotionOver50());
+        } elseif (Request::input('code') && $this->isSubtotalOver20($transaction)) {
+            $order['items'][] = Cache::get(Transaction::promotionOver20());
+        }
 
         $transaction->items()->attach(array_filter($order['items']));
 
