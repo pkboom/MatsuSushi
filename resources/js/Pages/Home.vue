@@ -25,7 +25,7 @@
                 v-html="body"
               />
             </div>
-            <div class="flex items-center">
+            <div v-if="order_now" class="flex items-center">
               <inertia-link
                 :href="$route('order')"
                 class="bg-red-500 inline-block px-4 md:px-8 py-2 md:py-3 rounded text-white font-bold mt-4 md:mt-0"
@@ -123,6 +123,7 @@ export default {
     reviews: Object,
     title: String,
     body: String,
+    order_now: Boolean,
   },
   data() {
     return {

@@ -30,6 +30,7 @@ class HomeController extends Controller
             ),
             'title' => Cache::get(Transaction::promotionTitle()),
             'body' => str_replace("\n", '<br>', Cache::get(Transaction::promotionBody())),
+            'order_now' => Cache::get(Transaction::promotionOrderNow()),
         ]);
     }
 }

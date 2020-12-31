@@ -207,7 +207,12 @@ class Transaction extends Model
     {
         return static::promotionCacheKey('body');
     }
-    
+
+    public static function promotionOrderNow()
+    {
+        return static::promotionCacheKey('order_now');
+    }
+
     public static function promotionCode()
     {
         return static::promotionCacheKey('code');

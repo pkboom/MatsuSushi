@@ -23,6 +23,13 @@
               rows="5"
             />
           </div>
+          <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <radio-input
+              v-model="form.order_now"
+              :error="$page.errors.first('order_now')"
+              label="Show `order now`"
+            />
+          </div>
           <div class="pr-6 pb-8 w-full">
             <text-input
               v-model="form.code"
@@ -74,6 +81,7 @@ export default {
       form: {
         title: this.title,
         body: this.body,
+        order_now: this.order_now,
         code: this.code,
         ...this.promotions,
       },
