@@ -11,16 +11,16 @@
           >
             Reservation
           </div>
-          <div v-if="showReload" class="ml-2">
-            <button
-              class="bg-red-600 font-bold rounded text-white text-sm px-4 py-1 hover:cursor-pointer hover:bg-red-700"
-              @click="showReload = false"
-            >
-              Reload orders
-            </button>
-          </div>
         </div>
       </div>
+    </div>
+    <div v-if="showPlaySound" class="mb-4">
+      <button
+        class="bg-red-600 font-bold rounded text-white text-sm px-6 py-3 hover:cursor-pointer hover:bg-red-700"
+        @click="showPlaySound = false"
+      >
+        Click this button to play notification sound
+      </button>
     </div>
     <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
       <div
@@ -110,15 +110,15 @@ import Http from '@/Utils/Http'
 
 export default {
   props: {
-    transactions: Array,
-    new_order: Boolean,
-    new_reservation: Boolean,
     update_interval: Number,
   },
   data() {
     return {
-      timeoutId: null,
-      showReload: false,
+      transactions: [],
+      new_order: false,
+      new_reservation: false,
+      intervalId: null,
+      showPlaySound: false,
     }
   },
   computed: {
@@ -127,21 +127,37 @@ export default {
     },
   },
   mounted() {
-    if (this.new_order) {
-      document
-        .getElementById('notification')
-        .play()
-        .catch(() => (this.showReload = true))
-    }
+    this.getTodayOrder()
 
-    this.timeoutId = setTimeout(() => {
-      location.reload()
+    this.intervalId = setInterval(() => {
+      this.getTodayOrder()
     }, this.update_interval * 1000)
   },
   beforeDestroy() {
-    clearTimeout(this.timeoutId)
+    clearInterval(this.intervalId)
   },
   methods: {
+    getTodayOrder() {
+      Http.get(this.$route('admin.dashboard')).then(response => {
+        this.transactions = response.data.transactions
+        this.new_order = response.data.new_order
+        this.new_reservation = response.data.new_reservation
+
+        this.$nextTick(() => {
+          this.handleNewOrder()
+        })
+      })
+    },
+    handleNewOrder() {
+      if (this.new_order) {
+        document
+          .getElementById('notification')
+          .play()
+          .catch(() => (this.showPlaySound = true))
+
+        return
+      }
+    },
     isNew(createdAt) {
       if (
         moment(createdAt, 'YYYY-MM-DD hh:mm a').isAfter(
