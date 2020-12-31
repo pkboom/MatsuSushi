@@ -71,6 +71,7 @@ export default {
   props: {
     title: String,
     body: String,
+    order_now: Boolean,
     code: String,
     promotions: Object,
     items: Array,
