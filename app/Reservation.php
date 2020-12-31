@@ -33,6 +33,10 @@ class Reservation extends Model
 
     public static function onClosedDates($reserved_at)
     {
+        if ($reserved_at->dayOfWeek === intval(Cache::get('closed_day'))) {
+            return true;
+        }
+
         return collect(Cache::get('closed_dates'))->contains(function ($date) use ($reserved_at) {
             return $reserved_at->isSameday($date);
         });

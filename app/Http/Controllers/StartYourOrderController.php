@@ -19,7 +19,7 @@ class StartYourOrderController extends Controller
     {
         $onlineOrderAvailable = Cache::get('online_order_available', false);
 
-        if (now()->isClosed()) {
+        if (Transaction::onClosedDates(now())) {
             $onlineOrderAvailable = false;
         }
 

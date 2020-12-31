@@ -132,28 +132,28 @@
             <date-input
               v-model="form.closed_dates[0]"
               :error="$page.errors.first('closed_dates.0')"
-              label="No reservation date"
+              label="Closed date"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
               v-model="form.closed_dates[1]"
               :error="$page.errors.first('closed_dates.1')"
-              label="No reservation date"
+              label="Closed date"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
               v-model="form.closed_dates[2]"
               :error="$page.errors.first('closed_dates.2')"
-              label="No reservation date"
+              label="Closed date"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <date-input
               v-model="form.closed_dates[3]"
               :error="$page.errors.first('closed_dates.3')"
-              label="No reservation date"
+              label="Closed date"
             />
           </div>
         </div>

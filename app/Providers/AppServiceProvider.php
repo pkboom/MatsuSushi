@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\UrlWindow;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Request;
@@ -60,7 +59,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerLengthAwarePaginator();
         $this->registerRequestMacros();
-        $this->registerCarbonMacros();
     }
 
     protected function registerLengthAwarePaginator()
@@ -148,13 +146,6 @@ class AppServiceProvider extends ServiceProvider
                 $this->filled('matsu_honeypot') ||
                 is_null($time) ||
                 $time->isFuture();
-        });
-    }
-
-    public function registerCarbonMacros()
-    {
-        CarbonImmutable::macro('isClosed', function () {
-            return (string) $this->dayOfWeek === Cache::get('closed_day');
         });
     }
 }

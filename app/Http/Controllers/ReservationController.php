@@ -39,12 +39,8 @@ class ReservationController extends Controller
         $reserved_at = CarbonImmutable::parse(Request::input('date'))
             ->modify(Request::input('time'));
 
-        if ($reserved_at->isClosed()) {
-            validation_fails('date', 'Sorry, we are closed on '.$reserved_at->format('l').'s.');
-        }
-
         if (Reservation::onClosedDates($reserved_at)) {
-            validation_fails('date', 'Reservation is not available.');
+            validation_fails('date', 'Sorry, we are closed on '.$reserved_at->format('M j').'.');
         }
 
         if (Reservation::isDuplicate(Request::input('phone'), $reserved_at)) {

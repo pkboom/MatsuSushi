@@ -252,4 +252,15 @@ class Transaction extends Model
     {
         return "promotion_{$value}";
     }
+
+    public static function onClosedDates($now)
+    {
+        if ($now->dayOfWeek === intval(Cache::get('closed_day'))) {
+            return true;
+        }
+
+        return collect(Cache::get('closed_dates'))->contains(function ($date) use ($now) {
+            return $now->isSameday($date);
+        });
+    }
 }
