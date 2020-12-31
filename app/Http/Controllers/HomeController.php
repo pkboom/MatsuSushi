@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaction;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -27,6 +28,8 @@ class HomeController extends Controller
                 CarbonInterval::day(),
                 fn () => Http::get($url)->json()['result']
             ),
+            'title' => Cache::get(Transaction::promotionTitle()),
+            'body' => str_replace("\n", '<br>', Cache::get(Transaction::promotionBody())),
         ]);
     }
 }

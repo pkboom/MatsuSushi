@@ -2,8 +2,40 @@
   <front-layout>
     <div
       id="top"
-      class="flex items-center justify-center bg-center bg-cover h-screen"
+      class="relative flex items-center justify-center bg-center bg-cover h-screen"
     >
+      <div v-if="title" class="absolute right-2 md:right-24 top-16 md:top-24">
+        <div class="flex">
+          <img
+            src="/images/promotion.jpg"
+            alt=""
+            class="hidden md:block h-72 w-40"
+          />
+          <div
+            class="bg-white flex flex-col justify-between p-6 md:p-8 w-64 md:w-80"
+          >
+            <div>
+              <div
+                class="font-medium md:font-bold text-lg md:text-2xl underline"
+              >
+                {{ title }}
+              </div>
+              <div
+                class="leading-4 md:leading-6 mt-2 md:mt-4 text-gray-700 text-sm md:text-base"
+                v-html="body"
+              />
+            </div>
+            <div class="flex items-center">
+              <inertia-link
+                :href="$route('order')"
+                class="bg-red-500 inline-block px-4 md:px-8 py-2 md:py-3 rounded text-white font-bold mt-4 md:mt-0"
+              >
+                Order Now
+              </inertia-link>
+            </div>
+          </div>
+        </div>
+      </div>
       <div
         class="font-bold font-serif text-3xl md:text-5xl text-white tracking-widest"
       >
@@ -89,6 +121,8 @@
 export default {
   props: {
     reviews: Object,
+    title: String,
+    body: String,
   },
   data() {
     return {

@@ -198,6 +198,16 @@ class Transaction extends Model
         return $this->created_at->format('Y-m-d h:i a');
     }
 
+    public static function promotionTitle()
+    {
+        return static::promotionCacheKey('title');
+    }
+
+    public static function promotionBody()
+    {
+        return static::promotionCacheKey('body');
+    }
+    
     public static function promotionCode()
     {
         return static::promotionCacheKey('code');

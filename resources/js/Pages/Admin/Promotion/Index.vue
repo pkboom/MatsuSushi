@@ -10,6 +10,21 @@
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <div class="pr-6 pb-8 w-full">
             <text-input
+              v-model="form.title"
+              :error="$page.errors.first('title')"
+              label="Title"
+            />
+          </div>
+          <div class="pr-6 pb-8 w-full">
+            <textarea-input
+              v-model="form.body"
+              :error="$page.errors.first('body')"
+              label="Body"
+              rows="5"
+            />
+          </div>
+          <div class="pr-6 pb-8 w-full">
+            <text-input
               v-model="form.code"
               :error="$page.errors.first('code')"
               label="Code"
@@ -47,6 +62,8 @@
 <script>
 export default {
   props: {
+    title: String,
+    body: String,
     code: String,
     promotions: Object,
     items: Array,
@@ -55,6 +72,8 @@ export default {
     return {
       sending: false,
       form: {
+        title: this.title,
+        body: this.body,
         code: this.code,
         ...this.promotions,
       },
