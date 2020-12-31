@@ -149,7 +149,7 @@ export default {
       sending: false,
       from: moment().isAfter(moment('11:00am', 'h:mma'))
         ? moment()
-            .add(25, 'minutes')
+            .add(85, 'minutes')
             .format('h:mma')
         : '11:00am',
       to: '9:35pm',
