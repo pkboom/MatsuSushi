@@ -119,12 +119,8 @@ export default {
       new_reservation: false,
       intervalId: null,
       showPlaySound: false,
+      currentTime: this.getCurrentTime(),
     }
-  },
-  computed: {
-    currentTime() {
-      return moment().format('hh:mm a')
-    },
   },
   mounted() {
     this.getTodayOrder()
@@ -142,11 +138,15 @@ export default {
         this.transactions = response.data.transactions
         this.new_order = response.data.new_order
         this.new_reservation = response.data.new_reservation
+        this.currentTime = this.getCurrentTime()
 
         this.$nextTick(() => {
           this.handleNewOrder()
         })
       })
+    },
+    getCurrentTime() {
+      return moment().format('hh:mm a')
     },
     handleNewOrder() {
       if (this.new_order) {
