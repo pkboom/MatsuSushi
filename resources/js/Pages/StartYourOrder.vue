@@ -143,13 +143,14 @@ export default {
     online_order_available: Boolean,
     code: String,
     type: Object,
+    takeout_available_after: Number,
   },
   data() {
     return {
       sending: false,
       from: moment().isAfter(moment('11:00am', 'h:mma'))
         ? moment()
-            .add(25, 'minutes')
+            .add(this.takeout_available_after, 'minutes')
             .format('h:mma')
         : '11:00am',
       to: '9:35pm',

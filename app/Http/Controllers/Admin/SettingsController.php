@@ -3,23 +3,27 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Transaction;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
-class ScheduleController extends Controller
+class SettingsController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Admin/Schedule/Index', [
+        return Inertia::render('Admin/Settings/Index', [
             'schedule' => [
                 'online_order_available' => Cache::get('online_order_available'),
                 'closed_day' => Cache::get('closed_day'),
                 'closed_dates' => Cache::get('closed_dates', []),
                 'opening_hours_from' => Cache::get('opening_hours_from'),
                 'opening_hours_to' => Cache::get('opening_hours_to'),
+                'opening_hours_to' => Cache::get('opening_hours_to'),
             ],
+            'takeout_times' => Transaction::TAKEOUT_AVAILABLE_TIMES,
+            'takeout_available_after' => Cache::get('takeout_available_after'),
         ]);
     }
 
@@ -32,6 +36,7 @@ class ScheduleController extends Controller
             'closed_dates.*' => ['nullable', 'date'],
             'opening_hours_from' => ['required', 'date_format:g:ia'],
             'opening_hours_to' => ['required', 'date_format:g:ia'],
+            'takeout_available_after' => ['required', 'in:'.implode(',', Transaction::TAKEOUT_AVAILABLE_TIMES)],
         ]);
 
         $closed_dates = collect(Request::input('closed_dates'))
@@ -44,7 +49,8 @@ class ScheduleController extends Controller
         Cache::put('closed_dates', $closed_dates);
         Cache::put('opening_hours_from', Request::input('opening_hours_from'));
         Cache::put('opening_hours_to', Request::input('opening_hours_to'));
+        Cache::put('takeout_available_after', Request::input('takeout_available_after'));
 
-        return Redirect::back()->with('success', 'Schedule saved.');
+        return Redirect::back()->with('success', 'Settings saved.');
     }
 }

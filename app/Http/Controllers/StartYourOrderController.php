@@ -30,6 +30,7 @@ class StartYourOrderController extends Controller
                 'delivery' => Transaction::DELIVERY,
                 'takeout' => Transaction::TAKEOUT,
             ],
+            'takeout_available_after' => Cache::get('takeout_available_after'),
         ]);
     }
 
@@ -52,8 +53,11 @@ class StartYourOrderController extends Controller
             'items.required' => 'Cart is empty.',
         ]);
 
-        if (Request::input('takeout_time') && now()->addMinutes(24)->isAfter(Carbon::parse(Request::input('takeout_time')))) {
-            validation_fails('takeout_time', 'Please, give us at least 25 min.');
+        if (
+            Request::input('takeout_time') &&
+            now()->addMinutes(Cache::get('takeout_available_after'))->isAfter(Carbon::parse(Request::input('takeout_time')))
+        ) {
+            validation_fails('takeout_time', 'Please, give us at least '.Cache::get('takeout_available_after').' min.');
         }
 
         if (Request::input('takeout_time') && Carbon::parse(Request::input('takeout_time'))->isAfter(Carbon::parse('9:30pm'))) {

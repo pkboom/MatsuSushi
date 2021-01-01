@@ -2,13 +2,13 @@
   <admin-layout title="Schedule">
     <div class="flex justify-between items-center">
       <div class="mb-8">
-        <breadcrumb name="Schedule" />
-      </div>
-      <div class="mb-6 flex justify-end items-center max-w-2xl">
-        <button class="btn" @click="alarmTest">Alarm Test</button>
+        <breadcrumb name="Settings" />
       </div>
     </div>
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
+      <div class="p-8 -mb-8">
+        <button class="btn" @click="alarmTest">Alarm Test</button>
+      </div>
       <form @submit.prevent="submit">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <div class="pr-6 pb-8 w-full lg:w-1/2">
@@ -156,6 +156,14 @@
               label="Closed date"
             />
           </div>
+          <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <select-input
+              v-model="form.takeout_available_after"
+              label="Takeout available after(min)"
+              :error="$page.errors.first('takeout_available_after')"
+              :options="takeout_times"
+            />
+          </div>
         </div>
         <div
           class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
@@ -174,17 +182,22 @@
 export default {
   props: {
     schedule: Object,
+    takeout_times: Array,
+    takeout_available_after: Number,
   },
   data() {
     return {
       sending: false,
-      form: this.schedule,
+      form: {
+        ...this.schedule,
+        takeout_available_after: this.takeout_available_after,
+      },
     }
   },
   methods: {
     submit() {
       this.sending = true
-      this.$inertia.post(this.$route('admin.schedule.store'), this.form, {
+      this.$inertia.post(this.$route('admin.settings.store'), this.form, {
         onFinish: () => (this.sending = false),
       })
     },

@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('schedule', [ScheduleController::class, 'index'])
-    ->name('admin.schedule');
+Route::get('settings', [SettingsController::class, 'index'])
+    ->name('admin.settings');
 
-Route::post('schedule', [ScheduleController::class, 'store'])
-    ->name('admin.schedule.store');
+Route::post('settings', [SettingsController::class, 'store'])
+    ->name('admin.settings.store');

@@ -35,6 +35,8 @@ class Transaction extends Model
 
     const PROMOTION_100 = 100;
 
+    const TAKEOUT_AVAILABLE_TIMES = [25, 55, 85];
+
     protected $guarded = [];
 
     protected $appends = [

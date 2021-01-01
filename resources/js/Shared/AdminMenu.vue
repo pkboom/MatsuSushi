@@ -50,14 +50,6 @@
     </div>
     <div class="mb-4">
       <menu-item
-        name="Schedule"
-        url="admin/schedule"
-        :link="$route('admin.schedule')"
-        icon="add"
-      />
-    </div>
-    <div class="mb-4">
-      <menu-item
         name="Reports"
         url="admin/reports"
         :link="$route('admin.reports')"
@@ -70,6 +62,14 @@
         url="admin/promotion"
         :link="$route('admin.promotion')"
         icon="book"
+      />
+    </div>
+    <div class="mb-4">
+      <menu-item
+        name="Settings"
+        url="admin/settings"
+        :link="$route('admin.settings')"
+        icon="add"
       />
     </div>
   </div>
