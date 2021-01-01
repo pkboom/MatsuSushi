@@ -7,7 +7,7 @@
     </div>
     <div class="bg-white max-w-2xl overflow-hidden rounded shadow">
       <div class="p-8 -mb-8">
-        <button class="btn" @click="alarmTest">Alarm Test</button>
+        <button type="button" class="btn" @click="alarmTest">Alarm Test</button>
       </div>
       <form @submit.prevent="submit">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
