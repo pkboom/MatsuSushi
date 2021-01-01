@@ -15,13 +15,13 @@ class SettingsController extends Controller
     {
         return Inertia::render('Admin/Settings/Index', [
             'schedule' => [
-                'online_order_available' => Cache::get('online_order_available'),
                 'closed_day' => Cache::get('closed_day'),
                 'closed_dates' => Cache::get('closed_dates', []),
                 'opening_hours_from' => Cache::get('opening_hours_from'),
                 'opening_hours_to' => Cache::get('opening_hours_to'),
                 'opening_hours_to' => Cache::get('opening_hours_to'),
             ],
+            'online_order_available' => Cache::get('online_order_available'),
             'takeout_times' => Transaction::TAKEOUT_AVAILABLE_TIMES,
             'takeout_available_after' => Cache::get('takeout_available_after'),
         ]);

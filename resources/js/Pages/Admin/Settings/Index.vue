@@ -182,6 +182,7 @@
 export default {
   props: {
     schedule: Object,
+    online_order_available: Boolean,
     takeout_times: Array,
     takeout_available_after: Number,
   },
@@ -190,6 +191,7 @@ export default {
       sending: false,
       form: {
         ...this.schedule,
+        online_order_available: this.online_order_available,
         takeout_available_after: this.takeout_available_after,
       },
     }
