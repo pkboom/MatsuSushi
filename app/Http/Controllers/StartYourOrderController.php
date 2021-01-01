@@ -52,13 +52,9 @@ class StartYourOrderController extends Controller
             'items.required' => 'Cart is empty.',
         ]);
 
-        if (Request::input('takeout_time') && now()->addMinutes(54)->isAfter(Carbon::parse(Request::input('takeout_time')))) {
-            validation_fails('takeout_time', 'Sorry, we are currently too busy. Give us a little more time.');
+        if (Request::input('takeout_time') && now()->addMinutes(24)->isAfter(Carbon::parse(Request::input('takeout_time')))) {
+            validation_fails('takeout_time', 'Please, give us at least 25 min.');
         }
-
-        // if (Request::input('takeout_time') && now()->addMinutes(24)->isAfter(Carbon::parse(Request::input('takeout_time')))) {
-        //     validation_fails('takeout_time', 'Please, give us at least 25 min.');
-        // }
 
         if (Request::input('takeout_time') && Carbon::parse(Request::input('takeout_time'))->isAfter(Carbon::parse('9:30pm'))) {
             validation_fails('takeout_time', 'It\'s a little too late. Give us a call. Let us help with your order. Thanks.');
