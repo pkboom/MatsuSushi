@@ -43,69 +43,6 @@
           </div>
         </div>
         <slot />
-        <div
-          v-if="
-            isNotUrl(
-              'gallery',
-              'order',
-              'cart',
-              'start/your/order',
-              'checkout',
-              'thankyou*',
-            )
-          "
-          id="bottom"
-          class="flex flex-col justify-center"
-        >
-          <div
-            class="border-2 border-white flex flex-col items-center md:mx-auto mx-3 pb-14 pt-12 px-12 space-y-4 text-white"
-          >
-            <div class="text-4xl text-center uppercase">
-              107 Hunter St. East Suite 102
-            </div>
-            <div class="text-lg text-center uppercase">
-              Peterborough, ON K9H 1G7
-            </div>
-          </div>
-          <a
-            href="https://g.page/matsusushionhunter"
-            target="_blank"
-            class="-mt-7 bg-white focus:bg-blue-900 focus:text-white hover:bg-blue-900 hover:text-white mx-auto px-12 py-4 text-blue-900 text-lg uppercase"
-          >
-            View Map
-          </a>
-          <div
-            class="gap-8 grid grid-cols-1 md:grid-cols-3 md:mt-8 p-16 text-white w-full"
-          >
-            <div class="text-4xl font-serif whitespace-no-wrap mx-auto">
-              Matsu Sushi
-            </div>
-            <div class="space-y-2 md:space-y-4 mx-auto">
-              <div class="text-2xl text-center">
-                Contact
-              </div>
-              <div class="text-md text-center">
-                (705) 760-9484
-              </div>
-            </div>
-            <div class="space-y-2 md:space-y-4 mx-auto">
-              <div class="text-2xl text-center">
-                Restaurant Hours
-              </div>
-              <div class="text-md text-center">
-                <div>
-                  Mon-Sun 11:30 AM ~ 10:00 PM
-                </div>
-                <div>
-                  (Tuesdays closed)
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="flex font-serif justify-center text-sm text-white w-full">
-            Matsu Sushi &#169; 2020 All rights reserved.
-          </div>
-        </div>
       </div>
     </div>
     <flash />
@@ -113,8 +50,6 @@
 </template>
 
 <script>
-import { isNotUrl } from '@/Utils/Helpers'
-
 export default {
   props: {
     title: String,
@@ -132,36 +67,11 @@ export default {
   },
   mounted() {
     this.updatePageTitle(this.title)
-
-    this.fetchImage()
   },
   methods: {
-    isNotUrl,
     updatePageTitle(title) {
       document.title = title ? `${title} | Matsu Sushi` : 'Matsu Sushi'
-    },
-    fetchImage() {
-      let bottom = document.getElementById('bottom')
-
-      let imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            bottom.style.backgroundImage =
-              "linear-gradient(rgba(0, 0, 0, 0), rgba(42, 67, 101, 1)), url('/images/bottom.jpg')"
-          }
-        })
-      })
-
-      bottom && imageObserver.observe(bottom)
     },
   },
 }
 </script>
-
-<style>
-#bottom {
-  height: 800px;
-  background-size: cover;
-  background-position: center top;
-}
-</style>

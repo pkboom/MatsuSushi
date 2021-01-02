@@ -37,5 +37,4 @@ Route::get('start/your/order', [StartYourOrderController::class, 'create'])
 Route::post('start/your/order', [StartYourOrderController::class, 'store'])
     ->name('start-your-order.store');
 
-
 Route::get('thankyou/{transaction}', ThankyouController::class)->name('thankyou');
