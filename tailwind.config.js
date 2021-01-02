@@ -27,17 +27,7 @@ module.exports = {
       ...theme('colors'),
     }),
   },
-  variants: [
-    'responsive',
-    'group-hover',
-    'focus-within',
-    'hover',
-    'focus',
-    'active',
-    'odd',
-    'first',
-    'last',
-  ],
+  variants: ['responsive', 'group-hover', 'hover', 'focus'],
   purge: {
     content: [
       './storage/framework/views/*.php',

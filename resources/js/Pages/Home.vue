@@ -5,14 +5,10 @@
       class="relative flex items-center justify-center bg-center bg-cover h-screen"
     >
       <div v-if="title" class="absolute right-4 top-20">
-        <div class="flex">
-          <img
-            src="/images/promotion.jpg"
-            alt=""
-            class="hidden lg:block h-72 w-40"
-          />
+        <div class="flex flex-col">
+          <img src="/images/promotion.jpg" alt="" class="hidden lg:block" />
           <div
-            class="bg-white flex flex-col justify-between p-6 lg:p-8 w-64 lg:w-80"
+            class="bg-white flex flex-col justify-between p-6 lg:p-8 w-64 lg:w-80 space-y-6"
           >
             <div>
               <div
