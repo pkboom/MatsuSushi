@@ -1,16 +1,16 @@
 <template>
   <front-layout title="Menu">
     <div class="max-w-5xl mx-auto min-h-screen">
-      <img src="/images/menu/menu_2020_august_01.svg" />
-      <img src="/images/menu/menu_2020_august_02.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_03.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_04.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_05.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_06.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_07.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_08.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_09.svg" />
-      <img loading="lazy" src="/images/menu/menu_2020_august_10.svg" />
+      <img src="/images/menu/01.png" width="827" height="1170" />
+      <img src="/images/menu/02.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/03.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/04.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/05.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/06.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/07.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/08.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/09.png" width="827" height="1170" />
+      <img loading="lazy" src="/images/menu/10.png" width="827" height="1170" />
     </div>
   </front-layout>
 </template>
