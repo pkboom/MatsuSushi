@@ -1,6 +1,6 @@
 <template>
   <front-layout title="Menu">
-    <div class="max-w-5xl mx-auto min-h-screen">
+    <div class="max-w-5xl mx-auto min-h-screen -space-y-32">
       <img src="/images/menu/01.png" />
       <img src="/images/menu/02.png" />
       <img loading="lazy" src="/images/menu/03.png" />
