@@ -30,6 +30,18 @@
                   <span class="ml-2">Takeout</span>
                 </label>
               </div>
+              <div
+                v-if="
+                  form.type === this.type.delivery &&
+                    takeout_available_after > 30
+                "
+                class="form-error"
+              >
+                We are too busy right now. It might take more than
+                {{ takeout_available_after + 36 }} mins to get your order
+                delivered. You might get your order sooner with `takeout`. Sorry
+                for the inconvenience.
+              </div>
             </div>
             <div class="pr-6 pb-8 w-full lg:w-1/2">
               <text-input
