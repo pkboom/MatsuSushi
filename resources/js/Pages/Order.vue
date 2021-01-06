@@ -24,10 +24,12 @@
           </div>
           <div class="w-1/2 md:w-full ">
             <input
+              ref="enter"
               v-model="searchItem"
               type="text"
               placeholder="Search in menu"
               class="form-input"
+              @keyup.enter="enter"
             />
           </div>
         </div>
@@ -201,6 +203,9 @@ export default {
         success: `<a href="/cart">'${order.name}' added(${items.length})<div class="underline">Go to Cart</div></a>`,
         ttl: 13,
       }
+    },
+    enter() {
+      this.$refs.enter.blur()
     },
   },
 }
