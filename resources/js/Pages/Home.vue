@@ -8,7 +8,7 @@
         <div class="flex flex-col">
           <img src="/images/promotion.jpg" alt="" class="hidden lg:block" />
           <div
-            class="bg-white flex flex-col justify-between p-6 lg:p-8 w-64 lg:w-80 space-y-4"
+            class="bg-white flex flex-col justify-between p-6 lg:p-8 w-64 lg:w-80 space-y-2"
           >
             <div>
               <div
