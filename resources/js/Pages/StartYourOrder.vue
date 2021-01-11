@@ -156,16 +156,18 @@ export default {
     code: String,
     type: Object,
     takeout_available_after: Number,
+    opening_hours_from: String,
+    opening_hours_to: String,
   },
   data() {
     return {
       sending: false,
-      from: moment().isAfter(moment('11:00am', 'h:mma'))
+      from: moment().isAfter(moment(this.opening_hours_from, 'h:mma'))
         ? moment()
             .add(this.takeout_available_after, 'minutes')
             .format('h:mma')
-        : '11:00am',
-      to: '9:35pm',
+        : this.opening_hours_from,
+      to: this.opening_hours_to,
       form: {
         type: this.type.delivery,
         first_name: null,

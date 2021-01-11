@@ -19,7 +19,6 @@ class SettingsController extends Controller
                 'closed_dates' => Cache::get('closed_dates', []),
                 'opening_hours_from' => Cache::get('opening_hours_from'),
                 'opening_hours_to' => Cache::get('opening_hours_to'),
-                'opening_hours_to' => Cache::get('opening_hours_to'),
             ],
             'online_order_available' => Cache::get('online_order_available'),
             'takeout_times' => Transaction::TAKEOUT_AVAILABLE_TIMES,

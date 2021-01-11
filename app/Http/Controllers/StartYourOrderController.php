@@ -31,7 +31,9 @@ class StartYourOrderController extends Controller
                 'takeout' => Transaction::TAKEOUT,
             ],
             'takeout_available_after' => Cache::get('takeout_available_after'),
-        ]);
+            'opening_hours_from' => Cache::get('opening_hours_from'),
+            'opening_hours_to' => Cache::get('opening_hours_to'),
+     ]);
     }
 
     public function store()

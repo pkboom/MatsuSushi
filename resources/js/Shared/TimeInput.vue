@@ -70,66 +70,17 @@ export default {
       inputTime: this.value,
       formattedTime: this.value,
       menuVisible: false,
-      times: [
-        '12:00am',
-        '12:30am',
-        '1:00am',
-        '1:30am',
-        '2:00am',
-        '2:30am',
-        '3:00am',
-        '3:30am',
-        '4:00am',
-        '4:30am',
-        '5:00am',
-        '5:30am',
-        '6:00am',
-        '6:30am',
-        '7:00am',
-        '7:30am',
-        '8:00am',
-        '8:30am',
-        '9:00am',
-        '9:30am',
-        '10:00am',
-        '10:30am',
-        '11:00am',
-        '11:30am',
-        '12:00pm',
-        '12:30pm',
-        '1:00pm',
-        '1:30pm',
-        '2:00pm',
-        '2:30pm',
-        '3:00pm',
-        '3:30pm',
-        '4:00pm',
-        '4:30pm',
-        '5:00pm',
-        '5:30pm',
-        '6:00pm',
-        '6:30pm',
-        '7:00pm',
-        '7:30pm',
-        '8:00pm',
-        '8:30pm',
-        '9:00pm',
-        '9:30pm',
-        '10:00pm',
-        '10:30pm',
-        '11:00pm',
-        '11:30pm',
-      ],
+      times: this.getTimes(),
     }
   },
   mounted() {
     this.times = this.times
       .map(time => moment(time, 'h:mma'))
       .filter(time =>
-        this.from ? time.isAfter(moment(this.from, 'h:mma')) : true
+        this.from ? time.isAfter(moment(this.from, 'h:mma')) : true,
       )
       .filter(time =>
-        this.to ? time.isBefore(moment(this.to, 'h:mma')) : true
+        this.to ? time.isBefore(moment(this.to, 'h:mma')) : true,
       )
       .map(time => time.format('h:mma'))
   },
@@ -181,7 +132,7 @@ export default {
     },
     updated() {
       var match = /^(10|11|12|01|02|03|04|05|06|07|08|09|1|2|3|4|5|6|7|8|9)(:*)(00|01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59)*(am|a|pm|p)*$/gi.exec(
-        this.inputTime.replace(/\s/g, '')
+        this.inputTime.replace(/\s/g, ''),
       )
 
       if (match) {
@@ -195,6 +146,30 @@ export default {
 
       this.$emit('input', this.inputTime)
       this.updateScrollPosition()
+    },
+    getTimes() {
+      let hours = [
+        '12',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+      ]
+      let minutes = ['00', '10', '20', '30', '40', '50']
+      let ampm = ['am', 'pm']
+
+      return ampm
+        .map(value =>
+          hours.map(hour => minutes.map(minute => `${hour}:${minute}${value}`)),
+        )
+        .flat(2)
     },
   },
 }
