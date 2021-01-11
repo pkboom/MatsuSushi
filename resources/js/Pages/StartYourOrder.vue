@@ -38,7 +38,7 @@
                 class="form-error"
               >
                 We are too busy right now. It might take more than
-                {{ takeout_available_after + 36 }} mins to get your order
+                {{ takeout_available_after + 35 }} mins to get your order
                 delivered. You might get your order sooner with `takeout`. Sorry
                 for the inconvenience.
               </div>
