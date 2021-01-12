@@ -35,7 +35,7 @@ class TipController extends Controller
         return Inertia::render('Admin/Reports/Tips', [
             'dates' => collect($dates)->map(fn ($date) => [
                     'tip' => round(collect($date)->sum('tip'), 2),
-                    'restaurantTip' => round(collect($date)->reject(fn ($value) => $value['type'] === Transaction::DELIVERY)->sum('tip'), 2),
+                    'takeoutTip' => round(collect($date)->reject(fn ($value) => $value['type'] === Transaction::DELIVERY)->sum('tip'), 2),
                     'deliveryTip' => round(collect($date)->filter(fn ($value) => $value['type'] === Transaction::DELIVERY)->sum('tip'), 2),
                 ]
             ),
