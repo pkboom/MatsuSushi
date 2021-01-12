@@ -91,13 +91,6 @@ class Transaction extends Model
         return round($this->subtotal * $this->tip_percentage, 2);
     }
 
-    public function getAfternoonTipAttribute()
-    {
-        return $this->created_at->betweenIncluded($this->created_at->modify('5PM'), $this->created_at->modify('10PM'))
-            ? round($this->subtotal * $this->tip_percentage, 2)
-            : 0;
-    }
-
     public static function formattedTotal($order)
     {
         return $order ? static::total(static::subtotal($order), $order) * 100 : 0;

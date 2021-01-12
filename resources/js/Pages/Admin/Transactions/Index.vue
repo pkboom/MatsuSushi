@@ -30,6 +30,9 @@
             Tip
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Type
+          </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             Status
           </th>
           <th
@@ -62,6 +65,9 @@
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             $
             {{ transaction.status === status.succeeded ? transaction.tip : 0 }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ transaction.type }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ transaction.status }}

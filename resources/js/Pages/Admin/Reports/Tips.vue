@@ -26,8 +26,9 @@
           {{ date }}
         </div>
         <div v-if="tips.tip" class="space-y-2">
-          <div class="">All Day: ${{ tips.tip }}</div>
-          <div class="">5-10PM: ${{ tips.afternoonTip }}</div>
+          <div>Total Tip: ${{ tips.tip }}</div>
+          <div>Restaurant: ${{ tips.restaurantTip }}</div>
+          <div>Delivery: ${{ tips.deliveryTip }}</div>
         </div>
       </div>
     </div>
