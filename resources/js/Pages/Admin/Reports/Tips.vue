@@ -1,10 +1,11 @@
 <template>
   <div class="w-full h-full p-1 lg:p-4">
     <inertia-link
-      class="text-indigo-500 text-sm"
+      class="flex items-center text-indigo-500 text-sm"
       :href="$route('admin.dashboard')"
     >
-      &#129044; Back to dashboard
+      <icon name="back-arrow" class="w-3 h-3 mr-2 fill-current" />
+      Back
     </inertia-link>
     <div class="grid gap-2 grid-cols-7 mt-4 text-sm">
       <div
