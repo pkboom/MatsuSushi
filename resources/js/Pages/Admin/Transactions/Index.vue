@@ -70,7 +70,7 @@
             {{
               transaction.status === status.succeeded &&
               transaction.type === type.delivery
-                ? '$' + transaction.delivery_tip
+                ? '$' + (transaction.delivery_tip || 0)
                 : ''
             }}
           </td>
