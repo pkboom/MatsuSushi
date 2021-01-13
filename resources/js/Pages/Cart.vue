@@ -57,7 +57,7 @@
             v-model="delivery_tip"
             type="number"
             pattern="[0-9]{1,2}"
-            class="form-input py-0.5 w-20"
+            class="form-input py-0.5 w-16"
           />
         </div>
         <div v-if="delivery_tip < 0" class="form-error">
