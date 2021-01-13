@@ -74,7 +74,7 @@ class Transaction extends Model
 
     public function getTotalAttribute()
     {
-        $total = $this->subtotal + $this->tax + $this->tip;
+        $total = $this->subtotal + $this->tax + $this->tip + $this->delivery_tip;
 
         return round($this->type === static::DELIVERY ?
             $total + static::DELIVERY_FEE :
