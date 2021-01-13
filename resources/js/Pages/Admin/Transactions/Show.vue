@@ -43,7 +43,7 @@
         </div>
         <div>
           <span class="text-gray-500">Tip:</span>
-          $ {{ transaction.tip }}
+          $ {{ transaction.tip || 0 }}
         </div>
         <div>
           <span class="text-gray-500">Delivery tip:</span>
