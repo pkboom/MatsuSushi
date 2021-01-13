@@ -180,6 +180,7 @@ export default {
         code: null,
         items: [],
         tip_percentage: localStorage.getItem('tip_percentage') ?? 0,
+        delivery_tip: localStorage.getItem('delivery_tip') ?? 0,
       },
       errors: new Errors(),
     }
@@ -191,6 +192,7 @@ export default {
     },
   },
   mounted() {
+    console.log(localStorage.getItem('delivery_tip') === null)
     if (localStorage.getItem('items')) {
       this.form.items = JSON.parse(localStorage.getItem('items')).map(
         item => item.id,

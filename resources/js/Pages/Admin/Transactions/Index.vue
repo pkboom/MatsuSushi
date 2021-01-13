@@ -21,13 +21,13 @@
             Name
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Phone
-          </th>
-          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             Total
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             Tip
+          </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
+            Delivery Tip
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             Type
@@ -57,14 +57,15 @@
             {{ transaction.name }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ transaction.phone }}
-          </td>
-          <td class="border-t px-6 py-4 whitespace-no-wrap">
             $ {{ transaction.total }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             $
             {{ transaction.status === status.succeeded ? transaction.tip : 0 }}
+          </td>
+          <td class="border-t px-6 py-4 whitespace-no-wrap">
+            {{ transaction.delivery_tip > 0 ? '$' : '' }}
+            {{ transaction.delivery_tip > 0 ? transaction.delivery_tip : '' }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ transaction.type }}

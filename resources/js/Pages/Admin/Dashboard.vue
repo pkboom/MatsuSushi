@@ -82,6 +82,10 @@
           <span class="text-gray-500">Message:</span>
           {{ transaction.message }}
         </div>
+        <div v-if="transaction.delivery_tip">
+          <span class="text-gray-500">Delivery tip:</span>
+          $ {{ transaction.delivery_tip }}
+        </div>
         <div><span class="text-gray-500">Items:</span></div>
         <div class="space-y-3">
           <div

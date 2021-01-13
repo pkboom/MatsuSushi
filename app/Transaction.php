@@ -140,6 +140,7 @@ class Transaction extends Model
             'takeout_time' => $order['takeout_time'],
             'message' => $order['message'],
             'tip_percentage' => $order['tip_percentage'],
+            'delivery_tip' => $order['delivery_tip'],
             'subtotal' => static::subtotal($order),
         ];
     }

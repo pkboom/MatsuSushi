@@ -50,6 +50,7 @@ class StartYourOrderController extends Controller
             'items' => ['required', 'array'],
             'items.*' => ['required', 'exists:items,id'],
             'tip_percentage' => ['required', 'in:0,0.05,0.10,0.15,0.20,0.25,0.30'],
+            'delivery_tip' => ['nullable', 'numeric'],
             'code' => ['nullable', 'in:'.Cache::get(Transaction::promotionCode())],
         ], [
             'items.required' => 'Cart is empty.',
@@ -82,6 +83,7 @@ class StartYourOrderController extends Controller
             ->map(fn ($item) => $this->lineItemFormat($item['name'], $item['price'], $item['count']))
             ->push($this->tax($order))
             ->when($order['tip_percentage'] !== '0', fn ($collection) => $collection->push($this->tip($order)))
+            ->when(!empty($order['delivery_tip']), fn ($collection) => $collection->push($this->deliveryTip($order)))
             ->when($order['type'] === Transaction::DELIVERY, fn ($collection) => $collection->push($this->deliveryFee()))
             ->toArray();
 
@@ -123,6 +125,11 @@ class StartYourOrderController extends Controller
     public function tip($order)
     {
         return $this->lineItemFormat('Tip', Transaction::tip(Transaction::subtotal($order), $order['tip_percentage']));
+    }
+
+    public function deliveryTip($order)
+    {
+        return $this->lineItemFormat('Delivery tip', $order['delivery_tip']);
     }
 
     public function deliveryFee()

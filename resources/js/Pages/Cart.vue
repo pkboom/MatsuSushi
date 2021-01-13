@@ -36,8 +36,8 @@
           $ {{ subtotal }}
         </div>
         <div class="flex items-center space-x-4">
-          <span class="italic whitespace-no-wrap">
-            Tip:
+          <span class="text-gray-500 whitespace-no-wrap">
+            Restaurant Tip:
           </span>
           <select v-model="tip_percentage" class="w-full form-select py-0.5">
             <option value="0" />
@@ -49,6 +49,19 @@
             <option value="0.30">30%</option>
           </select>
           <span class="whitespace-no-wrap">$ {{ tip }}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-500 whitespace-no-wrap">Delivery tip:</span>
+          <span>$</span>
+          <input
+            v-model="delivery_tip"
+            type="number"
+            pattern="[0-9]{1,2}"
+            class="form-input py-0.5 w-20"
+          />
+        </div>
+        <div v-if="delivery_tip < 0" class="form-error">
+          Tip should be greater than or equal to 0.
         </div>
         <div>
           <span class="text-gray-500">GST/HST:</span>
@@ -87,13 +100,23 @@ export default {
       subtotal: null,
       tax: null,
       tip_percentage: localStorage.getItem('tip_percentage') ?? 0,
+      delivery_tip: localStorage.getItem('delivery_tip') ?? 0,
       tip: null,
       total: null,
     }
   },
   watch: {
     tip_percentage() {
-      this.storeTipPercentageInLocalStorage()
+      localStorage.setItem('tip_percentage', this.tip_percentage)
+
+      this.calculate()
+    },
+    delivery_tip() {
+      if (this.delivery_tip < 0) {
+        return
+      }
+
+      localStorage.setItem('delivery_tip', this.delivery_tip)
 
       this.calculate()
     },
@@ -106,9 +129,6 @@ export default {
     this.calculate()
   },
   methods: {
-    storeTipPercentageInLocalStorage() {
-      localStorage.setItem('tip_percentage', this.tip_percentage)
-    },
     itemSubTotal(item) {
       return (Number(item.item.price) * item.count).toFixed(2)
     },
@@ -124,7 +144,8 @@ export default {
       this.total = (
         Number(this.subtotal) +
         Number(this.tip) +
-        Number(this.tax)
+        Number(this.tax) +
+        Number(this.delivery_tip)
       ).toFixed(2)
     },
     groupItems() {
@@ -158,6 +179,10 @@ export default {
       this.calculate()
     },
     confirm() {
+      if (this.delivery_tip < 0) {
+        return
+      }
+
       if (this.subtotal >= 1) {
         this.$inertia.get(this.$route('start-your-order.create'))
       }
