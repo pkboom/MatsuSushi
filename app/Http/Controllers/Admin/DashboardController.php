@@ -31,6 +31,9 @@ class DashboardController extends Controller
 
         return Inertia::render('Admin/Dashboard', [
             'update_interval' => Transaction::UPDATE_INTERVAL,
+            'type' => [
+                'delivery' => Transaction::DELIVERY,
+            ],
         ]);
     }
 }

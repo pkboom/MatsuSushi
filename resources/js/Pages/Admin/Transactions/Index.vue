@@ -60,12 +60,18 @@
             $ {{ transaction.total }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            $
-            {{ transaction.status === status.succeeded ? transaction.tip : 0 }}
+            {{
+              transaction.status === status.succeeded
+                ? '$' + transaction.tip
+                : ''
+            }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ transaction.delivery_tip > 0 ? '$' : '' }}
-            {{ transaction.delivery_tip > 0 ? transaction.delivery_tip : '' }}
+            {{
+              transaction.status === status.succeeded
+                ? '$' + transaction.delivery_tip
+                : ''
+            }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ transaction.type }}
@@ -95,6 +101,7 @@ export default {
     filters: Object,
     transactions: Object,
     status: Object,
+    type: Object,
   },
   data() {
     return {

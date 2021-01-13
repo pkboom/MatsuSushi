@@ -20,6 +20,9 @@ class TransactionController extends Controller
             'status' => [
                 'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
             ],
+            'type' => [
+                'delivery' => Transaction::DELIVERY,
+            ],
         ]);
     }
 

@@ -82,7 +82,7 @@
           <span class="text-gray-500">Message:</span>
           {{ transaction.message }}
         </div>
-        <div v-if="transaction.delivery_tip">
+        <div v-if="transaction.type === type.delivery">
           <span class="text-gray-500">Delivery tip:</span>
           $ {{ transaction.delivery_tip }}
         </div>
@@ -115,6 +115,7 @@ import Http from '@/Utils/Http'
 export default {
   props: {
     update_interval: Number,
+    type: Object,
   },
   data() {
     return {
