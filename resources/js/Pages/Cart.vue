@@ -37,7 +37,7 @@
         </div>
         <div class="flex items-center space-x-4">
           <span class="text-gray-500 whitespace-no-wrap">
-            Restaurant Tip:
+            Restaurant tip:
           </span>
           <select v-model="tip_percentage" class="w-full form-select py-0.5">
             <option value="0" />
