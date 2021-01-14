@@ -99,8 +99,8 @@ export default {
       itemsWithCount: null,
       subtotal: null,
       tax: null,
-      tip_percentage: localStorage.getItem('tip_percentage') ?? 0,
-      delivery_tip: localStorage.getItem('delivery_tip') ?? 0,
+      tip_percentage: localStorage.getItem('tip_percentage') || 0,
+      delivery_tip: localStorage.getItem('delivery_tip') || 0,
       tip: null,
       total: null,
     }
