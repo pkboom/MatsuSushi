@@ -22,7 +22,7 @@
         Click this button to play notification sound
       </button>
     </div>
-    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
       <div
         v-for="transaction in transactions"
         :key="transaction.id"
