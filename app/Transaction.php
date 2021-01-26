@@ -27,7 +27,7 @@ class Transaction extends Model
 
     const TIME_TO_LIVE = 10;
 
-    const UPDATE_INTERVAL = 10;
+    const UPDATE_INTERVAL = 5;
 
     const PROMOTION_20 = 20;
 
@@ -157,7 +157,7 @@ class Transaction extends Model
             'status' => Transaction::TRANSACTION_SUCCEEDED,
         ]);
 
-        Cache::put('new_order', true, CarbonInterval::seconds(static::UPDATE_INTERVAL * 3));
+        Cache::put('new_order', true, CarbonInterval::seconds(static::UPDATE_INTERVAL * 6));
     }
 
     public function failed($message)
