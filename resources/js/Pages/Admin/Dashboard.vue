@@ -146,7 +146,7 @@ export default {
 
     this.intervalId = setInterval(() => {
       this.getTodayOrder()
-    }, this.update_interval * 1000)
+    }, this.update_interval * 2 * 1000)
   },
   beforeDestroy() {
     clearInterval(this.intervalId)
