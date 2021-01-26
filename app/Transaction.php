@@ -179,14 +179,9 @@ class Transaction extends Model
         });
     }
 
-    public function scopeDate($query, $column = 'created_at', $date = null)
+    public function scopeToday($query)
     {
-        $date = $date ? Carbon::parse($date) : Carbon::today();
-
-        $query->whereBetween($column, [
-            $date->startOfDay()->toDateTimeString(),
-            $date->endOfDay()->toDateTimeString(),
-        ]);
+        $query->where('created_at', '>', Carbon::today());
     }
 
     public function getFormattedCreatedAtAttribute()

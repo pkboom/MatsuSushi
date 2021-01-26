@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
@@ -45,7 +44,7 @@ class Reservation extends Model
     public static function isDuplicate($phone, $reserved_at)
     {
         return Reservation::query()
-            ->date('reserved_at', $reserved_at)
+            ->whereDate('reserved_at', $reserved_at)
             ->wherePhone($phone)
             ->count();
     }
@@ -64,16 +63,6 @@ class Reservation extends Model
                     ->orWhere('phone', 'like', '%'.$search.'%');
             });
         });
-    }
-
-    public function scopeDate($query, $column = 'created_at', $date = null)
-    {
-        $date = $date ? Carbon::parse($date) : Carbon::today();
-
-        $query->whereBetween($column, [
-            $date->startOfDay()->toDateTimeString(),
-            $date->endOfDay()->toDateTimeString(),
-        ]);
     }
 
     public function name()

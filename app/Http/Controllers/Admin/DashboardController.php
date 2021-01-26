@@ -20,7 +20,7 @@ class DashboardController extends Controller
                 'new_reservation' => Cache::get('new_reservation'),
                 'transactions' => Cache::remember('transactions', CarbonInterval::minutes(Transaction::UPDATE_INTERVAL), function () {
                     return Transaction::with('items')
-                        ->date('created_at', Carbon::today())
+                        ->today()
                         ->where('status', '<>', Transaction::TRANSACTION_FAILED)
                         ->where('status', '<>', Transaction::TRANSACTION_REFUNDED)
                         ->latest()

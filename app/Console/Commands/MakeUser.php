@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
-class MakeUserCommand extends Command
+class MakeUser extends Command
 {
     protected $signature = 'make:user';
 

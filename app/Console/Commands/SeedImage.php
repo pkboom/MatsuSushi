@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Image;
 use Illuminate\Console\Command;
 
-class SeedImageCommand extends Command
+class SeedImage extends Command
 {
     protected $signature = 'seed:images';
 
