@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Transaction;
-use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
@@ -33,6 +32,7 @@ class DashboardController extends Controller
             'update_interval' => Transaction::UPDATE_INTERVAL,
             'type' => [
                 'delivery' => Transaction::DELIVERY,
+                'takeout' => Transaction::TAKEOUT,
             ],
         ]);
     }

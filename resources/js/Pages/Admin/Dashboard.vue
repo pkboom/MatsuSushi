@@ -22,6 +22,18 @@
         Click this button to play notification sound
       </button>
     </div>
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mb-4">
+      <div
+        v-for="takeout in takeouts"
+        :key="takeout.id"
+        class="bg-white rounded p-4 shadow gray-800 space-y-4"
+      >
+        <span class="text-gray-500">{{ takeout.id }}.</span>
+        {{ takeout.first_name }}
+        {{ takeout.last_name }}
+        {{ takeout.takeout_time }}
+      </div>
+    </div>
     <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
       <div
         v-for="transaction in transactions"
@@ -104,7 +116,8 @@
         </div>
       </div>
     </div>
-    <audio id="notification" src="/sound/jingle-bells-sms.ogg" preload="auto" />
+    <audio id="new-order" src="/sound/new-order.ogg" preload="auto" />
+    <audio id="takeout" src="/sound/takeout.ogg" preload="auto" />
   </admin-layout>
 </template>
 
@@ -125,6 +138,7 @@ export default {
       intervalId: null,
       showPlaySound: false,
       currentTime: this.getCurrentTime(),
+      takeouts: [],
     }
   },
   mounted() {
@@ -144,23 +158,42 @@ export default {
         this.new_order = response.data.new_order
         this.new_reservation = response.data.new_reservation
         this.currentTime = this.getCurrentTime()
+        this.takeouts = this.getTakeouts()
 
-        this.$nextTick(() => {
-          this.handleNewOrder()
-        })
+        this.notifyNewOrder()
       })
     },
     getCurrentTime() {
       return moment().format('hh:mm a')
     },
-    handleNewOrder() {
-      if (this.new_order) {
+    getTakeouts() {
+      let newTakeouts = this.transactions.filter(
+        transaction =>
+          transaction.type === this.type.takeout &&
+          moment(transaction.takeout_time, 'h:mma').isBetween(
+            moment(),
+            moment().add(10, 'minutes'),
+          ),
+      )
+
+      let newTakeoutIds = newTakeouts.map(takeout => takeout.id)
+      let ids = this.takeouts.map(takeout => takeout.id)
+
+      if (!newTakeoutIds.every(value => ids.includes(value))) {
         document
-          .getElementById('notification')
+          .getElementById('takeout')
           .play()
           .catch(() => (this.showPlaySound = true))
+      }
 
-        return
+      return newTakeouts
+    },
+    notifyNewOrder() {
+      if (this.new_order) {
+        document
+          .getElementById('new-order')
+          .play()
+          .catch(() => (this.showPlaySound = true))
       }
     },
     isNew(createdAt) {
