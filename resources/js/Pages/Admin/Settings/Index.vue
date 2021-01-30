@@ -174,7 +174,7 @@
         </div>
       </form>
     </div>
-    <audio id="alarm" src="/sound/jingle-bells-sms.ogg" preload="auto" />
+    <audio id="alarm" src="/sound/new-order.ogg" preload="auto" />
   </admin-layout>
 </template>
 
