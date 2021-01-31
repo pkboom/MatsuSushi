@@ -62,6 +62,9 @@
           >
             served
           </span>
+          <span v-if="stopNotification" class="ml-1 text-red-600 text-xs">
+            Stopped!
+          </span>
         </div>
         <div>
           <span class="text-gray-500">Order no.</span>
@@ -139,6 +142,7 @@ export default {
       showPlaySound: false,
       currentTime: this.getCurrentTime(),
       takeouts: [],
+      stopNotification: false,
     }
   },
   mounted() {
@@ -216,9 +220,13 @@ export default {
         .sort((a, b) => a.item.name.localeCompare(b.item.name))
     },
     endNotification() {
-      Http.put(this.$route('admin.notification.end')).then(
-        () => (this.$page.flash.success = 'Notification stopped.'),
-      )
+      Http.put(this.$route('admin.notification.end'))
+
+      this.stopNotification = true
+
+      setTimeout(() => {
+        this.stopNotification = false
+      }, 3000)
     },
   },
 }

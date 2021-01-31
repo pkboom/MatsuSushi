@@ -32,7 +32,7 @@ class Reservation extends Model
 
     public static function onClosedDates($reserved_at)
     {
-        if ($reserved_at->dayOfWeek === intval(Cache::get('closed_day'))) {
+        if (strval($reserved_at->dayOfWeek) === Cache::get('closed_day')) {
             return true;
         }
 

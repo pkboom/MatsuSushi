@@ -246,7 +246,7 @@ class Transaction extends Model
 
     public static function onClosedDates($now)
     {
-        if ($now->dayOfWeek === intval(Cache::get('closed_day'))) {
+        if (strval($now->dayOfWeek) === Cache::get('closed_day')) {
             return true;
         }
 
