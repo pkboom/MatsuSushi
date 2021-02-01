@@ -186,7 +186,7 @@ export default {
       if (!newTakeoutIds.every(value => ids.includes(value))) {
         let notification = document.getElementById('takeout')
 
-        notification 
+        notification
           .play()
           .then(() =>
             setTimeout(() => {
