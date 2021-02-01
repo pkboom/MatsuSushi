@@ -5,6 +5,9 @@
         <div class="flex items-baseline text-xl pb-1">
           <div class="font-bold whitespace-no-wrap">Today's orders</div>
           <div class="text-xs text-gray-400 px-1">({{ currentTime }})</div>
+          <span v-if="stopNotification" class="ml-1 text-red-600 text-xs">
+            Stopped!
+          </span>
           <div
             v-if="new_reservation"
             class="bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
@@ -61,9 +64,6 @@
             class="bg-gray-200 font-bold ml-2 px-4 py-1 rounded-full text-gray-500 text-xs"
           >
             served
-          </span>
-          <span v-if="stopNotification" class="ml-1 text-red-600 text-xs">
-            Stopped!
           </span>
         </div>
         <div>
@@ -143,6 +143,7 @@ export default {
       currentTime: this.getCurrentTime(),
       takeouts: [],
       stopNotification: false,
+      timeoutId: null,
     }
   },
   mounted() {
@@ -231,7 +232,9 @@ export default {
 
       this.stopNotification = true
 
-      setTimeout(() => {
+      clearTimeout(this.timeoutId)
+
+      this.timeoutId = setTimeout(() => {
         this.stopNotification = false
       }, 3000)
     },
