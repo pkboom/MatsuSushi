@@ -184,9 +184,16 @@ export default {
       let ids = this.takeouts.map(takeout => takeout.id)
 
       if (!newTakeoutIds.every(value => ids.includes(value))) {
-        document
-          .getElementById('takeout')
+        let notification = document.getElementById('takeout')
+
+        notification 
           .play()
+          .then(() =>
+            setTimeout(() => {
+              notification.load()
+              notification.play()
+            }, 1500),
+          )
           .catch(() => (this.showPlaySound = true))
       }
 
