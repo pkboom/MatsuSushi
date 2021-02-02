@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Reports;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Transaction;
@@ -31,7 +31,7 @@ class TipController extends Controller
                 ];
             });
 
-        return Inertia::render('Admin/Reports/Tips', [
+        return Inertia::render('Admin/Tips', [
             'dates' => collect($dates)->map(fn ($date) => [
                     'tip' => round(collect($date)->sum('tip'), 2),
                 ]

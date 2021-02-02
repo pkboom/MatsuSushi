@@ -50,9 +50,9 @@
     </div>
     <div class="mb-4">
       <menu-item
-        name="Reports"
-        url="admin/reports"
-        :link="$route('admin.reports')"
+        name="Tips"
+        url="admin/tips"
+        :link="$route('admin.tips')"
         icon="quiz"
       />
     </div>
