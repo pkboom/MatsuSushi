@@ -48,6 +48,10 @@ class TransactionController extends Controller
         );
 
         if ($transaction->status === Transaction::TRANSACTION_SUCCEEDED) {
+            $transaction->update([
+                'created_at' => now(),
+            ]);
+
             $transaction->succeeded();
         }
 

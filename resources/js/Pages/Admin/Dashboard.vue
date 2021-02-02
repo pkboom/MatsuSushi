@@ -8,6 +8,12 @@
           <span v-if="stopNotification" class="ml-1 text-red-600 text-xs">
             Stopped!
           </span>
+          <span
+            v-if="takeout_available_after > takeout_available_times[0]"
+            class="ml-2 text-red-600 text-xs"
+          >
+            Takeout available after {{ takeout_available_after }} min.
+          </span>
           <div
             v-if="new_reservation"
             class="bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
@@ -132,6 +138,7 @@ export default {
   props: {
     update_interval: Number,
     type: Object,
+    takeout_available_times: Array,
   },
   data() {
     return {
@@ -144,6 +151,7 @@ export default {
       takeouts: [],
       stopNotification: false,
       timeoutId: null,
+      takeout_available_after: null,
     }
   },
   mounted() {
@@ -162,6 +170,7 @@ export default {
         this.transactions = response.data.transactions
         this.new_order = response.data.new_order
         this.new_reservation = response.data.new_reservation
+        this.takeout_available_after = response.data.takeout_available_after
         this.currentTime = this.getCurrentTime()
         this.takeouts = this.getTakeouts()
 

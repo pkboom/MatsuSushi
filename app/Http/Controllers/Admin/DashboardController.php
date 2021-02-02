@@ -17,6 +17,7 @@ class DashboardController extends Controller
             return [
                 'new_order' => Cache::get('new_order'),
                 'new_reservation' => Cache::get('new_reservation'),
+                'takeout_available_after' => Cache::get('takeout_available_after'),
                 'transactions' => Cache::remember('transactions', CarbonInterval::minutes(Transaction::UPDATE_INTERVAL), function () {
                     return Transaction::with('items')
                         ->today()
@@ -30,6 +31,7 @@ class DashboardController extends Controller
 
         return Inertia::render('Admin/Dashboard', [
             'update_interval' => Transaction::UPDATE_INTERVAL,
+            'takeout_available_times' => Transaction::TAKEOUT_AVAILABLE_TIMES,
             'type' => [
                 'delivery' => Transaction::DELIVERY,
                 'takeout' => Transaction::TAKEOUT,
