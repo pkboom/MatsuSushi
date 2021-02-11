@@ -1,4 +1,7 @@
-cd /var/www/html
+#!/bin/bash
+
+# run: ssh matsu 'cd /var/www/html && ./deploy.sh'
+
 git reset --hard && git clean -df
 git pull origin master
 composer install --no-interaction --prefer-dist --optimize-autoloader
