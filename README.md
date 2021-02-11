@@ -10,8 +10,6 @@ closed_dates
 
 new_order
 
-new_reservation
-
 online_order_available
 
 opening_hours_from

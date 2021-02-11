@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Reservation;
 use App\Transaction;
 use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\Cache;
@@ -16,7 +17,6 @@ class DashboardController extends Controller
         if (Request::wantsJson()) {
             return [
                 'new_order' => Cache::get('new_order'),
-                'new_reservation' => Cache::get('new_reservation'),
                 'takeout_available_after' => Cache::get('takeout_available_after'),
                 'transactions' => Cache::remember('transactions', CarbonInterval::minutes(Transaction::UPDATE_INTERVAL), function () {
                     return Transaction::with('items')
@@ -36,6 +36,9 @@ class DashboardController extends Controller
                 'delivery' => Transaction::DELIVERY,
                 'takeout' => Transaction::TAKEOUT,
             ],
+            'reservations' => Reservation::today()
+                ->orderBy('reserved_at')
+                ->get(),
         ]);
     }
 }

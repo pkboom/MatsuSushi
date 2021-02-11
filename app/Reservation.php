@@ -69,4 +69,14 @@ class Reservation extends Model
     {
         return $this->first_name.' '.$this->last_name;
     }
+
+    public function scopeToday($query)
+    {
+        return $query->whereBetween('reserved_at',
+            [
+                now()->startOfDay(),
+                now()->endOfDay(),
+            ]
+        );
+    }
 }

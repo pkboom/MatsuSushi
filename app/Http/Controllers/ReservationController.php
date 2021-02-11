@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Reservation;
 use Carbon\CarbonImmutable;
-use Carbon\CarbonInterval;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -56,8 +54,6 @@ class ReservationController extends Controller
                 'reserved_at' => $reserved_at,
             ]
         );
-
-        Cache::put('new_reservation', true, CarbonInterval::hours(1));
 
         return Redirect::route('reservations.show', $reservation);
     }

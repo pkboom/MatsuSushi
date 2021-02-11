@@ -14,12 +14,6 @@
           >
             Takeout available after {{ takeout_available_after }} min.
           </span>
-          <div
-            v-if="new_reservation"
-            class="bg-orange-100 font-bold ml-2 px-4 py-1 rounded-full text-orange-600 text-xs"
-          >
-            Reservation
-          </div>
         </div>
       </div>
     </div>
@@ -30,6 +24,22 @@
       >
         Click this button to play notification sound
       </button>
+    </div>
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mb-4">
+      <div
+        v-for="reservation in upcomingReservations"
+        :key="reservation.id"
+        class="bg-white rounded p-4 shadow gray-800 space-y-4"
+      >
+        <span
+          class="bg-orange-100 font-bold mr-2 px-4 py-1 rounded-full text-orange-600 text-xs"
+        >
+          Reservation
+        </span>
+        {{ reservation.first_name }}
+        {{ reservation.last_name }}
+        {{ reservation.time }}
+      </div>
     </div>
     <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mb-4">
       <div
@@ -139,12 +149,12 @@ export default {
     update_interval: Number,
     type: Object,
     takeout_available_times: Array,
+    reservations: Array,
   },
   data() {
     return {
       transactions: [],
       new_order: false,
-      new_reservation: false,
       intervalId: null,
       showPlaySound: false,
       currentTime: this.getCurrentTime(),
@@ -152,6 +162,7 @@ export default {
       stopNotification: false,
       timeoutId: null,
       takeout_available_after: null,
+      upcomingReservations: [],
     }
   },
   mounted() {
@@ -169,12 +180,13 @@ export default {
       Http.get(this.$route('admin.dashboard')).then(response => {
         this.transactions = response.data.transactions
         this.new_order = response.data.new_order
-        this.new_reservation = response.data.new_reservation
         this.takeout_available_after = response.data.takeout_available_after
         this.currentTime = this.getCurrentTime()
         this.takeouts = this.getTakeouts()
 
         this.notifyNewOrder()
+
+        this.upcomingReservations = this.checkReservation()
       })
     },
     getCurrentTime() {
@@ -246,6 +258,19 @@ export default {
       this.timeoutId = setTimeout(() => {
         this.stopNotification = false
       }, 3000)
+    },
+    checkReservation() {
+      return this.reservations
+        .filter(reservation =>
+          moment(reservation.reserved_at).isBetween(
+            moment(),
+            moment().add(30, 'minutes'),
+          ),
+        )
+        .map(reservation => ({
+          ...reservation,
+          time: moment(reservation.reserved_at).format('hh:mm a'),
+        }))
     },
   },
 }
