@@ -137,6 +137,7 @@
     </div>
     <audio id="new-order" src="/sound/new-order.ogg" preload="auto" />
     <audio id="takeout" src="/sound/takeout.ogg" preload="auto" />
+    <audio id="reservation" src="/sound/reservation.ogg" preload="auto" />
   </admin-layout>
 </template>
 
@@ -181,12 +182,11 @@ export default {
         this.transactions = response.data.transactions
         this.new_order = response.data.new_order
         this.takeout_available_after = response.data.takeout_available_after
+
         this.currentTime = this.getCurrentTime()
         this.takeouts = this.getTakeouts()
-
-        this.notifyNewOrder()
-
         this.upcomingReservations = this.checkReservation()
+        this.notifyNewOrder()
       })
     },
     getCurrentTime() {
@@ -260,7 +260,7 @@ export default {
       }, 3000)
     },
     checkReservation() {
-      return this.reservations
+      let reservationsWithin30Minutes = this.reservations
         .filter(reservation =>
           moment(reservation.reserved_at).isBetween(
             moment(),
@@ -271,6 +271,23 @@ export default {
           ...reservation,
           time: moment(reservation.reserved_at).format('hh:mm a'),
         }))
+
+      if (
+        reservationsWithin30Minutes.length > 0 &&
+        moment(reservationsWithin30Minutes[0].reserved_at).isBetween(
+          moment()
+            .add(29, 'minutes')
+            .add(50, 'seconds'),
+          moment().add(30, 'minutes'),
+        )
+      ) {
+        document
+          .getElementById('reservation')
+          .play()
+          .catch(() => (this.showPlaySound = true))
+      }
+
+      return reservationsWithin30Minutes
     },
   },
 }

@@ -12,6 +12,8 @@ if [ -f artisan ]; then
     php artisan migrate --force
 fi
 
+php artisan config:cache
+
 sudo npm ci
 
 sudo npm run production
