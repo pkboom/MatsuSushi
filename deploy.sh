@@ -9,10 +9,10 @@ composer install --no-interaction --prefer-dist --optimize-autoloader
 sudo -S service php7.4-fpm reload 
 
 if [ -f artisan ]; then
-    php artisan migrate --force
+    php7.4 artisan migrate --force
 fi
 
-php artisan config:cache
+php7.4 artisan config:cache
 
 sudo npm ci
 
