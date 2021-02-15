@@ -20,4 +20,5 @@ ssh -t matsu '
     sudo npm run production 
 '
 
+echo ''
 echo 'Deployed.'
