@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# run: ssh matsu 'cd /var/www/html && ./deploy.sh'
 ssh -t matsu '
     cd /var/www/html
 
