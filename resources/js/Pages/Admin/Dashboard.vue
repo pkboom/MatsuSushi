@@ -26,9 +26,12 @@
       </button>
     </div>
     <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mb-4">
-      <div
+      <inertia-link
         v-for="reservation in upcomingReservations"
         :key="reservation.id"
+        :href="
+          $route('admin.reservations.edit', { reservation: reservation.id })
+        "
         class="bg-white rounded p-4 shadow gray-800 space-y-4"
       >
         <span
@@ -39,7 +42,7 @@
         {{ reservation.first_name }}
         {{ reservation.last_name }}
         {{ reservation.time }}
-      </div>
+      </inertia-link>
     </div>
     <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mb-4">
       <div
