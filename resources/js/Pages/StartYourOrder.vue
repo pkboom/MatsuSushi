@@ -6,6 +6,16 @@
         v-if="online_order_available"
         class="bg-white overflow-hidden w-full"
       >
+        <div class="text-gray-600 text-sm leading-5 mt-2">
+          <span class="font-bold">&middot;</span>
+          Delivery guys in Peterborough deliver a lot these days. We are
+          <span class="text-matsu-blue-600">thankful</span>
+          for them. But sometimes they come to pick up orders later than they
+          usually do because of their deliveries. So we recommend using
+          <span class="text-matsu-blue-600">'take out'</span>
+          for a little while until things settle down. Thank you for ordering
+          with us and stay healthy.
+        </div>
         <form @submit.prevent="submit">
           <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
             <div class="pr-6 pb-8 w-full">
