@@ -10,8 +10,9 @@
           <span class="font-bold">&middot;</span>
           Delivery guys in Peterborough deliver a lot these days. We are
           <span class="text-matsu-blue-600">thankful</span>
-          for them. But sometimes they come to pick up orders later than they
-          usually do because of their deliveries. So we recommend using
+          for their service. But sometimes they come to pick up orders later
+          than they usually do because of their deliveries. So we recommend
+          using
           <span class="text-matsu-blue-600">'take out'</span>
           for a little while until things settle down. Thank you for ordering
           with us and stay healthy.
