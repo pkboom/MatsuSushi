@@ -6,7 +6,10 @@
         v-if="online_order_available"
         class="bg-white overflow-hidden w-full"
       >
-        <div class="text-gray-600 text-sm leading-5 mt-2">
+        <div
+          v-if="form.type === this.type.delivery"
+          class="text-gray-600 text-sm leading-5 mt-2"
+        >
           <span class="font-bold">&middot;</span>
           Delivery guys in Peterborough deliver a lot these days. We are
           <span class="text-matsu-blue-600">thankful</span>
