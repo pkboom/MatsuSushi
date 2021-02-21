@@ -146,9 +146,12 @@
           <div class="text-2xl text-center">
             Restaurant Hours
           </div>
-          <div class="text-md text-center">
+          <div class="text-md text-center space-y-2">
             <div>
-              Mon-Sun 11:30 AM ~ 10:00 PM
+              Mon-Sat 11:30 AM ~ 10:00 PM
+            </div>
+            <div>
+              Sun 12:00 PM ~ 10:00 PM
             </div>
             <div>
               (Tuesdays closed)
