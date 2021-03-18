@@ -19,7 +19,5 @@ class DatabaseSeeder extends Seeder
         DB::unprepared(file_get_contents(database_path('items.sql')));
 
         $this->call(GallerySeeder::class);
-
-        $this->call(TransactionSeeder::class);
     }
 }
