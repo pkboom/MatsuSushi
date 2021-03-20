@@ -8,10 +8,6 @@
       >
         <div class="text-gray-600 text-sm leading-5 mt-2">
           <span class="font-bold">&middot;</span>
-          Delivery is not available today.
-        </div>
-        <!-- <div class="text-gray-600 text-sm leading-5 mt-2">
-          <span class="font-bold">&middot;</span>
           Delivery guys in Peterborough deliver a lot these days. We are
           <span class="text-matsu-blue-600">thankful</span>
           for their service. But sometimes they come to pick up orders later
@@ -20,13 +16,13 @@
           <span class="text-matsu-blue-600">'take out'</span>
           for a little while until things settle down. Thank you for ordering
           with us and stay healthy.
-        </div> -->
+        </div>
         <form @submit.prevent="submit">
           <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
             <div class="pr-6 pb-8 w-full">
               <div>Type:</div>
               <div class="flex items-center mt-4">
-                <!-- <label class="inline-flex items-center mr-6">
+                <label class="inline-flex items-center mr-6">
                   <input
                     v-model="form.type"
                     type="radio"
@@ -34,7 +30,7 @@
                     :value="type.delivery"
                   />
                   <span class="ml-2">Delivery</span>
-                </label> -->
+                </label>
                 <label class="inline-flex items-center mr-6">
                   <input
                     v-model="form.type"
@@ -184,7 +180,7 @@ export default {
         : this.opening_hours_from,
       to: this.opening_hours_to,
       form: {
-        type: this.type.takeout,
+        type: this.type.delivery,
         first_name: null,
         last_name: null,
         email: null,
