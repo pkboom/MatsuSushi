@@ -21,7 +21,8 @@
             {{ date }}
           </div>
           <div v-if="tips.tip" class="space-y-2">
-            <div>Total: ${{ tips.tip }}</div>
+            <div>Tip: ${{ tips.tip }}</div>
+            <div>Delivery: ${{ tips.delivery_tip }}</div>
           </div>
         </div>
       </div>

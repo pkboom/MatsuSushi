@@ -28,12 +28,15 @@ class TipController extends Controller
             ->map(function ($transaction) use (&$dates) {
                 $dates[$transaction->created_at->format('n/j')][] = [
                     'tip' => $transaction->tip,
+                    'delivery_tip' => $transaction->delivery_tip,
                 ];
             });
 
         return Inertia::render('Admin/Tips', [
-            'dates' => collect($dates)->map(fn ($date) => [
+            'dates' => collect($dates)->map(
+                fn ($date) => [
                     'tip' => round(collect($date)->sum('tip'), 2),
+                    'delivery_tip' => round(collect($date)->sum('delivery_tip'), 2),
                 ]
             ),
             'today' => now()->format('n/j'),
