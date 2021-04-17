@@ -22,7 +22,7 @@
           </div>
           <div v-if="tips.tip" class="space-y-2">
             <div>Tip: ${{ tips.tip }}</div>
-            <div>Delivery: ${{ tips.delivery_tip }}</div>
+            <!-- <div>Delivery Tip: ${{ tips.delivery_tip }}</div> -->
           </div>
         </div>
       </div>
