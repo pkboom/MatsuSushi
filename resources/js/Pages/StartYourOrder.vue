@@ -38,8 +38,7 @@
               </div>
               <div
                 v-if="
-                  form.type === this.type.delivery &&
-                    takeout_available_after > 30
+                  form.type === type.delivery && takeout_available_after > 30
                 "
                 class="form-error"
               >
