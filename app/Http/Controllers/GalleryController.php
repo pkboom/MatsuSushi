@@ -14,17 +14,19 @@ class GalleryController extends Controller
         if (Request::wantsJson()) {
             return Response::json([
                 'images' => Image::query()
-                    ->inRandomOrder()
+                    ->latest()
+                    ->orderBy('id')
                     ->paginate()
                     ->transform(function ($image) {
                         return [
                             'id' => $image->id,
+                            'blurhash' => $image->blurhash,
                             'path' => '/storage/'.$image->filename,
                         ];
                     }),
             ]);
         }
-
+        
         return Inertia::render('Gallery');
     }
 }
