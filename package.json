@@ -15,7 +15,7 @@
     "@inertiajs/progress": "^0.1.2",
     "@tailwindcss/ui": "^0.3.1",
     "autosize": "^4.0.2",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "browser-sync": "^2.26.13",
     "browser-sync-webpack-plugin": "^2.2.2",
     "cross-env": "^5.2.1",
