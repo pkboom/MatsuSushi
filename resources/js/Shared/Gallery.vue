@@ -29,12 +29,10 @@ export default {
               response.data.images.data.forEach(image => {
                 let div = document.createElement('div')
 
-                if (image.id % 4 === 0) {
+                if (image.id % 3 === 0) {
                   div.classList.add('gallery-item-wide')
-                } else if (image.id % 4 === 1) {
+                } else if (image.id % 3 === 1) {
                   div.classList.add('gallery-item-tall')
-                } else if (image.id % 4 === 2) {
-                  div.classList.add('gallery-item-wide', 'gallery-item-tall')
                 }
 
                 let img = document.createElement('img')
