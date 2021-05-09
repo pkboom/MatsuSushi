@@ -11,7 +11,7 @@ use Stripe\Stripe;
 
 class ConfirmStaleTransactions extends Command
 {
-    protected $signature = 'confirm:transaction';
+    protected $signature = 'confirm:transactions';
 
     public function handle()
     {

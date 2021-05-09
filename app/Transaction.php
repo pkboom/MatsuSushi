@@ -21,6 +21,8 @@ class Transaction extends Model
 
     const TRANSACTION_FAILED = 'failed';
 
+    const TRANSACTION_REFUND_FAILED = 'refund failed';
+
     const TRANSACTION_REFUNDED = 'refunded';
 
     const DELIVERY_FEE = 6;
@@ -160,11 +162,18 @@ class Transaction extends Model
         Cache::put('new_order', true, CarbonInterval::seconds(static::UPDATE_INTERVAL * 6));
     }
 
-    public function failed($message)
+    public function failed($message, $status = null)
     {
         $this->update([
-            'status' => Transaction::TRANSACTION_FAILED,
             'message' => $message,
+            'status' => $status ?? Transaction::TRANSACTION_FAILED,
+        ]);
+    }
+
+    public function refund()
+    {
+        $this->update([
+            'status' => Transaction::TRANSACTION_REFUNDED,
         ]);
     }
 

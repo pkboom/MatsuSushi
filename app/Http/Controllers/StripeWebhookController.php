@@ -31,6 +31,24 @@ class StripeWebhookController extends Controller
         return $this->successMethod();
     }
 
+    public function handleChargeRefunded()
+    {
+        $transaction = Transaction::whereStripeId(Request::input('data.object.payment_intent'))->firstOrFail();
+
+        $transaction->refund();
+
+        return $this->successMethod();
+    }
+
+    public function handleChargeRefundUpdated()
+    {
+        $transaction = Transaction::whereStripeId(Request::input('data.object.payment_intent'))->firstOrFail();
+
+        $transaction->failed(Request::input('data.object.reason'), Transaction::TRANSACTION_REFUND_FAILED);
+
+        return $this->successMethod();
+    }
+
     protected function successMethod()
     {
         return new Response('Webhook Handled', 200);

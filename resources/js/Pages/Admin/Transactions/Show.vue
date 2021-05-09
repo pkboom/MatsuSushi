@@ -117,6 +117,16 @@
             Delete
           </button>
         </div>
+        <div>
+          <button
+            class="text-matsu-blue-600 underline"
+            tabindex="-1"
+            type="button"
+            @click="refund()"
+          >
+            Refund
+          </button>
+        </div>
       </div>
     </div>
   </admin-layout>
@@ -138,6 +148,12 @@ export default {
     destroy() {
       this.$inertia.delete(
         this.$route('admin.transactions.destroy', this.transaction.id),
+      )
+    },
+    refund() {
+      console.log(this.transaction.id)
+      this.$inertia.post(
+        this.$route('admin.transactions.refund', this.transaction.id),
       )
     },
   },

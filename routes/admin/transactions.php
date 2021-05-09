@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\RefundController;
 use App\Http\Controllers\Admin\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,8 @@ Route::put('transactions/{transaction}', [TransactionController::class, 'update'
 
 Route::delete('transactions/{transaction}', [TransactionController::class, 'destroy'])
     ->name('admin.transactions.destroy')
+    ->where('transaction', '[0-9]+');
+
+Route::post('transactions/{transaction}/refund', RefundController::class)
+    ->name('admin.transactions.refund')
     ->where('transaction', '[0-9]+');

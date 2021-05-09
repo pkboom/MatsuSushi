@@ -29,7 +29,6 @@ class DashboardController extends Controller
                     return Transaction::with('items')
                         ->today()
                         ->where('status', '<>', Transaction::TRANSACTION_FAILED)
-                        ->where('status', '<>', Transaction::TRANSACTION_REFUNDED)
                         ->orderByRaw($orderClause)
                         ->latest('updated_at')
                         ->get();
