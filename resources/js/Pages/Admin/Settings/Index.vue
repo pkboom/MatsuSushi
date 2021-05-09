@@ -118,14 +118,14 @@
             <time-input
               v-model="form.opening_hours_from"
               :error="$page.errors.first('opening_hours_from')"
-              label="Opening hour"
+              label="Opening hours(from)"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <time-input
               v-model="form.opening_hours_to"
               :error="$page.errors.first('opening_hours_to')"
-              label="Closing hour"
+              label="Opening hours(to)"
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
@@ -159,7 +159,7 @@
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <select-input
               v-model="form.takeout_available_after"
-              label="Minutes taking after takeout order"
+              label="Wait time(min) after takeout order"
               :error="$page.errors.first('takeout_available_after')"
               :options="takeout_times"
             />
