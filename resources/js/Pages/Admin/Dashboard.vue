@@ -12,7 +12,7 @@
             v-if="takeout_available_after > takeout_available_times[0]"
             class="ml-2 text-red-600 text-xs"
           >
-            Wait {{ takeout_available_after }} min after orders.
+            Wait time: {{ takeout_available_after }} min ({{ serveTime }})
           </span>
         </div>
       </div>
@@ -161,6 +161,7 @@ export default {
       intervalId: null,
       showPlaySound: false,
       currentTime: this.getCurrentTime(),
+      serveTime: this.getServeTime(),
       takeouts: [],
       stopNotification: false,
       timeoutId: null,
@@ -186,6 +187,7 @@ export default {
         this.takeout_available_after = response.data.takeout_available_after
 
         this.currentTime = this.getCurrentTime()
+        this.serveTime = this.getServeTime()
         this.takeouts = this.getTakeouts()
         this.upcomingReservations = this.reservationsWithin30Minutes()
         this.notifyNewOrder()
@@ -193,6 +195,11 @@ export default {
     },
     getCurrentTime() {
       return moment().format('hh:mm a')
+    },
+    getServeTime() {
+      return moment()
+        .add(this.takeout_available_after, 'minutes')
+        .format('hh:mm a')
     },
     getTakeouts() {
       let newTakeouts = this.transactions.filter(
