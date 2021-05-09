@@ -159,7 +159,7 @@
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <select-input
               v-model="form.takeout_available_after"
-              label="Wait time(min) after takeout order"
+              label="Wait time(min) after orders"
               :error="$page.errors.first('takeout_available_after')"
               :options="takeout_times"
             />

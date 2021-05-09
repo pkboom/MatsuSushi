@@ -12,7 +12,7 @@
             v-if="takeout_available_after > takeout_available_times[0]"
             class="ml-2 text-red-600 text-xs"
           >
-            Wait {{ takeout_available_after }} min after takeout orders.
+            Wait {{ takeout_available_after }} min after orders.
           </span>
         </div>
       </div>
