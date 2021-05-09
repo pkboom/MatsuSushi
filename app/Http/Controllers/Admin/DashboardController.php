@@ -19,11 +19,19 @@ class DashboardController extends Controller
                 'new_order' => Cache::get('new_order'),
                 'takeout_available_after' => Cache::get('takeout_available_after'),
                 'transactions' => Cache::remember('transactions', CarbonInterval::minutes(Transaction::UPDATE_INTERVAL), function () {
+                    $orderClause = <<<SQL
+                        CASE
+                            WHEN status = 'pending' THEN 0
+                            ELSE 1 
+                        END ASC 
+                    SQL;
+
                     return Transaction::with('items')
                         ->today()
                         ->where('status', '<>', Transaction::TRANSACTION_FAILED)
                         ->where('status', '<>', Transaction::TRANSACTION_REFUNDED)
-                        ->latest()
+                        ->orderByRaw($orderClause)
+                        ->latest('updated_at')
                         ->get();
                 }),
             ];
