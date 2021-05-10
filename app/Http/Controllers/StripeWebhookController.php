@@ -35,7 +35,7 @@ class StripeWebhookController extends Controller
     {
         $transaction = Transaction::whereStripeId(Request::input('data.object.payment_intent'))->firstOrFail();
 
-        $transaction->refund();
+        $transaction->refunded();
 
         return $this->successMethod();
     }

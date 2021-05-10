@@ -170,7 +170,7 @@ class Transaction extends Model
         ]);
     }
 
-    public function refund()
+    public function refunded()
     {
         $this->update([
             'status' => Transaction::TRANSACTION_REFUNDED,
