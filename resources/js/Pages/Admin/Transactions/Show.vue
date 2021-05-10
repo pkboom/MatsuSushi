@@ -26,6 +26,10 @@
           {{ transaction.name }}
         </div>
         <div>
+          <span class="text-gray-500">Email:</span>
+          {{ transaction.email }}
+        </div>
+        <div>
           <span class="text-gray-500">Phone:</span>
           {{ transaction.phone }}
         </div>
@@ -40,6 +44,10 @@
         <div>
           <span class="text-gray-500">Subtotal:</span>
           $ {{ transaction.subtotal }}
+        </div>
+        <div>
+          <span class="text-gray-500">Tax:</span>
+          $ {{ transaction.tax }}
         </div>
         <div>
           <span class="text-gray-500">Tip:</span>

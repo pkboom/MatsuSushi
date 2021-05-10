@@ -46,6 +46,7 @@ class Transaction extends Model
         'total',
         'tip',
         'formattedCreatedAt',
+        'tax',
     ];
 
     protected static function booted()
@@ -183,7 +184,8 @@ class Transaction extends Model
             $query->where(function ($query) use ($search) {
                 $query->where('first_name', 'like', '%'.$search.'%')
                     ->orWhere('last_name', 'like', '%'.$search.'%')
-                    ->orWhere('phone', 'like', '%'.$search.'%');
+                    ->orWhere('phone', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%');
             });
         });
     }

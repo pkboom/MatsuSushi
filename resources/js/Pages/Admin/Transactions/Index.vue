@@ -21,9 +21,6 @@
             Name
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Phone
-          </th>
-          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             Total
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
@@ -58,9 +55,14 @@
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ transaction.name }}
-          </td>
-          <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ transaction.phone }}
+            <div class="mt-1 text-gray-600 text-sm flex">
+              <div class="text-gray-400">
+                {{ transaction.phone }}
+              </div>
+              <div class="text-gray-400 ml-2">
+                {{ transaction.email }}
+              </div>
+            </div>
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             $ {{ transaction.total }}
