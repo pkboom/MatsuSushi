@@ -151,6 +151,7 @@ export default {
   props: {
     update_interval: Number,
     type: Object,
+    status: Object,
     takeout_available_times: Array,
     reservations: Array,
   },
@@ -205,6 +206,7 @@ export default {
       let newTakeouts = this.transactions.filter(
         transaction =>
           transaction.type === this.type.takeout &&
+          transaction.status === this.status.succeeded &&
           moment(transaction.takeout_time, 'h:mma').isBetween(
             moment(),
             moment().add(10, 'minutes'),

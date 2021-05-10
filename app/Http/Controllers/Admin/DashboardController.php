@@ -43,6 +43,9 @@ class DashboardController extends Controller
                 'delivery' => Transaction::DELIVERY,
                 'takeout' => Transaction::TAKEOUT,
             ],
+            'status' => [
+                'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
+            ],
             'reservations' => Reservation::today()
                 ->orderBy('reserved_at')
                 ->get(),
