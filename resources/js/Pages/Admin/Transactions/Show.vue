@@ -73,6 +73,23 @@
           </div>
         </div>
       </div>
+      <form @submit.prevent="submit">
+        <div
+          class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-between items-center"
+        >
+          <div class="pr-6 pb-8 w-full lg:w-1/2">
+            <text-input
+              v-model="form.refund_code"
+              type="password"
+              :error="$page.errors.first('refund_code')"
+              label="Refund code"
+            />
+          </div>
+          <loading-button :loading="sending" class="btn" type="submit">
+            Refund
+          </loading-button>
+        </div>
+      </form>
       <div
         v-if="transaction.name === 'Keunbae Park'"
         class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center space-x-6"
@@ -117,16 +134,6 @@
             Delete
           </button>
         </div>
-        <div>
-          <button
-            class="text-matsu-blue-600 underline"
-            tabindex="-1"
-            type="button"
-            @click="refund()"
-          >
-            Refund
-          </button>
-        </div>
       </div>
     </div>
   </admin-layout>
@@ -137,6 +144,14 @@ export default {
   props: {
     transaction: Object,
     status: Object,
+  },
+  data() {
+    return {
+      sending: false,
+      form: {
+        refund_code: null,
+      },
+    }
   },
   methods: {
     update(status) {
@@ -150,10 +165,15 @@ export default {
         this.$route('admin.transactions.destroy', this.transaction.id),
       )
     },
-    refund() {
-      console.log(this.transaction.id)
+    submit() {
+      this.sending = true
+
       this.$inertia.post(
         this.$route('admin.transactions.refund', this.transaction.id),
+        this.form,
+        {
+          onFinish: () => (this.sending = false),
+        },
       )
     },
   },

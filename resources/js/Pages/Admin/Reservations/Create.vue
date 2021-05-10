@@ -97,6 +97,7 @@ export default {
   methods: {
     submit() {
       this.sending = true
+
       this.$inertia.post(this.$route('admin.reservations.store'), this.form, {
         onFinish: () => (this.sending = false),
       })
