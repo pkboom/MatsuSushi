@@ -121,7 +121,7 @@
           $ {{ transaction.delivery_tip }}
         </div>
         <div><span class="text-gray-500">Items:</span></div>
-        <div class="space-y-3">
+        <div class="space-y-4">
           <div
             v-for="(item, key) in groupItems(transaction.items)"
             :key="key"
@@ -133,7 +133,12 @@
                 &times; {{ item.count }}
               </span>
             </div>
-            <div class="text-gray-400 text-sm">{{ item.item.description }}</div>
+            <div
+              v-if="item.item.category_id === show_description_category"
+              class="text-gray-500"
+            >
+              {{ item.item.description }}
+            </div>
           </div>
         </div>
       </div>
@@ -154,6 +159,7 @@ export default {
     status: Object,
     takeout_available_times: Array,
     reservations: Array,
+    show_description_category: Number,
   },
   data() {
     return {

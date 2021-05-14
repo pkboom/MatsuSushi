@@ -49,6 +49,7 @@ class DashboardController extends Controller
             'reservations' => Reservation::today()
                 ->orderBy('reserved_at')
                 ->get(),
+            'show_description_category' => (int) config('matsu.show_description_category'),
         ]);
     }
 }
