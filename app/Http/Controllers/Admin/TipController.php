@@ -22,7 +22,7 @@ class TipController extends Controller
 
         Transaction::query()
             ->where('created_at', '>=', $startOfWeek)
-            ->whereStatus(Transaction::TRANSACTION_SUCCEEDED)
+            ->whereStatus(Transaction::TRANSACTION_ACCEPTED)
             ->get()
             ->filter()
             ->map(function ($transaction) use (&$dates) {
