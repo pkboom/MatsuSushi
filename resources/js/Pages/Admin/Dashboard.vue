@@ -256,14 +256,12 @@ export default {
       }
     },
     groupItems(items) {
-      return Object.values(
-        _.groupBy(items, item => item.name + item.description),
-      )
+      return Object.values(_.groupBy(items, item => item.id))
         .map(group => ({
           count: group.length,
           item: group[0],
         }))
-        .sort((a, b) => a.item.name.localeCompare(b.item.name))
+        .sort((a, b) => a.item.category_id - b.item.category_id)
     },
     endNotification() {
       Http.put(this.$route('admin.notification.end'))

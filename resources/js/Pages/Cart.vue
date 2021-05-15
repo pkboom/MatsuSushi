@@ -149,9 +149,7 @@ export default {
       ).toFixed(2)
     },
     groupItems() {
-      return Object.values(
-        _.groupBy(this.items, item => item.name + item.description),
-      )
+      return Object.values(_.groupBy(this.items, item => item.id))
         .map(group => ({
           count: group.length,
           item: group[0],
