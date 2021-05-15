@@ -5,9 +5,6 @@
         <div class="flex items-baseline text-xl pb-1">
           <div class="font-bold whitespace-no-wrap">Today's orders</div>
           <div class="text-xs text-gray-400 px-1">({{ currentTime }})</div>
-          <span v-if="stopNotification" class="ml-1 text-red-600 text-xs">
-            Stopped!
-          </span>
           <span
             v-if="takeout_available_after > takeout_available_times[0]"
             class="ml-2 text-red-600 text-xs"
@@ -61,28 +58,28 @@
         v-for="transaction in transactions"
         :key="transaction.id"
         class="bg-white rounded p-4 shadow gray-800 space-y-4"
+        :class="{ 'cursor-pointer': transaction.status === 'succeeded' }"
+        @click="acceptOrder(transaction)"
       >
         <div class="flex items-center">
           <span class="text-gray-500">Status:</span>
           <span
-            v-if="transaction.status !== 'succeeded'"
+            v-if="transaction.status === 'accepted'"
+            class="bg-purple-100 font-bold ml-2 px-4 py-1 rounded-full text-purple-600 text-xs"
+          >
+            accepted
+          </span>
+          <span
+            v-else-if="transaction.status === 'succeeded'"
+            class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
+          >
+            new
+          </span>
+          <span
+            v-else
             class="bg-red-100 font-bold ml-2 px-4 py-1 rounded-full text-red-600 text-xs"
           >
             {{ transaction.status }}
-          </span>
-          <button
-            v-else-if="isNew(transaction.formattedCreatedAt)"
-            type="button"
-            class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs hover:bg-green-200"
-            @click="endNotification"
-          >
-            new
-          </button>
-          <span
-            v-else
-            class="bg-gray-200 font-bold ml-2 px-4 py-1 rounded-full text-gray-500 text-xs"
-          >
-            served
           </span>
         </div>
         <div>
@@ -95,6 +92,14 @@
         <div>
           <span class="text-gray-500">Total:</span>
           $ {{ transaction.total }}
+        </div>
+        <div>
+          <span class="text-gray-500">Tip:</span>
+          $ {{ transaction.tip }}
+        </div>
+        <div v-if="transaction.type === type.delivery">
+          <span class="text-gray-500">Delivery tip:</span>
+          $ {{ transaction.delivery_tip }}
         </div>
         <div>
           <span class="text-gray-500">Name:</span>
@@ -115,10 +120,6 @@
         <div v-if="transaction.message">
           <span class="text-gray-500">Message:</span>
           {{ transaction.message }}
-        </div>
-        <div v-if="transaction.type === type.delivery">
-          <span class="text-gray-500">Delivery tip:</span>
-          $ {{ transaction.delivery_tip }}
         </div>
         <div><span class="text-gray-500">Items:</span></div>
         <div class="space-y-4">
@@ -164,14 +165,11 @@ export default {
   data() {
     return {
       transactions: [],
-      new_order: false,
       intervalId: null,
       showPlaySound: false,
       currentTime: this.getCurrentTime(),
       serveTime: this.getServeTime(),
       takeouts: [],
-      stopNotification: false,
-      timeoutId: null,
       takeout_available_after: null,
       upcomingReservations: [],
     }
@@ -190,7 +188,6 @@ export default {
     getTodayOrder() {
       Http.get(this.$route('admin.dashboard')).then(response => {
         this.transactions = response.data.transactions
-        this.new_order = response.data.new_order
         this.takeout_available_after = response.data.takeout_available_after
 
         this.currentTime = this.getCurrentTime()
@@ -239,20 +236,15 @@ export default {
       return newTakeouts
     },
     notifyNewOrder() {
-      if (this.new_order) {
+      let newOrder = this.transactions.find(
+        transaction => transaction.status === 'succeeded',
+      )
+
+      if (newOrder) {
         document
           .getElementById('new-order')
           .play()
           .catch(() => (this.showPlaySound = true))
-      }
-    },
-    isNew(createdAt) {
-      if (
-        moment(createdAt, 'YYYY-MM-DD hh:mm a').isAfter(
-          moment().subtract(1, 'hours'),
-        )
-      ) {
-        return true
       }
     },
     groupItems(items) {
@@ -263,16 +255,12 @@ export default {
         }))
         .sort((a, b) => a.item.category_id - b.item.category_id)
     },
-    endNotification() {
-      Http.put(this.$route('admin.notification.end'))
+    acceptOrder(transaction) {
+      if (transaction.status === 'succeeded') {
+        Http.put(this.$route('order.accept', transaction.id))
 
-      this.stopNotification = true
-
-      clearTimeout(this.timeoutId)
-
-      this.timeoutId = setTimeout(() => {
-        this.stopNotification = false
-      }, 3000)
+        transaction.status = 'accepted'
+      }
     },
     reservationsWithin30Minutes() {
       return this.reservations

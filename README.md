@@ -8,8 +8,6 @@ closed_day
 
 closed_dates
 
-new_order
-
 online_order_available
 
 opening_hours_from

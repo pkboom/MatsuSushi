@@ -3,7 +3,6 @@
 namespace App;
 
 use Carbon\Carbon;
-use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
@@ -24,6 +23,8 @@ class Transaction extends Model
     const TRANSACTION_REFUND_FAILED = 'refund failed';
 
     const TRANSACTION_REFUNDED = 'refunded';
+
+    const TRANSACTION_ACCEPTED = 'accepted';
 
     const DELIVERY_FEE = 6;
 
@@ -159,8 +160,6 @@ class Transaction extends Model
         $this->update([
             'status' => Transaction::TRANSACTION_SUCCEEDED,
         ]);
-
-        Cache::put('new_order', true, CarbonInterval::seconds(static::UPDATE_INTERVAL * 6));
     }
 
     public function failed($message, $status = null)
