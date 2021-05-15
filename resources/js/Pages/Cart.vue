@@ -181,7 +181,7 @@ export default {
         return
       }
 
-      if (this.subtotal >= 1) {
+      if (this.subtotal > 0) {
         this.$inertia.get(this.$route('start-your-order.create'))
       }
     },
