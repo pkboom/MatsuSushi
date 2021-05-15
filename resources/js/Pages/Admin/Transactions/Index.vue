@@ -69,14 +69,14 @@
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{
-              transaction.status === status.succeeded
+              transaction.status === status.accepted
                 ? '$' + transaction.tip
                 : ''
             }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{
-              transaction.status === status.succeeded &&
+              transaction.status === status.accepted &&
               transaction.type === type.delivery
                 ? '$' + (transaction.delivery_tip || 0)
                 : ''

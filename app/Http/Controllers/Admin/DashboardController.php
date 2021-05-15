@@ -44,6 +44,7 @@ class DashboardController extends Controller
             ],
             'status' => [
                 'succeeded' => Transaction::TRANSACTION_SUCCEEDED,
+                'accepted' => Transaction::TRANSACTION_ACCEPTED,
             ],
             'reservations' => Reservation::today()
                 ->orderBy('reserved_at')

@@ -58,19 +58,21 @@
         v-for="transaction in transactions"
         :key="transaction.id"
         class="bg-white rounded p-4 shadow gray-800 space-y-4"
-        :class="{ 'cursor-pointer': transaction.status === 'succeeded' }"
+        :class="{
+          'cursor-pointer': transaction.status === status.succeeded,
+        }"
         @click="acceptOrder(transaction)"
       >
         <div class="flex items-center">
           <span class="text-gray-500">Status:</span>
           <span
-            v-if="transaction.status === 'accepted'"
+            v-if="transaction.status === status.accepted"
             class="bg-purple-100 font-bold ml-2 px-4 py-1 rounded-full text-purple-600 text-xs"
           >
             accepted
           </span>
           <span
-            v-else-if="transaction.status === 'succeeded'"
+            v-else-if="transaction.status === status.succeeded"
             class="bg-green-100 font-bold ml-2 px-4 py-1 rounded-full text-green-600 text-xs"
           >
             new
@@ -209,7 +211,7 @@ export default {
       let newTakeouts = this.transactions.filter(
         transaction =>
           transaction.type === this.type.takeout &&
-          transaction.status === this.status.succeeded &&
+          transaction.status === this.status.accepted &&
           moment(transaction.takeout_time, 'h:mma').isBetween(
             moment(),
             moment().add(10, 'minutes'),
@@ -237,7 +239,7 @@ export default {
     },
     notifyNewOrder() {
       let newOrder = this.transactions.find(
-        transaction => transaction.status === 'succeeded',
+        transaction => transaction.status === this.status.succeeded,
       )
 
       if (newOrder) {
@@ -256,10 +258,10 @@ export default {
         .sort((a, b) => a.item.category_id - b.item.category_id)
     },
     acceptOrder(transaction) {
-      if (transaction.status === 'succeeded') {
+      if (transaction.status === this.status.succeeded) {
         Http.put(this.$route('order.accept', transaction.id))
 
-        transaction.status = 'accepted'
+        transaction.status = this.status.accepted
       }
     },
     reservationsWithin30Minutes() {
