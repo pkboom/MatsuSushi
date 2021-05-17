@@ -96,7 +96,7 @@
           $ {{ transaction.total }}
         </div>
         <div>
-          <span class="text-gray-500">Tip:</span>
+          <span class="text-gray-500">Restaurant tip:</span>
           $ {{ transaction.tip }}
         </div>
         <div v-if="transaction.type === type.delivery">
