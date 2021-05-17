@@ -24,7 +24,7 @@
             Total
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Tip
+            R-Tip
           </th>
           <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
             D-Tip
