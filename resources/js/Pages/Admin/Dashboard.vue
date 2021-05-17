@@ -121,7 +121,7 @@
         </div>
         <div v-if="transaction.message">
           <span class="text-gray-500">Message:</span>
-          {{ transaction.message }}
+          <span class="leading-tight">{{ transaction.message }}</span>
         </div>
         <div><span class="text-gray-500">Items:</span></div>
         <div class="space-y-4">
