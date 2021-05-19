@@ -59,7 +59,8 @@
         :key="transaction.id"
         class="bg-white rounded p-4 shadow gray-800 space-y-4"
         :class="{
-          'cursor-pointer': transaction.status === status.succeeded,
+          'cursor-pointer hover:shadow-xl':
+            transaction.status === status.succeeded,
         }"
         @click="acceptOrder(transaction)"
       >
