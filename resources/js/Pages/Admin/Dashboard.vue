@@ -100,7 +100,7 @@
           <span class="text-gray-500">Restaurant tip:</span>
           $ {{ transaction.tip }}
         </div>
-        <div v-if="transaction.type === type.delivery">
+        <div>
           <span class="text-gray-500">Delivery tip:</span>
           $ {{ transaction.delivery_tip }}
         </div>
