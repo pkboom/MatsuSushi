@@ -60,7 +60,7 @@
                 {{ transaction.phone }}
               </div>
               <div class="text-gray-400 ml-2">
-                {{ transaction.email }}
+                {{ transaction.email.split('@')[0] }}
               </div>
             </div>
           </td>
