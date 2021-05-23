@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\Transaction;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
@@ -87,14 +88,18 @@ class StartYourOrderController extends Controller
             ->when($order['type'] === Transaction::DELIVERY, fn ($collection) => $collection->push($this->deliveryFee()))
             ->toArray();
 
-        $session = Session::create([
-            'payment_method_types' => ['card'],
-            'customer_email' => Request::input('email'),
-            'line_items' => $lineItmes,
-            'mode' => 'payment',
-            'success_url' => URL::route('thankyou', $transaction->id),
-            'cancel_url' => URL::previous(),
-        ]);
+        try {
+            $session = Session::create([
+                'payment_method_types' => ['card'],
+                'customer_email' => Request::input('email'),
+                'line_items' => $lineItmes,
+                'mode' => 'payment',
+                'success_url' => URL::route('thankyou', $transaction->id),
+                'cancel_url' => URL::previous(),
+            ]);
+        } catch (Exception $e) {
+            validation_fails('email', $e->getMessage());
+        }
 
         $transaction->update([
             'status' => Transaction::TRANSACTION_PENDING,
