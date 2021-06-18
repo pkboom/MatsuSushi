@@ -72,7 +72,7 @@ class ReservationController extends Controller
     {
         Request::validate([
             'first_name' => ['required', 'max:50'],
-            'last_name' => ['required', 'max:50'],
+            'last_name' => ['nullable', 'max:50'],
             'phone' => ['required', 'max:50'],
             'date' => ['required', 'date', 'after:yesterday'],
             'time' => ['required', 'date_format:g:ia'],
