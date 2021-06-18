@@ -165,7 +165,7 @@ class Transaction extends Model
     public function failed($message, $status = null)
     {
         $this->update([
-            'message' => $message,
+            'message' => trim($this->message.' '.$message),
             'status' => $status ?? Transaction::TRANSACTION_FAILED,
         ]);
     }
