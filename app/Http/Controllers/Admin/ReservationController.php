@@ -117,6 +117,7 @@ class ReservationController extends Controller
             'people' => ['required', 'integer', 'between:1,30'],
             'message' => ['nullable', 'string'],
         ]);
+        logger(Request::input('date'));
 
         $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
 
