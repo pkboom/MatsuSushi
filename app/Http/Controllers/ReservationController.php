@@ -34,24 +34,24 @@ class ReservationController extends Controller
             'message' => ['nullable', 'string'],
         ]);
 
-        $reserved_at = CarbonImmutable::parse(Request::input('date'))
+        $booked_at = CarbonImmutable::parse(Request::input('date'))
             ->modify(Request::input('time'));
 
-        if (Reservation::onClosedDates($reserved_at)) {
-            validation_fails('date', 'Sorry, we are closed on '.$reserved_at->format('M j').'.');
+        if (Reservation::onClosedDates($booked_at)) {
+            validation_fails('date', 'Sorry, we are closed on '.$booked_at->format('M j').'.');
         }
 
-        if (Reservation::isDuplicate(Request::input('phone'), $reserved_at)) {
-            validation_fails('date', "Your reservation on {$reserved_at->format('F j')} is already confirmed.");
+        if (Reservation::isDuplicate(Request::input('phone'), $booked_at)) {
+            validation_fails('date', "Your reservation on {$booked_at->format('F j')} is already confirmed.");
         }
 
-        if (Reservation::isFarFuture($reserved_at)) {
+        if (Reservation::isFarFuture($booked_at)) {
             validation_fails('date', 'Reservation is available until '.now()->addDays(Reservation::VALID_DAYS)->format('Y-m-d').'.');
         }
 
         $reservation = Reservation::create(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
-                'reserved_at' => $reserved_at,
+                'booked_at' => $booked_at,
             ]
         );
 
@@ -66,7 +66,7 @@ class ReservationController extends Controller
                 'phone' => $reservation->phone,
                 'people' => $reservation->people,
                 'message' => $reservation->message,
-                'reserved_at' => $reservation->reserved_at->format('F j, h:i a'),
+                'booked_at' => $reservation->booked_at->format('F j, h:i a'),
             ],
         ]);
     }

@@ -17,8 +17,8 @@ class ReservationController extends Controller
         return Inertia::render('Admin/Reservations/Index', [
             'filters' => Request::all('search'),
             'reservations' => Reservation::query()
-                ->whereDate('reserved_at', '>=', now()->startOfDay())
-                ->oldest('reserved_at')
+                ->whereDate('booked_at', '>=', now()->startOfDay())
+                ->oldest('booked_at')
                 ->filter(Request::only('search'))
                 ->paginate()
                 ->transform(function ($reservation) {
@@ -27,7 +27,7 @@ class ReservationController extends Controller
                         'name' => $reservation->name,
                         'phone' => $reservation->phone,
                         'people' => $reservation->people,
-                        'reserved_at' => $reservation->reserved_at->format('m-d h:i a'),
+                        'booked_at' => $reservation->booked_at->format('m-d h:i a'),
                         'created_at' => $reservation->created_at->format('m-d'),
                     ];
                 }),
@@ -45,10 +45,10 @@ class ReservationController extends Controller
         }
 
         Reservation::query()
-            ->where('reserved_at', '>=', $startOfWeek)
+            ->where('booked_at', '>=', $startOfWeek)
             ->get()
             ->map(function ($reservation) use (&$dates) {
-                $dates[$reservation->reserved_at->format('n/j')][] = [
+                $dates[$reservation->booked_at->format('n/j')][] = [
                     'id' => $reservation->id,
                     'name' => $reservation->name,
                     'phone' => $reservation->phone,
@@ -80,11 +80,11 @@ class ReservationController extends Controller
             'message' => ['nullable', 'string'],
         ]);
 
-        $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
+        $booked_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
 
         $reservation = Reservation::create(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
-                'reserved_at' => $reserved_at,
+                'booked_at' => $booked_at,
         ]);
 
         return Redirect::route('admin.reservations.edit', $reservation->id)->with('success', 'Reservation created.');
@@ -98,8 +98,8 @@ class ReservationController extends Controller
                 'first_name' => $reservation->first_name,
                 'last_name' => $reservation->last_name,
                 'phone' => $reservation->phone,
-                'date' => $reservation->reserved_at->format('F j, Y'),
-                'time' => $reservation->reserved_at->format('g:ia'),
+                'date' => $reservation->booked_at->format('F j, Y'),
+                'time' => $reservation->booked_at->format('g:ia'),
                 'people' => $reservation->people,
                 'message' => $reservation->message,
             ],
@@ -118,13 +118,11 @@ class ReservationController extends Controller
             'message' => ['nullable', 'string'],
         ]);
 
-        $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
-        logger($reserved_at);
+        $booked_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
 
         $reservation->update(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
-                'reserved_at' => $reserved_at,
-                'when' => $reserved_at,
+                'booked_at' => $booked_at,
         ]);
 
         return Redirect::back()->with('success', 'Reservation updated.');

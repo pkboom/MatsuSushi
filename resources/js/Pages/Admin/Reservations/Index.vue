@@ -8,10 +8,7 @@
         <inertia-link class="btn" :href="$route('admin.reservations.show')">
           <span>Calendar</span>
         </inertia-link>
-        <inertia-link
-          class="btn ml-2"
-          :href="$route('admin.reservations.create')"
-        >
+        <inertia-link class="btn ml-2" :href="$route('admin.reservations.create')">
           <span>Create</span>
           <span class="hidden lg:inline">Reservation</span>
         </inertia-link>
@@ -20,41 +17,21 @@
     <div class="bg-white rounded shadow overflow-x-auto">
       <table class="w-full">
         <tr>
-          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Name
-          </th>
-          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Phone
-          </th>
-          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            People
-          </th>
-          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">
-            Reserved At
-          </th>
-          <th
-            class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap"
-            colspan="2"
-          >
-            Created At
-          </th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">Name</th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">Phone</th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">People</th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap">Booked At</th>
+          <th class="text-left px-6 pt-6 pb-4 font-bold whitespace-no-wrap" colspan="2">Created At</th>
         </tr>
         <tr
           v-for="reservation in reservations.data"
           :key="reservation.id"
           class="hover:bg-gray-100 focus:bg-gray-100 cursor-pointer"
-          @click="
-            $inertia.visit($route('admin.reservations.edit', reservation.id))
-          "
+          @click="$inertia.visit($route('admin.reservations.edit', reservation.id))"
         >
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ reservation.name }}
-            <span
-              v-if="isToday(reservation.reserved_at)"
-              class="px-2 py-1 bg-orange-100 text-sm text-orange-600 rounded ml-2"
-            >
-              Today
-            </span>
+            <span v-if="isToday(reservation.booked_at)" class="px-2 py-1 bg-orange-100 text-sm text-orange-600 rounded ml-2">Today</span>
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ reservation.phone }}
@@ -63,7 +40,7 @@
             {{ reservation.people }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
-            {{ reservation.reserved_at }}
+            {{ reservation.booked_at }}
           </td>
           <td class="border-t px-6 py-4 whitespace-no-wrap">
             {{ reservation.created_at }}
@@ -101,10 +78,7 @@ export default {
       handler: _.throttle(function() {
         let query = _.pickBy(this.form)
 
-        let url = this.$route(
-          'admin.reservations',
-          Object.keys(query).length ? query : { remember: 'forget' }
-        )
+        let url = this.$route('admin.reservations', Object.keys(query).length ? query : { remember: 'forget' })
         this.$inertia.replace(url)
       }, 300),
       deep: true,

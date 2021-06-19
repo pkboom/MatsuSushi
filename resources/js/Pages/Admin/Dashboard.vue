@@ -237,10 +237,10 @@ export default {
     },
     reservationsWithin30Minutes() {
       return this.reservations
-        .filter(reservation => moment(reservation.reserved_at).isBetween(moment(), moment().add(30, 'minutes')))
+        .filter(reservation => moment(reservation.booked_at).isBetween(moment(), moment().add(30, 'minutes')))
         .map(reservation => ({
           ...reservation,
-          time: moment(reservation.reserved_at).format('hh:mm a'),
+          time: moment(reservation.booked_at).format('hh:mm a'),
         }))
     },
   },

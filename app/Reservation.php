@@ -12,7 +12,7 @@ class Reservation extends Model
     protected $guarded = [];
 
     protected $dates = [
-        'reserved_at',
+        'booked_at',
     ];
 
     public function getPerPage()
@@ -27,31 +27,31 @@ class Reservation extends Model
 
     public function getTimeAttribute()
     {
-        return $this->reserved_at->format('h:i a');
+        return $this->booked_at->format('h:i a');
     }
 
-    public static function onClosedDates($reserved_at)
+    public static function onClosedDates($booked_at)
     {
-        if (strval($reserved_at->dayOfWeek) === Cache::get('closed_day')) {
+        if (strval($booked_at->dayOfWeek) === Cache::get('closed_day')) {
             return true;
         }
 
-        return collect(Cache::get('closed_dates'))->contains(function ($date) use ($reserved_at) {
-            return $reserved_at->isSameday($date);
+        return collect(Cache::get('closed_dates'))->contains(function ($date) use ($booked_at) {
+            return $booked_at->isSameday($date);
         });
     }
 
-    public static function isDuplicate($phone, $reserved_at)
+    public static function isDuplicate($phone, $booked_at)
     {
         return Reservation::query()
-            ->whereDate('reserved_at', $reserved_at)
+            ->whereDate('booked_at', $booked_at)
             ->wherePhone($phone)
             ->count();
     }
 
-    public static function isFarFuture($reserved_at)
+    public static function isFarFuture($booked_at)
     {
-        return $reserved_at->subDays(static::VALID_DAYS)->isFuture();
+        return $booked_at->subDays(static::VALID_DAYS)->isFuture();
     }
 
     public function scopeFilter($query, array $filters)
@@ -72,7 +72,7 @@ class Reservation extends Model
 
     public function scopeToday($query)
     {
-        return $query->whereBetween('reserved_at',
+        return $query->whereBetween('booked_at',
             [
                 now()->startOfDay(),
                 now()->endOfDay(),

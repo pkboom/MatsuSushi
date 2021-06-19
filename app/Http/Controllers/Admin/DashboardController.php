@@ -47,7 +47,7 @@ class DashboardController extends Controller
                 'accepted' => Transaction::TRANSACTION_ACCEPTED,
             ],
             'reservations' => Reservation::today()
-                ->orderBy('reserved_at')
+                ->orderBy('booked_at')
                 ->get(),
             'show_description_category' => (int) config('matsu.show_description_category'),
         ]);
