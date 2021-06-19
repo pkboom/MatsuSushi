@@ -119,11 +119,12 @@ class ReservationController extends Controller
         ]);
 
         $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
-        logger($reserved_at->setTimezone('America/Toronto'));
+        logger($reserved_at);
 
         $reservation->update(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
-                'reserved_at' => $reserved_at->setTimezone('America/Toronto'),
+                'reserved_at' => $reserved_at,
+                'when' => $reserved_at,
         ]);
 
         return Redirect::back()->with('success', 'Reservation updated.');
