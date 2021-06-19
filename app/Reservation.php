@@ -11,11 +11,8 @@ class Reservation extends Model
 
     protected $guarded = [];
 
-    // protected $dates = [
-    //     'reserved_at',
-    // ];
-    protected $casts = [
-        'reserved_at' => 'datetime',
+    protected $dates = [
+        'reserved_at',
     ];
 
     public function getPerPage()

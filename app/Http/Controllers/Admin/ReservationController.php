@@ -117,18 +117,13 @@ class ReservationController extends Controller
             'people' => ['required', 'integer', 'between:1,30'],
             'message' => ['nullable', 'string'],
         ]);
-        logger(Request::input('date'));
-        logger(Request::input('time'));
 
         $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
-        logger($reserved_at);
-        logger(Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
-            'reserved_at' => $reserved_at,
-        ]);
+        logger($reserved_at->toDateTimeString());
 
         $reservation->update(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
-                'reserved_at' => $reserved_at,
+                'reserved_at' => $reserved_at->toDateTimeString(),
         ]);
 
         return Redirect::back()->with('success', 'Reservation updated.');
