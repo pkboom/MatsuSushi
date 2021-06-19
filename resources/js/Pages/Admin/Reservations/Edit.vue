@@ -27,29 +27,17 @@
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <div class="form-label flex items-end">
               <span class="mr-1">Phone</span>
-              <button type="button" @click="copy('phone')">
+              <button type="button" tabindex="-1" @click="copy('phone')">
                 <icon name="clipboard" class="block w-5 h-5 stroke-gray-500" />
               </button>
             </div>
-            <text-input
-              ref="phone"
-              v-model="form.phone"
-              :error="$page.errors.first('phone')"
-            />
+            <text-input ref="phone" v-model="form.phone" :error="$page.errors.first('phone')" />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
-            <date-input
-              v-model="form.date"
-              :error="$page.errors.first('date')"
-              label="Date"
-            />
+            <date-input v-model="form.date" :error="$page.errors.first('date')" label="Date" />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
-            <time-input
-              v-model="form.time"
-              :error="$page.errors.first('time')"
-              label="Time"
-            />
+            <time-input v-model="form.time" :error="$page.errors.first('time')" label="Time" />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <text-input
@@ -69,7 +57,7 @@
           <div class="pr-6 pb-8 w-full">
             <div class="form-label flex items-end">
               <span class="mr-1">SMS</span>
-              <button type="button" @click="copy('reminder')">
+              <button type="button" tabindex="-1" @click="copy('reminder')">
                 <icon name="clipboard" class="block w-5 h-5 stroke-gray-500" />
               </button>
             </div>
@@ -94,6 +82,7 @@
               href="https://www.textnow.com/login"
               target="_blank"
               class="hover:underline text-matsu-blue-600"
+              tabindex="-1"
             >
               Text now
             </a>
@@ -138,20 +127,14 @@ export default {
   methods: {
     submit() {
       this.sending = true
-      this.$inertia.put(
-        this.$route('admin.reservations.update', this.reservation.id),
-        this.form,
-        { onFinish: () => (this.sending = false) },
-      )
+      this.$inertia.put(this.$route('admin.reservations.update', this.reservation.id), this.form, {
+        onFinish: () => (this.sending = false),
+      })
     },
     destroy() {
-      this.$inertia.delete(
-        this.$route('admin.reservations.destroy', this.reservation.id),
-        {
-          onStart: () =>
-            confirm('Are you sure you want to delete this reservation?'),
-        },
-      )
+      this.$inertia.delete(this.$route('admin.reservations.destroy', this.reservation.id), {
+        onStart: () => confirm('Are you sure you want to delete this reservation?'),
+      })
     },
     copy(input) {
       this.$refs[input].select()

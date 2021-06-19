@@ -15,6 +15,7 @@
               v-model="form.first_name"
               :error="$page.errors.first('first_name')"
               label="First name"
+              autofocus
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
@@ -25,18 +26,10 @@
             />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
-            <text-input
-              v-model="form.phone"
-              :error="$page.errors.first('phone')"
-              label="Phone"
-            />
+            <text-input v-model="form.phone" :error="$page.errors.first('phone')" label="Phone" />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
-            <date-input
-              v-model="form.date"
-              :error="$page.errors.first('date')"
-              label="Date"
-            />
+            <date-input v-model="form.date" :error="$page.errors.first('date')" label="Date" />
           </div>
           <div class="pr-6 pb-8 w-full lg:w-1/2">
             <time-input
@@ -63,9 +56,7 @@
             />
           </div>
         </div>
-        <div
-          class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center"
-        >
+        <div class="px-8 py-4 bg-gray-100 border-t border-gray-100 flex justify-end items-center">
           <loading-button :loading="sending" class="btn" type="submit">
             Create Reservation
           </loading-button>
@@ -76,6 +67,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   remember: 'form',
   data() {
@@ -87,7 +80,7 @@ export default {
         first_name: null,
         last_name: null,
         phone: null,
-        date: null,
+        date: moment().format('MMM D YYYY'),
         time: null,
         people: 2,
         message: null,
