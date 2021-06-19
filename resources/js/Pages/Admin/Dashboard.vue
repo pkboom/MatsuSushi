@@ -5,10 +5,7 @@
         <div class="flex items-baseline text-xl pb-1">
           <div class="font-bold whitespace-no-wrap">Today's orders</div>
           <div class="text-xs text-gray-400 px-1">({{ currentTime }})</div>
-          <span
-            v-if="takeout_available_after > takeout_available_times[0]"
-            class="ml-2 text-red-600 text-xs"
-          >
+          <span v-if="takeout_available_after > takeout_available_times[0]" class="ml-2 text-red-600 text-xs">
             Wait time: {{ takeout_available_after }} min ({{ serveTime }})
           </span>
         </div>
@@ -26,27 +23,20 @@
       <inertia-link
         v-for="reservation in upcomingReservations"
         :key="reservation.id"
-        :href="
-          $route('admin.reservations.edit', { reservation: reservation.id })
-        "
+        :href="$route('admin.reservations.edit', { reservation: reservation.id })"
         class="bg-white rounded p-4 shadow gray-800 space-y-4"
       >
-        <span
-          class="bg-orange-100 font-bold mr-2 px-4 py-1 rounded-full text-orange-600 text-xs"
-        >
-          Reservation
+        <span class="bg-orange-100 font-bold mr-2 px-4 py-1 rounded-full text-orange-600 text-xs">Reservation</span>
+        <span class="leading-tight">
+          {{ reservation.first_name }}
+          {{ reservation.last_name }}
+          <span class="whitespace-no-wrap">{{ reservation.time }}</span>
+          <span v-if="reservation.message">"{{ reservation.message }}"</span>
         </span>
-        {{ reservation.first_name }}
-        {{ reservation.last_name }}
-        {{ reservation.time }}
       </inertia-link>
     </div>
     <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mb-4">
-      <div
-        v-for="takeout in takeouts"
-        :key="takeout.id"
-        class="bg-white rounded p-4 shadow gray-800 space-y-4"
-      >
+      <div v-for="takeout in takeouts" :key="takeout.id" class="bg-white rounded p-4 shadow gray-800 space-y-4">
         <span class="text-gray-500">{{ takeout.id }}.</span>
         {{ takeout.first_name }}
         {{ takeout.last_name }}
@@ -59,8 +49,7 @@
         :key="transaction.id"
         class="bg-white rounded p-4 shadow gray-800 space-y-4"
         :class="{
-          'cursor-pointer hover:shadow-xl':
-            transaction.status === status.succeeded,
+          'cursor-pointer hover:shadow-xl': transaction.status === status.succeeded,
         }"
         @click="acceptOrder(transaction)"
       >
@@ -78,19 +67,14 @@
           >
             new
           </span>
-          <span
-            v-else
-            class="bg-red-100 font-bold ml-2 px-4 py-1 rounded-full text-red-600 text-xs"
-          >
+          <span v-else class="bg-red-100 font-bold ml-2 px-4 py-1 rounded-full text-red-600 text-xs">
             {{ transaction.status }}
           </span>
         </div>
         <div>
           <span class="text-gray-500">Order no.</span>
           {{ transaction.id }}
-          <span class="text-gray-400 text-sm">
-            ({{ transaction.formattedCreatedAt.slice(11) }})
-          </span>
+          <span class="text-gray-400 text-sm">({{ transaction.formattedCreatedAt.slice(11) }})</span>
         </div>
         <div>
           <span class="text-gray-500">Total:</span>
@@ -126,21 +110,12 @@
         </div>
         <div><span class="text-gray-500">Items:</span></div>
         <div class="space-y-4">
-          <div
-            v-for="(item, key) in groupItems(transaction.items)"
-            :key="key"
-            class="space-y-1"
-          >
+          <div v-for="(item, key) in groupItems(transaction.items)" :key="key" class="space-y-1">
             <div>
               {{ item.item.name }}
-              <span v-if="item.count > 1" class="ml-1">
-                &times; {{ item.count }}
-              </span>
+              <span v-if="item.count > 1" class="ml-1">&times; {{ item.count }}</span>
             </div>
-            <div
-              v-if="item.item.category_id === show_description_category"
-              class="text-gray-500"
-            >
+            <div v-if="item.item.category_id === show_description_category" class="text-gray-500">
               {{ item.item.description }}
             </div>
           </div>
@@ -213,10 +188,7 @@ export default {
         transaction =>
           transaction.type === this.type.takeout &&
           transaction.status === this.status.accepted &&
-          moment(transaction.takeout_time, 'h:mma').isBetween(
-            moment(),
-            moment().add(10, 'minutes'),
-          ),
+          moment(transaction.takeout_time, 'h:mma').isBetween(moment(), moment().add(10, 'minutes')),
       )
 
       let newTakeoutIds = newTakeouts.map(takeout => takeout.id)
@@ -239,9 +211,7 @@ export default {
       return newTakeouts
     },
     notifyNewOrder() {
-      let newOrder = this.transactions.find(
-        transaction => transaction.status === this.status.succeeded,
-      )
+      let newOrder = this.transactions.find(transaction => transaction.status === this.status.succeeded)
 
       if (newOrder) {
         document
@@ -267,12 +237,7 @@ export default {
     },
     reservationsWithin30Minutes() {
       return this.reservations
-        .filter(reservation =>
-          moment(reservation.reserved_at).isBetween(
-            moment(),
-            moment().add(30, 'minutes'),
-          ),
-        )
+        .filter(reservation => moment(reservation.reserved_at).isBetween(moment(), moment().add(30, 'minutes')))
         .map(reservation => ({
           ...reservation,
           time: moment(reservation.reserved_at).format('hh:mm a'),
