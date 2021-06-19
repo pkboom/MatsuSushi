@@ -62,7 +62,7 @@ class ReservationController extends Controller
     {
         return Inertia::render('Reservations/Show', [
             'reservation' => [
-                'name' => $reservation->name(),
+                'name' => $reservation->name,
                 'phone' => $reservation->phone,
                 'people' => $reservation->people,
                 'message' => $reservation->message,

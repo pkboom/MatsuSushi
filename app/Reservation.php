@@ -65,11 +65,6 @@ class Reservation extends Model
         });
     }
 
-    public function name()
-    {
-        return $this->first_name.' '.$this->last_name;
-    }
-
     public function scopeToday($query)
     {
         return $query->whereBetween('booked_at',
