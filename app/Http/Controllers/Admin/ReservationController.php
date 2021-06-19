@@ -121,6 +121,7 @@ class ReservationController extends Controller
         logger(Request::input('time'));
 
         $reserved_at = CarbonImmutable::parse(Request::input('date'))->modify(Request::input('time'));
+        logger($reserved_at);
 
         $reservation->update(
             Request::only('first_name', 'last_name', 'phone', 'people', 'message') + [
