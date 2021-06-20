@@ -26,13 +26,12 @@
         :href="$route('admin.reservations.edit', { reservation: reservation.id })"
         class="bg-white rounded p-4 shadow gray-800 space-y-4"
       >
-        <span class="bg-orange-100 font-bold mr-2 px-4 py-1 rounded-full text-orange-600 text-xs">Reservation</span>
-        <span class="leading-tight">
-          {{ reservation.first_name }}
-          {{ reservation.last_name }}
-          <span class="whitespace-no-wrap">{{ reservation.time }}</span>
+        <div class="flex flex-wrap items-center leading-tight space-x-1">
+          <span class="bg-orange-100 font-bold mr-1 px-4 py-1 rounded-full text-orange-600 text-xs">R</span>
+          <span class="whitespace-no-wrap">{{ reservation.first_name }} {{ reservation.last_name }}</span>
+          <span class="whitespace-no-wrap">{{ reservation.time }} ({{ reservation.people }})</span>
           <span v-if="reservation.message">"{{ reservation.message }}"</span>
-        </span>
+        </div>
       </inertia-link>
     </div>
     <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mb-4">
