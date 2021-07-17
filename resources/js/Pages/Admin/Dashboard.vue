@@ -99,9 +99,13 @@
           <span class="text-gray-500">Takeout time:</span>
           {{ transaction.takeout_time }}
         </div>
-        <div v-if="transaction.address">
+        <div v-if="transaction.address && transaction.status !== status.accepted">
           <span class="text-gray-500">Address:</span>
           {{ transaction.address }}
+        </div>
+        <div v-if="transaction.address && transaction.status === status.accepted">
+          <span class="text-gray-500">Address:</span>
+          <a :href="googleMapsLink(transaction.address)" target="_blank">{{ transaction.address }}</a>
         </div>
         <div v-if="transaction.message">
           <span class="text-gray-500">Message:</span>
@@ -241,6 +245,15 @@ export default {
           ...reservation,
           time: moment(reservation.booked_at).format('hh:mm a'),
         }))
+    },
+    googleMapsLink(address) {
+      const params = new URLSearchParams({
+        origin: '107 Hunter St EPeterborough',
+        destination: address,
+        travelmode: 'driving',
+      })
+
+      return `https://www.google.com/maps/dir/?api=1&${params}`
     },
   },
 }
